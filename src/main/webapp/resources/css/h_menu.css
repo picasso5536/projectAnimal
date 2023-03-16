@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+ul.menu {
+	list-style-type: none;
+	margin: auto;
+	padding: 0px;
+}
+
+ul.menu a {
+	background-color: tomato;
+	color: white;
+	text-decoration: none;
+	float: left;
+	padding: 20px 40px;
+	border-right: 3px solid white;
+}
+
+ul.menu a:hover {
+	background-color: skyblue;
+	font-weight: bold;
+}
+
+header {
+	text-align: center;
+}
+
+nav {
+	margin-top: 25px;
+	margin-left: 550px;
+}
