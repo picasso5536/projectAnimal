@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>내 정보</title>
+	<title>내 정보1</title>
 	<meta charset="utf-8">
 </head>
 <body>
