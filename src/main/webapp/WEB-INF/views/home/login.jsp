@@ -12,6 +12,10 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh; /* 화면 전체 높이를 최소 높이로 지정 */
+	background-image: url("resources/img/home/login_back.png");
+	background-size: cover; /* 화면에 꽉 차게 사진을 늘려줍니다 */
+	background-position: center center; /* 사진을 중앙에 위치시킵니다 */
+	background-repeat: no-repeat; /* 사진 반복 안 하도록 설정합니다 */
 }
 
 .container {
@@ -22,7 +26,7 @@ body {
 }
 
 .login-form {
-	background-color: rgba(241, 241, 241, 0.4);
+	background-color: rgba(241, 241, 241, 0.2);
 	border-radius: 8px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 	padding: 20px;
