@@ -64,6 +64,7 @@ footer {
 			<li><a href="community.do"> 소통 </a></li>
 			<li><a href="hospital.do"> 병원 </a></li>
 			<li><a href="memorial.do"> 추모 </a></li>
+			<li><a href="login.do"> 로그인 </a></li>
 		</ul>
 	</nav>
 	<section>
