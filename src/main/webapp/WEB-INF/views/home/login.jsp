@@ -19,10 +19,8 @@ body {
 }
 
 .container {
-	/* 나머지 코드들 */
-	/* .container의 max-width 값으로 가운데 정렬 */
 	max-width: 400px;
-	margin: 0 auto; /* 가운데 정렬 */
+	margin: 0 auto;
 }
 
 .login-form {
