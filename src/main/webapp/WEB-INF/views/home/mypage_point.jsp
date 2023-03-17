@@ -105,7 +105,8 @@ td:last-child {
 	border: none;
 	padding: 12px 24px;
 	margin-top: 16px;
-	margin-bottom: 20px; cursor : pointer;
+	margin-bottom: 20px;
+	cursor: pointer;
 	font-size: 16px;
 	border-radius: 4px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -123,7 +124,7 @@ td:last-child {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin-top: 16px;
+	margin-top: 40px;
 }
 
 /* 버튼 스타일 */
@@ -155,6 +156,20 @@ td:last-child {
 	box-sizing: border-box;
 	font-size: 14px;
 	margin-right: 10px;
+}
+
+#point_charged{
+  margin-top: 50px;
+  margin-left: -630px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#point_changed{
+  margin-top: 20px;
+  margin-left: -580px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 </style>
 <script
@@ -200,9 +215,10 @@ td:last-child {
 							<th>변동 내용</th>
 							<th>가용 포인트</th>
 						</tr>
+						<span id="point_changed">포인트 변동 내역</span>
 					</thead>
 					<tbody>
-					<!-- 
+						<!-- 
 						지금은 데이터가 없어서 보기용으로 넣어놨지만 기능 코드를 
 						작성할 땐 반복문으로 데이터가 있는지 없는지 검사해야함
 					 -->
@@ -223,6 +239,23 @@ td:last-child {
 							<td>+1,000</td>
 							<td>가입 축하금</td>
 							<td>1000</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<thead>
+						<span id="point_charged">충전 내역</span>
+						<tr>
+							<th>번호</th>
+							<th>입금액</th>
+							<th>상태</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>5,000</td>
+							<td>충전완료</td>
 						</tr>
 					</tbody>
 				</table>
