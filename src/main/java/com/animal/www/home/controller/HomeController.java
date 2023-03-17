@@ -25,4 +25,14 @@ public class HomeController {
 	public ModelAndView logIn() {
 		return new ModelAndView("home/login");
 	}
+	
+	@RequestMapping("my_info.do")
+	public ModelAndView myInfo() {
+		return new ModelAndView("home/mypage_member");
+	}
+	
+	@RequestMapping("my_point.do")
+	public ModelAndView myPoint() {
+		return new ModelAndView("home/mypage_point");
+	}
 }

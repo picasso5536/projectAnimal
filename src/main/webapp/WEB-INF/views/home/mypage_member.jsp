@@ -240,7 +240,7 @@ footer {
 			<ul>
 				<li><img src="#"><a href="#" class="active">계정관리</a>
 					<ul>
-						<li><a href="#">회원정보</a></li>
+						<li><a href="#">내 정보</a></li>
 						<li><a href="#">포인트관리</a></li>
 						<li><a href="#">펫 정보</a></li>
 						<li><a href="#">받은 메시지</a></li>

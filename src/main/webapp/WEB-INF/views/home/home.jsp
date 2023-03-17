@@ -167,6 +167,8 @@ footer {
 			<li><a href="hospital.do"> 병원 </a></li>
 			<li><a href="memorial.do"> 추모 </a></li>
 			<li><a href="login.do"> 로그인 </a></li>
+			<li><a href="my_info.do"> 내 정보 </a></li>
+			<li><a href="my_point.do"> 포인트 관리 </a></li>
 		</ul>
 	</nav>
 	<section>
@@ -188,7 +190,7 @@ footer {
 				<ul>
 					<li><a href="#">e-mail : master@nexttopet.com</a></li>
 					<li><a href="#">fax : 02-xxxx-xxxx</a></li>
-					<li><a href="#">project_member : 김회철 모상인 문현지 김석중</a></li>
+					<li><a href="#">project_member : 김회철 모상인 문현지</a></li>
 					<li><a href="#">address : 서울시 마포구 백범로 23, 3층</a></li>
 				</ul>
 			</div>
