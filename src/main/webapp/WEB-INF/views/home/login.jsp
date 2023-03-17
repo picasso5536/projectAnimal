@@ -29,7 +29,7 @@ body {
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 	padding: 20px;
 	width: 400px;
-	margin: 0 auto;
+	margin: 0 auto;sadsad
 }
 
 .login-form h2 {
@@ -110,9 +110,10 @@ body {
 }
 
 .login-btn {
-	width: 50%;
-	margin-top: -10px;
-	margin-left: 192px;
+	width: 30%;
+	margin-top: -30px;
+	margin-left: 270px;
+	margin-bottom: 35px;
 	background-color: #4285f4;
 	color: #fff;
 	font-size: 16px;
