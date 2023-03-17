@@ -8,19 +8,18 @@
 <title>Home</title>
 <style type="text/css">
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* 화면 전체 높이를 최소 높이로 지정 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh; /* 화면 전체 높이를 최소 높이로 지정 */
 }
 
 .container {
-  /* 나머지 코드들 */
-  /* .container의 max-width 값으로 가운데 정렬 */
-  max-width: 400px; 
-  margin: 0 auto; /* 가운데 정렬 */
+	/* 나머지 코드들 */
+	/* .container의 max-width 값으로 가운데 정렬 */
+	max-width: 400px;
+	margin: 0 auto; /* 가운데 정렬 */
 }
-
 
 .login-form {
 	background-color: rgba(241, 241, 241, 0.4);
@@ -157,8 +156,8 @@ body {
 }
 
 .social-login img {
-  width: 300px;
-  height: 45px;
+	width: 300px;
+	height: 45px;
 }
 </style>
 </head>
@@ -168,12 +167,12 @@ body {
 			<h2>내옆펫 로그인</h2>
 			<br>
 			<div class="form-group with-icon">
-				<img src="resources/img/home/id.png" class="icon"> <input type="email"
-					id="email" name="email" required>
+				<img src="resources/img/home/id.png" class="icon"> <input
+					type="email" id="email" name="email" required>
 			</div>
 			<div class="form-group with-icon">
-				<img src="resources/img/home/password.png" class="icon"> <input type="password"
-					id="password" name="password" required>
+				<img src="resources/img/home/password.png" class="icon"> <input
+					type="password" id="password" name="password" required>
 			</div>
 			<div class="form-group">
 				<label for="remember-me"> <input type="checkbox"
@@ -186,8 +185,7 @@ body {
 				<a href="#"> <img
 					src="resources/img/home/kakao_login_medium_wide.png"
 					alt="KakaoTalk">
-				</a> <a href="#"> <img
-					src="resources/img/home/naver_login.png"
+				</a> <a href="#"> <img src="resources/img/home/naver_login.png"
 					alt="Naver">
 				</a> <a href="#"> <img
 					src="resources/img/home/btn_google_signin_light_normal_web@2x.png"
