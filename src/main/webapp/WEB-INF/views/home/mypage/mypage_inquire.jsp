@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 > 제재 내역</title>
+<title>마이페이지 > 문의 내역</title>
 <style type="text/css">
 body {
 	font-family: Arial, sans-serif;
@@ -20,6 +20,7 @@ main {
 .banned {
 	display: flex;
 	flex-direction: column;
+	position: relative;
 	align-items: center;
 	justify-content: space-between;
 	padding: 30px;
@@ -44,7 +45,7 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	margin: 0 auto;
-	max-width: 900px;
+	max-width: 1000px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 	margin-top: 100px;
 }
@@ -92,19 +93,51 @@ td:nth-child(2) {
 td:nth-child(3) {
 	text-align: center;
 	font-weight: bold;
-	color: red;
+	color: #4CAF50;
 }
 
 /* 네 번째 td 스타일 */
 td:nth-child(4) {
 	text-align: center;
-	color: #333;
+	font-weight: bold;
+	color: red;
 }
 
 /* 다섯 번째 td 스타일 */
 td:last-child {
 	text-align: center;
 	color: #333;
+	font-weight: bold;
+}
+
+a {
+	text-decoration: none;
+	color: #4CAF50;
+}
+
+.processing {
+	color: red;
+}
+
+#inquire_btn {
+	background-color: #3498db;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 4px;
+	position: absolute;
+	bottom: 20px;
+	right: 30px;
+}
+
+#inquire_btn:hover {
+	background-color: #2980b9;
 }
 </style>
 </head>
@@ -116,44 +149,44 @@ td:last-child {
 					<thead>
 						<tr>
 							<th></th>
-							<th>제재</th>
-							<th>제재내용</th>
-							<th>제재 항목</th>
-							<th>제재 일시</th>
+							<th>문의</th>
+							<th>문의 제목</th>
+							<th>답변 상태 및 내용</th>
+							<th>문의 일시</th>
 						</tr>
 					</thead>
 					<tbody>
-					<!-- 반복문으로 해당 회원의 제재 내역이 있는지 검사 후 있을 때 출력 -->
 						<tr>
 							<td>4</td>
 							<td>마켓</td>
-							<td>마켓 이용 제한 3일</td>
-							<td>언어폭력 행위</td>
+							<td><a href="#">환불 문의</a></td>
+							<td><a href="#" class="processing">처리중</a></td>
 							<td>2022.03.22 18:49:32</td>
 						</tr>
 						<tr>
 							<td>3</td>
 							<td>커뮤니티</td>
-							<td>커뮤니티 이용 제한 3일</td>
-							<td>언어폭력 행위</td>
+							<td><a href="#">게시글 삭제 문의합니다.</a></td>
+							<td><a href="#" class="processing">처리 완료 / 답변</a></td>
 							<td>2022.03.20 23:15:47</td>
 						</tr>
 						<tr>
 							<td>2</td>
 							<td>추모</td>
-							<td>추모 이용 제한 3일</td>
-							<td>폭력적인 게시글 업로드</td>
+							<td><a href="#">분위기 저해 게시글에 대하여</a></td>
+							<td><a href="#" class="processing">처리 완료 / 답변</a></td>
 							<td>2022.03.15 13:22:28</td>
 						</tr>
 						<tr>
 							<td>1</td>
 							<td>마켓</td>
-							<td>마켓 이용 제한 1일</td>
-							<td>언어폭력 행위</td>
+							<td><a href="#">가격이 잘못 표기되었어요 ~</a></td>
+							<td><a href="#" class="processing">처리 완료 / 답변</a></td>
 							<td>2022.03.13 18:49:32</td>
 						</tr>
 					</tbody>
 				</table>
+				<button type="button" id="inquire_btn">문의하기</button>
 			</div>
 		</section>
 	</main>

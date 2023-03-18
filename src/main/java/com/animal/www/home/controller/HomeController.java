@@ -45,4 +45,9 @@ public class HomeController {
 	public ModelAndView myBanned() {
 		return new ModelAndView("home/mypage/mypage_banned");
 	}
+	
+	@RequestMapping("my_inquire.do")
+	public ModelAndView myInquire() {
+		return new ModelAndView("home/mypage/mypage_inquire");
+	}
 }

@@ -4,9 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지 > 펫 정보</title>
 <style type="text/css">
-/* 전체 폰트 설정 */
 body {
 	font-family: Arial, sans-serif;
 	min-height: 100vh;
@@ -18,7 +17,6 @@ main {
 	flex: 1;
 }
 
-/*////////////////////////////////////*/
 .border {
 	position: relative;
 	display: flex;

@@ -12,7 +12,6 @@
 @import	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css);
 </style>
 <style type="text/css">
-/* 전체 폰트 설정 */
 body {
 	font-family: 'NanumSquareRound';
 	min-height: 100vh;
