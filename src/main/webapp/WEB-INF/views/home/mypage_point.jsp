@@ -6,10 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 > 포인트 관리</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+<style type="text/css">
+@import
+	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css)
+	;
+</style>
 <style type="text/css">
 /* 전체 폰트 설정 */
 body {
-	font-family: Arial, sans-serif;
+	font-family: 'NanumSquareRound';
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -49,21 +56,31 @@ table {
 	width: 100%;
 	margin: 0 auto;
 	max-width: 700px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-thead {
-	background-color: #f9f9f9;
+table td, table th {
+	padding: 10px;
 	text-align: center;
+	border: 0;
+	border-bottom: 1px solid #DEE2E6;
+	font-family: 'NanumSquareRound';
+}
+
+thead th {
+	background-color: #8db6d4; /* 헤더 배경색 */
+	color: #fff; /* 헤더 글자색 */
 	font-weight: bold;
 }
 
-th, td {
-	border: 1px solid #ddd;
-	padding: 8px;
+table td:first-child {
+	font-size: 14px;
+	color: #666;
+	width: 10%;
 }
 
-td:first-child {
-	text-align: center;
+tbody tr:nth-of-type(even) {
+	background-color: #f9f9f9;
 }
 
 /* tbody tr 마우스 오버시 배경색 변경 */
@@ -91,6 +108,12 @@ td:nth-child(3) {
 	color: #333;
 }
 
+/* 네 번째 td(변동 내용) 스타일 */
+td:nth-child(4) {
+	text-align: center;
+	color: #333;
+}
+
 /* 네 번째 td(가용 포인트) 스타일 */
 td:last-child {
 	text-align: center;
@@ -100,6 +123,7 @@ td:last-child {
 
 /* 버튼 스타일 */
 #charge-points {
+	display: inline-block;
 	background-color: #3498db;
 	color: #fff;
 	border: none;
@@ -120,11 +144,13 @@ td:last-child {
 }
 
 .charge-buttons {
-	display: flex;
+	margin-left: 25px;
 	flex-direction: row;
-	justify-content: center;
 	align-items: center;
 	margin-top: 40px;
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 700px;
 }
 
 /* 버튼 스타일 */
@@ -158,24 +184,71 @@ td:last-child {
 	margin-right: 10px;
 }
 
-#point_charged{
-  margin-top: 50px;
-  margin-left: -630px;
-  margin-bottom: 5px;
-  font-weight: bold;
+#point_charged {
+	margin-top: 50px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 700px;
 }
 
-#point_changed{
-  margin-top: 20px;
-  margin-left: -580px;
-  margin-bottom: 5px;
-  font-weight: bold;
+#point_changed {
+	margin-top: 20px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 700px;
+}
+
+/* -----------------cal-------------------*/
+/* 텍스트 입력란 스타일 */
+.datepicker {
+	font-size: 16px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	outline: none;
+	box-shadow: none;
+	width: 150px;
+	text-align: center;
+}
+
+/* 활성화된 텍스트 입력란 스타일 */
+.datepicker:focus {
+	border-color: #007bff;
+}
+
+#point_changed_select {
+	background-color: #3498db; /* 버튼 배경색 */
+	border: none; /* 테두리 없앰 */
+	color: white; /* 글자색 */
+	padding: 0px 20px; /* 버튼 내부 여백 */
+	text-align: center; /* 텍스트 중앙 정렬 */
+	text-decoration: none; /* 밑줄 없앰 */
+	display: inline-block; /* 인라인 블록으로 설정 */
+	font-size: 16px; /* 글자 크기 */
+	border-radius: 5px; /* 버튼 모서리 둥글게 */
+	cursor: pointer; /* 마우스 커서 손가락으로 변경 */
+	transition-duration: 0.4s; /* 마우스 오버 시 효과를 위한 전환 시간 설정 */
+	height: 38px;
+}
+
+#point_changed_select:hover {
+	background-color: #2980b9; /* 마우스 오버 시 버튼 배경색 변경 */
+}
+
+.start_end {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 700px;
 }
 </style>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-	integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('tbody tr').each(function() {
@@ -186,6 +259,7 @@ td:last-child {
 				$(this).find('td:nth-child(2)').css('color', 'green');
 			}
 		});
+
 		let chargeAmount = 0;
 		$(".add_b").click(function() {
 			let amount = parseInt($(this).attr("id").substr(4));
@@ -194,6 +268,7 @@ td:last-child {
 		});
 	});
 </script>
+
 </head>
 <body>
 	<main>
@@ -207,15 +282,79 @@ td:last-child {
 					<input type="text" placeholder="직접입력" id="charge-amount">
 					<button id="charge-points">포인트 충전</button>
 				</div>
+				<span id="point_changed">포인트 변동 내역</span>
+				<div class="start_end">
+					<input type="text" class="datepicker" id="s_datepicker"
+						placeholder="시작일">
+					&nbsp;&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;&nbsp; <input
+						type="text" class="datepicker" id="e_datepicker" placeholder="종료일">
+					<button type="button" id="point_changed_select">조회</button>
+				</div>
+				<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+				<script
+					src="https://cdn.jsdelivr.net/npm/pikaday/plugins/pikaday-i18n.js"></script>
+				<script>
+					var picker = new Pikaday(
+							{
+								field : document.getElementById('s_datepicker'),
+								format : 'YYYY년 MM월 DD일 (ddd)',
+								i18n : {
+									previousMonth : '이전달',
+									nextMonth : '다음달',
+									months : [ '1월', '2월', '3월', '4월', '5월',
+											'6월', '7월', '8월', '9월', '10월',
+											'11월', '12월' ],
+									weekdays : [ '일요일', '월요일', '화요일', '수요일',
+											'목요일', '금요일', '토요일' ],
+									weekdaysShort : [ '일', '월', '화', '수', '목',
+											'금', '토' ]
+								},
+								toString : function(date) {
+									var day = date.getDate();
+									var month = date.getMonth() + 1;
+									var year = date.getFullYear();
+
+									return year + '년 ' + month + '월 ' + day
+											+ '일 ';
+								},
+							});
+				</script>
+				<script>
+					var picker = new Pikaday(
+							{
+								field : document.getElementById('e_datepicker'),
+								format : 'YYYY년 MM월 DD일 (ddd)',
+								i18n : {
+									previousMonth : '이전달',
+									nextMonth : '다음달',
+									months : [ '1월', '2월', '3월', '4월', '5월',
+											'6월', '7월', '8월', '9월', '10월',
+											'11월', '12월' ],
+									weekdays : [ '일요일', '월요일', '화요일', '수요일',
+											'목요일', '금요일', '토요일' ],
+									weekdaysShort : [ '일', '월', '화', '수', '목',
+											'금', '토' ]
+								},
+								toString : function(date) {
+									var day = date.getDate();
+									var month = date.getMonth() + 1;
+									var year = date.getFullYear();
+
+									return year + '년 ' + month + '월 ' + day
+											+ '일 ';
+								},
+							});
+				</script>
+
 				<table>
 					<thead>
 						<tr>
 							<th>번호</th>
 							<th>변동액</th>
 							<th>변동 내용</th>
+							<th>변동 일자</th>
 							<th>가용 포인트</th>
 						</tr>
-						<span id="point_changed">포인트 변동 내역</span>
 					</thead>
 					<tbody>
 						<!-- 
@@ -226,19 +365,22 @@ td:last-child {
 							<td>3</td>
 							<td>+5,000</td>
 							<td>5,000원 충전</td>
-							<td>1200</td>
+							<td>2023-03-18</td>
+							<td>1,200</td>
 						</tr>
 						<tr>
 							<td>2</td>
 							<td>-300</td>
 							<td>사탕 구매 포인트 차감</td>
+							<td>2023-03-17</td>
 							<td>700</td>
 						</tr>
 						<tr>
 							<td>1</td>
 							<td>+1,000</td>
 							<td>가입 축하금</td>
-							<td>1000</td>
+							<td>2023-03-17</td>
+							<td>1,000</td>
 						</tr>
 					</tbody>
 				</table>
@@ -248,13 +390,15 @@ td:last-child {
 						<tr>
 							<th>번호</th>
 							<th>입금액</th>
+							<th>신청 일자</th>
 							<th>상태</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="point-history">
 						<tr>
 							<td>1</td>
 							<td>5,000</td>
+							<td>2023-03-18</td>
 							<td>충전완료</td>
 						</tr>
 					</tbody>
