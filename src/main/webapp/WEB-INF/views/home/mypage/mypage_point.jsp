@@ -77,10 +77,6 @@ table td:first-child {
 	width: 10%;
 }
 
-tbody tr:nth-of-type(even) {
-	background-color: #f9f9f9;
-}
-
 /* tbody tr 마우스 오버시 배경색 변경 */
 tbody tr:hover {
 	background-color: #f5f5f5;
@@ -112,7 +108,7 @@ td:nth-child(4) {
 	color: #333;
 }
 
-/* 네 번째 td(가용 포인트) 스타일 */
+/* 다섯 번째 td(가용 포인트) 스타일 */
 td:last-child {
 	text-align: center;
 	color: #3498db;
@@ -347,7 +343,7 @@ td:last-child {
 				<table>
 					<thead>
 						<tr>
-							<th>번호</th>
+							<th></th>
 							<th>변동액</th>
 							<th>변동 내용</th>
 							<th>변동 일자</th>
@@ -386,7 +382,7 @@ td:last-child {
 					<thead>
 						<span id="point_charged">충전 내역</span>
 						<tr>
-							<th>번호</th>
+							<th></th>
 							<th>입금액</th>
 							<th>신청 일자</th>
 							<th>상태</th>

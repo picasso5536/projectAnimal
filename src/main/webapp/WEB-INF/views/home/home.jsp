@@ -169,6 +169,7 @@ footer {
 			<li><a href="my_info.do"> 내 정보 </a></li>
 			<li><a href="my_point.do"> 포인트 관리 </a></li>
 			<li><a href="my_pet.do"> 펫 관리 </a></li>
+			<li><a href="my_banned.do"> 제재내역 </a></li>
 		</ul>
 	</nav>
 	<section>

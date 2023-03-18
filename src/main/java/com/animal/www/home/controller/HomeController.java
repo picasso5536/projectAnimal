@@ -28,16 +28,21 @@ public class HomeController {
 	
 	@RequestMapping("my_info.do")
 	public ModelAndView myInfo() {
-		return new ModelAndView("home/mypage_member");
+		return new ModelAndView("home/mypage/mypage_member");
 	}
 	
 	@RequestMapping("my_point.do")
 	public ModelAndView myPoint() {
-		return new ModelAndView("home/mypage_point");
+		return new ModelAndView("home/mypage/mypage_point");
 	}
 	
 	@RequestMapping("my_pet.do")
 	public ModelAndView myPet() {
-		return new ModelAndView("home/mypage_pet");
+		return new ModelAndView("home/mypage/mypage_pet");
+	}
+	
+	@RequestMapping("my_banned.do")
+	public ModelAndView myBanned() {
+		return new ModelAndView("home/mypage/mypage_banned");
 	}
 }
