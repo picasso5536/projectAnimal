@@ -35,4 +35,9 @@ public class HomeController {
 	public ModelAndView myPoint() {
 		return new ModelAndView("home/mypage_point");
 	}
+	
+	@RequestMapping("my_pet.do")
+	public ModelAndView myPet() {
+		return new ModelAndView("home/mypage_pet");
+	}
 }

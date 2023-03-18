@@ -292,6 +292,7 @@ footer {
 					<p>보유 포인트: 110,000</p>
 				</div>
 			</div>
+		</section>
 	</main>
 	<footer>
 		<div class="footer-container">
