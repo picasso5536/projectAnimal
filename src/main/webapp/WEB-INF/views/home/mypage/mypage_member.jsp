@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>마이페이지 > 내 정보</title>
 <style type="text/css">
+/* 전체 폰트 설정 */
 body {
 	font-family: Arial, sans-serif;
 	min-height: 100vh;
@@ -116,6 +117,7 @@ ul ul {
 	margin-right: 60px;
 	margin-left: 30px;
 	font-color: #fff;
+	max-width: 1500px;
 }
 
 #page_info {

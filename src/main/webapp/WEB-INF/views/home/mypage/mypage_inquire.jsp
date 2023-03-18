@@ -39,6 +39,7 @@ main {
 	margin-right: 60px;
 	margin-left: 30px;
 	font-color: #fff;
+	max-width: 1500px;
 }
 
 table {
