@@ -9,9 +9,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 <style type="text/css">
-@import
-	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css)
-	;
+@import	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css);
 </style>
 <style type="text/css">
 /* 전체 폰트 설정 */
