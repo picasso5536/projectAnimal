@@ -158,7 +158,7 @@ footer {
 </head>
 <body>
 	<header>
-		<h1 id="logo">로고</h1>
+		<a href="home.do"><img src="resources/img/logo_img.png"></a>
 	</header>
 	<nav>
 		<ul class="menu">

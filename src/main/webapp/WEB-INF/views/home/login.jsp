@@ -13,8 +13,8 @@ body {
 	align-items: center;
 	min-height: 100vh; /* 화면 전체 높이를 최소 높이로 지정 */
 	background-image: url("resources/img/home/login_back.png");
-	background-size: cover; /* 화면에 꽉 차게 사진을 늘려줍니다 */ background-position :
-	center center; /* 사진을 중앙에 위치시킵니다 */
+	background-size: cover; /* 화면에 꽉 차게 사진을 늘려줍니다 */
+	background-position: center center; /* 사진을 중앙에 위치시킵니다 */
 	background-repeat: no-repeat;
 	background-position: center center; /* 사진 반복 안 하도록 설정합니다 */
 }
@@ -53,7 +53,7 @@ body {
 	margin-bottom: 5px;
 }
 
-.login-form input[type="email"], .login-form input[type="password"] {
+.login-form input[type="text"], .login-form input[type="password"] {
 	padding: 10px;
 	border-radius: 8px;
 	border: none;
@@ -62,10 +62,20 @@ body {
 	margin-left: 20px;
 }
 
-.login-form input[type="email"]:focus, .login-form input[type="password"]:focus
+.login-form input[type="text"]:not(:focus), .login-form input[type="password"]:not(:focus)
+	{
+	padding-left: 5px;
+}
+
+.login-form input[type="text"]:focus, .login-form input[type="password"]:focus
 	{
 	outline: none;
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	padding-left: 5px;
+	border: none;
+	border-bottom: 2px solid #7EC0EE;
+	transition: border-bottom-color 0.4s linear;
+	border-bottom-width: 2px;
 }
 
 .login-form button[type="submit"] {
@@ -115,7 +125,8 @@ body {
 	width: 30%;
 	margin-top: -30px;
 	margin-left: 270px;
-	margin-bottom: 35px; background-color : #4285f4;
+	margin-bottom: 35px;
+	background-color: #4285f4;
 	color: #fff;
 	font-size: 16px;
 	border: none;
@@ -173,7 +184,7 @@ body {
 			<br>
 			<div class="form-group with-icon">
 				<img src="resources/img/home/id.png" class="icon"> <input
-					type="email" id="email" name="email" required>
+					type="text" id="id" name="id" required>
 			</div>
 			<div class="form-group with-icon">
 				<img src="resources/img/home/password.png" class="icon"> <input

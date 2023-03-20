@@ -108,7 +108,7 @@ ul ul {
 }
 </style>
 <header>
-	<span id="logo">로고</span> <span id="m_nickname">회원닉네임</span>님
+	<a href="home.do"><img src="resources/img/logo_img.png"></a> <span id="m_nickname">회원닉네임</span>님
 </header>
 <nav>
 	<ul>
@@ -119,7 +119,7 @@ ul ul {
 			<li><a href="my_info.do">내 정보</a></li>
 			<li><a href="my_point.do">포인트관리</a></li>
 			<li><a href="my_pet.do">펫 정보</a></li>
-			<li><a href="#">받은 메시지</a></li>
+			<li><a href="my_message.do">받은 메시지</a></li>
 			<li><a href="my_inquire.do">1:1문의내역</a></li>
 			<li><a href="my_banned.do">제재 내역</a></li>
 		</ul>

@@ -50,4 +50,9 @@ public class HomeController {
 	public ModelAndView myInquire() {
 		return new ModelAndView("home/mypage/mypage_inquire");
 	}
+	
+	@RequestMapping("my_message.do")
+	public ModelAndView myMessage() {
+		return new ModelAndView("home/mypage/mypage_message");
+	}
 }
