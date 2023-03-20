@@ -167,6 +167,7 @@ footer {
 			<li><a href="hospital.do"> 병원 </a></li>
 			<li><a href="memorial.do"> 추모 </a></li>
 			<li><a href="login.do"> 로그인 </a></li>
+			<li><a href="mypage.do"> 마이페이지 </a></li>
 		</ul>
 	</nav>
 	<section>

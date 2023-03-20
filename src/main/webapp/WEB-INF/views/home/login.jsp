@@ -13,9 +13,10 @@ body {
 	align-items: center;
 	min-height: 100vh; /* 화면 전체 높이를 최소 높이로 지정 */
 	background-image: url("resources/img/home/login_back.png");
-	background-size: cover; /* 화면에 꽉 차게 사진을 늘려줍니다 */
-	background-position: center center; /* 사진을 중앙에 위치시킵니다 */
-	background-repeat: no-repeat; /* 사진 반복 안 하도록 설정합니다 */
+	background-size: cover; /* 화면에 꽉 차게 사진을 늘려줍니다 */ background-position :
+	center center; /* 사진을 중앙에 위치시킵니다 */
+	background-repeat: no-repeat;
+	background-position: center center; /* 사진 반복 안 하도록 설정합니다 */
 }
 
 .container {
@@ -29,7 +30,8 @@ body {
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 	padding: 20px;
 	width: 400px;
-	margin: 0 auto;sadsad
+	margin: 0 auto;
+	sadsad
 }
 
 .login-form h2 {
@@ -113,12 +115,12 @@ body {
 	width: 30%;
 	margin-top: -30px;
 	margin-left: 270px;
-	margin-bottom: 35px;
-	background-color: #4285f4;
+	margin-bottom: 35px; background-color : #4285f4;
 	color: #fff;
 	font-size: 16px;
 	border: none;
 	border-radius: 8px;
+	background-color: #4285f4;
 }
 
 .form-group {
@@ -182,7 +184,6 @@ body {
 					id="remember-me"> 아이디 기억
 				</label>
 			</div>
-
 			<button type="submit" class="login-btn">로그인</button>
 			<div class="social-login">
 				<a href="#"> <img
@@ -199,9 +200,7 @@ body {
 				<a href="#" id="joinUs">회원가입</a> <a href="#" id="findAccount">아이디
 					/ 비밀번호 찾기</a>
 			</div>
-
 		</form>
-
 	</div>
 </body>
 </html>

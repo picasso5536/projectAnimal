@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>대분류</title>
 <style type="text/css">
 /* 전체 폰트 설정 */
 body {
@@ -21,8 +21,7 @@ main {
 nav {
 	width: 200px;
 	line-height: 25px;
-	background-color: #008080;
-	color: #FFFFFF;
+	color: #ffffff;
 	padding: 10px;
 	float: left;
 	margin-top: 10px;
@@ -45,7 +44,7 @@ li {
 
 /* 네비게이션 링크 스타일 */
 nav a {
-	color: #FFFFFF;
+	color: #000000;
 	text-decoration: none;
 	padding: 5px;
 }
@@ -94,9 +93,43 @@ ul ul {
 	width: 150px;
 	height: 150px;
 	object-fit: cover;
-	border-radius: 50%;
 	border: 5px solid #fff;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile-picture {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 20px;
+	margin-top: 40px;
+	width: 300px;
+	height: 300px;
+	background-color: black;
+}
+
+.profile-info {
+	display: inline-block;
+	margin-top: 40px;
+}
+
+#profile_w {
+	margin-left: 70px;
+}
+
+#info_1 {
+	margin-left: 40px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#info_2 {
+	margin-left: 50px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.profile-info h2 {
+	margin-top: 0;
 }
 
 .profile-info h2 {
@@ -148,93 +181,44 @@ ul ul {
 	font-weight: bold;
 	margin-left: 10px;
 }
-/*//////////////////////////*/
-footer {
-	background-color: #fff;
-	font-family: Arial, sans-serif;
+
+.profile-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.profile-buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-left: 90px;
+	margin-top: -25px;
+}
+
+.profile-button {
+	margin: 0 5px;
+	padding: 5px 10px;
+	background-color: #FFDAAD;
+	border: none;
+	border-radius: 3px;
 	font-size: 14px;
-	color: #333;
-	padding: 30px 0;
-	position: relative;
-	bottom: 0;
-	width: 100%;
-	box-sizing: border-box;
+	cursor: pointer;
+	border-radius: 30px;
 }
 
-.footer-container {
-	max-width: 1100px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-}
-
-.footer-column {
-	width: 30%;
-	background-color: #fff;
-	padding: 20px;
-	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.footer-column h3 {
-	font-size: 18px;
-	margin-bottom: 20px;
-}
-
-.footer-column ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.footer-column ul li {
-	margin-bottom: 10px;
-}
-
-.footer-column ul li a {
-	color: #333;
-	text-decoration: none;
-}
-
-.social-media-icons {
-	display: flex;
-}
-
-.social-media-icons li {
-	margin-right: 10px;
-}
-
-.social-media-icons li:last-child {
-	margin-right: 0;
-}
-
-.social-media-icons a {
-	color: #333;
-	text-decoration: none;
-}
-
-.social-media-icons a i {
-	font-size: 18px;
-	transition: all 0.3s ease-in-out;
-}
-
-.social-media-icons a:hover i {
-	transform: translateY(-5px);
-}
-
-.bottom-bar {
-	background-color: #333;
-	color: #fff;
-	font-size: 12px;
-	text-align: center;
-	padding: 10px;
+.profile-button:hover {
+	background-color: #ddd;
 }
 </style>
 </head>
 <body>
-<main>
+	<main>
 		<header>
-			<span id="logo">로고</span> <span id="m_nickname">회원닉네임</span>님
+			<span id="logo">로고<span> <span id="m_nickname">회원닉네임</span>님
+			
 		</header>
 		<nav>
 			<ul>
@@ -275,56 +259,34 @@ footer {
 				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
 				id="page_sKate">회원정보</span>
 			<div class="profile">
-				<div class="profile-picture">
-					<img src="your-image-url.jpg" alt="profile picture">
+				<div id="profile_w">
+					<div class="profile-picture">
+						<img src="your-image-url.jpg" alt="profile picture">
+					</div>
+					<div class="profile-info">
+						<div id="info_1">
+							<p>이름: 김회철</p>
+							<p>
+								이메일: <a href="mailto:youremail@example.com">picasso5536@gmail.com</a>
+							</p>
+							<p>핸드폰번호: 010-1234-5678</p>
+							<p>생년월일: 2000년 1월 1일</p>
+							<p>성별: 남자</p>
+						</div>
+						<div id="info_2">
+							<p>닉네임: yournickname</p>
+							<p>주소: 서울특별시 강남구</p>
+							<p>접속일: 2023년 3월 15일</p>
+							<p>로그인 플랫폼 : 카카오</p>
+							<p>보유 포인트: 1000</p>
+						</div>
+					</div>
+					<div class="profile-buttons">
+						<button class="profile-button">프로필 사진 변경</button>
+						<button class="profile-button">회원 정보 수정</button>
+					</div>
 				</div>
-				<div class="profile-info">
-					<h2>이름</h2>
-					<p>
-						이메일: <a href="mailto:youremail@example.com">youremail@example.com</a>
-					</p>
-					<p>핸드폰번호: 010-3175-3920</p>
-					<p>생년월일: 1999년 04월 12일</p>
-					<p>성별: 남자</p>
-					<p>닉네임: 김큐티달콤보이</p>
-					<p>주소: 인천광역시 연수구</p>
-					<p>접속일: 2023년 3월 15일</p>
-					<p>보유 포인트: 110,000</p>
-				</div>
-			</div>
+		</section>
 	</main>
-	<footer>
-		<div class="footer-container">
-			<div class="footer-column">
-				<h3>내옆펫</h3>
-				<ul>
-					<li><a href="#">e-mail : master@nexttopet.com</a></li>
-					<li><a href="#">fax : 02-xxxx-xxxx</a></li>
-					<li><a href="#">project_member : 김회철 모상인 문현지 김석중</a></li>
-					<li><a href="#">address : 서울시 마포구 백범로 23, 3층</a></li>
-				</ul>
-			</div>
-			<div class="footer-column">
-				<h3>규정</h3>
-				<ul>
-					<li><a href="#">개인정보 처리 방침</a></li>
-					<li><a href="#">이용약관</a></li>
-					<li><a href="#">Digital Marketing</a></li>
-				</ul>
-			</div>
-			<div class="footer-column">
-				<h3>소셜</h3>
-				<ul class="social-media-icons">
-					<li><a href="#">인스타<i class="fab fa-facebook-f"></i></a></li>
-					<li><a href="#">페이스북<i class="fab fa-twitter"></i></a></li>
-					<li><a href="#">트위터<i class="fab fa-instagram"></i></a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="bottom-bar">
-			<p>&copy; 2023 Company 내옆펫. All rights reserved.</p>
-		</div>
-	</footer>
-
 </body>
 </html>
