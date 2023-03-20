@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+        <!-- http://www.mybatis.org/mybatis-3/ko/configuration.html -->
+        <setting name="jdbcTypeForNull" value="NULL"/>
+        <setting name="cacheEnabled" value="false"/>
+    </settings>
+	<typeAliases>
+		<!-- 본인이 추가하고싶은 alias 설정하세요 -->
+		<!-- 모상인 -->
+			<!-- <typeAlias alias="" type="com.animal.www."/> -->
+			
+		<!-- 문현지 -->
+			<!-- <typeAlias alias="" type="com.animal.www."/> -->
+			
+		<!-- 김석중 -->
+			<!-- <typeAlias alias="" type="com.animal.www."/> -->
+			
+		<!-- 김회철 -->
+        	<!-- <typeAlias alias="" type="com.animal.www."/> -->
+    </typeAliases>
+	<mappers>
+		<mapper resource="mappers/market-mapper.xml" />
+		<mapper resource="mappers/community-mapper.xml" />
+		<mapper resource="mappers/hospital-mapper.xml" />
+		<mapper resource="mappers/memorial-mapper.xml" />
+		<mapper resource="mappers/abandoned-mapper.xml" />
+	</mappers>
+</configuration>
