@@ -75,6 +75,7 @@ main {
 	margin-left: 30px;
 	font-color: #fff;
 	max-width: 1500px;
+	min-width: 1300px;
 }
 
 button {
