@@ -144,7 +144,11 @@ a {
 </head>
 <body>
 	<main>
+		<jsp:include page="my_navbar.jsp"></jsp:include>
 		<section id="sec1">
+			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
+				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
+				id="page_sKate">문의 내역</span>
 			<div class="banned">
 				<table>
 					<thead>

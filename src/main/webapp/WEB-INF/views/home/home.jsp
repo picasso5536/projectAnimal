@@ -166,11 +166,7 @@ footer {
 			<li><a href="community.do"> 소통 </a></li>
 			<li><a href="memorial.do"> 추모 </a></li>
 			<li><a href="login.do"> 로그인 </a></li>
-			<li><a href="my_info.do"> 내 정보 </a></li>
-			<li><a href="my_point.do"> 포인트 관리 </a></li>
-			<li><a href="my_pet.do"> 펫 관리 </a></li>
-			<li><a href="my_banned.do"> 제재 내역 </a></li>
-			<li><a href="my_inquire.do"> 문의 내역 </a></li>
+			<li><a href="my_info.do"> 마이페이지 </a></li>
 		</ul>
 	</nav>
 	<section>

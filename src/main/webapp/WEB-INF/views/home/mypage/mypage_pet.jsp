@@ -17,6 +17,8 @@ main {
 	flex: 1;
 }
 
+
+/*////////////////////////////////////*/
 .border {
 	position: relative;
 	display: flex;
@@ -115,7 +117,11 @@ button {
 </head>
 <body>
 	<main>
+		<jsp:include page="my_navbar.jsp"></jsp:include>
 		<section id="sec1">
+			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
+				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
+				id="page_sKate">펫 정보</span>
 			<div class="border">
 				<div class="pet">
 					<div class="pet-picture">
@@ -123,9 +129,7 @@ button {
 					</div>
 					<div class="pet-info">
 						<p>펫 이름 : 멍멍이</p>
-						<p>
-							펫 종류 : 개
-						</p>
+						<p>펫 종류 : 개</p>
 						<p>펫 몸무게 : 5.8kg</p>
 						<p>펫 생일 : 2022.03.14</p>
 						<p>펫 증명서 : -</p>
@@ -141,9 +145,7 @@ button {
 					</div>
 					<div class="pet-info">
 						<p>펫 이름 : 냥뚱</p>
-						<p>
-							펫 종류 : 고양이
-						</p>
+						<p>펫 종류 : 고양이</p>
 						<p>펫 몸무게 : 4.0kg</p>
 						<p>펫 생일 : 2022.02.18</p>
 						<p>펫 증명서 : -</p>
@@ -159,9 +161,7 @@ button {
 					</div>
 					<div class="pet-info">
 						<p>펫 이름 : 냥뚱</p>
-						<p>
-							펫 종류 : 고양이
-						</p>
+						<p>펫 종류 : 고양이</p>
 						<p>펫 몸무게 : 4.0kg</p>
 						<p>펫 생일 : 2022.02.18</p>
 						<p>펫 증명서 : -</p>

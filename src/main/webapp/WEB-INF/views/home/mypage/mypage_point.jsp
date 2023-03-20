@@ -266,7 +266,11 @@ td:last-child {
 </head>
 <body>
 	<main>
+	<jsp:include page="my_navbar.jsp"></jsp:include>
 		<section id="sec1">
+		<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
+				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
+				id="page_sKate">포인트 관리</span>
 			<div class="border">
 				<div class="charge-buttons">
 					<button class="add_b" id="add-5000">+5,000원</button>

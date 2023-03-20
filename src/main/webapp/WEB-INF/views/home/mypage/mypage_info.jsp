@@ -17,6 +17,7 @@ body {
 main {
 	flex: 1;
 }
+
 /* 네비게이션 스타일 */
 nav {
 	width: 200px;
@@ -90,11 +91,12 @@ ul ul {
 }
 
 .profile-picture img {
-	width: 150px;
-	height: 150px;
+	width: 300px;
+	height: 300px;
 	object-fit: cover;
 	border: 5px solid #fff;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
 }
 
 .profile-picture {
@@ -104,8 +106,8 @@ ul ul {
 	margin-top: 40px;
 	width: 300px;
 	height: 300px;
-	background-color: black;
 }
+
 
 .profile-info {
 	display: inline-block;
@@ -114,6 +116,7 @@ ul ul {
 
 #profile_w {
 	margin-left: 70px;
+	margin-top: 10px;
 }
 
 #info_1 {
@@ -217,68 +220,30 @@ ul ul {
 </head>
 <body>
 	<main>
-		<header>
-			<span id="logo">로고<span> <span id="m_nickname">회원닉네임</span>님
-		</header>
-		<nav>
-			<ul>
-				<li><img src="#"><a href="#" class="active">계정관리</a>
-					<ul>
-						<li><a href="#">내 정보</a></li>
-						<li><a href="#">포인트관리</a></li>
-						<li><a href="#">펫 정보</a></li>
-						<li><a href="#">받은 메시지</a></li>
-						<li><a href="#">1:1문의내역</a></li>
-						<li><a href="#">제재내역</a></li>
-					</ul></li>
-				<br>
-				<li><img src="#"><a href="#">마켓</a></li>
-				<ul>
-					<li><a href="#">장바구니</a></li>
-					<li><a href="#">주문/배송/픽업조회</a></li>
-					<li><a href="#">취소/교환/환불내역</a></li>
-					<li><a href="#">찜</a></li>
-					<li><a href="#">쿠폰함</a></li>
-					<li><a href="#">리뷰내역</a></li>
-				</ul>
-				<br>
-				<li><img src="#"><a href="#">커뮤니티</a></li>
-				<ul>
-					<li><a href="#">게시글</a></li>
-					<li><a href="#">댓글/답글</a></li>
-				</ul>
-				<br>
-				<li><img src="#"><a href="#">추모</a></li>
-				<ul>
-					<li><a href="#">게시글 관리</a></li>
-				</ul>
-			</ul>
-		</nav>
+		<jsp:include page="my_navbar.jsp"></jsp:include>
 		<section id="sec1">
 			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
 				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
-				id="page_sKate">회원정보</span>
+				id="page_sKate">내 정보</span>
 			<div class="profile">
 				<div id="profile_w">
 					<div class="profile-picture">
-						<img src="your-image-url.jpg" alt="profile picture">
+						<img src="resources/img/home/my_profile_img.png">
 					</div>
 					<div class="profile-info">
 						<div id="info_1">
-							<p>이름: 김회철</p>
-							<p>
-								이메일: <a href="mailto:youremail@example.com">picasso5536@gmail.com</a>
-							</p>
-							<p>핸드폰번호: 010-1234-5678</p>
-							<p>생년월일: 2000년 1월 1일</p>
-							<p>성별: 남자</p>
+							<p>이름 : 김회철</p>
+							<p>이메일 : picasso5536@gmail.com</p>
+							<p>핸드폰번호 : 010-1234-5678</p>
+							<p>생년월일 : 2000년 1월 1일</p>
+							<p>성별 : 남자</p>
 						</div>
 						<div id="info_2">
-							<p>닉네임: yournickname</p>
-							<p>주소: 서울특별시 강남구</p>
-							<p>접속일: 2023년 3월 15일</p>
+							<p>닉네임 : 회철짱짱123</p>
+							<p>주소 : 인천광역시 연수구</p>
+							<p>접속일 : 2023년 3월 20일</p>
 							<p>로그인 플랫폼 : 카카오</p>
-							<p>보유 포인트: 1000</p>
+							<p>보유 포인트 : 120,000</p>
 						</div>
 					</div>
 					<div class="profile-buttons">

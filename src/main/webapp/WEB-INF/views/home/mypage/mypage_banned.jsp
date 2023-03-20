@@ -45,7 +45,7 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	margin: 0 auto;
-	max-width: 900px;
+	max-width: 1000px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 	margin-top: 100px;
 }
@@ -111,7 +111,11 @@ td:last-child {
 </head>
 <body>
 	<main>
+		<jsp:include page="my_navbar.jsp"></jsp:include>
 		<section id="sec1">
+			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
+				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
+				id="page_sKate">제재 내역</span>
 			<div class="banned">
 				<table>
 					<thead>
@@ -124,14 +128,7 @@ td:last-child {
 						</tr>
 					</thead>
 					<tbody>
-					<!-- 반복문으로 해당 회원의 제재 내역이 있는지 검사 후 있을 때 출력 -->
-						<tr>
-							<td>4</td>
-							<td>마켓</td>
-							<td>마켓 이용 제한 3일</td>
-							<td>언어폭력 행위</td>
-							<td>2022.03.22 18:49:32</td>
-						</tr>
+						<!-- 반복문으로 해당 회원의 제재 내역이 있는지 검사 후 있을 때 출력 -->
 						<tr>
 							<td>3</td>
 							<td>커뮤니티</td>
