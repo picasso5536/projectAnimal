@@ -75,4 +75,9 @@ public class HomeController {
 	public ModelAndView myMessageSend() {
 		return new ModelAndView("home/mypage/mypage_message_send");
 	}
+	
+	@RequestMapping("my_cartlist.do")
+	public ModelAndView myCartList() {
+		return new ModelAndView("home/mypage/mypage_cartlist");
+	}
 }

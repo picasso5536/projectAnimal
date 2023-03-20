@@ -125,7 +125,7 @@ ul ul {
 		<li class="large"><img src="resources/img/home/my_market_img.png"><a
 			href="#">마켓</a></li>
 		<ul>
-			<li><a href="#">장바구니</a></li>
+			<li><a href="my_cartlist.do">장바구니</a></li>
 			<li><a href="#">주문/배송/픽업조회</a></li>
 			<li><a href="#">취소/교환/환불내역</a></li>
 			<li><a href="#">찜</a></li>
