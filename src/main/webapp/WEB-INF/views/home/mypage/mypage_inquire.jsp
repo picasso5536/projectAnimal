@@ -165,29 +165,29 @@ a {
 						<tr>
 							<td>4</td>
 							<td>마켓</td>
-							<td><a href="#">환불 문의</a></td>
-							<td><a href="#" class="processing">처리중</a></td>
+							<td><a href="my_inquire_view.do">환불 문의</a></td>
+							<td>처리중</td>
 							<td>2022.03.22 18:49:32</td>
 						</tr>
 						<tr>
 							<td>3</td>
 							<td>커뮤니티</td>
-							<td><a href="#">게시글 삭제 문의합니다.</a></td>
-							<td><a href="#" class="processing">처리 완료 / 답변</a></td>
+							<td><a href="my_inquire_view.do">게시글 삭제 문의합니다.</a></td>
+							<td><a href="my_answer_view.do" class="processing">처리 완료 / 답변</a></td>
 							<td>2022.03.20 23:15:47</td>
 						</tr>
 						<tr>
 							<td>2</td>
 							<td>추모</td>
-							<td><a href="#">분위기 저해 게시글에 대하여</a></td>
-							<td><a href="#" class="processing">처리 완료 / 답변</a></td>
+							<td><a href="my_inquire_view.do">분위기 저해 게시글에 대하여</a></td>
+							<td><a href="my_answer_view.do" class="processing">처리 완료 / 답변</a></td>
 							<td>2022.03.15 13:22:28</td>
 						</tr>
 						<tr>
 							<td>1</td>
 							<td>마켓</td>
-							<td><a href="#">가격이 잘못 표기되었어요 ~</a></td>
-							<td><a href="#" class="processing">처리 완료 / 답변</a></td>
+							<td><a href="my_inquire_view.do">가격이 잘못 표기되었어요 ~</a></td>
+							<td><a href="my_answer_view.do" class="processing">처리 완료 / 답변</a></td>
 							<td>2022.03.13 18:49:32</td>
 						</tr>
 					</tbody>

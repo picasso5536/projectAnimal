@@ -73,7 +73,7 @@ body {
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 	padding-left: 5px;
 	border: none;
-	border-bottom: 2px solid #7EC0EE;
+	border-bottom: 2px solid rgba(126, 192, 238, 0.8);
 	transition: border-bottom-color 0.4s linear;
 	border-bottom-width: 2px;
 }

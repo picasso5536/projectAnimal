@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 > 받은 메시지</title>
+<title>마이페이지 > 문의 내역</title>
 <style type="text/css">
 body {
 	font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@ main {
 	flex: 1;
 }
 
-.message {
+.banned {
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -32,7 +32,7 @@ main {
 	margin-top: 15px;
 	height: auto;
 	min-height: 100%;
-	padding-bottom: 300px;
+	padding-bottom: 150px;
 }
 
 #sec1 {
@@ -41,6 +41,7 @@ main {
 	font-color: #fff;
 	max-width: 1500px;
 	min-width: 1300px;
+	max-height: 2000px;
 }
 
 table {
@@ -60,10 +61,11 @@ table td, table th {
 	font-family: 'NanumSquareRound';
 }
 
-thead th {
+tbody th {
 	background-color: #8db6d4; /* 헤더 배경색 */
 	color: #fff; /* 헤더 글자색 */
 	font-weight: bold;
+	width: 30%;
 }
 
 table td:first-child {
@@ -73,43 +75,8 @@ table td:first-child {
 }
 
 /* tbody tr 마우스 오버시 배경색 변경 */
-tbody tr:hover {
+tbody tr>input:hover {
 	background-color: #f5f5f5;
-}
-
-/* 첫 번째 td 스타일 */
-td:first-child {
-	text-align: center;
-	font-weight: bold;
-	color: #333;
-}
-
-/* 두 번째 td 스타일 */
-td:nth-child(2) {
-	text-align: center;
-	color: #3498db;
-	font-weight: bold;
-}
-
-/* 세 번째 td 스타일 */
-td:nth-child(3) {
-	text-align: center;
-	font-weight: bold;
-	color: #4CAF50;
-}
-
-/* 네 번째 td 스타일 */
-td:nth-child(4) {
-	text-align: center;
-	font-weight: bold;
-	color: red;
-}
-
-/* 다섯 번째 td 스타일 */
-td:last-child {
-	text-align: center;
-	color: #333;
-	font-weight: bold;
 }
 
 a {
@@ -117,11 +84,11 @@ a {
 	color: #4CAF50;
 }
 
-.message_info {
-	color: #3498db;
+.processing {
+	color: red;
 }
 
-#send_msg {
+button {
 	background-color: #3498db;
 	border: none;
 	color: white;
@@ -138,15 +105,34 @@ a {
 	right: 30px;
 }
 
-#send_msg:hover {
+input[type="text"], #msg_info {
+	padding: 10px;
+	border-radius: 8px;
+	border: none;
+	font-size: 15px;
+	width: 300px;
+	margin-left: 0px;
+}
+
+input[type="text"]:focus, #msg_info:focus {
+	outline: none;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	padding-left: 5px;
+	border: none;
+	border-bottom: 2px solid rgba(126, 192, 238, 0.8);
+	transition: border-bottom-color 0.4s linear;
+	border-bottom-width: 1px;
+}
+
+button:hover {
 	background-color: #2980b9;
 }
+
+#msg_info {
+	width: 640px;
+	heigth: 100px;
+}
 </style>
-<script type="text/javascript">
-	function msg_send() {
-		location.href="my_message_send.do";
-	}
-</script>
 </head>
 <body>
 	<main>
@@ -155,32 +141,28 @@ a {
 			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
 				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
 				id="page_sKate">받은 메시지</span>
-			<div class="message">
+			<div class="banned">
 				<table>
-					<thead>
-						<tr>
-							<th></th>
-							<th>보낸이</th>
-							<th>메시지 제목</th>
-							<th>수신일</th>
-						</tr>
-					</thead>
 					<tbody>
 						<tr>
-							<td>2</td>
-							<td>테스트1</td>
-							<td><a href="my_message_view.do">테스트 1</a></td>
-							<td>2022.03.15 13:22:28</td>
+							<th>받는이</th>
+							<td><input type="text" id="msg_receiver"></td>
 						</tr>
 						<tr>
-							<td>1</td>
-							<td>내옆펫 운영진</td>
-							<td><a href="my_message_view.do">가입을 축하드립니다 !</a></td>
-							<td>2022.03.13 18:49:32</td>
+							<th>메시지 제목</th>
+							<td><input type="text" id="msg_title"></td>
+						</tr>
+						<tr>
+							<th>첨부 파일</th>
+							<td><input type="file" id="msg_f_name"></td>
+						</tr>
+						<tr>
+							<th>메시지 내용</th>
+							<td><textarea rows="40" name="msg_info" id="msg_info"></textarea></td>
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" id="send_msg" onclick="msg_send()">메시지 보내기</button>
+				<button>전송</button>
 			</div>
 		</section>
 	</main>

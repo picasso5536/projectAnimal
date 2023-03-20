@@ -38,7 +38,7 @@ main {
 	margin-top: 15px;
 	height: auto;
 	min-height: 100%;
-	padding-bottom: 300px;
+	padding-bottom: 150px;
 }
 
 #sec1 {

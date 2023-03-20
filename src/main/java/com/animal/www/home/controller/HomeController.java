@@ -51,8 +51,28 @@ public class HomeController {
 		return new ModelAndView("home/mypage/mypage_inquire");
 	}
 	
+	@RequestMapping("my_inquire_view.do")
+	public ModelAndView myInquireView() {
+		return new ModelAndView("home/mypage/mypage_inquire_view");
+	}
+
+	@RequestMapping("my_answer_view.do")
+	public ModelAndView myAnswerView() {
+		return new ModelAndView("home/mypage/mypage_answer_view");
+	}
+	
 	@RequestMapping("my_message.do")
 	public ModelAndView myMessage() {
 		return new ModelAndView("home/mypage/mypage_message");
+	}
+	
+	@RequestMapping("my_message_view.do")
+	public ModelAndView myMessageView() {
+		return new ModelAndView("home/mypage/mypage_message_view");
+	}
+	
+	@RequestMapping("my_message_send.do")
+	public ModelAndView myMessageSend() {
+		return new ModelAndView("home/mypage/mypage_message_send");
 	}
 }
