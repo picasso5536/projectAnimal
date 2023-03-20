@@ -154,6 +154,7 @@ ul ul {
 	margin-left: 30px;
 	font-color: #fff;
 	max-width: 1500px;
+	min-width: 1300px;
 }
 
 #page_info {
@@ -198,8 +199,8 @@ ul ul {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin-left: 90px;
-	margin-top: -25px;
+	margin-left: 70px;
+	margin-top: -15px;
 }
 
 .profile-button {
