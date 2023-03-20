@@ -2,11 +2,10 @@
 	pageEncoding="UTF-8"%>
 <style type="text/css">
 @import
-	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css)
-	;
+	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css);
 /* 전체 폰트 설정 */
 body {
-	font-family: 'NanumSquareRound'; min-height : 100vh;
+	font-family: 'NanumSquareRound';
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
@@ -53,11 +52,11 @@ nav a:hover {
 	background-color: #006666;
 }
 
-/* 활성화된 링크 스타일 */
-.active {
-	font-weight: bold;
-	border-bottom: 3px solid #FFA500;
+nav > ul > li a:hover {
+  cursor: default;
+  background-color: white;
 }
+
 
 /* 들여쓰기 */
 ul ul {
@@ -113,8 +112,7 @@ ul ul {
 <nav>
 	<ul>
 		<li class="large"><img
-			src="resources/img/home/my_account_img.png"><a href="#"
-			class="active">계정관리</a></li>
+			src="resources/img/home/my_account_img.png"><a>계정관리</a></li>
 		<ul>
 			<li><a href="my_info.do">내 정보</a></li>
 			<li><a href="my_point.do">포인트관리</a></li>
