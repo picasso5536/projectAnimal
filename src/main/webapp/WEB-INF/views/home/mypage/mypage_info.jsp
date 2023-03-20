@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>대분류</title>
+<title>마이페이지 > 내 정보</title>
 <style type="text/css">
 /* 전체 폰트 설정 */
 body {
@@ -150,6 +150,7 @@ ul ul {
 	margin-right: 60px;
 	margin-left: 30px;
 	font-color: #fff;
+	max-width: 1500px;
 }
 
 #page_info {
@@ -218,13 +219,12 @@ ul ul {
 	<main>
 		<header>
 			<span id="logo">로고<span> <span id="m_nickname">회원닉네임</span>님
-			
 		</header>
 		<nav>
 			<ul>
 				<li><img src="#"><a href="#" class="active">계정관리</a>
 					<ul>
-						<li><a href="#">회원정보</a></li>
+						<li><a href="#">내 정보</a></li>
 						<li><a href="#">포인트관리</a></li>
 						<li><a href="#">펫 정보</a></li>
 						<li><a href="#">받은 메시지</a></li>
@@ -286,6 +286,7 @@ ul ul {
 						<button class="profile-button">회원 정보 수정</button>
 					</div>
 				</div>
+			</div>
 		</section>
 	</main>
 </body>

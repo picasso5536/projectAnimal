@@ -164,10 +164,13 @@ footer {
 		<ul class="menu">
 			<li><a href="market.do"> 마켓 </a></li>
 			<li><a href="community.do"> 소통 </a></li>
-			<li><a href="hospital.do"> 병원 </a></li>
 			<li><a href="memorial.do"> 추모 </a></li>
 			<li><a href="login.do"> 로그인 </a></li>
-			<li><a href="mypage.do"> 마이페이지 </a></li>
+			<li><a href="my_info.do"> 내 정보 </a></li>
+			<li><a href="my_point.do"> 포인트 관리 </a></li>
+			<li><a href="my_pet.do"> 펫 관리 </a></li>
+			<li><a href="my_banned.do"> 제재 내역 </a></li>
+			<li><a href="my_inquire.do"> 문의 내역 </a></li>
 		</ul>
 	</nav>
 	<section>
@@ -189,7 +192,7 @@ footer {
 				<ul>
 					<li><a href="#">e-mail : master@nexttopet.com</a></li>
 					<li><a href="#">fax : 02-xxxx-xxxx</a></li>
-					<li><a href="#">project_member : 김회철 모상인 문현지 김석중</a></li>
+					<li><a href="#">project_member : 김회철 모상인 문현지</a></li>
 					<li><a href="#">address : 서울시 마포구 백범로 23, 3층</a></li>
 				</ul>
 			</div>
@@ -204,9 +207,9 @@ footer {
 			<div class="footer-column">
 				<h3>소셜</h3>
 				<ul class="social-media-icons">
-					<li><a href="#">인스타<i class="fab fa-facebook-f"></i></a></li>
-					<li><a href="#">페이스북<i class="fab fa-twitter"></i></a></li>
-					<li><a href="#">트위터<i class="fab fa-instagram"></i></a></li>
+					<li><a href="https://www.instagram.com/mosi_n17/ ">인스타<i class="fab fa-facebook-f"></i></a></li>
+					<li><a href="https://www.facebook.com/profile.php?id=100089533267077">페이스북<i class="fab fa-twitter"></i></a></li>
+					<li><a href="https://www.youtube.com/channel/UClMcwyqQFHjkackxovU59ng">유튜브<i class="fab fa-instagram"></i></a></li>
 				</ul>
 			</div>
 		</div>

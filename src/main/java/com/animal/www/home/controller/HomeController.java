@@ -26,8 +26,28 @@ public class HomeController {
 		return new ModelAndView("home/login");
 	}
 	
-	@RequestMapping("mypage.do")
-	public ModelAndView myPage() {
-		return new ModelAndView("home/mypage");
+	@RequestMapping("my_info.do")
+	public ModelAndView myInfo() {
+		return new ModelAndView("home/mypage/mypage_info");
+	}
+	
+	@RequestMapping("my_point.do")
+	public ModelAndView myPoint() {
+		return new ModelAndView("home/mypage/mypage_point");
+	}
+	
+	@RequestMapping("my_pet.do")
+	public ModelAndView myPet() {
+		return new ModelAndView("home/mypage/mypage_pet");
+	}
+	
+	@RequestMapping("my_banned.do")
+	public ModelAndView myBanned() {
+		return new ModelAndView("home/mypage/mypage_banned");
+	}
+	
+	@RequestMapping("my_inquire.do")
+	public ModelAndView myInquire() {
+		return new ModelAndView("home/mypage/mypage_inquire");
 	}
 }
