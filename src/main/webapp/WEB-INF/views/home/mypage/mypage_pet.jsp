@@ -33,7 +33,7 @@ main {
 	margin-top: 15px;
 	height: auto;
 	min-height: 100%;
-	padding-bottom: 200px;
+	padding-bottom: 150px;
 }
 
 .border .pet:not(:first-child) {
@@ -99,7 +99,7 @@ button {
 }
 
 .delete {
-	margin-top: 100px;
+	margin-top: 20px;
 	background-color: #ff3333;
 }
 
