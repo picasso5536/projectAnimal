@@ -130,7 +130,7 @@ ul ul {
 			<li><a href="#">취소/교환/환불내역</a></li>
 			<li><a href="my_shipping_address.do">배송지 관리</a></li>
 			<li><a href="my_dibs.do">찜</a></li>
-			<li><a href="#">쿠폰함</a></li>
+			<li><a href="my_coupon.do">쿠폰함</a></li>
 			<li><a href="#">리뷰내역</a></li>
 		</ul>
 		<br>

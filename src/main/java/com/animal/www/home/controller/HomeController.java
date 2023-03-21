@@ -90,4 +90,9 @@ public class HomeController {
 	public ModelAndView myDibs() {
 		return new ModelAndView("home/mypage/mypage_dibs");
 	}
+
+	@RequestMapping("my_coupon.do")
+	public ModelAndView myCoupon() {
+		return new ModelAndView("home/mypage/mypage_coupon");
+	}
 }

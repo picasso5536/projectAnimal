@@ -47,6 +47,7 @@ main {
 .wishlist {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .card {
@@ -90,24 +91,6 @@ main {
   font-size: 1.2rem;
   font-weight: 600;
   color: #008000;
-}
-
-@media screen and (max-width: 1200px) {
-  .wishlist {
-    justify-content: flex-start;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .card {
-    width: calc(50% - 40px);
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .card {
-    width: calc(100% - 40px);
-  }
 }
 
 </style>
