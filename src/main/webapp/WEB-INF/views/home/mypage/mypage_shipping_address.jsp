@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 > 펫 정보</title>
+<title>마이페이지 > 배송지 정보</title>
 <style type="text/css">
 body {
 	font-family: Arial, sans-serif;

@@ -85,4 +85,9 @@ public class HomeController {
 	public ModelAndView myShippingAddress() {
 		return new ModelAndView("home/mypage/mypage_shipping_address");
 	}
+	
+	@RequestMapping("my_dibs.do")
+	public ModelAndView myDibs() {
+		return new ModelAndView("home/mypage/mypage_dibs");
+	}
 }
