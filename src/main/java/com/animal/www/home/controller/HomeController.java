@@ -80,4 +80,9 @@ public class HomeController {
 	public ModelAndView myCartList() {
 		return new ModelAndView("home/mypage/mypage_cartlist");
 	}
+	
+	@RequestMapping("my_shipping_address.do")
+	public ModelAndView myShippingAddress() {
+		return new ModelAndView("home/mypage/mypage_shipping_address");
+	}
 }

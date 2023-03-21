@@ -53,6 +53,7 @@ main {
 	width: 300px;
 	height: 300px;
 	background-color: #000000;
+	border-radius: 10px;
 }
 
 .pet-info {
