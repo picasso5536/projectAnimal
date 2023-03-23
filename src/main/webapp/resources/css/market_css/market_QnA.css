@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+	font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+	}
+	
+	body {
+		font-family: NanumSquareRound;
+	}
+		
+	.long {
+		border: 1px dashed #666;
+		width: 1700px;
+		margin-top: 3%;
+		margin-left: 90px;
+	}
+	
+	.write_qbtn_con {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 150px;
+    margin-top: 20px;
+	}
+	
+	#write_qbtn {
+	    border: none;
+	    background-color: white;
+	    /* font-family: NanumSquareRound; */
+		font-size: 20px;
+		font-weight: 400;
+		color: #666;
+		cursor: pointer; 
+	}
+	
+	
+	/* 문의 컨테이너 */
+	.qna_div {
+		display: flex;
+		width: 100%;
+		height: auto;
+		flex-direction: column;
+	    flex-wrap: nowrap;
+	    align-items: center;
+	}
+		
+ 	.qna_section, .qna_container {
+ 		display: inline-block;
+ 		margin: 40px;
+ 		min-width: 1505px;
+ 	}
+ 	
+ 	.qna_container {
+ 		margin: auto;
+ 	}
+ 	
+ 	.qna_section .qna_container .qna_title h1 {
+ 		display: inline-block;
+ 		font-size: 32px;
+ 		margin: 35px;
+ 	}
+ 	
+ 	.qna_section .qna_container .qna_list {
+ 		/* border: 1px solid #eee;
+ 		border-radius: 5px; */
+ 		display: flex;
+ 		flex-wrap: wrap;
+ 		justify-content: space-between;
+ 		min-width: 1500px;
+ 		height: auto;
+ 		overflow:hidden;
+ 		margin: auto;
+ 		padding: 30px;
+ 	} 
+ 	
+ 	.qna_section .qna_container .qna_list .qna_card {
+ 		border-bottom: 1px dashed #666;
+ 		height: auto;	
+ 		padding: 30px;
+ 		margin-bottom: 40px;
+ 		margin: 20px;
+ 		min-width: 1500px;
+ 		
+ 	}
+ 	
+ 	/* 문의 타이틀 */
+ 	.qna_title {
+	    display: flex;
+	    flex-direction: row;
+	    flex-wrap: nowrap;
+	    align-items: center;
+	}
+ 	
+    .circle {
+        width: 70px;
+        height: 70px;
+        border: 1px solid #777;
+        background-color: #777;
+        border-radius: 50%;
+        line-height: 70px;
+        text-align: center;
+       /*  font-family:  NanumSquareRound; */
+        font-size: 40px;
+        color: white;
+    }
+    .wrapper {
+        padding: 30px;
+    }
+    
+    .title_text {
+    	display: flex;
+    	flex-direction: column;
+    	align-items: flex-start;
+    }
+ 	.t_text, .s_profile {
+ 		/* font-family: NanumSquareRound; */
+ 		color: #666;
+ 	}
+ 	
+ 	/* 내용보기 */
+ 	
+ 		.qna_contents .show_qbtn {
+		text-align: right;
+		font-size: 28px;
+ 		/* font-family: NanumSquareRound; */
+ 		color: #666;
+		margin-bottom: 30px;
+		cursor: pointer;
+	}
+ 	
+ 	.qna_detail {
+ 		display: flex;
+	    flex-direction: column;
+	    flex-wrap: nowrap;
+	    align-items: flex-start;
+ 	}
+ 	
+ 	.member_detail {
+ 		padding: 30px;
+ 		margin: 20px 0;
+ 	}
+ 	.answer_t {
+ 		padding: 15px 30px;
+ 		
+ 	} 
+ 	.answer_c {
+ 		padding: 30px 50px;
+ 	}
+ 	
+ 	
+ 	/* 더보기 버튼 */
+ 	.more_qbtn_con {
+		display: flex;
+		width: 100%;
+		height: auto;
+		flex-direction: column;
+	    flex-wrap: nowrap;
+	    align-items: center;
+	}
+	
+	#more_qbtn {
+		width: 200px;
+		height: 50px;
+		border: 2px solid #666;
+		border-radius: 10px;
+		background-color: #fff;
+		/* font-family: NanumSquareRound; */
+		font-size: 20px;
+		font-weight: 400;
+		color: #666;
+		cursor: pointer; 
+	}

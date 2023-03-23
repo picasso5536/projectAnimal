@@ -1,0 +1,286 @@
+@charset "UTF-8";
+
+	font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+ 	.serv_list, .rv_container {
+ 		/* display: inline-block; */
+ 		display: flex;
+ 		margin: 40px;
+ 		min-width: 1505px;
+ 		margin-top: 20px;
+ 		flex-direction: column;
+ 	   flex-wrap: nowrap;
+ 	
+ 	}
+ 	
+ 	.rv_container {
+ 		margin: auto;
+ 	}
+ 	
+ 	.serv_list .rv_container .title h1 {
+ 		display: inline-block;
+ 		font-size: 32px;
+ 		margin: 20px;
+ 	}
+ 	
+ 
+	/* 상단 별점 */
+	
+	.top_star {
+	    display: flex;
+	   flex-direction: column;
+ 	   align-items: center;
+	}
+	  .top_star .stars_img {
+	  color: #aaa9a9; 
+	  position: relative;
+	  unicode-bidi: bidi-override;
+	  width: max-content;
+	  -webkit-text-fill-color: transparent;
+	  -webkit-text-stroke-width: 1.3px;
+	  -webkit-text-stroke-color: #2b2a29;
+	  /* margin-top: 22px */
+	  font-size: 50px;
+	}
+	
+	.top_star .stars_score {
+		margin-top: 20px;
+  		  font-size: 30px;
+	}
+ 
+	.top_star .stars_img .star-fill {
+	  color: #fff58c;
+	  padding: 0;
+	  position: absolute;
+	  z-index: 1;
+	  display: flex;
+	  top: 0;
+	  left: 0;
+	  overflow: hidden;
+	  -webkit-text-fill-color: gold;
+	  font-size: 50px; 
+	}
+	
+	.top_star .stars_img .star-fill span {
+	    padding-right: 3px;
+	    font-size: 50px; 
+	}
+ 
+	.top_star .stars_img .star-base {
+		  z-index: 0;
+		  padding: 0;
+		  font-size: 50px; 
+	}
+	
+	.top_star .stars_img .star-base span {
+	    padding-right: 3px;
+	    font-size: 50px; 
+	}
+	  
+	/* 리뷰 상세 별 */ 	
+	.star {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+	
+	.stars_img {
+	  color: #aaa9a9; 
+	  position: relative;
+	  unicode-bidi: bidi-override;
+	  width: max-content;
+	  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+	  -webkit-text-stroke-width: 1.3px;
+	  -webkit-text-stroke-color: #2b2a29;
+	  /* margin-top: 22px */
+	}
+	
+	.stars_score1{
+		margin-left: 15px;
+	}
+ 
+	.star-fill {
+	  color: #fff58c;
+	  padding: 0;
+	  position: absolute;
+	  z-index: 1;
+	  display: flex;
+	  top: 0;
+	  left: 0;
+	  overflow: hidden;
+	  -webkit-text-fill-color: gold;
+	}
+	
+	.star-fill span {
+	    padding-right: 3px;
+	}
+ 
+	.star-base {
+		  z-index: 0;
+		  padding: 0;
+	}
+	
+	.star-base span {
+	    padding-right: 3px;
+	}
+	   
+		/* 리뷰 */
+	   	.serv_list .rv_container .review_list {
+ 		display: flex;
+ 		flex-wrap: wrap;
+ 		justify-content: space-between;
+ 		min-width: 1500px;
+ 		height: auto;
+ 		overflow:hidden;
+ 		margin: auto;
+ 		padding: 30px;
+ 		flex-direction: column;
+	    flex-wrap: nowrap;
+	    align-items: center;
+ 	} 
+ 	
+ 	.serv_list .rv_container .review_list .card {
+ 		border: 1px solid #eee;
+ 		border-radius: 5px;
+ 		height: auto;	
+ 		padding: 40px;
+ 		margin: 20px;
+ 		width: 1500px;
+ 		display: flex;
+	    flex-direction: row;
+	    align-items: center;
+	    flex-wrap: nowrap;
+ 		
+ 	}
+ 	
+	 .serv_list .rv_container .review_list .card review_img {
+	 	height: 200px;
+	 	width: 250px;
+	 }
+	 
+	 .review_img {
+	 	/* text-align: center; */
+	 	margin: 20px 40px 20px 20px;
+	 } 
+	 
+	 .serv_list .rv_container .review_list .card .card_text .review_title{
+	 	padding: 0px 10px;
+	 	display: inline-block;
+	 
+	 }
+	 
+	  .review_info{
+	  	display: flex;
+	  	flex-direction: column;
+	  	font-size: 15px;
+	  	opacity: .8;
+	  	font-weight: 300;
+	  	padding: 0px 10px;
+	  }
+	   .proprofile_box, .proprofile_box1 {
+	   		display: inline-block;
+	   		min-width: 330px;
+	   		margin-left: 35px;
+	   		
+	   }
+	   .proprofile_box {
+	   		margin-top: 35px;
+	   }
+	   
+	   .profile_info {
+	   	min-width: 85px;
+	   	display: flex;
+   		flex-direction: column;
+   		padding-left: 15px;
+	   }
+	   
+	   .proprofile_box .profile_img {
+	    float: left;
+	   	margin: 0 auto;
+        width: 65px;
+        height: 65px;
+        border: 1px solid #555;
+        border-radius: 50%;
+        overflow: hidden;
+	   	
+	   }
+	   
+	 .card_text {
+		display: flex;
+	    flex-direction: column;
+	    align-items: flex-start;
+	    margin-left: 18px;
+	    min-width: 882px;
+	  }
+	   
+	   .card_text .profile_box .member_nickname {
+	   		/* float: left; */
+	   		position: relative;
+		    /* display: block; */
+		    left: 15px;
+		    top: 10px;
+	   }
+	   
+	   .card_text .profile_box .pet {
+	   		position: relative;
+    		top: 30px;
+	   }
+	   
+	   .like_box {
+	   		float:right;
+	   		width: 200px;
+	   }
+	   
+	   .like_box .like_btn {
+	   		border: 1px solid #555;
+	   		border-radius: 10px;
+	   		background-color: white;
+	   		width: 90px;
+	   		height: 40px;
+	   }
+	   
+	   .like_box .like_img {
+	   		width: 25px; 
+	   		padding: 2px 10px;	
+	   }
+	    .like_box span{
+	    	padding-bottom:10px;	
+	    }
+	    
+	    .long1 {
+		border: 1px dashed #666;
+		width: 1700px;
+		margin-top: 3%;
+	}
+	
+	.more_btn_con {
+		display: flex;
+		width: 100%;
+		height: auto;
+		flex-direction: column;
+	    flex-wrap: nowrap;
+	    align-items: center;
+	}
+	
+	#more_btn {
+		width: 200px;
+		height: 50px;
+		border: 2px solid #666;
+		border-radius: 10px;
+		background-color: #fff;
+		font-family: NanumSquareRound;
+		font-size: 20px;
+		font-weight: 400;
+		color: #666;
+		cursor: pointer; 
+	}
+	   
+	   

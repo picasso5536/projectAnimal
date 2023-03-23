@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+	
+/* 검색 */
+.search_fd {
+	position:absolute;
+	top: 10px;
+	height: 25px;
+	z-index: 100;
+	right: 0px;
+    margin: 35px;
+}
+
+input[type=text] {
+	width: auto;
+	height:30px;
+	border: 2px solid #8F90A4;
+}
+	
+	/* 카테고리 탭 */
+	html,body {
+		width:100%;
+	}
+	body,div,ul,li {
+		margin:0; 
+		padding:0;
+	}
+	ul,li {
+		list-style: none;
+	}
+	
+	/*tab css*/
+	.tab {
+		/* float:left; */ 
+		float:none; 
+		/* width:100%; */ 
+		width:80%; 
+		height:auto;
+		/* margin: 60px auto; */
+		margin: 0 auto;
+		margin-top: 130px;
+	}
+	.tabnav {
+		font-size:0; 
+		width:100%; 
+		/* border:1px solid #ddd; */
+	}
+	.tabnav li{
+		display: inline-block; 
+		/* width:17%; */  
+		width:19.86862%;  
+		height:46px; 
+		text-align:center; 
+		border:1px solid #ddd;
+	}
+	.tabnav li a:before{
+		content:""; 
+		position:absolute; 
+		left:0; 
+		top:0px; 
+		width:100%; 
+		height:3px; 
+	}
+	.tabnav li a.active:before{
+		background:#8F90A4;
+	}
+	.tabnav li a.active {
+		border-bottom:1px solid #fff;
+	}
+	.tabnav li a {
+		position:relative; 
+		display:block; 
+		background: #fff; 
+		color: #8F90A4; 
+		padding:0 30px; 
+		line-height:46px; 
+		text-decoration:none; 
+		font-size:16px;
+		}
+		
+	.tabnav li a:hover,
+	.tabnav li a.active {
+		background:#8F90A4; 
+		color:#fff; 
+	}
+		
+		.tabcontent {
+		padding: 20px; 
+		width:auto;
+		height:auto; 
+		/* border:1px solid #ddd;  */
+		border-top:none;
+		min-height: 201px;
+	}
+	
+		
+ 	/* 상품리스트 */
+ 	.section_div {
+ 		margin: 0 auto;
+ 	}
+ 	 .serv_list  {
+    	position: relative;
+    	right: 114px;
+	}
+ 	
+ 	.serv_list, .best_container {
+ 		display: inline-block;
+ 		margin: 50px;
+ 		min-width: 1505px;
+ 	
+ 	}
+ 	
+ 	.best_container {
+ 		margin: auto;
+ 	}
+ 	
+ 	.serv_list .best_container .title h1 {
+ 		display: inline-block;
+ 		margin: 35px;
+ 	}
+ 	
+ 	.serv_list .best_container .pdt_list {
+ 		display: flex;
+ 		flex-wrap: wrap;
+ 		justify-content: space-between;
+ 		min-width: 1500px;
+ 		overflow: hidden;
+ 	} 
+ 	
+ 	.serv_list .best_container .pdt_list, .card {
+ 		border: 1px solid #eee;
+ 		border-radius: 5px;
+ 		height: auto;	
+ 		padding: 30px;
+ 		/* margin-bottom: 40px; */
+ 		margin: 20px;
+ 		width: 300px;
+ 	}
+ 	
+ /* 	.serv_list .best_container .pdt_list .card {
+ 		margin: 20px;
+ 		width: 300px;
+ 	} */
+	 	
+	 .serv_list .best_container .pdt_list .card card_img {
+	 	height: 200px;
+	 	width: 250px;
+	 }
+	 
+	 .card_img {
+	 	margin: auto;
+	 	text-align: center;
+	 } 
+	 
+	 .serv_list .best_container .pdt_list .card .card_text h2{
+	 	padding: 0px 10px;
+	 
+	 }
+	 
+	  .pdt_info{
+	  	font-size: 15px;
+	  	opacity: .8;
+	  	font-weight: 300;
+	  	padding: 0px 10px;
+	  }
+	  
+	   .pdt_price {
+	   		text-align: right;
+	   		padding: 0px 10px;
+	   }
+	   
+	   .pdt-link {
+		   	text-decoration: none;
+			color: #555;
+	   }

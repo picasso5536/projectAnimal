@@ -18,6 +18,16 @@ public class MarketController {
 	
 	@RequestMapping("market.do")
 	public ModelAndView marketHome() {
-		return new ModelAndView("market/m_home");
+		return new ModelAndView("market/m_home_main");
+	}
+	
+	@RequestMapping("m_pdt_list.do")
+	public ModelAndView marketProductList() {
+		return new ModelAndView("market/m_category");
+	}
+	
+	@RequestMapping("m_select_product.do")
+	public ModelAndView marketselectPDT() {
+		return new ModelAndView("market/m_product");
 	}
 }

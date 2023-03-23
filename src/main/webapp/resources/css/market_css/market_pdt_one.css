@@ -1,0 +1,272 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+	a#topBtn { 
+		position: fixed;
+		right: 2%; 
+		bottom: 5%;
+		display: none; 
+		z-index: 9999;
+		border: 1px solid #f2416b;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #f2416b;
+        max-width: 60px;
+        max-height: 60px;
+	}
+
+	/* 경로 바 */
+	.path {
+		position: relative;
+		top: 120px;
+		left: 150px;
+	}
+	
+	.path_link {
+		text-decoration: none;
+		color: #555;
+	}
+	
+	.path_top, .path_middle, .path_bottom {
+		font-size: 18px;
+	}
+
+	/* 상세 사진 */
+	
+	.pdt_Top {
+		display: flex;
+		flex-direction: row;
+		margin: 50px 130px;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	
+	.pdt_img_section {
+		margin: 0px 20px;
+	}
+	
+	.pdt_img img {
+		padding: 0px 100px;
+	}
+	
+	hr {
+		display: block;
+		border: 1px dashed #666;
+		width: 1700px;
+		margin-top: 8%;
+	}
+	
+	/* 상세 정보 */
+	
+	.pdt_info {
+		display: flex;
+    	flex-direction: column;
+		margin: 75px 130px;
+		
+	}
+	
+	.pdt_info_section {
+    	margin: 0px 20px;
+	}
+	
+	.pdt_info .box {
+		text-align:center;
+		font-size: 14px;
+		border: 2px solid #555;
+		border-radius: 10px;
+		padding: 2px 5px;
+		max-width: 50px
+	}
+	
+	.short {
+		width: 430px;
+		border: 1px dashed #666;
+		margin-top: 3%;
+	}
+	
+	.pdt_info .line {
+		padding: 10px 0px;
+	}
+	
+	.pdt_info .pdt_corp {
+		text-align: center;
+	    padding: 10px 0px;
+	    padding-left: 5px;
+	    font-size: 16px;
+	    max-width: 60px;
+	}
+	
+	.pdt_idx {
+		margin-left: 240px;
+	}
+	
+	/* 
+	하트 위치 상품이름 옆
+	.pdt_name {
+	    display: flex;
+	    flex-direction: row;
+	    align-items: center;
+	} */
+	
+	.pdt_box .pdt_name h2 {
+		margin-top: 16px;
+		margin-bottom: 30px;
+		font-size: 30px;
+	}
+
+	
+	.real_p, .sale_p{
+		display: flex;
+		flex-direction: row;
+	    align-items: center;
+	    
+	}
+	
+	.real_p h2, .sale_p h2 {
+		margin-left: 30px;
+	}
+	
+	.sale_p small {
+		margin-left: 15px;
+	}
+	
+	.save_p h2 {
+		margin-left: 100px;
+	}
+	
+	/* 별점, 하트 */	
+	.star {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+	.pdt_dip .dip {
+		/* float: right; */
+	    padding-left: 230px;
+	    padding-top: 5px;
+	    /* padding-bottom: 10px; */
+	    /* padding-right: 15px; */
+	    width: 30px;
+	    height: 30px;
+	}
+	
+	.stars_img {
+	  color: #aaa9a9; 
+	  position: relative;
+	  unicode-bidi: bidi-override;
+	  width: max-content;
+	  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+	  -webkit-text-stroke-width: 1.3px;
+	  -webkit-text-stroke-color: #2b2a29;
+	  /* margin-top: 22px */
+	}
+	
+	.stars_score, .review_cnt {
+		margin-left: 15px;
+	}
+ 
+	.star-fill {
+	  color: #fff58c;
+	  padding: 0;
+	  position: absolute;
+	  z-index: 1;
+	  display: flex;
+	  top: 0;
+	  left: 0;
+	  overflow: hidden;
+	  -webkit-text-fill-color: gold;
+	}
+	
+	.star-fill span {
+	    padding-right: 3px;
+	}
+ 
+	.star-base {
+		  z-index: 0;
+		  padding: 0;
+	}
+	
+	.star-base span {
+	    padding-right: 3px;
+	}
+	
+	.p_su {
+		display: flex;
+		min-width: 382px;
+		min-height: 95px;
+		border: 1px solid #666;
+		border-radius: 5px;
+		flex-direction: row;
+    	align-items: center;
+    	/* padding: 0px 20px; */
+	}
+	
+	.p_su input {
+		width: 50px;
+		height: 25px;
+		margin: 0px 20px;
+		
+	}
+	.p_su h3, .p_su h2 {
+		margin-left: 20px;
+	}
+	
+	.buttons {
+		display: flex;
+		flex-direction: row;
+  		justify-content: space-evenly;
+  		margin-top: 15px;
+	}
+	
+	.buttons button {
+		width: 170px;
+		height: 50px;
+		border: 2px solid #f2416b;
+		border-radius: 10px;
+		background-color: #f2416b;
+		font-family: NanumSquareRound;
+		font-size: 20px;
+		font-weight: 400;
+		color: white;
+		cursor: pointer;
+	}
+	
+	/* 상세정보 */
+	.long {
+		border: 1px dashed #666;
+		width: 1700px;
+		margin-top: 3%;
+		margin-left: 90px;
+	}
+	
+	.pdt_Middle {
+		display: flex;
+		margin: 50px 130px;
+		flex-direction: column;
+	    align-items: center;
+	}
+	
+	.pdt_info_img .show_btn {
+		text-align: center;
+		font-size: 32px;
+		margin-bottom: 30px;
+		cursor: pointer;
+	}
+	
+	
+	
+
+	
+	
+	
