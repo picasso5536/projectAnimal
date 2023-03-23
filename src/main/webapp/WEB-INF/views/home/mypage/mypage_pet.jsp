@@ -33,6 +33,7 @@ main {
 	margin-top: 15px;
 	height: auto;
 	min-height: 100%;
+<<<<<<< HEAD
 	padding-bottom: 200px;
 }
 
@@ -100,6 +101,76 @@ button {
 
 .delete {
 	margin-top: 100px;
+=======
+	padding-bottom: 150px;
+}
+
+.border .pet:not(:first-child) {
+	border-left: 1px solid #ccc;
+}
+
+.pet {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 60px;
+}
+
+.pet-picture {
+	width: 300px;
+	height: 300px;
+	background-color: #000000;
+	border-radius: 10px;
+}
+
+.pet-info {
+	flex-direction: column;
+	margin-top: 20px;
+	margin-left: -155px;
+	margin-bottom: 20px;
+}
+
+/* 프로필 정보 스타일 */
+.pet-info p {
+	margin: 0;
+	padding: 5px 0;
+	font-size: 16px;
+	color: #333;
+}
+
+#sec1 {
+	margin-right: 60px;
+	margin-left: 30px;
+	font-color: #fff;
+	max-width: 1500px;
+	min-width: 1300px;
+}
+
+button {
+	background-color: #3498db;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+#regist_btn {
+	position: absolute;
+	bottom: 20px;
+	right: 30px;
+}
+
+.delete {
+	margin-top: 20px;
+>>>>>>> refs/remotes/origin/main
 	background-color: #ff3333;
 }
 

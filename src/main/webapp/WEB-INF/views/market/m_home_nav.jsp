@@ -23,9 +23,10 @@
 	<!-- start-header -->
 	<div class="navigation-wrap bg-light">
 		<nav class="navbar">
-			<a class="navbar-brand" href="market.do"><img class="logoimg"
-				src="resources/img/market/mypetlogo.jpg" alt=""></a>
-
+			<a class="navbar-brand" href="market.do">
+				<img class="logoimg"src="resources/img/market/mypetlogo.jpg" alt="">
+			</a>
+			
 			<!-- 네비게이션 바 ================================================== -->
 			<div class="navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-ul">
@@ -56,9 +57,5 @@
 			</div>
 		</nav>
 	</div>
-
-
-
-
 </body>
 </html>

@@ -75,4 +75,24 @@ public class HomeController {
 	public ModelAndView myMessageSend() {
 		return new ModelAndView("home/mypage/mypage_message_send");
 	}
+	
+	@RequestMapping("my_cartlist.do")
+	public ModelAndView myCartList() {
+		return new ModelAndView("home/mypage/mypage_cartlist");
+	}
+	
+	@RequestMapping("my_shipping_address.do")
+	public ModelAndView myShippingAddress() {
+		return new ModelAndView("home/mypage/mypage_shipping_address");
+	}
+	
+	@RequestMapping("my_dibs.do")
+	public ModelAndView myDibs() {
+		return new ModelAndView("home/mypage/mypage_dibs");
+	}
+
+	@RequestMapping("my_coupon.do")
+	public ModelAndView myCoupon() {
+		return new ModelAndView("home/mypage/mypage_coupon");
+	}
 }
