@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>마켓</h1>
+
+<h3>강아지 카테고리</h3>
+
 </body>
 </html>
