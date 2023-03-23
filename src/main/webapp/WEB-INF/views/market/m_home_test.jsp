@@ -25,9 +25,8 @@
 	<!-- start-header -->
 	<div class="navigation-wrap bg-light">
 		<nav class="navbar">
-			<a class="navbar-brand" href="home.do"><img class="logoimg"
-				src="resources/img/market/mypetlogo.jpg" alt=""></a>
-		<div class="navbar-collapse" id="navbarSupportedContent">
+			<a class="navbar-brand" href="home.do"><img class="logoimg" src="resources/img/market/mypetlogo.jpg" alt=""></a>
+		<div class="navbar-collapse1" id="navbarSupportedContent">
 			<div class="search_fd">
 				<input type="text" name="keyword" size="50" value="search">			
 			</div>
