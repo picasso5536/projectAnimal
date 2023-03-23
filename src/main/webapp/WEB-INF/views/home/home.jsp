@@ -36,27 +36,18 @@ opacity: 1}
 font-size: 11px}
 }
    /* 모달페이지) */
-.modal {
-display: none; /* 기본적으로 숨김 */
-position: fixed; 
-z-index: 999999; 
-left: 0;
-top: 0;
-width: 100%; 
-height: 100%; 
-overflow: auto; 
-background-color: rgb(0,0,0); 
-background-color: rgba(0,0,0,0.5); 
+   .check-icon {
+  width: 16px;
+  height: 8px;
+  border: 2px solid red;
+  margin-bottom: 4px;
 }
-        /* Modal Content/Box */
-.modal-content {
-position:fixed;
-background-color: #fff;
-margin: 3% ; 
-padding: 20px;
-border: 1px solid #888;
-height: 80%;
-width: 30%;                        
+.check-icon--apply-origin {
+  border: 2px solid red;
+  border-top: 0;
+  border-right: 0;
+  transform: rotate(-45deg);
+  transform-origin: 25% 25%;
 }
 
 </style>
@@ -100,7 +91,7 @@ width: 30%;
 			setTimeout(showSlides, 3000); // 1000 = 1초
 		}
 	});
-	/* 네비게이션 */
+	/* 모달창 */
   jQuery(document).ready(function() {
   $('#myModal').show();
   setTimeout(function() { $('#myModal').hide();}, 100000);//1000=1초..해당 시간이 지나면 자동으로 닫힘. 요 부분을 빼면 계속 떠있음.
@@ -112,32 +103,41 @@ width: 30%;
   
   
   /* 모달창 오픈시 스크롤 막기 */
-  function openModal(){
+/*   function openModal(){
   const modal = document.getElementById('.modal-content');
   modal-content.classList.add('s_show');
 }
 function closeModal(){
   const modal = document.getElementById('.modal-content');
   modal-content.classList.remove('s_show');
-}
+} */
 </script>
 
 <!-- </head> -->
 <body>
+
 <div id="myModal" class="modal" >
-<div class="modal-content" style="background-image: url('#');">
+<div class="modal-content" style="background-image: url('resources/img/karina_01.jpg');">
 <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">이벤트</span></b></span></p>
 <!-- 안에 들어갈 내용 -->
- <a href="#"><img  src="resources/img/karina_01.jpg" style="overflow: auto; "></a>  <!-- 사진파일 700 - 890 --> <br><br>
-   
+ <!-- <a href="#"><img  src="#" style="overflow: auto;  "></a> -->  <!-- 사진파일 700 - 890 --> 
+  	<a href="#"></a>
 
 
-
-<div style="cursor:pointer; background-color:#DDDDDD; text-align: center; padding-bottom: 5px; padding-top: 5px;" onClick="close_pop();">
-<span class="pop_bt" style="font-size: 13pt;" >닫기</span> 
-
-</div> 
 </div>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br>
+<div style=" background-color:rgba(0,0,0,0); padding-left:450px;   padding-top: 5px;" onClick="close_pop();">
+<!-- <span  style="font-size: 14pt; font-weight:bold; cursor:pointer;"><p class="check-icon check-icon--apply-origin" style="float:left; "></p>하루동안안보기</span> --> 
+<!-- <input type="checkbox" name="checkbox" value="하루동안 안보기"> -->
+&ensp;&ensp;&ensp;&ensp;
+<span  style="font-size: 14pt; font-weight:bold; cursor:pointer;">닫기</span> 
+</div>
+
 </div>
 <!-- 모달은 여기까지 -->
 
