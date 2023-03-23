@@ -9,7 +9,7 @@
 <body>
 	<script type="text/javascript">
 		onload = function() {
-			location.href="home.do";
+			location.href="login.do";
 		}	// home.do라는 controller로 이동 -> 메인페이지 호출
 	</script>
 </body>

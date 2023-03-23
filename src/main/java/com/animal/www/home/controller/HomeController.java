@@ -20,4 +20,19 @@ public class HomeController {
 	public ModelAndView home() {
 		return new ModelAndView("home/home");
 	}
+	
+	@RequestMapping("login.do")
+	public ModelAndView longin() {
+		return new ModelAndView("home/login");
+	}
+	
+	@RequestMapping("singup.do")
+	public ModelAndView singup() {
+		return new ModelAndView("home/singup");
+	}
+	
+	@RequestMapping("consent.do")
+	public ModelAndView consent() {
+		return new ModelAndView("home/consent");
+	}
 }

@@ -31,7 +31,7 @@ text-align:center;
 #header .logo {
 position:absolute; 
 width:100px;
-left:0; 
+right:1600px; 
 top:0; 
 z-index:99999;
 z-index:9999;
@@ -47,12 +47,12 @@ display:block;
 line-height:70px; 
 font-size:0.875em; 
 font-weight:600; 
-color:#fff;
+color:black;
   z-index:9999;
 }
 #header nav {
 position:relative; 
-width:100%; 
+width:1500px; 
 height:100px; 
 font-size:1em;
   z-index:9999;
@@ -70,25 +70,27 @@ vertical-align:top;
 /*해더색상*/
 #header nav > ul > li > .navMenu ,
 #header nav > ul > li > .navMenuAll {
+  font-family: 'NanumSquareRound';
   position: relative;
   display:block;
   height:100px;
   padding:0 20px;
-  font-weight:400;
-  color:#fff;
+  font-weight:5000;
+  color:black;
   line-height:70px;
+  font-weight: 900;
   cursor:pointer;
-  font-size:2.08em;
+  font-size:1.37em;
   letter-spacing:-.01em;
   z-index: 999999;
 }
 #header nav .navSub {
 	position:absolute;
 	display:none;
-	left:-50%;
+	/* left:-50%; */
     top:100px;
-	width:200%;
-	height:0;
+	width:200px;
+	height:50px;
 	overflow:hidden;
     background:rgba(36,71,66,.7);
 	transition:0.3s;
@@ -147,10 +149,12 @@ height:200px;
   right: -100%;
   height: 100%;
   width: 100%;
-  background: #8D7B68;
-  /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
-  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
- /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+  /* background: #8D7B68; */ 
+  /* 메뉴바 투명도 설정 */
+  background-color: #ffffff;
+  opacity: 0.5;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  
   transition: all 0.6s ease-in-out;
   z-index:9999;
 }
@@ -242,9 +246,9 @@ height:200px;
 .wrapper ul li a{
   text-decoration: none;
   font-size: 30px;
-  font-weight: 500;
+  font-weight: bold;
   padding: 5px 30px;
-  color: #fff;
+  color: black;
   border-radius: 50px;
   position: absolute;
   line-height: 50px;
@@ -299,15 +303,13 @@ input[type="checkbox"]{
 }
 /*==========================*/
 
-
-
-*{
+/* *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
   font-family: 'Oswald', sans-serif;
-}
+} */
 .wrapper12{
   position: fixed;
   top: 0;
@@ -322,16 +324,18 @@ input[type="checkbox"]{
   /*left: 0;*/
   right:0;
 }
+
+/* 햄버거메뉴 위치 이동  */
 .menu-btn1{
   position: fixed;
   z-index: 99999999999;
-  right: 530px;
+  right: 330px;
   /*left: 20px; */
   top: 12px;
-  height: 50px;
-  width: 80px;
+  height: 45px;
+  width: 90px;
   text-align: center;
-  line-height: 50px;
+  line-height: 60px;
   border-radius: 50%;
   font-size: 20px;
   cursor: pointer;
@@ -346,7 +350,7 @@ input[type="checkbox"]{
 	top: calc(50% - 1px);
 	left: 30%;
 	width: 40%;
-	border-bottom: 2px solid #fff; /*메뉴버튼색상*/
+	border-bottom: 2px solid black; /*메뉴버튼색상*/
 	transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .menu-btn1:before{
@@ -391,7 +395,7 @@ input[type="checkbox"]{
   font-size: 30px;
   font-weight: 500;
   padding: 5px 30px;
-  color: #fff;
+  color: black;
   border-radius: 50px;
   position: absolute;
   line-height: 50px;
@@ -403,7 +407,7 @@ input[type="checkbox"]{
 .wrapper12 .ul1 .li1 :after{
   position: absolute;
   content: "";
-  background: #fff;
+  background: black;
   width: 100%;
   height: 100%;
   left: 0;
@@ -440,7 +444,7 @@ input[type="checkbox"]{
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 100000px;
+  max-width: 6000px;
   position: relative;
   margin: auto;
   z-index:-99;
@@ -474,14 +478,150 @@ input[type="checkbox"]{
   z-index:-99;
 }
 
-/* Fading animation */
+/* 이미지 전환시 깜빡이는 효과 */
 .fade {
-  -webkit-animation-name: fade;
+/* 효과 넣고 싶으면 주석 삭제   */
+  /* -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 1.5s; */
   z-index:-99;
 }
+.wrap{
+/*   padding-right:1200px;
+  margin: 50px 145px;
+  width:100px;
+  max-width:1200px; */
+  
+  width: 100%;
+  height: 350px;
+}
+
+ div.left {
+  padding-top:40px;
+  padding-right:220px;
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+    }
+    
+    
+ div.right {
+  padding: 60px 15px 200px;
+  width: 50%;
+  float: right;
+  box-sizing: border-box;
+    }
+
+
+ 
+
+/* 배너  */
+.tile{ 
+  margin-left:auto;
+  width:350px; 
+  height:410px;
+  margin:30px;
+  background-color:#99aeff;
+  display:inline-block;
+  background-size:cover;
+  position:relative;
+  cursor:pointer;
+  transition: all 0.4s ease-out;
+  box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
+  overflow:hidden;
+  color:white;
+  font-family:'Roboto';
+  z-index:0;
+  border-radius: 30px;
+}
+.tile img{
+  height:100%;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:0;
+  transition: all 0.4s ease-out;
+}
+.tile .text{
+/*   z-index:99; */
+  position:absolute;
+  padding:30px;
+  height:calc(100% - 60px);
+}
+.tile h1{
+  font-weight:300;
+  margin:0;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+.tile h2{
+  font-weight:100;
+  margin:20px 0 0 0;
+  font-style:italic;
+   transform: translateX(200px);
+}
+.tile p{
+  font-weight:300;
+  margin:20px 0 0 0;
+  line-height: 25px;
+/*   opacity:0; */
+  transform: translateX(-200px);
+  transition-delay: 0.2s;
+}
+.animate-text{
+  opacity:0;
+  transition: all 0.6s ease-in-out;
+}
+.tile:hover{
+   background-color:#99aeff; 
+  box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
+  transform:scale(1.05);
+}
+.tile:hover img{
+  opacity: 0.2;
+}
+.tile:hover .animate-text{
+  transform:translateX(0);
+  opacity:1;
+}
+.tile:hover span{
+  opacity:1;
+  transform:translateY(0px);
+}
+
+.dots span:nth-child(1)
+{
+   transition-delay: 0.05s;
+}
+.dots span:nth-child(2)
+{
+   transition-delay: 0.1s;
+}
+.dots span:nth-child(3)
+{
+   transition-delay: 0.15s;
+}
+/* .box {
+width: 200px;
+height: 300px;
+background-color: #f2f2f2;
+box-shadow: 2px 2px 5px rgba(0,0,0,1.3);
+padding: 430px;
+margin: 100px;
+}  */
+.hello {	
+  float: right;
+  padding: 100;
+  font-size: 40px;
+  font-family: 'NanumSquareRound';
+  color: black;
+  text-shadow: 2px 2px #DBE4C6;
+  text-align: left;
+  margin-top:90px;
+  margin-left: 30px; 
+}
+
 footer {
   background-color: #333;
   color: white;
@@ -489,7 +629,332 @@ footer {
   padding: 20px;
 }
 
+:root{
+  --background-dark: #2d3548;
+  --text-light: rgba(255,255,255,0.6);
+  --text-lighter: rgba(255,255,255,0.9);
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+  --width-container: 1200px;
+}
 
+*{
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+body{
+  height: 100%;
+}
+
+.hero-section{
+  align-items: flex-start;
+  background-image: linear-gradient(15deg, #fff 0%, #fff 150%);
+  display: flex;
+  min-height: 100%;
+  justify-content: center;
+  padding: var(--spacing-xxl) var(--spacing-l);
+}
+
+.card-grid{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: var(--spacing-l);
+  grid-row-gap: var(--spacing-l);
+  max-width: var(--width-container);
+  width: 100%;
+}
+
+@media(min-width: 540px){
+  .card-grid{
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media(min-width: 960px){
+  .card-grid{
+    grid-template-columns: repeat(4, 1fr); 
+  }
+}
+
+.card{
+  list-style: none;
+  position: relative;
+}
+
+.card:before{
+  content: '';
+  display: block;
+  padding-bottom: 25%;
+  width: 50%;
+}
+
+.card__background{
+  padding:30px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--spacing-l);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: brightness(0.75) saturate(1.2) contrast(0.85);
+  position: absolute;
+  transform-origin: center;
+  trsnsform: scale(1) translateZ(0);
+  transition: 
+    filter 200ms linear,
+    transform 200ms linear;
+}
+
+.card:hover .card__background{
+  transform: scale(1.05) translateZ(0);
+}
+
+.card-grid:hover > .card:not(:hover) .card__background{
+  filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
+}
+
+.card__content{
+  left: 0;
+  padding: var(--spacing-l);
+  position: absolute;
+  top: 0;
+}
+
+.card__category{
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-s);
+  text-transform: uppercase;
+}
+
+.card__heading{
+  color: var(--text-lighter);
+  font-size: 1.9rem;
+  text-shadow: 2px 2px 20px rgba(0,0,0,0.2);
+  line-height: 1.4;
+  word-spacing: 100vw;
+}
+
+
+
+
+/* 로고같은 이미지 푸터 바로 위  */
+.knockout {
+  background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -80px -80px;
+  color: red;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-size: 100px;
+  font-family: arial, helvetica;
+  width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+body{
+  background: #fff;
+}
+.container{
+	padding:50px;
+    width: 3000px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.container .card{
+    position: relative;
+    cursor: pointer;
+}
+.container .card .face{
+	
+    width: 600px;
+    height: 500px;
+    transition: 0.5s;
+}
+.container .card .face.face1{
+    position: relative;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+.container .card:hover .face.face1{
+    background: skyblue;
+    transform: translateY(0);
+}
+.container .card .face.face1 .content{
+    opacity: 0.2;
+    transition: 0.5s;
+}
+.container .card:hover .face.face1 .content{
+    opacity: 1;
+}
+.container .card .face.face1 .content img{
+    max-width: 100px;
+}
+.container .card .face.face1 .content h3{
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.container .card .face.face2{
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    transform: translateY(-100px);
+}
+
+.container .card:hover .face.face2{
+    transform: translateY(0);
+}
+
+.container .card .face.face2 .content p{
+    margin: 0;
+    padding: 0;
+}
+
+.container .card .face.face2 .content a{
+    margin: 15px 0 0;
+    display:  inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+.container .card .face.face2 .content a:hover{
+    background: #333;
+    color: #fff;
+}
+
+
+/* 이미지 밀기 */
+
+.container_03 {
+  display: flex;
+  justify-content: space-between;
+}
+.box {
+  max-width: 990px;
+  width: 100%;
+  height: 500px;
+  background-color: #ccc;
+  padding: 20px;
+  position: relative;
+ 
+}
+/* .box:hover {
+  z-index: 2;
+} */
+
+ .box1:hover .box4 {
+  transform: translateX(150%);
+} 
+
+
+.box1 {
+  z-index: 2;   /* 너가 가장위에 */
+}
+.box3 {
+  z-index: 0;   /* 너가 가장위에 */
+ /*   position: relative ;    왜 안겹쳐지는거야?*/ 
+}
+.box4 {
+  width: calc(205% - 40px); /* 상자의 너비를 상위 요소 너비에서 40픽셀을 뺀 205%로 설정합니다. */
+  height: 500px;			/* 상자의 높이를 600픽셀로 설정합니다 */
+  background-color: #c0c0c0;
+  color: black;
+  padding: 20px;		/* 상자 내부에 패딩 20픽셀을 추가합니다 */
+  position: absolute;   /* 부모생성자 기준으로 이동 */
+  top: 0;				/* 상자의 상단을 포함 요소의 상단에 배치합니다 */
+  left: -200%;			/* 상자의 오른쪽을 포함 요소의 오른쪽 가장자리 왼쪽에 너비의 200%로 배치합니다 */
+  transition: transform 0.7s ease-in-out; /* 변환 속성이 변경될 때 상자에 0.7초의 전환 효과를 추가합니다. */
+  z-index: 3;			/* 나오면서 box1 번은 깔고 나머지는 위로 */ 
+  font-size: 25px;
+  color: black;
+  text-align:center;
+   
+}
+.h2_01{
+  text-align: center;
+  font-size: 50px;
+  color: black;
+  position:absolute;
+  top:40%;
+  left:30%;
+  width:80px;
+  height:50px;
+}
+
+
+
+/* 여기부터 두번째ㅔ */
+.container_04 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box5:hover .box8 {
+   transform: translateX(-150%); 
+} 
+
+.box5 {
+  z-index: 2;   /* 너가 가장위에 */
+}
+.box7 {
+  z-index: 0;   /* 너가 가장위에 */
+ /*   position: relative ;    왜 안겹쳐지는거야?*/ 
+}
+.box8 {
+  width: calc(205% - 40px); /* 상자의 너비를 상위 요소 너비에서 40픽셀을 뺀 205%로 설정합니다. */
+  height: 500px;			/* 상자의 높이를 600픽셀로 설정합니다 */
+  background-color: #c0c0c0;
+  color: black;
+  padding: 20px;		/* 상자 내부에 패딩 20픽셀을 추가합니다 */
+  position: absolute;   /* 부모생성자 기준으로 이동 */
+  top: 0;				/* 상자의 상단을 포함 요소의 상단에 배치합니다 */
+  left: 100%;			/* 상자의 오른쪽을 포함 요소의 오른쪽 가장자리 왼쪽에 너비의 200%로 배치합니다 */
+  transition: transform 0.7s ease-in-out; /* 변환 속성이 변경될 때 상자에 0.7초의 전환 효과를 추가합니다. */
+  z-index: 3;	
+  font-size: 25px;
+  color: black;
+  text-align:center;
+}
+.h2_02{
+  text-align: center;
+  font-size: 50px;
+  color: black;
+  position:absolute;
+  top:40%;
+  left:30%;
+  width:80px;
+  height:50px;
+}
 
 
 
