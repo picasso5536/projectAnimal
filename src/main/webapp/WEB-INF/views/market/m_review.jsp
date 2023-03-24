@@ -155,7 +155,7 @@
 		 </section>
 	</div>
 	<div class="more_btn_con">
-		<button id="more_btn">후기 더보러 가기 &gt; </button>
+		<button id="more_btn">후기 더보기 ▽ </button>
 	</div>
 </body>
 </html>

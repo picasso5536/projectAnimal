@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내옆Pet 상품상세</title>
 <link rel="stylesheet" href="resources/css/market_css/market_pdt_one.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -14,9 +14,6 @@
 	    const score = +this.restaurant.averageScore * 20;
 	    return score + 1.5;
 	} */
-	function dipclick() {
-		/* 클릭시 이벤트 처리 */
-	}
 	
 	$(document).ready(function() { // 보이기 | 숨기기
 		var i = 0;
@@ -39,7 +36,18 @@
 		  	$('html, body').animate({ scrollTop : 0 // 0 이동 
 		  	}, 400); // 속도 400 
 		  	return false; 
-		 }); 
+		 });
+		  
+		  // 하트 클릭시 하트 이미지 ㅂ변경
+		  var dddip = 0;
+		  $("#dipdip").click(function() {
+			  if(dddip%2 == 0){
+				$("#dip").attr("src", "resources/img/market/heart (2).png")			  
+			  }else{
+				$("#dip").attr("src", "resources/img/market/heart.png")			  
+			  }
+			  ++dddip;
+		});
 	});
 </script>
 </head>
@@ -83,15 +91,17 @@
 							</div>
 						</div>
 						<span class="stars_score">4.6</span>
-						<span class="review_cnt">(30)</span>
+						<a id="review_link" href="#review">
+							<span class="review_cnt">(30)</span>
+						</a>
 						
 						<span class="pdt_dip">
-							<a href="#" onclick="dipclick()">
+							<a id="dipdip">
 								<img class="dip" id="dip" alt="" src="resources/img/market/heart.png">
 							</a>
 						</span>
 					</div>
-					<hr class="short">						
+					<hr class="short">
 					<div class="price">
 						<span class="real_p">
 							<h3>판매가</h3>
@@ -131,9 +141,11 @@
 		</details>
 	<hr>
 	</div>
-	<jsp:include page="m_review.jsp" />
+	<div id="review">
+		<jsp:include page="m_review.jsp" />
+	</div>
 	<hr>
 	<jsp:include page="m_QnA.jsp" />
-	<jsp:include page="m_footer.jsp" />
 </body>
+	<jsp:include page="m_footer.jsp" />
 </html>

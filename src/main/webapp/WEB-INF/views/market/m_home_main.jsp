@@ -5,78 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내옆Pet 마켓 홈</title>
 <link rel="stylesheet" href="resources/css/market_css/market_home.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<style type="text/css">
-	footer {
-		background-color: #fff;
-		font-family: Arial, sans-serif;
-		font-size: 14px;
-		color: #333;
-		padding: 30px 0;
-		position: relative;
-		bottom: 0;
-		width: 100%;
-		box-sizing: border-box;
-	}
-	.footer-container {
-		max-width: 1100px;
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
-	}
-	.footer-column {
-		width: 30%;
-		background-color: #fff;
-		padding: 20px;
-		border-radius: 5px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	}
-	.footer-column h3 {
-		font-size: 18px;
-		margin-bottom: 20px;
-	}
-	.footer-column ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-	.footer-column ul li {
-		margin-bottom: 10px;
-	}
-	.footer-column ul li a {
-		color: #333;
-		text-decoration: none;
-	}
-	.social-media-icons {
-		display: flex;
-	}
-	.social-media-icons li {
-		margin-right: 10px;
-	}
-	.social-media-icons li:last-child {
-		margin-right: 0;
-	}
-	.social-media-icons a {
-		color: #333;
-		text-decoration: none;
-	}
-	.social-media-icons a i {
-		font-size: 18px;
-		transition: all 0.3s ease-in-out;
-	}
-	.social-media-icons a:hover i {
-		transform: translateY(-5px);
-	}
-	.bottom-bar {
-		background-color: #333;
-		color: #fff;
-		font-size: 12px;
-		text-align: center;
-		padding: 10px;
-	}
-</style>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var $banner = $(".banner").find("#banner_list");
@@ -105,22 +36,22 @@
 			});
 		}
 		
+	}); 
 	
 		$(window).scroll(function() {
 		    if ($(this).scrollTop() > 250) { //250 넘으면 버튼이 보인다
-		      $('#topBtn').fadeIn();
+		      $('#topBtn2').fadeIn();
 		    } else {
-		      $('#topBtn').fadeOut();
+		      $('#topBtn2').fadeOut();
 		    }
 		  }); // 버튼 클릭시 
-		  $("#topBtn").click(function() { 
+		  $("#topBtn2").click(function() { 
 		  	$('html, body').animate({ scrollTop : 0 // 0 이동 
-		  	}, 400); // 속도 400 
+		  	}, 500); // 속도 400 
 		  	return false; 
 		  	
 		 }); 
 		
-	}); 
 	
 	$(function(){
 		  $('.tabcontent > div').hide();
@@ -136,7 +67,7 @@
 </head>
 <body>
 <jsp:include page="m_home_test.jsp" />
-	<a id="topBtn" href="#"><img alt="" src="resources/img/market/top.png" style="width: 60px; height: 60px;"> </a>
+	<a id="topBtn2" href="#"><img alt="" src="resources/img/market/top.png" style="width: 60px; height: 60px;"> </a>
 	<div class="contents">
 		<div class="banner">
 			<ul id="banner_list">
@@ -385,36 +316,5 @@
 	  </section>
 	</div>
 </body>
-	<footer>
-		<div class="footer-container">
-			<div class="footer-column">
-				<h3>내옆펫</h3>
-				<ul>
-					<li><a href="#">e-mail : master@nexttopet.com</a></li>
-					<li><a href="#">fax : 02-xxxx-xxxx</a></li>
-					<li><a href="#">project_member : 김회철 모상인 문현지 김석중</a></li>
-					<li><a href="#">address : 서울시 마포구 백범로 23, 3층</a></li>
-				</ul>
-			</div>
-			<div class="footer-column">
-				<h3>규정</h3>
-				<ul>
-					<li><a href="#">개인정보 처리 방침</a></li>
-					<li><a href="#">이용약관</a></li>
-					<li><a href="#">Digital Marketing</a></li>
-				</ul>
-			</div>
-			<div class="footer-column">
-				<h3>소셜</h3>
-				<ul class="social-media-icons">
-					<li><a href="#">인스타<i class="fab fa-facebook-f"></i></a></li>
-					<li><a href="#">페이스북<i class="fab fa-twitter"></i></a></li>
-					<li><a href="#">트위터<i class="fab fa-instagram"></i></a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="bottom-bar">
-			<p>&copy; 2023 Company 내옆펫. All rights reserved.</p>
-		</div>
-	</footer>
+	<jsp:include page="m_footer.jsp" />
 </html>

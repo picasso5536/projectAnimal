@@ -118,6 +118,11 @@
 	    align-items: center;
 	} */
 	
+	#review_link {
+		color: #666;
+		text-decoration:underline; 
+	}
+	
 	.pdt_box .pdt_name h2 {
 		margin-top: 16px;
 		margin-bottom: 30px;
@@ -150,6 +155,10 @@
     flex-direction: row;
     align-items: center;
 }
+
+	.pdt_dip #dipdip {
+		cursor: pointer;
+	}
 
 	.pdt_dip .dip {
 		/* float: right; */
