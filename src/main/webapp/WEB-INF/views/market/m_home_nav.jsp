@@ -30,12 +30,12 @@
 			<!-- 네비게이션 바 ================================================== -->
 			<div class="navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-ul">
-						<li class="nav-item"><a class="nav-link" href="#">식품</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">간식</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">장난감</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">하우스</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">의류</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+						<li class="nav-item"><a class="nav-link" href="m_pdt_list.do">식품</a></li>
+						<li class="nav-item"><a class="nav-link" href="m_pdt_list.do">간식</a></li>
+						<li class="nav-item"><a class="nav-link" href="m_pdt_list.do">장난감</a></li>
+						<li class="nav-item"><a class="nav-link" href="m_pdt_list.do">하우스</a></li>
+						<li class="nav-item"><a class="nav-link" href="m_pdt_list.do">의류</a></li>
+						<li class="nav-item"><a class="nav-link" href="login.do">Login</a></li>
 						<li class="nbsp">
 						<div class="menu" id="hamberger">
 							<span class="top h-icon"></span> 
@@ -45,10 +45,12 @@
 						<div class="overlay" id="overlay">
 							<div class="overlay-menu" id="overlay-menu">
 									<ul class="hambergerul">
-										<li class="hli"><a class="halink" href="#">Home</a></li>
-										<li class="hli"><a class="halink" href="#">About</a></li>
-										<li class="hli"><a class="halink" href="#">News</a></li>
-										<li class="hli"><a class="halink" href="#">Contact</a></li>
+										<li class="hli"><a class="halink" href="my_info.do">마이페이지</a></li>
+										<li class="hli"><a class="halink" href="my_info.do">장바구니</a></li>
+										<li class="hli"><a class="halink" href="my_info.do">주문/배송/픽업조회</a></li>
+										<li class="hli"><a class="halink" href="my_info.do">찜</a></li>
+										<li class="hli"><a class="halink" href="my_info.do">쿠폰함</a></li>
+										<li class="hli"><a class="halink" href="my_info.do">문의하기</a></li>
 									</ul>
 							</div>
 						</div>

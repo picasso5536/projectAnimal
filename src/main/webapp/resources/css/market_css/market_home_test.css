@@ -82,22 +82,24 @@ body {
 }
 
 .navbar-collapse1 {
-	display: inline-block;
+	display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
 }
 
 /* 검색 */
 .search_fd {
-	position: fixed;
+	position: absolute;
 	top: 18px;
-	height: 27px;
 	z-index: 100;
-	margin-left: 1080px;
+	margin-right: -35%;
 	
 }
 
 input[type=text] {
-	width: auto;
-	height:30px;
+	max-width: 265px;
+    min-width: 265px;
+    height: 28px;
 	border: 2px solid #8F90A4;
 	position: fixed;
 }

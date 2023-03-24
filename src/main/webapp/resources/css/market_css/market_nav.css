@@ -347,7 +347,7 @@ body.hero-anime #switch {
 .overlay .hambergerul .hli .halink {
   display: block;
   position: relative;
-  color: #666;
+  color: #333333;
   text-decoration: none;
   overflow: hidden;
 }

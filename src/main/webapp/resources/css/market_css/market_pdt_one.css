@@ -243,13 +243,6 @@
 	}
 	
 	/* 상세정보 */
-	.long {
-		border: 1px dashed #666;
-		width: 1700px;
-		margin-top: 3%;
-		margin-left: 90px;
-	}
-	
 	.pdt_Middle {
 		display: flex;
 		margin: 50px 130px;

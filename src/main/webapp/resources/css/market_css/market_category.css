@@ -8,6 +8,20 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+	a#topBtn { 
+		position: fixed;
+		right: 2%; 
+		bottom: 5%;
+		display: none; 
+		z-index: 9999;
+		border: 1px solid #f2416b;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #f2416b;
+        max-width: 60px;
+        max-height: 60px;
+	}
 	
 /* 검색 */
 .search_fd {
@@ -36,13 +50,23 @@ input[type=text] {
 	ul,li {
 		list-style: none;
 	}
+
+ 	/* 컨텐츠 컨테이너 */
+ 	#contents_con1 {
+ 		margin: auto;
+	    display: flex;
+	    flex-direction: column;
+	    flex-wrap: nowrap;
+	    width: 1520px;
+ 	
+ 	}
 	
 	/*tab css*/
 	.tab {
 		/* float:left; */ 
 		float:none; 
 		/* width:100%; */ 
-		width:80%; 
+		width:100%; 
 		height:auto;
 		/* margin: 60px auto; */
 		margin: 0 auto;
@@ -56,7 +80,7 @@ input[type=text] {
 	.tabnav li{
 		display: inline-block; 
 		/* width:17%; */  
-		width:19.86862%;  
+		width:19.3%;  
 		height:46px; 
 		text-align:center; 
 		border:1px solid #ddd;

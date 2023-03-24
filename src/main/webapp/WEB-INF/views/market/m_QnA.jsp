@@ -13,14 +13,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<div class="write_qbtn_con">
-		<button id="write_qbtn">문의 하러 가기 &gt; </button>
-	</div>
 	<div class="qna_div">
 		<section class="qna_section">
 			<div class="qna_container">
 				<div class="qna_title">
 					<h1>Q&A</h1>
+					<div class="write_qbtn_con">
+						<button id="write_qbtn">문의 하러 가기 &gt; </button>
+					</div>
 				</div>
 				<div class="qna_list">
 					<div class="qna_card">
@@ -90,7 +90,7 @@
 		</section>
 	</div>
 	<div class="more_qbtn_con">
-		<button id="more_qbtn">문의 더보러 가기 &gt; </button>
+		<button id="more_qbtn">문의 더보기 ▽ </button>
 	</div>
 	<hr class="long">
 </body>

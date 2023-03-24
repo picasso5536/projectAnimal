@@ -57,7 +57,7 @@
 	<div class="pdt_Top">
 		<section class="pdt_img_section">
 			<div class="pdt_img">
-				<img alt="" src="resources/img/market/img_icon.png" style="width: 500px">
+				<img alt="" src="resources/img/market/pdt.jpg" style="width: 650px">
 			</div>
 		</section>
 		<section class="pdt_info_section">
@@ -121,7 +121,7 @@
 			</div>
 		</section>
 	</div>
-	<hr class="long">
+	<hr>
 	<div class="pdt_Middle">
 		<details class="pdt_info_img">
     		<summary class="show_btn">상세정보 펼치기</summary>
@@ -129,10 +129,11 @@
 				<img alt="" src="resources/img/market/info.jpg">
 			</div>
 		</details>
+	<hr>
 	</div>
-	<hr class="long">
 	<jsp:include page="m_review.jsp" />
-	<hr class="long">
+	<hr>
 	<jsp:include page="m_QnA.jsp" />
+	<jsp:include page="m_footer.jsp" />
 </body>
 </html>
