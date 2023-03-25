@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>연습하자</title>
+<title>메인화면</title>
 <!-- 왜 안먹는거지; -->
 <style type="text/css">
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css);
@@ -16,7 +16,6 @@
 <!-- 구글CDN -->
 <script src="${path}/resources/js/home.js?after"></script>
 <link href="${path}/resources/css/home.css?after" rel="stylesheet" />
-
 <style type="text/css">
 @
 -webkit-keyframes fade {
@@ -52,6 +51,66 @@ font-size: 11px}
 
 </style>
 <script type="text/javascript">
+
+
+
+/* 네비게이션바 */
+$(document).ready(function(){
+	$('#Market').click(function(){
+		var offset = $('#Market01').offset(); //선택한 태그의 위치를 반환
+            //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+        $('html,body').animate({scrollTop : offset.top}, 500);
+	});
+});
+$(document).ready(function(){
+	$('#Community').click(function(){
+		var offset = $('#Market01').offset(); //선택한 태그의 위치를 반환
+            //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+        $('html').animate({scrollTop : offset.top}, 500);
+	});
+});
+$(document).ready(function(){
+	$('#hospital').click(function(){
+		var offset = $('#Market01').offset(); //선택한 태그의 위치를 반환
+            //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+        $('html').animate({scrollTop : offset.top}, 500);
+	});
+});
+$(document).ready(function(){
+	$('#Remembrance').click(function(){
+		var offset = $('#Market01').offset(); //선택한 태그의 위치를 반환
+            //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+        $('html').animate({scrollTop : offset.top}, 500);
+	});
+});
+/* 네비게이션 이동후 해당 카테 이동  */
+function market() {
+    var result = confirm("마켓창으로 이동 하시겠습니까?");
+    if(result){
+    location.href="market.do";
+    }else {
+    }
+}	
+/* 내정보 이동 */
+function info(f) {
+    var result = confirm("정보창으로 이동 하시겠습니까?");
+    if(result){
+    f.action="my_info.do"
+    f.submit();
+    }else {
+    }
+}
+
+/* 로그인창으로 이동 */
+function login() {
+	var result = confirm("로그인창으로 이동 하시겠습니까?");
+	if(result){
+		location.href="login.do";
+	}else {
+	}
+}
+
+
 	$(document).ready(function() {
 		$(window).scroll(function() {
 			if ($(this).scrollTop() >= 99999999999) {
@@ -113,9 +172,10 @@ function closeModal(){
 } */
 </script>
 
-<!-- </head> -->
-<body>
 
+
+
+<body  style="overflow-x: hidden">
 <div id="myModal" class="modal" >
 <div class="modal-content" style="background-image: url('resources/img/karina_01.jpg');">
 <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">이벤트</span></b></span></p>
@@ -123,14 +183,12 @@ function closeModal(){
  <!-- <a href="#"><img  src="#" style="overflow: auto;  "></a> -->  <!-- 사진파일 700 - 890 --> 
   	<a href="#"></a>
 
-
 </div>
 <br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br>
-<br>
+<br><br><br><br>
 <div style=" background-color:rgba(0,0,0,0); padding-left:450px;   padding-top: 5px;" onClick="close_pop();">
 <!-- <span  style="font-size: 14pt; font-weight:bold; cursor:pointer;"><p class="check-icon check-icon--apply-origin" style="float:left; "></p>하루동안안보기</span> --> 
 <!-- <input type="checkbox" name="checkbox" value="하루동안 안보기"> -->
@@ -140,7 +198,6 @@ function closeModal(){
 
 </div>
 <!-- 모달은 여기까지 -->
-
  <header>
 		<div id="header">
 			<div class="header_inner">
@@ -152,158 +209,173 @@ function closeModal(){
 				<nav>
 					<ul>
 						<li>
-							<div class="navMenu">마켓</div>
+							<div class="navMenu" id="Market" >마켓</div>
 						</li>
 						<li>
-							<div class="navMenu">소통</div>
+							<div class="navMenu" id="Community">소통</div>
 						</li>
 						<li>
-							<div class="navMenu">병원</div>
+							<div class="navMenu" id="hospital">병원</div>
 						</li>
 						<li>
-							<div class="navMenu">추모</div>
+							<div class="navMenu" id="Remembrance">추모</div>
 						</li>
 						<li>
-							<div class="navMenu">소개</div>
+							<div class="navMenu" onclick="info(this.form)">내정보</div> <!-- 인터셉터 사용해서 걸러주기 로그인해야만 접속가능 -->
+						</li>
+						<li>
+							<div class="navMenu" onclick="login()">로그인</div>
 						</li>
 					</ul>
+<!-- 					<div class="navMenu"></div> -->
+					<input type="checkbox" id="active"> <label for="active"
+						class="menu-btn1"><span></span></label> <label for="active"
+						class="close"></label>
+					<div class="wrapper">
+						<ul class="ul1">
+						<!-- <button type="button" onclick="market()">market</button> -->
+							<li class="li1"><a href="http://localhost:8090/www/market.do">market</a></li>
+							<li class="li1"><a href="#">About</a></li>
+							<li class="li1"><a href="#">Services</a></li>
+							<li class="li1"><a href="#">Gallery</a></li>
+						</ul>
+					</div>
+					
 				</nav> 
-			</div>
-			<div class="navMenu"></div>
-			<input type="checkbox" id="active"> <label for="active"
-				class="menu-btn1"><span></span></label> <label for="active"
-				class="close"></label>
-			<div class="wrapper">
-				<ul class="ul1">
-					<li class="li1"><a href="#">Home</a></li>
-					<li class="li1"><a href="#">About</a></li>
-					<li class="li1"><a href="#">Services</a></li>
-					<li class="li1"><a href="#">Gallery</a></li>
-				</ul>
 			</div>
 		</div> 
 	</header>
 	<main> 
-		<div class="slideshow-container">
-			<div class="mySlides fade">
+		<div>
+		<!-- <div class="slideshow-container"> -->
+			<div class="mySlides fade" >
 				<div class="numbertext">1 / 3</div>
-				<img src="resources/img/maa.jpg" style=" width: 2550px; height: 950px ">
-			</div>
+				<a href="#"><img src="resources/img/maa.jpg" style=" width: 2550px; height: 950px "></a>
+<!-- 			</div> -->
 			<div class="mySlides fade">
 				<div class="numbertext">2 / 3</div>
-				<img src="resources/img/moo.jpg" style=" width: 2550px; height: 950px">
+				<a href="#"><img src="resources/img/moo.jpg" style=" width: 2550px; height: 950px"></a>
 			</div>
 			<div class="mySlides fade">
 				<div class="numbertext">3 / 3</div>
-				<img src="resources/img/soo.jpg" style=" width: 2550px; height: 950px">
+				<a href="#"><img src="resources/img/soo.jpg" style=" width: 2550px; height: 950px"></a>
 			</div>
-		</div>
-		<br>
 		<div style="text-align: center">
-			<span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
+<!-- 			<span class="dot"></span> <span class="dot"></span> <span class="dot"></span> -->
 		</div>
+		</div>
+		<!-- </div> -->
+		<br>
 		<!--여기까지 이미지스크린 -->
 		
 		<br><br><br><br><br><br><br><br>
 		<!-- 왼쪽에서 오른쪽  -->
 	
 		<div class="container_03">
-		  <div class="box box1" id="box1" style=" background-image:url('https://via.placeholder.com/150');" >
-		    <h2 class="box h2_01" >Market</h2>
-		    <div class="box4" style="background-image: url('');">
-		    	<P style="font-size: 60px">인기상품 List</P>
-		    	<pre style="font-size: 30px; padding-top: 50px;">01.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
-		    	<pre style="font-size: 30px; padding-top: 10px;">02.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
-		    	<pre style="font-size: 30px; padding-top: 10px;">03.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
-		    	<pre style="font-size: 30px; padding-top: 10px;">04.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
-		    	<pre style="font-size: 30px; padding-top: 10px;">05.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
-		    </div>
+		  <div class="box box1" id="box1" style=" background-color: #F5EBE0;" >
+		    <h2 style="font-size: 50px; text-align: center; color: black; position: absolute; top: 200px; left: 300px">Market</h2>
+		    <div class="box4" style="background-color: #FEFCF3;"><br>
+		    	<P style="font-size: 60px; font-family: 'NanumSquareRound';">인기상품 List</P><br><br>
+		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">01.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
+		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">02.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
+		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">03.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
+		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">04.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
+		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">05.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
+				<!-- <a href="#" style="text-decoration-line:none;">
+					<span>01</span>
+				    애기장난감
+				</a>	 -->		
 		  </div>
-		  <div class="box box2" style="background-image: url('https://via.placeholder.com/150');">
 		  </div>
-		
-		  <div class="box box3" style="background-image: url('https://via.placeholder.com/150');">
-		  </div>
+		  <div class="box box2" style="background-color: #F5EBE0; ">
+		</div>
+		  <div class="box box3" style="background-color: #F5EBE0;">
+		 </div>
 		</div>
 		<br><br><br><br><br><br><br><br><br><br>
 		<!-- 오른쪽에서 왼쪽  -->
-		
 			<div class="container_04">
 		
-		  <div class="box box7" style="background-image: url('https://via.placeholder.com/150');">
+		  <div class="box box7" style="background-color: #FFE7CC;">
 		  </div>
 
-		  <div class="box box6" style="background-image: url('https://via.placeholder.com/150');">
+		  <div class="box box6" style="background-color: #FFE7CC;">
 		  </div>
-		
 		  
-		    <div class="box box5" id="box5" style=" background-image:url('https://via.placeholder.com/150');" >
-		    <h2 class="box h2_02" >Community</h2>
-		    <div class="box8" style="background-image: url('');">
-		    	<P style="font-size: 60px" >인기 글 List</P>
-		    	<pre style="font-size: 30px; padding-top: 50px;">01.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
-		    	<pre style="font-size: 30px; padding-top: 10px;">02.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
-		    	<pre style="font-size: 30px; padding-top: 10px;">03.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
-		    	<pre style="font-size: 30px; padding-top: 10px;">04.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
-		    	<pre style="font-size: 30px; padding-top: 10px;">05.&ensp;&ensp;&nbsp;<a href="#" style="color: black">강아지옷</a></pre>
+		    <div class="box box5" id="box5" style=" background-color: #FFE7CC;" >
+		    <h2 style="font-size: 50px; text-align: center; color: black; position: absolute; top: 200px; left: 300px">Community</h2>
+		    <div class="box8" style="background-color: #F8CBA6;"><br>
+		    	<P style="font-size: 60px; font-family: 'NanumSquareRound';" >인기 글 List</P><br><br>
+		   	    <p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">01.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
+		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">02.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
+		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">03.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
+		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">04.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
+		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">05.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
 		    </div>
 		  </div>
 		</div>
-		
 		<br><br><br><br><br><br><br><br>
 		
-		<!--여기부터 배너  -->
-		 <div class="wrap" style="margin-top:ㄱ 50px; ">
+		 <!--여기부터 배너  -->
+		 <div class="wrap" style="margin-top:50px; ">
+		 
 		 <!-- 1번  -->
 		 <div class="right">
 		 <!-- 이미 바디 영역에서 2분할이 진행이 되어서 
 		 그안에서 중복으로 계속 사영 분할화면 응용가능  -->
 		 <div>
-  		 <div class="tile">
-  		  
-		  <a href="https://m.pet-friends.co.kr/main/tab/2">
+  		 <div class="tile" id="Market01">
+		  <!--  <a href="https://m.pet-friends.co.kr/main/tab/2"> -->
+		  
 		  <img src="resources/img/market.jpg"/>
-		  </a>
+		  <!-- </a> -->
 		  <div class="text">
 		  <h1>마켓</h1>
 		  <h2 class="animate-text">고양이,강아지,기타</h2>
 		  <p class="animate-text">여러 용품을 합리적인 가격에 구입할수 있습니다.</p>
 		  </div>
+		  <button type="button" onclick="market()" class="w-btn-outline w-btn-indigo-outline" 
+		   style="margin-top: 340px; margin-left: 220px;">
+		  이동</button>
 		  </div>
+		  
 		   <!-- 2번  -->
-		  <div class="tile"> 
-		  <a href="https://www.vipah.co.kr/kr/index.php">
-		  <img src="resources/img/ha.jpg"/>
-		  </a>
-		  <div class="text">
-		  <h1>병원</h1>
-		  <h2 class="animate-text">내 반려동물에 꼭 필요한 병원정도</h2>
-		  <p class="animate-text">리뷰도 확인할수있어 신뢰도 증가</p>
-		  </div>
-		  </div>
-		</div>
-  		  <div>
-  		   <!-- 3번  -->
-		  <div class="tile"> 
-		  <a href="https://www.dcinside.com/">
+		  <div class="tile" id="hospital01"> 
 		  <img src="resources/img/Comm.jpg"/>
-		  </a>
 		  <div class="text">
 		  <h1>소통</h1>
 		  <h2 class="animate-text">반려동물에 대한 수많은 정보를 얻어가세요</h2>
 		  <p class="animate-text">소통부분 1위에 빛나는 내옆펫</p>
 		  </div>
+		  <button type="button" onclick="#" class="w-btn-outline w-btn-indigo-outline" 
+		   style="margin-top: 340px; margin-left: 220px;">
+		  Move</button>
+		  </div>
+		</div>
+  		  <div>
+  		   <!-- 3번  -->
+		  <div class="tile" id="Community01"> 
+		  <img src="resources/img/ha.jpg"/>
+		  <div class="text">
+		  <h1>병원</h1>
+		  <h2 class="animate-text">내 반려동물에 꼭 필요한 병원정도</h2>
+		  <p class="animate-text">리뷰도 확인할수있어 신뢰도 증가</p>
+		  </div>
+		  <button type="button" onclick="#" class="w-btn-outline w-btn-indigo-outline" 
+		   style="margin-top: 340px; margin-left: 220px;">
+		  --></button>
 		 </div>
 		  <!-- 2번  -->
-		  <div class="tile"> 
-		  <a href="https://www.osupet.com/">
+		  <div class="tile" id="Remembrance01"> 
 		  <img src="resources/img/Remem.jpg"/>
-		  </a>
 		  <div class="text">
 		  <h1>추모</h1>
 		  <h2 class="animate-text">반려동물에 마지막을 기억해주세요</h2>
 		  <p class="animate-text"></p>
 		  </div>
+		  <button type="button" onclick="#" class="w-btn-outline w-btn-indigo-outline" 
+		   style="margin-top: 340px; margin-left: 220px;">
+		   ▶▶</button>
 		  </div>
 		 </div> 
 		 </div>
@@ -332,22 +404,39 @@ function closeModal(){
 		
 		
 	</main>
+	
 	<!-- 여기부터 푸터 -->
 	 <footer>
-		<p>&copy; 2023 내옆Pet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대표전호:010-1111-2222 </p>
-		<p>&copy; 내옆Pet 회철</p>
-		<p>&copy; 내옆Pet 석중</p>
-		<p>&copy; 내옆Pet 현지</p>
-		<p>&copy; 내옆Pet 상인</p>
-		<a href="https://www.facebook.com/profile.php?id=100089533267077" > <!-- 페이스북  -->
-		<img src="https://img.icons8.com/ios-glyphs/48/ffffff/facebook-new.png" />
-		</a>
-		<a href="https://www.instagram.com/mosi_n17/" > <!-- 인스타  -->
-        <img src="https://img.icons8.com/material-outlined/48/ffffff/instagram-new--v1.png" />
-        </a>
-        <a href="https://www.youtube.com/channel/UClMcwyqQFHjkackxovU59ng" > <!-- 유튜브  -->
-        <img src="https://img.icons8.com/material-rounded/48/ffffff/youtube-play.png" />
-        </a>
-	</footer> 
+		<div class="footer-container">
+			<div class="footer-column">
+				<h3>내옆펫</h3>
+				<ul>
+					<li><a href="#">e-mail : master@nexttopet.com</a></li>
+					<li><a href="#">fax : 02-xxxx-xxxx</a></li>
+					<li><a href="#">project_member : 김회철 모상인 문현지</a></li>
+					<li><a href="#">address : 서울시 마포구 백범로 23, 3층</a></li>
+				</ul>
+			</div>
+			<div class="footer-column">
+				<h3>규정</h3>
+				<ul>
+					<li><a href="#">개인정보 처리 방침</a></li>
+					<li><a href="#">이용약관</a></li>
+					<li><a href="#">Digital Marketing</a></li>
+				</ul>
+			</div>
+			<div class="footer-column">
+				<h3>소셜</h3>
+				<ul class="social-media-icons">
+					<li><a href="https://www.instagram.com/mosi_n17/"><img src="#" />인스타<i class="fab fa-facebook-f"></i></a></li>
+					<li><a href="https://www.facebook.com/profile.php?id=100089533267077"><img src="#" />페이스북<i class="fab fa-twitter"></i></a></li>
+					<li><a href="https://www.youtube.com/channel/UClMcwyqQFHjkackxovU59ng"><img src="#" />유튜브<i class="fab fa-instagram"></i></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="bottom-bar">
+			<p>&copy; 2023 Company 내옆펫. All rights reserved.</p>
+		</div>
+	</footer>
 	</body>
 </html>

@@ -65,7 +65,7 @@ public class HomeController {
 	public ModelAndView myInquireView() {
 		return new ModelAndView("home/mypage/mypage_inquire_view");
 	}
-
+	
 	@RequestMapping("my_answer_view.do")
 	public ModelAndView myAnswerView() {
 		return new ModelAndView("home/mypage/mypage_answer_view");
@@ -105,4 +105,6 @@ public class HomeController {
 	public ModelAndView myCoupon() {
 		return new ModelAndView("home/mypage/mypage_coupon");
 	}
+	
+	
 }
