@@ -10,6 +10,7 @@
 <!-- 왜 안먹는거지; -->
 <style type="text/css">
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css);
+
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -64,22 +65,19 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
 	$('#Community').click(function(){
-		var offset = $('#Market01').offset(); //선택한 태그의 위치를 반환
-            //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+		var offset = $('#Market01').offset(); 
         $('html').animate({scrollTop : offset.top}, 500);
 	});
 });
 $(document).ready(function(){
 	$('#hospital').click(function(){
-		var offset = $('#Market01').offset(); //선택한 태그의 위치를 반환
-            //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+		var offset = $('#Market01').offset(); 
         $('html').animate({scrollTop : offset.top}, 500);
 	});
 });
 $(document).ready(function(){
 	$('#Remembrance').click(function(){
-		var offset = $('#Market01').offset(); //선택한 태그의 위치를 반환
-            //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+		var offset = $('#Market01').offset();
         $('html').animate({scrollTop : offset.top}, 500);
 	});
 });
@@ -109,8 +107,11 @@ function login() {
 	}else {
 	}
 }
-
-
+/* 연습 */	
+	
+	
+/* 끝 */
+ 	/*이미지 슬라이드 여기는 쫌더 공부하자 */
 	$(document).ready(function() {
 		$(window).scroll(function() {
 			if ($(this).scrollTop() >= 99999999999) {
@@ -127,29 +128,31 @@ function login() {
 		$('nav ul li').mouseout(function() {
 			$('.navMenu.over').removeClass('over');
 		});
-		/*이미지 슬라이드*/
-		var slideIndex = 0;
-		showSlides();
-
-		function showSlides() {
-			var i;
-			var slides = document.getElementsByClassName("mySlides");
-			var dots = document.getElementsByClassName("dot");
-			for (i = 0; i < slides.length; i++) {
-				slides[i].style.display = "none";
-			}
-			slideIndex++;
-			if (slideIndex > slides.length) {
-				slideIndex = 1;
-			}
-			for (i = 0; i < dots.length; i++) {
-				dots[i].className = dots[i].className.replace(" active", "");
-			}
-			slides[slideIndex - 1].style.display = "block";
-			dots[slideIndex - 1].className += " active";
-			setTimeout(showSlides, 3000); // 1000 = 1초
+	
+	
+	 	var idx_lgth = $("#visual>div").length;
+		var srt = 1;
+		
+		$("section>a").click(function(){
+			var idx = $(this).index();
+			srt = idx;
+			$(this).addClass('on').siblings().removeClass('on');
+			$("#visual>div").eq(idx).addClass('on').siblings().removeClass('on');
+		});
+		
+	setInterval(AutoRun, 3000);
+		
+	function AutoRun(){
+		if(srt == idx_lgth){
+				srt = 0;	
 		}
+		$("section>a").eq(srt).addClass('on').siblings().removeClass('on');
+		$("#visual>div").eq(srt).addClass('on').siblings().removeClass('on');
+		srt++;	
+	} 
 	});
+	/* 이미지 슬라이더 연습  */
+	
 	/* 모달창 */
   jQuery(document).ready(function() {
   $('#myModal').show();
@@ -159,29 +162,15 @@ function login() {
   function close_pop(flag) {
   $('#myModal').hide();
   };
-  
-  
-  /* 모달창 오픈시 스크롤 막기 */
-/*   function openModal(){
-  const modal = document.getElementById('.modal-content');
-  modal-content.classList.add('s_show');
-}
-function closeModal(){
-  const modal = document.getElementById('.modal-content');
-  modal-content.classList.remove('s_show');
-} */
+
 </script>
-
-
-
-
 <body  style="overflow-x: hidden">
 <div id="myModal" class="modal" >
+<!-- 모달창  -->
 <div class="modal-content" style="background-image: url('resources/img/karina_01.jpg');">
 <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">이벤트</span></b></span></p>
-<!-- 안에 들어갈 내용 -->
- <!-- <a href="#"><img  src="#" style="overflow: auto;  "></a> -->  <!-- 사진파일 700 - 890 --> 
-  	<a href="#"></a>
+<!-- 안에 들어갈 내용  사진파일 700 - 890 -->
+ <a href="#"></a>
 
 </div>
 <br><br><br><br><br><br><br><br><br><br>
@@ -244,47 +233,50 @@ function closeModal(){
 				</nav> 
 			</div>
 		</div> 
-	</header>
+	</header> 
 	<main> 
-		<div>
-		<!-- <div class="slideshow-container"> -->
-			<div class="mySlides fade" >
-				<div class="numbertext">1 / 3</div>
-				<a href="#"><img src="resources/img/maa.jpg" style=" width: 2550px; height: 950px "></a>
-<!-- 			</div> -->
-			<div class="mySlides fade">
-				<div class="numbertext">2 / 3</div>
-				<a href="#"><img src="resources/img/moo.jpg" style=" width: 2550px; height: 950px"></a>
-			</div>
-			<div class="mySlides fade">
-				<div class="numbertext">3 / 3</div>
-				<a href="#"><img src="resources/img/soo.jpg" style=" width: 2550px; height: 950px"></a>
-			</div>
-		<div style="text-align: center">
-<!-- 			<span class="dot"></span> <span class="dot"></span> <span class="dot"></span> -->
-		</div>
-		</div>
-		<!-- </div> -->
-		<br>
+	<!-- 이미지스크린 -->
+     <div id="visual">     
+             <div class="on"><a class="on1 active" href="#">
+             <img src="resources/img/maa.jpg" alt="1" width="2550px" height="950px">
+             </a></div>
+             <div><a class="on1" href="#">
+             <img src="resources/img/moo.jpg" alt="2" width="2550px" height="950px">
+             </a></div>
+             <div><a class="on1" href="#">
+             <img src="resources/img/soo.jpg" alt="3" width="2550px" height="950px">
+             </a></div>
+             
+        <section id="control">
+            <a class="on1" href="#"></a>  <!-- href 를 통해서 선택자를 줄수있게하자 인덱스 -->
+            <a class="on1" href="#"></a>
+            <a class="on1" href="#"></a>
+        </section>
+ 		 </div> 
 		<!--여기까지 이미지스크린 -->
-		
-		<br><br><br><br><br><br><br><br>
+		<br><br><br>
+		<br><br><br>
+		<br><br><br>
 		<!-- 왼쪽에서 오른쪽  -->
 	
 		<div class="container_03">
 		  <div class="box box1" id="box1" style=" background-color: #F5EBE0;" >
 		    <h2 style="font-size: 50px; text-align: center; color: black; position: absolute; top: 200px; left: 300px">Market</h2>
 		    <div class="box4" style="background-color: #FEFCF3;"><br>
-		    	<P style="font-size: 60px; font-family: 'NanumSquareRound';">인기상품 List</P><br><br>
-		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">01.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
-		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">02.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
-		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">03.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
-		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">04.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
-		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">05.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">강아지옷</a><br>
-				<!-- <a href="#" style="text-decoration-line:none;">
-					<span>01</span>
-				    애기장난감
-				</a>	 -->		
+		    	<!-- <P style="font-size: 60px; font-family: 'NanumSquareRound';">인기상품 List</P><br><br> -->
+				<div>
+				   <h3 style="font-size: 50px; font-family:'NanumSquareRound';">인기상품 list</h3><br><!-- 너는 왜 한줄로 안만들어지는거야? -->
+				  <!--  <p style="width: 45px; height: 50px; margin-left: 500px; font-size: 40px; font-weight: bold; display: inline; ">01.</p><a href="#" >강아지옷</a> -->
+				    <ol class="c2">
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">아메리카노</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">아메리카노</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">아메리카노</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">피아노</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">옷</li></a>
+				    </ol>
+				    
+				    
+				</div>				
 		  </div>
 		  </div>
 		  <div class="box box2" style="background-color: #F5EBE0; ">
@@ -305,12 +297,14 @@ function closeModal(){
 		    <div class="box box5" id="box5" style=" background-color: #FFE7CC;" >
 		    <h2 style="font-size: 50px; text-align: center; color: black; position: absolute; top: 200px; left: 300px">Community</h2>
 		    <div class="box8" style="background-color: #F8CBA6;"><br>
-		    	<P style="font-size: 60px; font-family: 'NanumSquareRound';" >인기 글 List</P><br><br>
-		   	    <p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">01.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
-		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">02.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
-		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">03.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
-		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">04.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
-		    	<p style="font-size: 30px; padding-top: 50px; display: inline; font-weight:bold">05.&ensp;&ensp;&nbsp;</p><a class="pre" href="#" style="color: black">짜장면 맛집</a><br>
+		    	<P style="font-size: 60px; font-family: 'NanumSquareRound';" >인기 글 List</P><br>
+		    	  <ol class="c2">
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">아메리카노</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">아메리카노</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">아메리카노</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">피아노</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">옷</li></a>
+				    </ol>
 		    </div>
 		  </div>
 		</div>
