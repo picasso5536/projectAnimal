@@ -73,12 +73,14 @@ body {
 }
 
 .logoimg {
-	margin-left: 100px;
-	margin-top: 6px;
+	position: fixed;
+	left: 100px;
+	top: 6px;
 	height: 60px;
 	width: auto;
 	display: inline-block;
 	filter: none !important;
+	z-index: 101;
 }
 
 .navbar-collapse1 {
@@ -89,10 +91,10 @@ body {
 
 /* 검색 */
 .search_fd {
-	position: absolute;
+	position: fixed;
 	top: 18px;
 	z-index: 100;
-	margin-right: -35%;
+	right:460px;
 	
 }
 
@@ -103,6 +105,15 @@ input[type=text] {
 	border: 2px solid #8F90A4;
 	position: fixed;
 }
+
+.main_login a{
+	position: relative;
+	padding: 5px 0 !important;
+	display: inline-block;
+	font-weight: 800;
+	text-decoration: none;
+	color: #666;
+} 
 
 /* 햄버거 */
 .menu {

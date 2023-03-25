@@ -61,9 +61,9 @@
 			  	<div class="title">
 			  		<h1>전체</h1>
 			  	</div>
-		  		<div class="search_fd">
+		  		<form id="search_fd">
 					<input type="text" name="keyword" size="50" value="search">			
-				</div>
+				</form>
 			  	<div class="pdt_list">
 			  		<div class="card">
 			  			<a class="pdt-link" href="m_select_product.do">

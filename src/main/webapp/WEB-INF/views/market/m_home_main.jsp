@@ -18,7 +18,7 @@
 		var rollingId;
 
 		//정해진 초마다 함수 실행
-		rollingId = setInterval(function() { rollingStart(); }, 3000);//다음 이미지로 롤링 애니메이션 할 시간차
+		rollingId = setInterval(function() { rollingStart(); }, 4000);//다음 이미지로 롤링 애니메이션 할 시간차
     
 		function rollingStart() {
 			$banner.css("width", $bannerWidth * $length + "px");
@@ -71,9 +71,15 @@
 	<div class="contents">
 		<div class="banner">
 			<ul id="banner_list">
-				<li><img src="resources/img/market/banner1.jpg" width="1905px" height="900px"></li>
-				<li><img src="resources/img/market/banner2.jpg" width="1905x" height="900px"></li>
-				<li><img src="resources/img/market/banner3.jpg" width="1905px" height="900px"></li>
+				<li>
+					<a href="https://www.youtube.com/watch?v=uuevTJE-RLw"><img src="resources/img/market/banner1.jpg" width="1905px" height="900px"></a>
+				</li>
+				<li>
+					<a href="https://www.youtube.com/watch?v=uuevTJE-RLw"><img src="resources/img/market/banner2.jpg" width="1905x" height="900px"></a>
+				</li>
+				<li>
+					<a href="https://www.youtube.com/watch?v=uuevTJE-RLw"><img src="resources/img/market/banner3.jpg" width="1905px" height="900px"></a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -273,7 +279,7 @@
 		  	</div>
 		  	<div class="review_list">
 		  		<div class="card">
-		  			<a class="review-link" href="제품 상세">
+		  			<a class="review-link" href="m_select_product.do#review">
 			  			<div class="review_img">
 			  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
 			  			</div>
@@ -294,6 +300,7 @@
 							<span class="stars_score">4.6</span>
 						</div>
 						</span>
+						</div>
 		  			<div class="card_text">
 			  				<h3 class="review_title">아깽이 습식 사료 파우치 12개입</h3>
 			  				<p class="review_info">대충설명</p>
