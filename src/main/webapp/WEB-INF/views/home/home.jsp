@@ -91,7 +91,7 @@ function market() {
 }	
 /* 내정보 이동 */
 function info(f) {
-    var result = confirm("정보창으로 이동 하시겠습니까?");
+    var result = confirm("로그인 한거 확인하기 위해서 인터셉트이용하는게 좋을듯");
     if(result){
     f.action="my_info.do"
     f.submit();
@@ -268,11 +268,11 @@ function login() {
 				   <h3 style="font-size: 50px; font-family:'NanumSquareRound';">인기상품 list</h3><br><!-- 너는 왜 한줄로 안만들어지는거야? -->
 				  <!--  <p style="width: 45px; height: 50px; margin-left: 500px; font-size: 40px; font-weight: bold; display: inline; ">01.</p><a href="#" >강아지옷</a> -->
 				    <ol class="c2">
-				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">아메리카노</li></a>
-				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">아메리카노</li></a>
-				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">아메리카노</li></a>
-				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">피아노</li></a>
-				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">옷</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">디자인</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">수정이 시급</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">팀원들 의견 </li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">들어보</li></a>
+				        <a href="" style="text-decoration-line: none; color:#3C4048; "><li style="font-size: 40px;">자</li></a>
 				    </ol>
 				    
 				    
