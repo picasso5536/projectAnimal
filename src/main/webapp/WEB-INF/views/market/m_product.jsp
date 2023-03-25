@@ -48,10 +48,48 @@
 			  }
 			  ++dddip;
 		});
+		  
 	});
+
+			var sale_price;
+			var amount;
+		
+			function init () {
+				sale_price = document.form.sale_price.value;
+			    amount = document.form.amount.value;
+			    document.form.sum.value = sale_price;
+			    change();
+			}
+		
+			function add_num () {
+			    hm = document.form.amount;
+			    sum = document.form.sum;
+			    hm.value ++ ;
+		
+			    sum.value = parseInt(hm.value) * sale_price;
+			}
+		
+			function del () {
+			    hm = document.form.amount;
+			    sum = document.form.sum;
+			        if (hm.value > 1) {
+			            hm.value -- ;
+			            sum.value = parseInt(hm.value) * sale_price;
+			        }
+			}
+		
+			function change () {
+			    hm = document.form.amount;
+			    sum = document.form.sum;
+		
+			        if (hm.value < 0) {
+			            hm.value = 0;
+			        }
+			    sum.value = parseInt(hm.value) * sale_price;
+			} 
 </script>
 </head>
-<body>
+<body onload="init();">
 	<jsp:include page="m_home_nav.jsp" />
 	<a id="topBtn" href="#"><img alt="" src="resources/img/market/top.png" style="width: 60px; height: 60px;"> </a>
 	<nav class="path">
@@ -119,9 +157,16 @@
 					</div>
 					<div class="p_su">
 						<h3>수량</h3>
-						<input type="number" name="number" value="1" min="1">
+						<form name="form">
+							<input type="hidden" name="sale_price" value="15000">
+							<input type="button" value="-" name="minus"  onclick="del()" style="margin-left: 15px">
+							<input type="text" name="amount" value="1" size="3" onchange="change()">
+							<input type="button" value="+" name="addd" onclick="add_num()">
+						<!-- <input type="number" name="number" value="1" min="1"> -->
 						<h3> 총 상품 가격</h3>
-						<h2>0 p</h2>
+						<!-- <h2>15,000 p</h2> -->
+						<input type="text" name="sum" value="15,000" size="11" readonly><span>p</span>
+						</form>
 					</div>
 					<div class="buttons">
 						<button onclick="">장바구니</button>

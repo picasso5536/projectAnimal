@@ -41,11 +41,11 @@
 					<div class="overlay-menu">
 						<ul class="hambergerul">
 							<li class="hli"><a class="halink" href="my_info.do">마이페이지</a></li>
-							<li class="hli"><a class="halink" href="my_info.do">장바구니</a></li>
+							<li class="hli"><a class="halink" href="my_cartlist.do">장바구니</a></li>
 							<li class="hli"><a class="halink" href="my_info.do">주문/배송/픽업조회</a></li>
-							<li class="hli"><a class="halink" href="my_info.do">찜</a></li>
-							<li class="hli"><a class="halink" href="my_info.do">쿠폰함</a></li>
-							<li class="hli"><a class="halink" href="my_info.do">문의하기</a></li>
+							<li class="hli"><a class="halink" href="my_dibs.do">찜</a></li>
+							<li class="hli"><a class="halink" href="my_coupon.do">쿠폰함</a></li>
+							<li class="hli"><a class="halink" href="my_inquire.do">1:1문의내역</a></li>
 						</ul>
 					</div>
 				</div>

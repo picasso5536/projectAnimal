@@ -9,6 +9,7 @@
 	font-style: normal;
 }
 
+html {font-family: 'NanumSquareRound'; }
 
 	a#topBtn { 
 		position: fixed;
@@ -56,7 +57,7 @@
 	}
 	
 	.pdt_img img {
-		padding: 0px 100px;
+		padding: 0px 50px;
 	}
 	
 	hr {
@@ -89,7 +90,7 @@
 	}
 	
 	.short {
-		width: 430px;
+		width: 480px;
 		border: 1px dashed #666;
 		margin-top: 3%;
 	}
@@ -211,24 +212,49 @@
 	}
 	
 	.p_su {
+		border: 1px solid #666;
+		border-radius: 5px;
+	}
+	
+	.p_su, .p_su form{
 		display: flex;
 		min-width: 382px;
 		min-height: 95px;
-		border: 1px solid #666;
-		border-radius: 5px;
 		flex-direction: row;
     	align-items: center;
     	/* padding: 0px 20px; */
 	}
 	
+	.p_su input[name=sum]{
+		width: 100px;
+		border: none;
+		font-size: 24px;
+		font-family: NanumSquareRound;
+		font-weight: 800;
+		margin-left: 15px; 
+	}
+	.p_su span{
+		font-size: 24px;
+		font-family: NanumSquareRound;
+		font-weight: 800;
+	}
+	
+	.p_su input[name=addd], .p_su input[name=minus]{
+		width: 25px;
+		border: 1px solid #666;
+		background-color: #f2416b;
+		color: white;
+		cursor: pointer;
+	}
+	
 	.p_su input {
-		width: 50px;
+		width: 35px;
 		height: 25px;
-		margin: 0px 20px;
+		margin-right: 10px;
 		
 	}
 	.p_su h3, .p_su h2 {
-		margin-left: 20px;
+		margin-left: 13px;
 	}
 	
 	.buttons {

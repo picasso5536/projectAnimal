@@ -75,7 +75,7 @@ body {
 	margin-top: 15px;
 	height: 60px;
 	width: auto;
-	display: block;
+	display: inline-block;
 	filter: none !important;
 }
 
