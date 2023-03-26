@@ -75,7 +75,7 @@
 	    align-items: center;
  	} 
  	
- 	.qna_section .qna_container .qna_list .qna_card {
+ 	.qna_section .qna_container .qna_list .qna_card, .more_qna_card {
  		border-bottom: 1px dashed #666;
  		height: auto;	
  		padding: 30px;
@@ -161,8 +161,10 @@
 	}
 	
 	#more_qbtn {
+		text-align: center;
+		padding-top: 15px;
 		width: 200px;
-		height: 50px;
+		height: 35px;
 		border: 2px solid #666;
 		border-radius: 10px;
 		background-color: #fff;
@@ -172,3 +174,21 @@
 		color: #666;
 		cursor: pointer; 
 	}
+	
+	.more_qna_contents::open {
+		display: f
+	}
+	
+	#more_qbtn::marker{
+		display: none;
+		content: "";
+	}
+	
+	.more_qna_list {
+		min-width: 1500px;
+		height: auto;
+	}
+	
+	.more_qna_contents {
+    	display: contents;
+    }

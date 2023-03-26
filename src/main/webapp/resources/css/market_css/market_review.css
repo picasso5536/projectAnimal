@@ -133,7 +133,7 @@
 	}
 	   
 		/* 리뷰 */
-	   	.serv_list .rv_container .review_list {
+	   	.review_list {
  		display: flex;
  		flex-wrap: wrap;
  		justify-content: space-between;
@@ -147,7 +147,7 @@
 	    align-items: center;
  	} 
  	
- 	.serv_list .rv_container .review_list .card {
+ 		.card {
  		border: 1px solid #eee;
  		border-radius: 5px;
  		height: auto;	
@@ -161,7 +161,7 @@
  		
  	}
  	
-	 .serv_list .rv_container .review_list .card review_img {
+	 .card review_img {
 	 	height: 200px;
 	 	width: 250px;
 	 }
@@ -171,7 +171,7 @@
 	 	margin: 20px 40px 20px 20px;
 	 } 
 	 
-	 .serv_list .rv_container .review_list .card .card_text .review_title{
+	 .review_list .card .card_text .review_title {
 	 	padding: 0px 10px;
 	 	display: inline-block;
 	 
@@ -283,4 +283,45 @@
 		cursor: pointer; 
 	}
 	   
-	   
+		/* 더보기 버튼 */
+ 	.more_btn_con {
+		display: flex;
+		width: 100%;
+		height: auto;
+		flex-direction: column;
+	    flex-wrap: nowrap;
+	    align-items: center;
+	}
+	
+	#more_rbtn {
+		text-align: center;
+		padding-top: 15px;
+		width: 200px;
+		height: 35px;
+		border: 2px solid #666;
+		border-radius: 10px;
+		background-color: #fff;
+		/* font-family: NanumSquareRound; */
+		font-size: 20px;
+		font-weight: 400;
+		color: #666;
+		cursor: pointer; 
+	}
+	
+	.more_review_contents::open {
+		display: f
+	}
+	
+	#more_rbtn::marker{
+		display: none;
+		content: "";
+	}
+	
+	.more_r_list {
+		min-width: 1500px;
+		height: auto;
+	}
+	
+	.more_review_contents {
+    	display: contents;
+    }   

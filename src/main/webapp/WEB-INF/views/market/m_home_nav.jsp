@@ -15,7 +15,6 @@
 			$(this).toggleClass('active');
 			$('#overlay').toggleClass('open');
 		});
-
 	});
 </script>
 </head>
