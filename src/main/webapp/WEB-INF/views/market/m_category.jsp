@@ -212,19 +212,17 @@
 			  	</div>
 			  </div>
 		  </section>
-		 <!-- </div> -->
-		<!-- <div class="section_div" id="1"> -->
 		 <section class="serv_list" id="1">
 			  <div class="best_container">
 			  	<div class="title">
 			  		<h1>건식</h1>
 			  	</div>
-		  		<div class="search_fd">
+		  		<form id="search_fd">
 					<input type="text" name="keyword" size="50" value="search">			
-				</div>
+				</form>
 			  	<div class="pdt_list">
 			  		<div class="card">
-			  			<a class="pdt-link" href="제품 상세">
+			  			<a class="pdt-link" href="m_select_product.do">
 				  			<div class="card_img">
 				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
 				  			</div>
@@ -236,7 +234,7 @@
 			  			</a>
 			  		</div>
 			  		<div class="card">
-			  			<a class="pdt-link" href="제품 상세">
+			  			<a class="pdt-link" href="m_select_product.do">
 				  			<div class="card_img">
 				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
 				  			</div>
@@ -248,7 +246,7 @@
 			  			</a>
 			  		</div>
 			  		<div class="card">
-			  			<a class="pdt-link" href="제품 상세">
+			  			<a class="pdt-link" href="m_select_product.do">
 				  			<div class="card_img">
 				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
 				  			</div>
@@ -370,18 +368,52 @@
 			  	</div>
 			  </div>
 		  </section>
-		<!--  </div> -->
-		<!-- <div class="section_div" id="2"> -->
 		 <section class="serv_list" id="2">
 			  <div class="best_container">
 			  	<div class="title">
 			  		<h1>주식파우치</h1>
 			  	</div>
-		  		<div class="search_fd">
+		  		<form id="search_fd">
 					<input type="text" name="keyword" size="50" value="search">			
-				</div>
+				</form>
 			  	<div class="pdt_list">
 			  		<div class="card">
+			  			<a class="pdt-link" href="m_select_product.do">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+					  				<h2>아깽이 습식 사료 파우치 12개입</h2>
+					  				<p class="pdt_info">대충설명</p>
+					  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="m_select_product.do">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="m_select_product.do">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
 			  			<a class="pdt-link" href="제품 상세">
 				  			<div class="card_img">
 				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
@@ -477,22 +509,67 @@
 				  			</div>
 			  			</a>
 			  		</div>
-
+			  		<div class="card">
+			  			<a class="pdt-link" href="제품 상세">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
 			  	</div>
 			  </div>
 		  </section>
-		<!-- </div> -->
-		<!-- <div class="section_div" id="3"> -->
-		 <section class="serv_list" id="3" >
+		 <section class="serv_list" id="3">
 			  <div class="best_container">
 			  	<div class="title">
 			  		<h1>생식</h1>
 			  	</div>
-		  		<div class="search_fd">
+		  		<form id="search_fd">
 					<input type="text" name="keyword" size="50" value="search">			
-				</div>
+				</form>
 			  	<div class="pdt_list">
 			  		<div class="card">
+			  			<a class="pdt-link" href="m_select_product.do">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+					  				<h2>아깽이 습식 사료 파우치 12개입</h2>
+					  				<p class="pdt_info">대충설명</p>
+					  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="m_select_product.do">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="m_select_product.do">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
 			  			<a class="pdt-link" href="제품 상세">
 				  			<div class="card_img">
 				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
@@ -573,6 +650,18 @@
 					  				<h2>아깽이 습식 사료 파우치 12개입</h2>
 					  				<p class="pdt_info">대충설명</p>
 					  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="제품 상세">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
 				  			</div>
 			  			</a>
 			  		</div>
@@ -591,17 +680,51 @@
 			  	</div>
 			  </div>
 		  </section>
-		<!-- </div> -->
-		<!-- <div class="section_div" id="4"> -->
-		 <section class="serv_list" id="4" >
+		 <section class="serv_list" id="4">
 			  <div class="best_container">
 			  	<div class="title">
 			  		<h1>분유/우유</h1>
 			  	</div>
-		  		<div class="search_fd">
+		  		<form id="search_fd">
 					<input type="text" name="keyword" size="50" value="search">			
-				</div>
+				</form>
 			  	<div class="pdt_list">
+			  		<div class="card">
+			  			<a class="pdt-link" href="m_select_product.do">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+					  				<h2>아깽이 습식 사료 파우치 12개입</h2>
+					  				<p class="pdt_info">대충설명</p>
+					  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="m_select_product.do">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="m_select_product.do">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
 			  		<div class="card">
 			  			<a class="pdt-link" href="제품 상세">
 				  			<div class="card_img">
@@ -644,7 +767,67 @@
 				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
 				  			</div>
 				  			<div class="card_text">
-				  				<h2>아깽이 습식 사료 파우치 12개입</h2>
+					  				<h2>아깽이 습식 사료 파우치 12개입</h2>
+					  				<p class="pdt_info">대충설명</p>
+					  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="제품 상세">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="제품 상세">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="제품 상세">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+					  				<h2>아깽이 습식 사료 파우치 12개입</h2>
+					  				<p class="pdt_info">대충설명</p>
+					  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="제품 상세">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+				  			</div>
+			  			</a>
+			  		</div>
+			  		<div class="card">
+			  			<a class="pdt-link" href="제품 상세">
+				  			<div class="card_img">
+				  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+				  			</div>
+				  			<div class="card_text">
+				  				<h2>아깽이 습식사료 파우치 12개입</h2>
 				  				<p class="pdt_info">대충설명</p>
 				  				<h3 class="pdt_price">20,000 원</h3>
 				  			</div>
@@ -653,7 +836,7 @@
 			  	</div>
 			  </div>
 		  </section>
-		<!-- </div> -->
+
 	  </div>
   </div>
   </div>
