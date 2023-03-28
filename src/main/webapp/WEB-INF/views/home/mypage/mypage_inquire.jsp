@@ -39,7 +39,7 @@ main {
 	margin-right: 60px;
 	margin-left: 30px;
 	font-color: #fff;
-	max-width: 1500px;
+	max-width: 2000px;
 	min-width: 1300px;
 }
 
