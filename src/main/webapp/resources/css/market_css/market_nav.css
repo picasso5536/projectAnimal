@@ -71,13 +71,12 @@ body {
 }
 
 .navbar-brand .logoimg {
-	margin: 0px,0px,0px,10px;
+	margin-left: 100px;
+	margin-top: 15px;
 	height: 60px;
 	width: auto;
-	display: block;
-	filter: none !important;
-
 	display: inline-block;
+	filter: none !important;
 }
 
 
@@ -87,7 +86,7 @@ body {
 }
 
 .nav-item.active .nav-link {
-	color: #777 !important;
+	color: #666 !important;
 	float: left;
 }
 
@@ -97,6 +96,7 @@ body {
 	display: inline-block;
 	font-weight: 800;
 	text-decoration: none;
+	color: #666;
 }
 
 .nav-item:after {
@@ -128,15 +128,19 @@ body {
 	float: left;
 	list-style:none;
 	padding: 20px;
+	color: #666;
 }
 .nbsp {
 	float: left;
 	list-style:none;
-	padding: 20px;
+	padding: 20px 10px;
 }
 .navbar-collapse {
 	 list-style:none;
 	 float: right;
+	 position: absolute; 
+	 top: 0px; 
+	 right: 100px;
 }
 
 /* #Primary style
@@ -240,9 +244,9 @@ body.hero-anime #switch {
 }
 }
 .menu {
-  position: fixed;
-  top: 5%;
-  right: 2%;
+  position: relative;
+  top: 3px;
+ /*  right: 2%; */
   height: 27px;
   width: 35px;
   cursor: pointer;
@@ -255,20 +259,20 @@ body.hero-anime #switch {
 }
 .menu.active .top {
   transform: translateY(11px) translateX(0) rotate(45deg);
-  background: #333333;
+  background: #666;
 }
 .menu.active .middle {
   opacity: 0;
-  background: #333333;
+  background: #666;
 }
 .menu.active .bottom {
   transform: translateY(-11px) translateX(0) rotate(-45deg);
-  background: #333333;
+  background: #666;
 }
 .menu .h-icon {
-  background: #333333;
+  background: #666;
   border: none;
-  height: 5px;
+  height: 3px;
   width: 100%;
   position: absolute;
   top: 0;
@@ -282,12 +286,11 @@ body.hero-anime #switch {
 .menu .h-icon:nth-of-type(3) {
   top: 22px;
 }
-#overlay-menu{
-	display: none;
-}
+
 .overlay {
   position: fixed;
   background-color: #ffffff;
+  background-color: rgba( 255, 255, 255, 0.5 );
   top: 0;
   left: 0;
   flex-direction: column;
@@ -314,6 +317,14 @@ body.hero-anime #switch {
 .overlay.open .hli:nth-of-type(4) {
   animation-delay: 0.5s;
 }
+
+.overlay-menu {
+	margin: auto;
+    position: relative;
+    left: 48%;
+    top: 35%;
+}
+
 .overlay .hambergerul {
   list-style: none;
   padding: 0;
@@ -321,10 +332,11 @@ body.hero-anime #switch {
   display: inline-block;
   position: relative;
   height: 100%;
+  text-align: center;
 }
 .overlay .hambergerul .hli {
   display: block;
-  text-align: left;
+  text-align: center;
   height: 25%;
   height: calc(100% / 4);
   min-height: 50px;

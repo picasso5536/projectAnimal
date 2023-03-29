@@ -159,18 +159,9 @@ function consent() {
     }else {
     }
 }
-
 function find() {
-	var result = confirm("로그인 한거 확인하기 위해서 인터셉트이용하는게 좋을듯");
-	if(result){
 	location.href="find.do";
-	}else {
-	}
 }
-
-
-
-
 function home(f) {
     var result = confirm("로그인 하시겠습니까?");
     if(result){
@@ -179,8 +170,6 @@ function home(f) {
     }else {
     }
 }
-
-
 </script>
 </head>
 <body>
@@ -215,7 +204,8 @@ function home(f) {
 			</div>
 			<div style="margin-left: 65px" class="forgot-password">
 				<button style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="consent()">회원가입</button>
-				<input style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="find()" value="아이디/비밀번호 찾기">
+				<button style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="find()">아이디/비밀번호 찾기</button>
+				<!-- <input style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="find()" value="아이디/비밀번호 찾기"> -->
 			</div>
 		</form>
 	</div>

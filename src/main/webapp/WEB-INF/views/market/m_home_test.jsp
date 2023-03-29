@@ -16,6 +16,7 @@
 			$(this).toggleClass('active');
 			$('#overlay').toggleClass('open');
 		});
+	
 
 	});
 </script>
@@ -25,11 +26,12 @@
 	<!-- start-header -->
 	<div class="navigation-wrap bg-light">
 		<nav class="navbar">
-			<a class="navbar-brand" href=""><img class="logoimg"
-				src="resources/img/market/mypetlogo.jpg" alt=""></a>
-		<div class="navbar-collapse" id="navbarSupportedContent">
+			<a class="navbar-brand" href="home.do"><img class="logoimg" src="resources/img/market/mypetlogo.jpg" alt=""></a>
+			
+		<div class="navbar-collapse1" id="navbarSupportedContent">
 			<div class="search_fd">
-				<input type="text" name="keyword" size="50" value="search">			
+				<input id="s_fd" type="text" name="keyword" size="40" value="search">
+				<span class="main_login"></span>		
 			</div>
 			<div class="menu" id="hamberger">
 				<span class="top h-icon"></span> 
@@ -40,10 +42,12 @@
 				<div class="overlay" id="overlay">
 					<div class="overlay-menu">
 						<ul class="hambergerul">
-							<li class="hli"><a class="halink" href="#">Home</a></li>
-							<li class="hli"><a class="halink" href="#">About</a></li>
-							<li class="hli"><a class="halink" href="#">News</a></li>
-							<li class="hli"><a class="halink" href="#">Contact</a></li>
+							<li class="hli"><a class="halink" href="my_info.do">마이페이지</a></li>
+							<li class="hli"><a class="halink" href="my_cartlist.do">장바구니</a></li>
+							<li class="hli"><a class="halink" href="my_info.do">주문/배송/픽업조회</a></li>
+							<li class="hli"><a class="halink" href="my_dibs.do">찜</a></li>
+							<li class="hli"><a class="halink" href="my_coupon.do">쿠폰함</a></li>
+							<li class="hli"><a class="halink" href="my_inquire.do">1:1문의내역</a></li>
 						</ul>
 					</div>
 				</div>

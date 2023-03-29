@@ -22,8 +22,23 @@ public class HomeController {
 	}
 	
 	@RequestMapping("login.do")
-	public ModelAndView logIn() {
+	public ModelAndView longin() {
 		return new ModelAndView("home/login");
+	}
+	
+	@RequestMapping("singup.do")
+	public ModelAndView singup() {
+		return new ModelAndView("home/singup");
+	}
+	
+	@RequestMapping("find.do")
+	public ModelAndView find() {
+		return new ModelAndView("home/find");
+	}
+	
+	@RequestMapping("consent.do")
+	public ModelAndView consent() {
+		return new ModelAndView("home/consent");
 	}
 	
 	@RequestMapping("my_info.do")
@@ -55,7 +70,7 @@ public class HomeController {
 	public ModelAndView myInquireView() {
 		return new ModelAndView("home/mypage/mypage_inquire_view");
 	}
-
+	
 	@RequestMapping("my_answer_view.do")
 	public ModelAndView myAnswerView() {
 		return new ModelAndView("home/mypage/mypage_answer_view");
@@ -95,8 +110,6 @@ public class HomeController {
 	public ModelAndView myCoupon() {
 		return new ModelAndView("home/mypage/mypage_coupon");
 	}
-	
-//	관리자 페이지
 	
 	@RequestMapping("admin_login.do")
 	public ModelAndView logInAdmin() {
@@ -197,4 +210,5 @@ public class HomeController {
 	public ModelAndView admCommComment() {
 		return new ModelAndView("admin/community/adm_comm_comment");
 	}
+
 }

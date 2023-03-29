@@ -572,7 +572,6 @@ function checkPhoneNum() {
 
             </div> 
             <!-- content-->
-
         </div> 
      <!--    <!-- wrapper -->
     <script src="main.js"></script> -->
