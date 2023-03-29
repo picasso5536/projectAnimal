@@ -9,7 +9,9 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 <style type="text/css">
-@import	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css);
+@import
+	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css)
+	;
 </style>
 <style type="text/css">
 body {
@@ -267,9 +269,9 @@ td:last-child {
 </head>
 <body>
 	<main>
-	<jsp:include page="my_navbar.jsp"></jsp:include>
+		<jsp:include page="my_navbar.jsp"></jsp:include>
 		<section id="sec1">
-		<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
+			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
 				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
 				id="page_sKate">포인트 관리</span>
 			<div class="border">
