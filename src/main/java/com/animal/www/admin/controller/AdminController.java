@@ -27,6 +27,11 @@ public class AdminController {
 		return new ModelAndView("admin/member/adm_mbr_admin");
 	}
 	
+	@RequestMapping("admin_mbr_message.do")
+	public ModelAndView admAdminMessage() {
+		return new ModelAndView("admin/member/adm_mbr_message");
+	}
+	
 	@RequestMapping("admin_mbr_point.do")
 	public ModelAndView admMemberPoint() {
 		return new ModelAndView("admin/member/adm_mbr_point");

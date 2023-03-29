@@ -9,7 +9,7 @@
 <body>
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
-		<section>adm_message</section>
+		<section>adm_admin</section>
 	</main>
 </body>
 </html>
