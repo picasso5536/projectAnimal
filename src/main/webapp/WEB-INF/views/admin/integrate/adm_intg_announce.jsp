@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 > 통합관리</title>
+<title>관리자 > 공지 관리</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 <style type="text/css">
@@ -598,6 +598,5 @@ div.modalContent button.modal_cancel {
 			}
 		});
 	</script>
-
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 > 약관 관리</title>
 <style type="text/css">
 body {
 	font-family: 'NanumSquareRound';
@@ -67,10 +67,11 @@ table td, table th {
 	font-family: 'NanumSquareRound';
 }
 
-thead th {
+tbody th {
 	background-color: #8db6d4; /* 헤더 배경색 */
 	color: #fff; /* 헤더 글자색 */
 	font-weight: bold;
+	width: 30%;
 }
 
 table td:first-child {
@@ -97,25 +98,20 @@ tbody tr:hover {
 					<table>
 						<tbody>
 							<tr>
-								<th>번호</th>
-								<td>4</td>
+								<th>이용약관</th>
+								<td>블라블라1</td>
 							</tr>
 							<tr>
-								<th>문의</th>
-								<td>커뮤니티</td>
+								<th>개인 정보의 수집 항목 및 수집 방법</th>
+								<td>블라블라2</td>
 							</tr>
 							<tr>
-								<th>문의 제목</th>
-								<td>분위기 저해 게시글에 대하여</td>
+								<th>개인 정보의 수집 목적 및 이용 목적</th>
+								<td>블라블라3</td>
 							</tr>
 							<tr>
-								<th>답변 일시</th>
-								<td>2022.03.13 18:49:32</td>
-							</tr>
-							<tr>
-								<th>답변 상태 및 내용</th>
-								<td>처리 완료 <br> 답변내용입니다.
-								</td>
+								<th>개인 정보의 보유 및 이용 기간</th>
+								<td>블라블라4</td>
 							</tr>
 						</tbody>
 					</table>
