@@ -21,6 +21,12 @@ public class AdminController {
 		return new ModelAndView("admin/member/adm_mbr_info");
 	}
 	
+	// 안먹어요
+	@RequestMapping("member_update.do")
+	public ModelAndView admMemberUpdate() {
+		return new ModelAndView("admin/member/adm_mbr_update");
+	}
+	
 	@RequestMapping("admin_mbr_admin.do")
 	public ModelAndView admAdminInfo() {
 		return new ModelAndView("admin/member/adm_mbr_admin");
