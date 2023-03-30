@@ -30,8 +30,11 @@
 			
 		<div class="navbar-collapse1" id="navbarSupportedContent">
 			<div class="search_fd">
-				<input id="s_fd" type="text" name="keyword" size="40" value="search">
-				<span class="main_login"></span>		
+				<form action="">
+					<input id="s_fd" type="text" name="keyword" size="40" placeholder="search">
+					<input type="button" name="search" value="검색" onclick="">	
+				</form>
+			<span class="main_login"></span>		
 			</div>
 			<div class="menu" id="hamberger">
 				<span class="top h-icon"></span> 

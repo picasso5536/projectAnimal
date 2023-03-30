@@ -62,7 +62,8 @@
 			  		<h1>전체</h1>
 			  	</div>
 		  		<form id="search_fd">
-					<input type="text" name="keyword" size="50" value="search">			
+					<input type="text" name="keyword" size="50" placeholder="search">			
+					<input type="button" name="search" value="검색" onclick="">			
 				</form>
 			  	<div class="pdt_list">
 			  		<div class="card">

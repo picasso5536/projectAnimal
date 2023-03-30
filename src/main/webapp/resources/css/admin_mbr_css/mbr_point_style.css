@@ -1,0 +1,239 @@
+@charset "UTF-8";
+body {
+	font-family: Arial, sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+main {
+	flex: 1;
+}
+
+	#crm_sub {
+		margin-left: 20px;
+		display: flex;
+	    flex-direction: row;
+	    padding-left: 40px;
+	}
+	
+	.mli {
+		text-align: center;
+		border-right: 1px solid #ccc;
+	}
+	
+	.mli:hover {
+		background-color:  #9fc4db;
+		color: #fff;
+		font-weight: 800;
+	}
+	
+	a {
+		display: inline-block;
+	    width: 138.08px;
+	    text-decoration: none;
+		color: #666;
+		padding: 20px;
+	}
+	a:hover {
+		color: #fff;
+	}
+	
+	
+	#last_il {
+		border-right: none;
+	}
+	
+	.search_text, .search_btns {
+		margin-right: 30px;
+		
+	}
+	.search_text input[type=text]{
+		height: 25px;
+		border: 1xp solid #666;
+	}
+	
+	.search_text input[type="date"] {
+		margin: 15px 15px 0px 15px;
+		width: 140px;
+	    height: 20px;
+	    padding: 5px;
+		border: 1xp solid #666;
+	}
+	
+	.search_btns {
+		display: flex;
+	    margin-top: 35px;
+	    margin-left: 245px;
+	}
+	
+	#search_btn {
+		font-family: 'NanumSquareRound';
+		font-size: 18px;
+		min-width: 100px;
+		height: 40px;
+		border: 1px solid #666;
+		border-radius: 6px;
+		background-color: #fff;
+		color: #666;
+		cursor: pointer;
+		margin: 0px 10px;
+		box-shadow: 2px 4px 7px -2px gray;
+		
+	}
+	
+	
+	 #reset_btn {
+		font-family: 'NanumSquareRound';
+		font-size: 18px;
+		min-width: 100px;
+		height: 40px;
+		border: 1px solid #666;
+		border-radius: 6px;
+		background-color: #fff;
+		color: #666;
+		cursor: pointer;
+		margin: 0px 10px;
+		box-shadow: 2px 4px 7px -2px gray;
+	}
+	
+	#search_btn:hover {
+		background-color: #ebebeb;
+		color: #555;
+		font-weight: 800;
+	}
+	
+	 #reset_btn:hover {
+		background-color: #ebebeb;
+		color: #555;
+		font-weight: 800;
+	 }
+
+	.search_mbr {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	margin-bottom: 20px;
+	margin-left: 230px;
+	margin-top: 15px;
+	height: auto;
+	min-height: 100%;
+	max-height: 580px;
+	padding-top: 50px;
+	padding-bottom: 35px;
+	overflow: hidden;
+}
+
+.member_list {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	margin-bottom: 20px;
+	margin-left: 230px;
+	margin-top: 15px;
+	height: auto;
+	min-height: 100%;
+	max-height: 580px;
+	padding-bottom: 80px;
+	overflow: overlay;
+}
+
+#mem_sec {
+	margin-right: 60px;
+	margin-left: 30px;
+	max-width: 1500px;
+	min-width: 1300px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 0 auto;
+	min-width: 1100px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+	margin-top: 100px;
+}
+
+table td, table th {
+	padding: 10px;
+	text-align: center;
+	border: 0;
+	border-bottom: 1px solid #DEE2E6;
+	font-family: 'NanumSquareRound';
+}
+
+thead th {
+	background-color: #8db6d4; /* 헤더 배경색 */
+	color: #fff; /* 헤더 글자색 */
+	font-weight: bold;
+	padding-left: 40px;
+    padding-right: 40px;
+}
+
+table td:first-child {
+	font-size: 14px;
+	color: #666;
+	width: 10%;
+}
+
+/* tbody tr 마우스 오버시 배경색 변경 */
+tbody tr:hover {
+	/* background-color: #f5f5f5; */
+	font-weight: 800;
+}
+
+td {
+	text-align: center;
+}
+
+#mem_link {
+	cursor: pointer;
+}
+
+.processing {
+	color: red;
+}
+
+ tr .more_btn,  tr .pay_btn {
+	width: 85px;
+	height: 30px;
+	border: 1px solid #fff;
+	border-radius: 6px;
+	background-color: #8db6d4;
+	box-shadow: 2px 4px 7px -2px gray;
+	font-family: 'NanumSquareRound';
+	font-size: 14px;
+	color: white;
+	cursor: pointer;
+}
+
+tr .more_btn:hover {
+		background-color: #679ec7;
+}
+
+tr .pay_btn:hover {
+		background-color: #679ec7;
+}
+
+input[type="number"] {
+    width: 120px;
+}
