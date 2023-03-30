@@ -35,11 +35,12 @@ opacity: 1}
 font-size: 11px}
 }
    /* 모달페이지) */
-   .check-icon {
+  .check-icon {
   width: 16px;
   height: 8px;
   border: 2px solid red;
   margin-bottom: 4px;
+  position: fixed;
 }
 .check-icon--apply-origin {
   border: 2px solid red;
@@ -47,6 +48,7 @@ font-size: 11px}
   border-right: 0;
   transform: rotate(-45deg);
   transform-origin: 25% 25%;
+  
 }
 
 </style>
@@ -162,6 +164,8 @@ function admin_main() {
   $('#myModal').show();
   setTimeout(function() { $('#myModal').hide();}, 100000);//1000=1초..해당 시간이 지나면 자동으로 닫힘. 요 부분을 빼면 계속 떠있음.
   });
+	
+	
   //팝업 Close 기능
   function close_pop(flag) {
   $('#myModal').hide();
@@ -169,8 +173,9 @@ function admin_main() {
 
 </script>
 <body  style="overflow-x: hidden">
-<div id="myModal" class="modal" >
+
 <!-- 모달창  -->
+<div id="myModal" class="modal" >
 <div class="modal-content" style="background-image: url('resources/img/karina_01.jpg');">
 <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">이벤트</span></b></span></p>
 <!-- 안에 들어갈 내용  사진파일 700 - 890 -->
@@ -186,9 +191,9 @@ function admin_main() {
 &ensp;&ensp;&ensp;&ensp;
 <span  style="font-size: 14pt; font-weight:bold; cursor:pointer;">닫기</span> 
 </div>
-
 </div>
 <!-- 모달은 여기까지 -->
+
  <header>
 		<div id="header">
 			<div class="header_inner">
@@ -235,13 +240,13 @@ function admin_main() {
 	<!-- 이미지스크린 -->
      <div id="visual">     
              <div class="on"><a class="on1 active" href="#">
-             <img src="resources/img/maa.jpg" alt="1" width="2550px" height="950px">
+             <img src="resources/img/maa.jpg" alt="1" width="2600px" height="1100px">
              </a></div>
              <div><a class="on1" href="#">
-             <img src="resources/img/moo.jpg" alt="2" width="2550px" height="950px">
+             <img src="resources/img/moo.jpg" alt="2" width="2600px" height="1100px">
              </a></div>
              <div><a class="on1" href="#">
-             <img src="resources/img/soo.jpg" alt="3" width="2550px" height="950px">
+             <img src="resources/img/soo.jpg" alt="3" width="2600px" height="1100px">
              </a></div>
              
         <section id="control">
@@ -354,7 +359,36 @@ function admin_main() {
 	</main>
 	<!-- 여기부터 푸터 -->
 	<footer>
-		<jsp:include page="../footer.jsp"/>
+		<div class="footer-container">
+			<div class="footer-column">
+				<h3>내옆펫</h3>
+				<ul>
+					<li><a href="#">e-mail : master@nexttopet.com</a></li>
+					<li><a href="#">fax : 02-xxxx-xxxx</a></li>
+					<li><a href="#">project_member : 김회철 모상인 문현지</a></li>
+					<li><a href="#">address : 서울시 마포구 백범로 23, 3층</a></li>
+				</ul>
+			</div>
+			<div class="footer-column">
+				<h3>규정</h3>
+				<ul>
+					<li><a href="#">개인정보 처리 방침</a></li>
+					<li><a href="#">이용약관</a></li>
+					<li><a href="#">Digital Marketing</a></li>
+				</ul>
+			</div>
+			<div class="footer-column">
+				<h3>소셜</h3>
+				<ul class="social-media-icons">
+					<li><a href="https://www.instagram.com/mosi_n17/">인스타<i class="fab fa-facebook-f"></i></a></li>
+					<li><a href="https://www.facebook.com/profile.php?id=100089533267077">페이스북<i class="fab fa-twitter"></i></a></li>
+					<li><a href="https://www.youtube.com/channel/UClMcwyqQFHjkackxovU59ng">트위터<i class="fab fa-instagram"></i></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="bottom-bar">
+			<p>&copy; 2023 Company 내옆펫. All rights reserved.</p>
+		</div>
 	</footer>
 	</body>
 </html>

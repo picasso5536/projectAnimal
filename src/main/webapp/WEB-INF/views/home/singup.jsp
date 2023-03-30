@@ -264,8 +264,6 @@ mobile.addEventListener("focusout", checkPhoneNum);
 
 
 
-
-
 /*콜백 함수*/
 
 
@@ -363,7 +361,6 @@ function isBirthCompleted() {
         }
     }
 }
-
 
 
 function isBirthRight() {

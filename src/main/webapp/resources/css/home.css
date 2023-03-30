@@ -819,7 +819,7 @@ footer {
 		color: #fff;
 		font-size: 12px;
 		text-align: center;
-		padding: 10px;
+		padding: 50px;
 	}
 /* 메인배너 */	
 #visual {
@@ -863,7 +863,6 @@ footer {
 #control .on1 .on {
   background: #9ab3f5;
 }	
-	
 
 .c2 {	
 /* list-style: none; */
