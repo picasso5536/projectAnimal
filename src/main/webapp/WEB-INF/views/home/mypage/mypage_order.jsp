@@ -364,23 +364,14 @@ div.modalContent button.modal_cancel {
 #info_ann{
 	cursor: pointer;
 }
+
+a{
+	text-decoration: none;
+	color: #000;
+}
 </style>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).on(
-			"click",
-			"#info_ann",
-			function() {
-				//$(".replyModal").attr("style", "display:block;");
-				$(".replyModal").fadeIn(200);
-				var repNum = $(this).attr("data-repNum");
-				var repCon = $(this).parent().parent()
-						.children(".replyContent").text();
-				$(".modal_repCon").val(repCon);
-				$(".modal_modify_btn").attr("data-repNum", repNum);
-			});
-</script>
 </head>
 <body>
 	<main>
@@ -498,63 +489,21 @@ div.modalContent button.modal_cancel {
 						<tbody>
 							<tr>
 								<td>1</td>
-								<td>상품.png</td>
-								<td>개 밥그릇</td>
+								<td class="order_pdt">상품.png</td>
+								<td class="order_pdt">개 밥그릇</td>
 								<td>2023.03.28</td>
-								<td>20230328235732302</td>
+								<td id="order_no"><a href="my_order_detail.do">20230328235732302</a></td>
 								<td>59,000<br>1개</td>
-								<td>구매 확정</td>
+								<td>구매 확정&nbsp;&nbsp;&nbsp;&nbsp;<button type="button">리뷰작성</button></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<button type="button" id="regist_btn" onclick="location.href='admin_intg_announce_regist.do'">등록</button>
 			</div>
 		</section>
 	</main>
-	<div class="replyModal">
-		<div class="modalContent">
-			<div>
-				<textarea class="modal_repCon" name="modal_repCon"></textarea>
-			</div>
-			<div>
-				<button type="button" class="modal_regist_btn">등록</button>
-				<button type="button" class="modal_cancel">취소</button>
-			</div>
-		</div>
-		<div class="modalBackground"></div>
-	</div>
-	<script>
-		$(".modal_cancel").click(function() {
-			$(".replyModal").attr("style", "display:none;");
-		});
-
-		$(".modal_regist_btn").click(function() {
-			var modifyConfirm = confirm("등록하시겠습니까?");
-			if (modifyConfirm) {
-				var data = {
-					repNum : $(this).attr("data-repNum"),
-					repCon : $(".modal_repCon").val()
-				}; // ReplyVO 형태로 데이터 생성
-				$.ajax({
-					url : "",
-					type : "post",
-					data : data,
-					success : function(result) {
-
-						if (result == 1) {
-							replyList();
-							$(".replyModal").fadeOut(200);
-						} else {
-							alert("오류입니다.");
-						}
-					},
-					error : function() {
-						alert("등록 에러")
-					}
-				});
-			}
-		});
-	</script>
+	<footer>
+		<jsp:include page="../../footer.jsp"/>
+	</footer>
 </body>
 </html>

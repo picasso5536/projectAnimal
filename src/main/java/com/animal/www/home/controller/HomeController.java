@@ -51,6 +51,11 @@ public class HomeController {
 		return new ModelAndView("home/mypage/mypage_order");
 	}
 	
+	@RequestMapping("my_order_detail.do")
+	public ModelAndView myOrderDetail() {
+		return new ModelAndView("home/mypage/mypage_order_detail");
+	}
+	
 	@RequestMapping("my_inquire.do")
 	public ModelAndView myInquire() {
 		return new ModelAndView("home/mypage/mypage_inquire");
