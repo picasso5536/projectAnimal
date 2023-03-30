@@ -29,7 +29,6 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
   border: 1px solid black;
   border-width: medium;
 }
-
 .div_1{
   margin-left:25px;
   width : 850px;
@@ -42,27 +41,23 @@ font-size: 25px;
 color: gray;
 font-weight: bold;
 }
-
 .input_1 {
 	margin-left:-5px;
 	width:200px;
 	height:20px;
 }
-
 .input_2 {
 	margin-top:10px;
 	margin-left:21px;
 	width:315px;
 	height:20px;
 }
-
 .input_3 {
 	margin-bottom:8px;
 	margin-left:52px;
 	width:315px;
 	height:20px;
 }
-
 button {
   background-color: #B2B2B2;
   color: white;
@@ -72,7 +67,7 @@ button {
   margin-left: 7px;
 }
 .button_01{
- position:fixed;
+ position:absolute;
  background-color: red;
  color: white;
  width: 100px;
@@ -80,7 +75,7 @@ button {
 }
 .out{ 
  margin-top:5px;
- margin-left:1625px;
+ margin-left:1615px;
  background-color: red;
  color: white;
  width: 100px;
@@ -104,9 +99,7 @@ function out() {
 		<div class="div_1">
 		 <p style="margin-left: 10px; margin-top: 30px; margin-bottom: 30px; font-weight: normal;">가입시 등록한 이메일로 인증번호를 받아 입력해주세요. <em style="color: red;">회원님의 이메일로 아이디가 발송됩니다.</em></p>
 		 <hr style="border-width:1px 0 0 0; border-color:#fff;">
-		 
 		  <div style="margin-top: 60px; margin-left: 90px;">
-		  
 		  <p style="font-weight: bold; display:inline; "> 이메일 주소 &nbsp; &nbsp; &nbsp; &nbsp;</p>
 		  <input class="input_1" type="text" placeholder="예)sanswer@naver.com">
 		  <button type="submit" onclick="alert('인증문자가 발송 되었습니다.')" >인증번호 받기</button>
@@ -139,6 +132,7 @@ function out() {
 		</div>
 	</div>
 	<button type="button" class="out" onclick="out()">나가기</button>
+	<br><br><br><br>
 </body>
 </html>
 

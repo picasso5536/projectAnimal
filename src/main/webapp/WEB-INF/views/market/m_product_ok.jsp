@@ -131,6 +131,7 @@ width : 390px;
 	<main>
 	<h2>주문/결제</h2>
 	<div class="div">
+		<form>
 		<p style="font-size: 20px; margin-left: -910px; margin-top: 20px;">구매자 정보</p>
 		<div class="div_1" >
 			<div>
@@ -227,6 +228,7 @@ width : 390px;
 		 	 <input style="margin-left: 10px; margin-top: 15px;" type="text">
 			</div><br>
 			<button style="border-radius: 30px; width: 400px; height: 70px; margin-left: 320px; background-color:#EB455F; font-size:20px; color:white; font-weight: bold;">결제하기</button>
+		</form>
 	</div>
 	</main>
 </body>

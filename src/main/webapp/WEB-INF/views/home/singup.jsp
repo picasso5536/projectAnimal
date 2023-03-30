@@ -117,7 +117,10 @@ input {
     border-color: #fff;
    border-color: #fff;
 }
-
+.step_url::hover{
+	color: red;
+	background-color: red;
+}
 .pswdImg {
     width: 18px;
     height: 20px;
@@ -167,6 +170,7 @@ select {
     border: none;
     cursor: default;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
+   
 }
 
 /* 에러메세지 */
@@ -186,13 +190,10 @@ select {
     color: red;
     display: none;
 }
-
 /* 버튼 */
-
 .btn_area {
     margin: 30px 0 91px;
 }
-
 #btnJoin {
 	float:right;
 	margin:5px;
@@ -207,7 +208,10 @@ select {
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 </style>
-<script type="text/javascript">
+<script>
+
+/*변수 선언*/
+
 
 /*변수 선언*/
 
@@ -254,7 +258,7 @@ gender.addEventListener("focusout", function() {
     } else {
         error[5].style.display = "none";
     }
-});
+})
 email.addEventListener("focusout", isEmailCorrect);
 mobile.addEventListener("focusout", checkPhoneNum);
 
@@ -278,7 +282,7 @@ function checkId() {
         error[0].style.color = "#08A600";
         error[0].style.display = "block";
     }
-};
+}
 
 function checkPw() {
     var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;
@@ -300,7 +304,7 @@ function checkPw() {
         pwMsg.style.color = "#03c75a";
         pwImg1.src = "m_icon_safe.png";
     }
-};
+}
 
 function comparePw() {
     if(pw2.value === pw1.value && pw2.value != "") {
@@ -316,7 +320,7 @@ function comparePw() {
         error[2].innerHTML = "필수 정보입니다.";
         error[2].style.display = "block";
     }
-};
+}
 
 function checkName() {
     var namePattern = /[a-zA-Z가-힣]/;
@@ -329,7 +333,7 @@ function checkName() {
     } else {
         error[3].style.display = "none";
     }
-};
+}
 
 
 function isBirthCompleted() {
@@ -358,7 +362,7 @@ function isBirthCompleted() {
             isBirthRight();
         }
     }
-};
+}
 
 
 
@@ -369,7 +373,7 @@ function isBirthRight() {
     } else {
         checkAge();
     }
-};
+}
 
 function checkAge() {
     if(Number(yy.value) < 1920) {
@@ -384,7 +388,7 @@ function checkAge() {
     } else {
         error[4].style.display = "none";
     }
-};
+}
 
 
 function isEmailCorrect() {
@@ -398,7 +402,7 @@ function isEmailCorrect() {
         error[6].style.display = "none"; 
     }
 
-};
+}
 
 function checkPhoneNum() {
     var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
@@ -413,7 +417,7 @@ function checkPhoneNum() {
         error[7].style.display = "none";
     }
     
-};
+}
 </script>
 </head>
 <body>
@@ -577,3 +581,6 @@ function checkPhoneNum() {
     <script src="main.js"></script> -->
     </body>
 </html>
+
+
+

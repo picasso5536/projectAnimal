@@ -124,6 +124,7 @@ ul ul {
 				<li><a href="admin_mbr_info.do">고객 정보 관리</a></li>
 				<li><a href="admin_mbr_admin.do">관리자 계정 관리</a></li>
 				<li><a href="admin_mbr_point.do">포인트 관리</a></li>
+				<li><a href="admin_mbr_message.do">메시지 관리</a></li>
 			</ul>
 			<br>
 			<li class="large"><img

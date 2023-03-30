@@ -5,7 +5,6 @@ html {
 body {
     min-height: 100%;
 }
-
 *{
 padding:0;
 margin:0; 
@@ -13,7 +12,6 @@ box-sizing:border-box;
   font-family: 'Lato', sans-serif;
   font-family: 'Oswald', sans-serif;
 }
-
 /* 메뉴 */
 #header {
 position:fixed; 
@@ -21,12 +19,12 @@ width:2700px;
 min-width:1300px; 
 height:70px; 
 background:transparent; 
-color:#A4907C;
+ color:#E5E0FF;
 z-index:999;
 }
 
 #header:hover {
-background:#A4907C !important;
+background:#E5E0FF !important;
   z-index:9999;
 }
 #header .header_inner {

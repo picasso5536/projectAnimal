@@ -19,6 +19,8 @@ body{
  margin : auto;
 }
 table {
+/*   margin-left:5px;
+  margin-right:5px; */
   border-collapse: collapse;
   width: 100%;
   font-family: Arial, sans-serif;
@@ -37,9 +39,10 @@ th  {
 </style>
 </head>
 <body>
+<form action="">
 <img class="img" src="resources/img/petpet.png">
 <br><br>
- <table align = "center" >
+ <table align="center" >
   <tr>
     <th>번호</th>
     <th>상태</th>
@@ -62,5 +65,6 @@ th  {
     <td><button onclick="alert('쿠폰을 사용하시겠습니까?')">사용하기</button></td>
   </tr>
 </table>
+</form>
 </body>
 </html>

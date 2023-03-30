@@ -12,7 +12,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh; /* 화면 전체 높이를 최소 높이로 지정 */
-	background-image: url("resources/img/login_back.png");
+	background-image: url("resources/img/home/login_img.jpg");
 	background-size: cover; /* 화면에 꽉 차게 사진을 늘려줍니다 */
 	background-position: center center; /* 사진을 중앙에 위치시킵니다 */
 	background-repeat: no-repeat;
@@ -162,6 +162,7 @@ function consent() {
 function find() {
 	location.href="find.do";
 }
+
 function home(f) {
     var result = confirm("로그인 하시겠습니까?");
     if(result){

@@ -14,7 +14,6 @@
 <script
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
-<!-- 구글CDN -->
 <script src="${path}/resources/js/home.js?after"></script>
 <link href="${path}/resources/css/home.css?after" rel="stylesheet" />
 <style type="text/css">
@@ -26,8 +25,7 @@ opacity: 1
 }
 }
 @keyframes fade {
-from {opacity: .4
-}
+from {opacity: .4}
 to {
 opacity: 1}
 }
@@ -104,6 +102,14 @@ function login() {
 	}else {
 	}
 }
+
+function admin_main() {
+	var result = confirm("관리자창으로 이동 하시겠습니까?");
+	if(result){
+		location.href="admin_main.do";
+	}else {
+	}
+}
 /* 연습 */	
 	
 	
@@ -176,8 +182,6 @@ function login() {
 <br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br>
 <div style=" background-color:rgba(0,0,0,0); padding-left:450px;   padding-top: 5px;" onClick="close_pop();">
-<!-- <span  style="font-size: 14pt; font-weight:bold; cursor:pointer;"><p class="check-icon check-icon--apply-origin" style="float:left; "></p>하루동안안보기</span> --> 
-<!-- <input type="checkbox" name="checkbox" value="하루동안 안보기"> -->
 &ensp;&ensp;&ensp;&ensp;
 <span  style="font-size: 14pt; font-weight:bold; cursor:pointer;">닫기</span> 
 </div>
@@ -205,6 +209,9 @@ function login() {
 						</li>
 						<li>
 							<div class="navMenu" onclick="login()">로그인</div>
+						</li>
+						<li>
+							<div class="navMenu" onclick="admin_main()">관리자페이지</div>
 						</li>
 					</ul>
 <!-- 					<div class="navMenu"></div> -->
@@ -322,7 +329,7 @@ function login() {
 		  </div>
 		  <button type="button" onclick="#" class="w-btn-outline w-btn-indigo-outline" 
 		   style="margin-top: 340px; margin-left: 220px;">
-		  Move</button>
+		  이동</button>
 		  </div>
 		</div>
 		 </div>

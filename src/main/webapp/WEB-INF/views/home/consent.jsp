@@ -96,7 +96,7 @@ function singup_01() {
 </script>
 </head>
 <body>
-	<br><br><br><br><br><br>
+	<br>
 	<form action="" id="joinForm">
 		<ul class="join_box">
 			<br><br>
@@ -155,6 +155,7 @@ function singup_01() {
 			<li><button class="fpmgBt1">취소</button></li>
 			<li><button type="button" onclick="singup_01()" class="fpmgBt2" >다음</button></li>
 		</ul>
+		<br><br><br><br>
 	</form>
 </body>
 </html>
