@@ -128,7 +128,7 @@ ul ul {
 			</ul>
 			<br>
 			<li class="large"><img
-				src="resources/img/home/my_market_img.png"><a href="#">통합
+				src="resources/img/home/my_memorial_img.png"><a href="#">통합
 					관리</a></li>
 			<ul>
 				<li><a href="admin_intg_terms.do">약관 관리</a></li>

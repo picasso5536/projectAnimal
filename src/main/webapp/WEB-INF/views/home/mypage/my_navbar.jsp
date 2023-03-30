@@ -126,8 +126,7 @@ ul ul {
 			href="#">마켓</a></li>
 		<ul>
 			<li><a href="my_cartlist.do">장바구니</a></li>
-			<li><a href="#">주문/배송/픽업조회</a></li>
-			<li><a href="#">취소/교환/환불내역</a></li>
+			<li><a href="my_orderlist.do">주문 내역</a></li>
 			<li><a href="my_shipping_address.do">배송지 관리</a></li>
 			<li><a href="my_dibs.do">찜</a></li>
 			<li><a href="my_coupon.do">쿠폰함</a></li>

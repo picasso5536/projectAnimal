@@ -46,6 +46,11 @@ public class HomeController {
 		return new ModelAndView("home/mypage/mypage_banned");
 	}
 	
+	@RequestMapping("my_orderlist.do")
+	public ModelAndView myOrderList() {
+		return new ModelAndView("home/mypage/mypage_order");
+	}
+	
 	@RequestMapping("my_inquire.do")
 	public ModelAndView myInquire() {
 		return new ModelAndView("home/mypage/mypage_inquire");
