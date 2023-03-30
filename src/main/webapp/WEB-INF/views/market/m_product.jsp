@@ -80,16 +80,18 @@
 			function change () {
 			    hm = document.form.amount;
 			    sum = document.form.sum;
-		
 			        if (hm.value < 0) {
 			            hm.value = 0;
 			        }
 			    sum.value = parseInt(hm.value) * sale_price;
 			} 
-			
+	
 			function m_product_ok() {
-				var result = confirm("주문/결제 창으로 이동하시겠습니까");
-				location.href="test.do";
+			    var result = confirm("회원가입창으로 이동 하시겠습니까?");
+			    if(result){
+			    location.href="test.do";
+			    }else {
+			    }
 			}
 </script>
 </head>

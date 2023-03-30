@@ -364,13 +364,6 @@ input[type="checkbox"]{
 }
 
 /*이미지 슬라이드*/
-
-
-
-
-
-
-
  
 
 .wrap{
@@ -380,7 +373,7 @@ input[type="checkbox"]{
 
  div.left {
   padding-top:10px;
-  padding-right:220px;
+  padding-right:300px;
   width: 1200px;
   float: left;
   box-sizing: border-box;
@@ -819,17 +812,17 @@ footer {
 		color: #fff;
 		font-size: 12px;
 		text-align: center;
-		padding: 50px;
+		padding: 40px;
 	}
 /* 메인배너 */	
 #visual {
+  padding-top:15px;
   position: relative;
   width: 2540px;
   height: 950px;
   margin: 0 auto;
   overflow: hidden;           
   box-shadow: 1px 5px 10px 2px #666;
-
 }      
 #visual>div {
   position: absolute;
@@ -863,6 +856,7 @@ footer {
 #control .on1 .on {
   background: #9ab3f5;
 }	
+	
 
 .c2 {	
 /* list-style: none; */
@@ -870,5 +864,3 @@ width: 300px;
 margin-left: auto;
 margin-right: auto;
 }
-	
-	

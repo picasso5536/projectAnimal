@@ -35,12 +35,11 @@ opacity: 1}
 font-size: 11px}
 }
    /* 모달페이지) */
-  .check-icon {
+   .check-icon {
   width: 16px;
   height: 8px;
   border: 2px solid red;
   margin-bottom: 4px;
-  position: fixed;
 }
 .check-icon--apply-origin {
   border: 2px solid red;
@@ -48,12 +47,9 @@ font-size: 11px}
   border-right: 0;
   transform: rotate(-45deg);
   transform-origin: 25% 25%;
-  
 }
-
 </style>
 <script type="text/javascript">
-
 /* 네비게이션바 */
 $(document).ready(function(){
 	$('#Market').click(function(){
@@ -96,7 +92,6 @@ function info() {
 	}else {
 	}
 }
-
 /* 로그인창으로 이동 */
 function login() {
 	var result = confirm("로그인창으로 이동 하시겠습니까?");
@@ -105,7 +100,6 @@ function login() {
 	}else {
 	}
 }
-
 function admin_main() {
 	var result = confirm("관리자창으로 이동 하시겠습니까?");
 	if(result){
@@ -126,7 +120,6 @@ function admin_main() {
 				$('#header').removeClass('sticky');
 			}
 		});
-
 		$('nav ul li').mouseover(function() {
 			$('.navMenu.over').removeClass('over');
 			$(this).children(":first").addClass('over');
@@ -164,18 +157,14 @@ function admin_main() {
   $('#myModal').show();
   setTimeout(function() { $('#myModal').hide();}, 100000);//1000=1초..해당 시간이 지나면 자동으로 닫힘. 요 부분을 빼면 계속 떠있음.
   });
-	
-	
   //팝업 Close 기능
   function close_pop(flag) {
   $('#myModal').hide();
   };
-
 </script>
 <body  style="overflow-x: hidden">
-
-<!-- 모달창  -->
 <div id="myModal" class="modal" >
+<!-- 모달창  -->
 <div class="modal-content" style="background-image: url('resources/img/karina_01.jpg');">
 <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">이벤트</span></b></span></p>
 <!-- 안에 들어갈 내용  사진파일 700 - 890 -->
@@ -191,9 +180,9 @@ function admin_main() {
 &ensp;&ensp;&ensp;&ensp;
 <span  style="font-size: 14pt; font-weight:bold; cursor:pointer;">닫기</span> 
 </div>
+
 </div>
 <!-- 모달은 여기까지 -->
-
  <header>
 		<div id="header">
 			<div class="header_inner">
@@ -240,13 +229,13 @@ function admin_main() {
 	<!-- 이미지스크린 -->
      <div id="visual">     
              <div class="on"><a class="on1 active" href="#">
-             <img src="resources/img/maa.jpg" alt="1" width="2600px" height="1100px">
+             <img src="resources/img/maa.jpg" alt="1" width="2550px" height="950px">
              </a></div>
              <div><a class="on1" href="#">
-             <img src="resources/img/moo.jpg" alt="2" width="2600px" height="1100px">
+             <img src="resources/img/moo.jpg" alt="2" width="2550px" height="950px">
              </a></div>
              <div><a class="on1" href="#">
-             <img src="resources/img/soo.jpg" alt="3" width="2600px" height="1100px">
+             <img src="resources/img/soo.jpg" alt="3" width="2550px" height="950px">
              </a></div>
              
         <section id="control">
@@ -351,6 +340,7 @@ function admin_main() {
 		  </div>
 		</div>
 		<!-- 여기까지가 배너  -->
+		<br><br><br><br><br><br><br><br><br><br><br><br>
 		<br><br><br><br><br><br><br><br><br><br><br><br>
 		<br><br><br><br><br><br><br><br><br><br><br><br>
 		<!-- 로고같은 이미지?  -->

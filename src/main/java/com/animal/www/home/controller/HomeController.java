@@ -16,9 +16,34 @@ public class HomeController {
 		this.homeService = homeService;
 	}
 	
+	@RequestMapping("inquire.do")
+	public ModelAndView inquire() {
+	return new ModelAndView("home/inquire");
+	}
+	
+	@RequestMapping("event.do")
+	public ModelAndView event() {
+	return new ModelAndView("home/event");
+	}
+	
+	@RequestMapping("note.do")
+	public ModelAndView note() {
+	return new ModelAndView("home/note");
+	}
+	
+	@RequestMapping("path.do")
+	public ModelAndView path() {
+	return new ModelAndView("home/path");
+	}
+	
+	@RequestMapping("about_us.do")
+	public ModelAndView about_us() {
+	return new ModelAndView("home/about_us");
+	}
+	
 	@RequestMapping("home.do")
 	public ModelAndView home() {
-		return new ModelAndView("home/home");
+	return new ModelAndView("home/home");
 	}
 	
 	@RequestMapping("login.do")
