@@ -95,4 +95,9 @@ public class HomeController {
 	public ModelAndView myCoupon() {
 		return new ModelAndView("home/mypage/mypage_coupon");
 	}
+	
+	@RequestMapping("my_review.do")
+	public ModelAndView myReview() {
+		return new ModelAndView("home/mypage/mypage_review");
+	}
 }
