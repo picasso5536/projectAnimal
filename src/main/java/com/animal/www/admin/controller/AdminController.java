@@ -42,6 +42,11 @@ public class AdminController {
 		return new ModelAndView("admin/integrate/adm_intg_announce");
 	}
 	
+	@RequestMapping("admin_intg_announce_regist.do")
+	public ModelAndView admIntgAnnounRegist() {
+		return new ModelAndView("admin/integrate/adm_intg_announce_regist");
+	}
+	
 	@RequestMapping("admin_intg_banner.do")
 	public ModelAndView admIntgBanner() {
 		return new ModelAndView("admin/integrate/adm_intg_banner");

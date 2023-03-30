@@ -360,31 +360,17 @@ div.modalContent button:hover {
 div.modalContent button.modal_cancel {
 	margin-left: 20px;
 }
+
+#info_ann{
+	cursor: pointer;
+}
 </style>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('tbody tr').each(function() {
-			var value = $(this).find('td:nth-child(2)').text();
-			if (value.includes('-')) {
-				$(this).find('td:nth-child(2)').css('color', 'red');
-			} else {
-				$(this).find('td:nth-child(2)').css('color', 'green');
-			}
-		});
-
-		let chargeAmount = 0;
-		$(".add_b").click(function() {
-			let amount = parseInt($(this).attr("id").substr(4));
-			chargeAmount += amount;
-			$("#charge-amount").val(chargeAmount.toLocaleString('en-US'));
-		});
-	});
-
 	$(document).on(
 			"click",
-			"#regist_btn",
+			"#info_ann",
 			function() {
 				//$(".replyModal").attr("style", "display:block;");
 				$(".replyModal").fadeIn(200);
@@ -540,7 +526,7 @@ div.modalContent button.modal_cancel {
 								<td>1</td>
 								<td>마켓</td>
 								<td>2023.03.28</td>
-								<td>공지입니다.</td>
+								<td id="info_ann">공지입니다.</td>
 								<td>admin14</td>
 								<td>523</td>
 								<td>이벤트</td>
@@ -550,7 +536,7 @@ div.modalContent button.modal_cancel {
 						</tbody>
 					</table>
 				</div>
-				<button type="button" id="regist_btn">등록</button>
+				<button type="button" id="regist_btn" onclick="location.href='admin_intg_announce_regist.do'">등록</button>
 			</div>
 		</section>
 	</main>

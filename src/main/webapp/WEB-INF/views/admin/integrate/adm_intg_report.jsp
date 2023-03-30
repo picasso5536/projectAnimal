@@ -342,24 +342,6 @@ div.modalContent button.modal_cancel {
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('tbody tr').each(function() {
-			var value = $(this).find('td:nth-child(2)').text();
-			if (value.includes('-')) {
-				$(this).find('td:nth-child(2)').css('color', 'red');
-			} else {
-				$(this).find('td:nth-child(2)').css('color', 'green');
-			}
-		});
-
-		let chargeAmount = 0;
-		$(".add_b").click(function() {
-			let amount = parseInt($(this).attr("id").substr(4));
-			chargeAmount += amount;
-			$("#charge-amount").val(chargeAmount.toLocaleString('en-US'));
-		});
-	});
-
 	$(document).on(
 			"click",
 			"#info_rep",
