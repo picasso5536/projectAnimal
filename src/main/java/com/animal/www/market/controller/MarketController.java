@@ -20,4 +20,24 @@ public class MarketController {
 	public ModelAndView marketHome() {
 		return new ModelAndView("market/m_home_main");
 	}
+	
+	@RequestMapping("m_pdt_list.do")
+	public ModelAndView marketProductList() {
+		return new ModelAndView("market/m_category");
+	}
+	
+	@RequestMapping("m_select_product.do")
+	public ModelAndView marketselectPDT() {
+		return new ModelAndView("market/m_product");
+	}
+	
+	@RequestMapping("test.do")
+	public ModelAndView m_product_ok() {
+		return new ModelAndView("market/m_product_ok");
+	}
+
+	@RequestMapping("coupon.do")
+	public ModelAndView coupon() {
+		return new ModelAndView("market/m_coupon");
+	}
 }

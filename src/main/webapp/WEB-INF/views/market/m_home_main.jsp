@@ -5,148 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-
-@font-face {
-	font-family: 'NanumSquareRound';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-/* css파일 만들기 */
-	/* banner */
-	.contents{
-		width: auto; 
-		height: 900px; 
-		border: 1px solid black;
-	}
-	.banner {
-		/* position: relative; */
-		width: auto; 
-		height: 900px; 
-		top: 50px;  
-		margin:0 auto; 
-		padding:0; 
-		overflow: hidden;
-	}
-	
-	.banner #banner_list {
-	/* position: absolute; */ 
-	margin: 0px; 
-	padding:0; 
-	list-style: none; 
-	}
-	.banner #banner_list li {
-	float: left; 
-	width: auto; 
-	height: 900px; 
-	margin:0; 
-	padding:0;
-	}
-	
-	/* 강아지 고양이 버튼 */
-	
-	.type_div {
-		clear:left;
-		/* 보더 사이즈 물어보기 */
-		width: 205px;
-		height: auto;
-		border: 2px solid #666666;
-		margin: 20px auto;
-		text-align: center;
-		padding: 3px;
-		border-radius: 1em;
-		
-		
-	}
-	.type_btn {
-		font-family: 'NanumSquareRound';
-		clear:left;
-		color: #ffffff;
-		background-color: #8F90A4;
-		font-size: 24px;
-		font-weight: 800px;
-		border-radius:0.5em;
-		padding:5px 15px;
-		border: 1px solid #666666;
-	}
-	
-	/* 하단 카테고리 탭 */
-	html,body {
-		width:100%;
-	}
-	body,div,ul,li {
-		margin:0; 
-		padding:0;
-	}
-	ul,li {
-		list-style: none;
-	}
-	
-	/*tab css*/
-	.tab {
-		float:left; 
-		width:100%; 
-		height:290px;
-		margin: 0 auto;
-	}
-	.tabnav {
-		font-size:0; 
-		width:100%; 
-		border:1px solid #ddd;
-	}
-	.tabnav li{
-		display: inline-block; 
-		width:19.94%;  
-		height:46px; 
-		text-align:center; 
-		border-right:1px solid #ddd;
-	}
-	.tabnav li a:before{
-		content:""; 
-		position:absolute; 
-		left:0; 
-		top:0px; 
-		width:100%; 
-		height:3px; 
-	}
-	.tabnav li a.active:before{
-		background:#8F90A4;
-	}
-	.tabnav li a.active {
-		border-bottom:1px solid #fff;
-	}
-	.tabnav li a {
-		position:relative; 
-		display:block; 
-		background: #fff; 
-		color: #8F90A4; 
-		padding:0 30px; 
-		line-height:46px; 
-		text-decoration:none; 
-		font-size:16px;
-		}
-		
-	.tabnav li a:hover,
-	.tabnav li a.active {
-		background:#8F90A4; 
-		color:#fff; 
-	}
-	
-	.tabcontent {
-		padding: 20px; 
-		width:auto;
-		height:244px; 
-		border:1px solid #ddd; 
-		border-top:none;
-	}
-
-</style>
+<title>내옆Pet 마켓 홈</title>
+<link rel="stylesheet" href="resources/css/market_css/market_home.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		var $banner = $(".banner").find("#banner_list");
@@ -157,7 +18,7 @@
 		var rollingId;
 
 		//정해진 초마다 함수 실행
-		rollingId = setInterval(function() { rollingStart(); }, 3000);//다음 이미지로 롤링 애니메이션 할 시간차
+		rollingId = setInterval(function() { rollingStart(); }, 4000);//다음 이미지로 롤링 애니메이션 할 시간차
     
 		function rollingStart() {
 			$banner.css("width", $bannerWidth * $length + "px");
@@ -175,8 +36,22 @@
 			});
 		}
 		
-	
 	}); 
+	
+		$(window).scroll(function() {
+		    if ($(this).scrollTop() > 250) { //250 넘으면 버튼이 보인다
+		      $('#topBtn2').fadeIn();
+		    } else {
+		      $('#topBtn2').fadeOut();
+		    }
+		  }); // 버튼 클릭시 
+		  $("#topBtn2").click(function() { 
+		  	$('html, body').animate({ scrollTop : 0 // 0 이동 
+		  	}, 500); // 속도 400 
+		  	return false; 
+		  	
+		 }); 
+		
 	
 	$(function(){
 		  $('.tabcontent > div').hide();
@@ -191,20 +66,30 @@
 </script>
 </head>
 <body>
-<jsp:include page="m_home_nav.jsp" />
+<jsp:include page="m_home_test.jsp" />
+	<a id="topBtn2" href="#"><img alt="" src="resources/img/market/top.png" style="width: 60px; height: 60px;"> </a>
 	<div class="contents">
 		<div class="banner">
 			<ul id="banner_list">
-				<li><img src="resources/img/market/banner1.jpg" width="1900px" height="900px"></li>
-				<li><img src="resources/img/market/banner2.jpg" width="1900x" height="900px"></li>
-				<li><img src="resources/img/market/banner3.jpg" width="1900px" height="900px"></li>
+				<li>
+					<a href="https://www.youtube.com/watch?v=uuevTJE-RLw"><img src="resources/img/market/banner1.jpg" width="1905px" height="900px"></a>
+				</li>
+				<li>
+					<a href="https://www.youtube.com/watch?v=uuevTJE-RLw"><img src="resources/img/market/banner2.jpg" width="1905x" height="900px"></a>
+				</li>
+				<li>
+					<a href="https://www.youtube.com/watch?v=uuevTJE-RLw"><img src="resources/img/market/banner3.jpg" width="1905px" height="900px"></a>
+				</li>
 			</ul>
 		</div>
 	</div>
+	<!-- 대분류 반려동문 종류 선택 버튼-->
+	<div id="contents_con">
 	<div class="type_div">
 		<button class="type_btn" id="dog_btn" >강아지</button>
 		<button class="type_btn" id="cat_btn">고양이</button>
 	</div>
+	<!-- 중분류 카테고리 탭바 -->
 	<div class="tab">
 	    <ul class="tabnav">
 	      <li><a href="#food">식품</a></li>
@@ -214,31 +99,229 @@
 	      <li><a href="#clothes">의류</a></li>
 	    </ul>
     <div class="tabcontent">
-      <div id="food">식품 버튼들
+      <div id="food">
       <!-- DB연동시 카테고리 소분류 가져와 버튼생성 -->
-      	<span class="foodbtns">
-      		<a href="소분류 경로">
-		      	<img src="resources/images/market/img_icon.png" style="width: 35px"><label>전체</label>
+      	<span class="cate_btns">
+      		<a class="cate-link" onclick="" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>전체</label>
       		</a>
       	</span>
-      	<span class="foodbtns">
-	      	<button id ="food1">건식</button>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>건식</label>
+      		</a>
       	</span>
-      	<span class="foodbtns">
-	      	<button id ="food1">주식파우치</button>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>주식파우치</label>
+      		</a>
       	</span>
-      	<span class="foodbtns">
-	      	<button id ="food1">생식</button>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>생식</label>
+      		</a>
       	</span>
-      	<span class="foodbtns">
-	      	<button id ="food1">분유/우유</button>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>분유/우유</label>
+      		</a>
       	</span>
       </div>
-      <div id="snack">간식 버튼들</div>
-      <div id="toy">장난감 버튼들</div>
-      <div id="house">집 버튼들</div>
+      <div id="snack">
+     	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>전체</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>간식파우치</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>간식캔</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>파우더</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>트릿</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>져키</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>음료</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="m_pdt_list.do">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>동결/건조</label>
+      		</a>
+      	</span>
+       
+      </div>
+      <div id="toy">
+		<span class="cate_btns">
+      		<a class="cate-link" href="소분류 경로">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>전체</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="소분류 경로">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>낚시/풀</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="소분류 경로">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>터널/텐트</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="소분류 경로">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>인형/쿠션</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="소분류 경로">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>자동 장난감</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="소분류 경로">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>캣닢/캣글라스</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="소분류 경로">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>리필</label>
+      		</a>
+      	</span>
+      	<span class="cate_btns">
+      		<a class="cate-link" href="소분류 경로">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>공/트릿볼</label>
+      		</a>
+      	</span>
+      </div>
+      <div id="house">
+      	<span class="cate_btns">
+      		<a class="cate-link" href="소분류 경로">
+		      	<img src="resources/img/market/img_icon.png" style="width: 90px"><label>전체</label>
+      		</a>
+      	</span>
+      </div>
       <div id="clothes">옷 버튼들</div>
     </div>
-  </div><!--tab-->
+  </div>
+  
+<!-- 추천상품 -->
+	  <section class="serv_list">
+		  <div class="best_container">
+		  	<div class="title">
+		  		<h1>추천 상품</h1>
+		  	</div>
+		  	<div class="pdt_list">
+		  		<div class="card">
+		  			<a class="pdt-link" href="m_select_product.do">
+			  			<div class="card_img">
+			  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+			  			</div>
+			  			<div class="card_text">
+				  				<h2>아깽이 습식 사료 파우치 12개입</h2>
+				  				<p class="pdt_info">대충설명</p>
+				  				<h3 class="pdt_price">20,000 원</h3>
+			  			</div>
+		  			</a>
+		  		</div>
+		  		<div class="card">
+		  			<a class="pdt-link" href="m_select_product.do">
+			  			<div class="card_img">
+			  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+			  			</div>
+			  			<div class="card_text">
+			  				<h2>아깽이 습식사료 파우치 12개입</h2>
+			  				<p class="pdt_info">대충설명</p>
+			  				<h3 class="pdt_price">20,000 원</h3>
+			  			</div>
+		  			</a>
+		  		</div>
+		  		<div class="card">
+		  			<a class="pdt-link" href="m_select_product.do">
+			  			<div class="card_img">
+			  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+			  			</div>
+			  			<div class="card_text">
+			  				<h2>아깽이 습식사료 파우치 12개입</h2>
+			  				<p class="pdt_info">대충설명</p>
+			  				<h3 class="pdt_price">20,000 원</h3>
+			  			</div>
+		  			</a>
+		  		</div>
+		  	</div>
+		  </div>
+	  </section>
+	  
+	  <!-- 리뷰 -->
+	  
+	  <section class="serv_list">
+		  <div class="rv_container">
+		  	<div class="title">
+		  		<h1>리뷰 별점</h1>
+		  	</div>
+		  	<div class="review_list">
+		  		<div class="card">
+		  			<a class="review-link" href="m_select_product.do#review">
+			  			<div class="review_img">
+			  				<img alt="" src="resources/img/market/img_icon.png" style="width: 200px">
+			  			</div>
+	  					<div class="proprofile_box">
+	  						<img class="profile_img" id="p4" alt="" src="resources/img/market/profile_test.jpg">
+	  						<span class="profile_info">
+	  							<span class="member_nickname" id="mb_nickname">무년</span>
+	  							<span class="pet" id="pet_info">이름 | 나이 | 몸무게</span>
+	  					<div class="star">
+							<div class="stars_img">
+								<div class="star-fill space-x-2 text-lg" :style="{width: 4%}">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+								<div class="star-base space-x-2 text-lg">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+							</div>
+							<span class="stars_score">4.6</span>
+						</div>
+						</span>
+						</div>
+		  			<div class="card_text">
+			  				<h3 class="review_title">아깽이 습식 사료 파우치 12개입</h3>
+			  				<p class="review_info">대충설명</p>
+			  				<p class="review_info">대충설명</p>
+		  			</div>
+		  			</a>
+		  				<span class="like_box">
+	  						<button class="like_btn">
+	  							<img class="like_img" alt="" src="resources/img/market/like.png">
+	  							0
+	  						</button>
+	  						<button class="like_btn">
+	  							<img class="like_img" alt="" src="resources/img/market/dislike.png">
+	  							0
+	  						</button>
+	  					</span>
+		  		</div>
+		  	</div>
+		  </div>
+	  </section>
+	</div>
 </body>
+	<jsp:include page="m_footer.jsp" />
 </html>

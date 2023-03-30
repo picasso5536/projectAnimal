@@ -8,7 +8,7 @@ ul.menu {
 
 ul.menu a {
 	background-color: tomato;
-	color: white;
+	color: whit   e;
 	text-decoration: none;
 	float: left;
 	padding: 20px 40px;
@@ -26,5 +26,5 @@ header {
 
 nav {
 	margin-top: 25px;
-	margin-left: 550px;
+	margin-left: 550px; 
 }
