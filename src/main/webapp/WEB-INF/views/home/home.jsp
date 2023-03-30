@@ -9,6 +9,7 @@
 <title>메인화면</title>
 <!-- 왜 안먹는거지; -->
 <style type="text/css">
+<<<<<<< HEAD
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css);
 </style>
 <script
@@ -352,37 +353,8 @@ function admin_main() {
 		</div>
 	</main>
 	<!-- 여기부터 푸터 -->
-	 <footer>
-		<div class="footer-container">
-			<div class="footer-column">
-				<h3>내옆펫</h3>
-				<ul>
-					<li><a href="#">e-mail : master@nexttopet.com</a></li>
-					<li><a href="#">fax : 02-xxxx-xxxx</a></li>
-					<li><a href="#">project_member : 김회철 모상인 문현지</a></li>
-					<li><a href="#">address : 서울시 마포구 백범로 23, 3층</a></li>
-				</ul>
-			</div>
-			<div class="footer-column">
-				<h3>규정</h3>
-				<ul>
-					<li><a href="#">개인정보 처리 방침</a></li>
-					<li><a href="#">이용약관</a></li>
-					<li><a href="#">Digital Marketing</a></li>
-				</ul>
-			</div>
-			<div class="footer-column">
-				<h3>소셜</h3>
-				<ul class="social-media-icons">
-					<li><a href="https://www.instagram.com/mosi_n17/"><img src="#" />인스타<i class="fab fa-facebook-f"></i></a></li>
-					<li><a href="https://www.facebook.com/profile.php?id=100089533267077"><img src="#" />페이스북<i class="fab fa-twitter"></i></a></li>
-					<li><a href="https://www.youtube.com/channel/UClMcwyqQFHjkackxovU59ng"><img src="#" />유튜브<i class="fab fa-instagram"></i></a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="bottom-bar">
-			<p>&copy; 2023 Company 내옆펫. All rights reserved.</p>
-		</div>
+	<footer>
+		<jsp:include page="../footer.jsp"/>
 	</footer>
 	</body>
 </html>

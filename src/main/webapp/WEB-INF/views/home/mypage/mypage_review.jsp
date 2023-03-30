@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 > 배송지 정보</title>
+<title>마이페이지 > 리뷰 내역</title>
 <style type="text/css">
 body {
 	font-family: Arial, sans-serif;
@@ -19,7 +19,8 @@ main {
 
 .border {
 	position: relative;
-	display: flex; flex-direction : column;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	padding: 30px;
@@ -43,46 +44,31 @@ main {
 	min-width: 1300px;
 }
 
-.shipping-address {
+.review {
 	background-color: #fff;
 	border: 1px solid #dcdcdc;
-	width: 700px;
+	min-width: 600px;
+	max-width: 1000px;
 	border-radius: 8px;
 	padding: 20px;
 	margin-bottom: 20px;
+	margin-top: 40px;
 	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.shipping-address-header {
+.rev_header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 10px;
 }
 
-.shipping-address-header h3 {
+.rev_header h3 {
 	font-size: 1.5rem;
 	font-weight: 600;
 	margin: 0;
 	color: #212121;
-	text-transform: uppercase;
 	letter-spacing: 1px;
-}
-
-.edit-button{
-	background-color: #4CAF50;
-	color: #fff;
-	border: none;
-	padding: 6px 12px;
-	border-radius: 4px;
-	font-size: 0.875rem;
-	font-weight: 600;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-}
-
-.edit-button:hover{
-	background-color: #3B9E40;
 }
 
 .delete-button {
@@ -101,33 +87,28 @@ main {
 	background-color: #ee2222;
 }
 
-.shipping-address-body p {
+.rev_body p {
 	margin: 0;
 	font-size: 1rem;
 	line-height: 1.5;
 	color: #4f4f4f;
 }
 
-.shipping-address-body p:not(:last-child) {
-	margin-bottom: 5px;
+.rev_body p:not(:last-child) {
+	margin-bottom: 15px;
 }
 
-.shipping-address-name {
+.rev_img {
 	font-weight: 600;
 	color: #212121;
 	font-size: 1.125rem;
 	margin-bottom: 5px;
 }
 
-.shipping-address-address {
+.rev_star {
 	color: #777;
 	font-size: 0.875rem;
 	margin-bottom: 5px;
-}
-
-.shipping-address-phone {
-	color: #777;
-	font-size: 0.875rem;
 }
 
 button {
@@ -143,16 +124,6 @@ button {
 	cursor: pointer;
 	border-radius: 4px;
 }
-
-#add_btn {
-	position: absolute;
-	bottom: 20px;
-	right: 30px;
-}
-
-#add_btn:hover {
-	background-color: #2980b9;
-}
 </style>
 </head>
 <body>
@@ -160,40 +131,48 @@ button {
 		<jsp:include page="my_navbar.jsp"></jsp:include>
 		<section id="sec1">
 			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
-				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
-				id="page_sKate">배송지 관리</span>
+				id="page_mKate">마켓</span> <span id="sep2">></span> <span
+				id="page_sKate">리뷰 내역</span>
 			<div class="border">
-				<div class="shipping-address">
-					<div class="shipping-address-header">
-						<h3>배송지 1</h3>
-						<div class="shipping-address-action">
-							<button class="edit-button">수정</button>
+				<div class="review">
+					<div class="rev_header">
+						<h3>리뷰 제목</h3>
+						<div class="rev_action">
 							<button class="delete-button">삭제</button>
 						</div>
 					</div>
-					<div class="shipping-address-body">
-						<p class="shipping-address-name">이름: 홍길동</p>
-						<p class="shipping-address-address">주소: 서울시 강남구 역삼동 123-45</p>
-						<p class="shipping-address-phone">연락처: 010-1234-5678</p>
-						<p class="shipping-address-text">메시지: 문 앞</p>
+					<div class="rev_body">
+						<p class="rev_img">리뷰이미지</p>
+						<p class="rev_info">리뷰내용</p>
+						<p class="rev_star">별점: ★★★★☆</p>
 					</div>
 				</div>
-				<div class="shipping-address">
-					<div class="shipping-address-header">
-						<h3>배송지 2</h3>
-						<div class="shipping-address-action">
-							<button class="edit-button">수정</button>
+				<div class="review">
+					<div class="rev_header">
+						<h3>리뷰 제목</h3>
+						<div class="rev_action">
 							<button class="delete-button">삭제</button>
 						</div>
 					</div>
-					<div class="shipping-address-body">
-						<p class="shipping-address-name">이름: 홍동길</p>
-						<p class="shipping-address-address">주소: 인천시 연수구</p>
-						<p class="shipping-address-phone">연락처: 010-8765-4321</p>
-						<p class="shipping-address-text">메시지: 경비실</p>
+					<div class="rev_body">
+						<p class="rev_img">리뷰이미지</p>
+						<p class="rev_info">리뷰내용</p>
+						<p class="rev_star">별점: ★★★★☆</p>
 					</div>
 				</div>
-				<button type="button" id="add_btn">추가</button>
+				<div class="review">
+					<div class="rev_header">
+						<h3>리뷰 제목</h3>
+						<div class="rev_action">
+							<button class="delete-button">삭제</button>
+						</div>
+					</div>
+					<div class="rev_body">
+						<p class="rev_img">리뷰이미지</p>
+						<p class="rev_info">리뷰내용</p>
+						<p class="rev_star">별점: ★★★★☆</p>
+					</div>
+				</div>
 			</div>
 		</section>
 	</main>

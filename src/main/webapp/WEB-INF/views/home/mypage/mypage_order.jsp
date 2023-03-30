@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 > 신고 관리</title>
+<title>마이페이지 > 주문 내역</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 <style type="text/css">
 body {
 	font-family: 'NanumSquareRound';
@@ -42,7 +44,7 @@ main {
 	min-width: 1300px;
 }
 
-.report {
+.announce {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -109,23 +111,39 @@ tbody tr:hover {
 	background-color: #f5f5f5;
 }
 
-#del_rep {
+#del_ann {
 	background-color: #f60000;
 }
 
-#del_rep:hover {
+#del_ann:hover {
 	background-color: #cc0000;
 }
 
-#up_rep {
+#up_ann {
 	background-color: #3498db;
 }
 
-#up_rep:hover {
+#up_ann:hover {
 	background-color: #2980b9;
 }
 
-#select_rep {
+.datepicker {
+	font-size: 16px;
+	padding: 10px;
+	outline: none;
+	box-shadow: none;
+	width: 150px;
+	text-align: center;
+	border: none;
+	border-radius: none;
+	border-bottom: 1.5px solid #ccc;
+}
+
+.datepicker:focus {
+	border-color: #007bff;
+}
+
+#select_ann {
 	background-color: #3498db; /* 버튼 배경색 */
 	border: none; /* 테두리 없앰 */
 	color: white; /* 글자색 */
@@ -143,7 +161,7 @@ tbody tr:hover {
 	margin-left: 20px;
 }
 
-#init_rep {
+#init_ann {
 	background-color: #4CAF50; /* 버튼 배경색 */
 	border: none; /* 테두리 없앰 */
 	color: white; /* 글자색 */
@@ -163,15 +181,23 @@ tbody tr:hover {
 	margin-right: 20px;
 }
 
-#select_rep:hover {
+#select_ann:hover {
 	background-color: #2980b9; /* 마우스 오버 시 버튼 배경색 변경 */
 }
 
-#init_rep:hover {
+#init_ann:hover {
 	background-color: #3e8e41; /* 마우스 오버 시 버튼 배경색 변경 */
 }
 
-.option_rep {
+.start_end {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 700px;
+}
+
+.option_ann {
 	margin-top: 5px;
 	margin-bottom: 20px;
 	border-collapse: collapse;
@@ -225,18 +251,18 @@ tbody tr:hover {
 	color: #fff;
 }
 
-.search_rep {
+.search_ann {
 	margin-left: 40px;
 	width: 200px;
 	height: 32px;
 }
 
-#search_rep_btn {
+#search_ann_btn {
 	margin-left: 150px;
 	margin-bottom: 30px;
 }
 
-.search_rep {
+.search_ann {
 	width: 250px;
 	height: 28px;
 	padding: 5px;
@@ -249,7 +275,7 @@ tbody tr:hover {
 	transition: border-color 0.6s ease-in-out;
 }
 
-.search_rep:focus {
+.search_ann:focus {
 	outline: none;
 	border-color: #007bff;
 	box-shadow: 0 1px 0 0 #007bff;
@@ -275,7 +301,7 @@ tbody tr:hover {
 	opacity: 1;
 }
 
-#radio_rep {
+#radio_ann {
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
@@ -335,94 +361,140 @@ div.modalContent button.modal_cancel {
 	margin-left: 20px;
 }
 
-#info_rep {
+#info_ann{
 	cursor: pointer;
+}
+
+a{
+	text-decoration: none;
+	color: #000;
 }
 </style>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).on(
-			"click",
-			"#info_rep",
-			function() {
-				//$(".replyModal").attr("style", "display:block;");
-				$(".replyModal").fadeIn(200);
-				var repNum = $(this).attr("data-repNum");
-				var repCon = $(this).parent().parent()
-						.children(".replyContent").text();
-				$(".modal_repCon").val(repCon);
-				$(".modal_process_btn").attr("data-repNum", repNum);
-			});
-</script>
 </head>
 <body>
 	<main>
-		<jsp:include page="../adm_navbar.jsp"></jsp:include>
+		<jsp:include page="my_navbar.jsp"></jsp:include>
 		<section id="sec1">
-			<span id="page_info">관리자</span> <span id="sep1">|</span> <span
-				id="page_mKate">통합 관리</span> <span id="sep2">></span> <span
-				id="page_sKate">신고 관리</span>
+			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
+				id="page_mKate">마켓</span> <span id="sep2">></span> <span
+				id="page_sKate">주문 내역</span>
 			<div class="border">
-				<div class="report">
+				<div class="announce">
 					<form action="">
-						<div class="option_rep">
+						<div class="option_ann">
 							검색어&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
 								class="selectbox">
-								<option value="author">작성자</option>
-								<option value="title">제목</option>
-								<option value="content">제목 + 내용</option>
-							</select><input type="text" class="search_rep" id="search_slot"
+								<option value="author">상품명</option>
+							</select><input type="text" class="search_ann" id="search_slot"
 								placeholder="검색어 입력">
 						</div>
-						<div class="option_rep">
+						<div class="option_ann">
 							카테고리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
 								class="selectbox">
 								<option value="" disabled selected hidden>카테고리 선택</option>
-								<option value="1">욕설 / 명예훼손</option>
-								<option value="2">음란물</option>
-								<option value="3">홍보성</option>
-								<option value="4">기타</option>
+								<option value="">입금/결제</option>
+								<option value="">배송중/픽업대기</option>
+								<option value="">배송완료/픽업완료</option>
+								<option value="">구매확정</option>
+								<option value="">교환</option>
+								<option value="">교환완료</option>
+								<option value="">환불</option>
+								<option value="">환불완료</option>
 							</select>
 						</div>
-						<div class="option_rep">
-							<div id="radio_rep">
-								상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
-									<input type="radio" name="state_rep" value="state_all" checked>
-									전체
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="state_rep" value="main"> 답변 대기중
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="state_rep" value="market"> 답변 완료
-								</label>
-							</div>
+						<div class="start_end">
+							작성일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+								type="text" class="datepicker" id="s_datepicker"
+								placeholder="시작일">
+							&nbsp;&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;&nbsp; <input
+								type="text" class="datepicker" id="e_datepicker"
+								placeholder="종료일">
 						</div>
-						<div id="search_rep_btn">
-							<button type="button" id="select_rep">조회</button>
-							<button type="button" id="init_rep">검색 초기화</button>
+						<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+						<script
+							src="https://cdn.jsdelivr.net/npm/pikaday/plugins/pikaday-i18n.js"></script>
+						<script>
+							var picker = new Pikaday(
+									{
+										field : document
+												.getElementById('s_datepicker'),
+										format : 'YYYY년 MM월 DD일 (ddd)',
+										i18n : {
+											previousMonth : '이전달',
+											nextMonth : '다음달',
+											months : [ '1월', '2월', '3월', '4월',
+													'5월', '6월', '7월', '8월',
+													'9월', '10월', '11월', '12월' ],
+											weekdays : [ '일요일', '월요일', '화요일',
+													'수요일', '목요일', '금요일', '토요일' ],
+											weekdaysShort : [ '일', '월', '화',
+													'수', '목', '금', '토' ]
+										},
+										toString : function(date) {
+											var day = date.getDate();
+											var month = date.getMonth() + 1;
+											var year = date.getFullYear();
+
+											return year + '-' + month + '-'
+													+ day;
+										},
+									});
+						</script>
+						<script>
+							var picker = new Pikaday(
+									{
+										field : document
+												.getElementById('e_datepicker'),
+										format : 'YYYY년 MM월 DD일 (ddd)',
+										i18n : {
+											previousMonth : '이전달',
+											nextMonth : '다음달',
+											months : [ '1월', '2월', '3월', '4월',
+													'5월', '6월', '7월', '8월',
+													'9월', '10월', '11월', '12월' ],
+											weekdays : [ '일요일', '월요일', '화요일',
+													'수요일', '목요일', '금요일', '토요일' ],
+											weekdaysShort : [ '일', '월', '화',
+													'수', '목', '금', '토' ]
+										},
+										toString : function(date) {
+											var day = date.getDate();
+											var month = date.getMonth() + 1;
+											var year = date.getFullYear();
+
+											return year + '-' + month + '-'
+													+ day;
+										},
+									});
+						</script>
+						<div id="search_ann_btn">
+							<button type="button" id="select_ann">조회</button>
+							<button type="button" id="init_ann">검색 초기화</button>
 						</div>
 					</form>
 					<table class="cols">
 						<thead>
 							<tr>
 								<th></th>
-								<th>신고 글</th>
-								<th>카테고리</th>
-								<th>내용</th>
-								<th>작성자</th>
-								<th>작성일</th>
-								<th>상태</th>
+								<th>상품 이미지</th>
+								<th>상품명</th>
+								<th>주문일자</th>
+								<th>주문번호</th>
+								<th>주문금액(수량)</th>
+								<th>주문 상태</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>1</td>
-								<td>1302</td>
-								<td>욕설 / 명예훼손</td>
-								<td id="info_rep">욕설로 신고합니다.</td>
-								<td>우주체강</td>
+								<td class="order_pdt">상품.png</td>
+								<td class="order_pdt">개 밥그릇</td>
 								<td>2023.03.28</td>
-								<td>처리 중</td>
+								<td id="order_no"><a href="my_order_detail.do">20230328235732302</a></td>
+								<td>59,000<br>1개</td>
+								<td>구매 확정&nbsp;&nbsp;&nbsp;&nbsp;<button type="button">리뷰작성</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -430,49 +502,8 @@ div.modalContent button.modal_cancel {
 			</div>
 		</section>
 	</main>
-	<div class="replyModal">
-		<div class="modalContent">
-			<div>
-				<textarea class="modal_repCon" name="modal_repCon"></textarea>
-			</div>
-			<div>
-				<button type="button" class="modal_process_btn">처리</button>
-				<button type="button" class="modal_cancel">취소</button>
-			</div>
-		</div>
-		<div class="modalBackground"></div>
-	</div>
-	<script>
-		$(".modal_cancel").click(function() {
-			$(".replyModal").attr("style", "display:none;");
-		});
-
-		$(".modal_process_btn").click(function() {
-			var modifyConfirm = confirm("처리하시겠습니까?");
-			if (modifyConfirm) {
-				var data = {
-					repNum : $(this).attr("data-repNum"),
-					repCon : $(".modal_repCon").val()
-				}; // ReplyVO 형태로 데이터 생성
-				$.ajax({
-					url : "",
-					type : "post",
-					data : data,
-					success : function(result) {
-
-						if (result == 1) {
-							replyList();
-							$(".replyModal").fadeOut(200);
-						} else {
-							alert("오류입니다.");
-						}
-					},
-					error : function() {
-						alert("처리 에러")
-					}
-				});
-			}
-		});
-	</script>
+	<footer>
+		<jsp:include page="../../footer.jsp"/>
+	</footer>
 </body>
 </html>
