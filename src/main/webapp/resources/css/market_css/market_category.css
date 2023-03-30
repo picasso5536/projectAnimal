@@ -29,6 +29,7 @@
 	}
 	
 	/* 검색 */
+
 	#search_fd {
 		position:absolute;
 		top: 10px;
@@ -36,6 +37,15 @@
 		z-index: 100;
 		right: 0px;
 	    margin: 35px;
+	}
+	
+	input[type=button] {
+		font-family:  'NanumSquareRound';
+		border: 2px solid #8F90A4;
+		height: 33px;
+		background-color: #8F90A4;
+		color: white;
+		cursor: pointer;
 	}
 	
 	input[type=text] {

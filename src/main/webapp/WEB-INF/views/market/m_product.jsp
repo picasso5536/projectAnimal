@@ -48,6 +48,7 @@
 			  }
 			  ++dddip;
 		});
+		  
 	});
 			var sale_price;
 			var amount;
@@ -86,11 +87,6 @@
 			    sum.value = parseInt(hm.value) * sale_price;
 			} 
 			
-			/* function m_product_ok() {
-				 var result = confirm("주문 완료 창으로 이동하시겠습니까?");
-				    f.action="m_product_ok.do"
-				    f.submit();
-			}	 */
 			function m_product_ok() {
 				var result = confirm("주문/결제 창으로 이동하시겠습니까");
 				location.href="test.do";
