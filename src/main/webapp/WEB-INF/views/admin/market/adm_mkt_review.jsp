@@ -12,6 +12,8 @@
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="pdt_sec">
+		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
+				id="page_mKate">리뷰 관리</span>
 			<div class="search_review">
 				<form id="search_form">
 					<div class="search_text">
@@ -67,7 +69,7 @@
 								<td class="chk_box">20</td>
 								<td>yyyy/MM/dd</td>
 								<td colspan="2">
-									<button class="more_btn" onclick="more_info()">상세</button>
+									<button type="button" class="more_btn" onclick="location.href='adm_review_onelist.do'">상세</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
 								</td>
 							</tr>
@@ -82,7 +84,7 @@
 								<td class="chk_box">20</td>
 								<td>yyyy/MM/dd</td>
 								<td colspan="2">
-									<button class="more_btn" onclick="more_info()">상세</button>
+									<button type="button" class="more_btn" onclick="location.href='adm_review_onelist.do'">상세</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
 								</td>
 							</tr>
@@ -97,7 +99,7 @@
 								<td class="chk_box">20</td>
 								<td>yyyy/MM/dd</td>
 								<td colspan="2">
-									<button class="more_btn" onclick="more_info()">상세</button>
+									<button type="button" class="more_btn" onclick="location.href='adm_review_onelist.do'">상세</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
 								</td>
 							</tr>
@@ -112,7 +114,7 @@
 								<td class="chk_box">20</td>
 								<td>yyyy/MM/dd</td>
 								<td colspan="2">
-									<button class="more_btn" onclick="more_info()">상세</button>
+									<button type="button" class="more_btn" onclick="location.href='adm_review_onelist.do'">상세</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
 								</td>
 							</tr>
@@ -127,10 +129,11 @@
 								<td class="chk_box">20</td>
 								<td>yyyy/MM/dd</td>
 								<td colspan="2">
-									<button class="more_btn" onclick="more_info()">상세</button>
+									<button type="button" class="more_btn" onclick="location.href='adm_review_onelist.do'">상세</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
 								</td>
 							</tr>
+							
 						</tbody>
 					</table>
 				</form>

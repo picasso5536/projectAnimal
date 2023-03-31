@@ -10,10 +10,6 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-	$("#admin_link").click(function() {
-		location.href="member_update.do";
-		
-	});
 		const toggleList = document.querySelectorAll(".toggleSwitch");
 
 		toggleList.forEach(($toggle) => {
@@ -29,6 +25,10 @@ $(document).ready(function() {
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="mem_sec">
+		<ul id="crm_sub">
+				<li class="mli"><a class="ad-link" href="#">관리자 정보관리</a></li>
+				<li class="mli"><a class="ad-link" href="ad_acc_create.do">관리자 계정 만들기</a></li>
+			</ul>
 			<div class="search_mbr">
 				<form id="search_form">
 					<span class="search_text">

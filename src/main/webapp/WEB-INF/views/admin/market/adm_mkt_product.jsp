@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객 정보 수정 </title>
+<title>상품 관리 </title>
 <link rel="stylesheet" href="resources/css/admin_mkt_css/mkt_product_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -12,6 +12,8 @@
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="pdt_sec">
+		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
+				id="page_mKate">상품 관리</span>
 			<div class="search_pdt">
 				<form id="search_form">
 					<table>
@@ -94,7 +96,7 @@
 			</div>
 			<div class="search_list">
 			<form>
-				<button id="add_pdt_btn" >+ 상품등록</button>
+				<button type="button" id="add_pdt_btn" onclick="location.href='adm_add_pdt.do'">+ 상품등록</button>
 					<table id="list_table">
 						<thead>
 							<tr>

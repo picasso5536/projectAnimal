@@ -11,7 +11,7 @@
 	function p_pay() {
 		var result = confirm("지급을 승인하시겠습니까?");
 		if(result){
-			var url = "point_chk_p.jsp";
+			var url = "point_chk.do";
 	        var name = "point popup";
 	        var option = "width=650,height=600,location=no,toolbar=no,menubar=no,status=no,scrollbars=no"
 	        window.open(url, name, option);			

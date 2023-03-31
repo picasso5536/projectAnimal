@@ -12,6 +12,10 @@
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="mem_sec">
+		<ul id="crm_sub">
+				<li class="mli"><a class="ad-link" href="admin_mbr_info.do">고객 정보관리</a></li>
+				<li class="mli"><a class="ad-link" href="#">탈퇴회원관리</a></li>
+			</ul>
 			<div class="search_mbr">
 				<form id="search_form">
 					<span class="search_text">
