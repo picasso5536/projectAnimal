@@ -84,6 +84,10 @@ body {
 	text-align: center;
 	margin-top: 20px;
 }
+.button:hover{
+	color: red;
+}
+
 #joinUs {
 	margin-left: 20px;
 	text-decoration: none;
@@ -176,19 +180,19 @@ function home(f) {
 <body>
 	<div class="login-form">
 		<form>
-			<h2>내옆Pet 로그인</h2>
+			<h2>내옆Pet</h2>
 			<br>
 			<div class="form-group with-icon">
-				<img src="resources/img/id.png" class="icon"> <input
-					type="text" id="id" name="id" required>
+				<img src="resources/img/id.png" class="icon"> 
+				<input type="text" id="id" name="id" required>
 			</div>
 			<div class="form-group with-icon">
-				<img src="resources/img/password.png" class="icon"> <input
-					type="password" id="password" name="password" required>
+				<img src="resources/img/password.png" class="icon"> 
+				<input type="password" id="password" name="password" required>
 			</div>
 			<div class="form-group">
-				<label for="remember-me"> <input type="checkbox"
-					id="remember-me"> 아이디 기억
+				<label for="remember-me"> 
+				<input type="checkbox" id="remember-me"> 아이디 기억
 				</label>
 			</div>
 			<button type="button" onclick="home(this.form)" class="login-btn">로그인</button>
@@ -204,8 +208,8 @@ function home(f) {
 				</a>
 			</div>
 			<div style="margin-left: 65px" class="forgot-password">
-				<button style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="consent()">회원가입</button>
-				<button style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="find()">아이디/비밀번호 찾기</button>
+				<button class="button" style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="consent()">회원가입</button>
+				<button class="button" style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="find()">아이디/비밀번호 찾기</button>
 				<!-- <input style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="find()" value="아이디/비밀번호 찾기"> -->
 			</div>
 		</form>

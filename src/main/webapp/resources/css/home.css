@@ -19,12 +19,11 @@ width:2700px;
 min-width:1300px; 
 height:70px; 
 background:transparent; 
- color:#E5E0FF;
+ color:#A0C3D2;
 z-index:999;
 }
-
 #header:hover {
-background:#E5E0FF !important;
+background:#A0C3D2 !important;
   z-index:9999;
 }
 #header .header_inner {

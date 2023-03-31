@@ -354,7 +354,7 @@ function admin_main() {
 				<h3>내옆펫</h3>
 				<ul>
 					<li><a href="#">e-mail : master@nexttopet.com</a></li>
-					<li><a href="#">fax : 02-xxxx-xxxx</a></li>
+					<li><a href="#">fax : 02-1243-2283</a></li>
 					<li><a href="#">project_member : 김회철 모상인 문현지</a></li>
 					<li><a href="#">address : 서울시 마포구 백범로 23, 3층</a></li>
 				</ul>
@@ -370,9 +370,9 @@ function admin_main() {
 			<div class="footer-column">
 				<h3>소셜</h3>
 				<ul class="social-media-icons">
-					<li><a href="https://www.instagram.com/mosi_n17/">인스타<i class="fab fa-facebook-f"></i></a></li>
-					<li><a href="https://www.facebook.com/profile.php?id=100089533267077">페이스북<i class="fab fa-twitter"></i></a></li>
-					<li><a href="https://www.youtube.com/channel/UClMcwyqQFHjkackxovU59ng">트위터<i class="fab fa-instagram"></i></a></li>
+					<li><a href="https://www.instagram.com/mosi_n17/"><img style="width: 30px;" src="resources/img/Instagram.jpg"> <i class="fab fa-facebook-f"></i></a></li>
+					<li><a href="https://www.facebook.com/profile.php?id=100089533267077"><img style="width: 30px;" src="resources/img/Facebook.jpg"> <i class="fab fa-twitter"></i></a></li>
+					<li><a href="https://www.youtube.com/channel/UClMcwyqQFHjkackxovU59ng"><img style="width: 30px;" src="resources/img/Twitter.jpg"> <i class="fab fa-instagram"></i></a></li>
 				</ul>
 			</div>
 		</div>
