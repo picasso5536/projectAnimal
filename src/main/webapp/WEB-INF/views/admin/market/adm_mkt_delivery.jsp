@@ -13,7 +13,7 @@
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="pdt_sec">
 		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
-				id="page_mKate">공급사 관리</span>
+				id="page_mKate">배송 관리</span>
 			<div class="search_pdt">
 				<form id="search_form">
 				<table id="delivery">
@@ -39,7 +39,7 @@
 						</tbody>
 					</table>
 				
-					<h2>공급사 등록</h2>
+					<h2>배송비 등록</h2>
 					<table class="type07">
 						<tbody>
 							<tr>

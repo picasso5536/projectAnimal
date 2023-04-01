@@ -42,10 +42,15 @@ public class AdminController {
 	public ModelAndView admAdmAccountCreate() {
 		return new ModelAndView("admin/member/admin_account");
 	}
-	
+	// 관리자 메시지 확인
 	@RequestMapping("admin_mbr_message.do")
 	public ModelAndView admAdminMessage() {
 		return new ModelAndView("admin/member/adm_mbr_message");
+	}
+	// 관리자 메시지 보내기
+	@RequestMapping("adm_send_msg.do")
+	public ModelAndView admAdminSendMessage() {
+		return new ModelAndView("admin/member/adm_mbr_sendmsg");
 	}
 	
 	@RequestMapping("admin_mbr_point.do")

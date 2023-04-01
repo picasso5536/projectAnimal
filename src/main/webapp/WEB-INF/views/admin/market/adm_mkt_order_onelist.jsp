@@ -43,7 +43,6 @@
 						</tbody>
 					</table>
 					<table>
-						<caption>고객 정보 수정</caption>
 						<tbody>
 							<tr>
 								<th class="title">주문번호</th>
@@ -133,7 +132,7 @@
 						</tbody>
 					</table>
 					<table>
-						<caption>주문자 정보</caption>
+						<caption>수취인 정보</caption>
 						<tbody>
 							<tr>
 								<th class="title">주문자명</th>

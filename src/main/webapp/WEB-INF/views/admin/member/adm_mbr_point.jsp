@@ -28,6 +28,8 @@
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="mem_sec">
+		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
+				id="page_mKate">포인트 관리</span>
 			<div class="search_mbr">
 				<form id="search_form">
 					<span class="search_text">
