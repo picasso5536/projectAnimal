@@ -43,12 +43,11 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff; user-select: none;}
 <script type="text/javascript">
 
 function singup_01() {
-   
 	var chk1 = document.getElementById("chk1");
 	var chk2 = document.getElementById("chk2");
 	var chk3 = document.getElementById("chk3");
 	var chk4 = document.getElementById("chk4");
-	
+		
 	if (!chk1.checked) { //체크박스 미체크시
 	    alert("이용약관 동의를 체크하세요.");
 	    agree.focus();
@@ -74,7 +73,7 @@ function singup_01() {
     if(result){
     location.href="singup.do";
     }else {
-    }
+     }
 }
 function login() {
 	location.href="login.do";

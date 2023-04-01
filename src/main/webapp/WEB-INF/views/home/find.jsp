@@ -112,7 +112,7 @@ function out() {
 		<br><br>
 		
 		<!--비밀번호 찾기  -->
-		<pre style="margin-top: 40px;">  비밀번호 찾기</pre>
+		<pre style="margin-top: 40px;">  비밀번호 찾기</pre>    
 		<div class="div_1">
 		 <p style="margin-left: 10px; margin-top: 30px; margin-bottom: 30px; font-weight: normal;">가입시 등록한 이메일로 인증번호를 받아 입력해주세요. <em style="color: red;">회원님의 이메일로 비밀번호가 발송됩니다.</em></p>
 		 <hr style="border-width:1px 0 0 0; border-color:#fff;">

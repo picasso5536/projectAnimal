@@ -10,7 +10,6 @@
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
 <script type="text/javascript">
-	
 	function consent() {
 		var result = confirm("입력정보가 사라집니다 정말 나가시겠습니까?");
 		if(result){
@@ -18,9 +17,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 		}else {
 		}
 	}
-	
 	/* 필수입력  */
 	function login_01() {
+		
 	var id = document.getElementById("id");
 	var pw1 = document.getElementById("pswd1");
 	var pw2 = document.getElementById("pswd2");
@@ -63,11 +62,6 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	  id.focus();
 	  return false; 
 	};
-	/* if (mm.value == "") { 
-	  alert("월을 선택해 주세요.");
-	  id.focus();
-	  return false; 
-	}; */
 	if (dd.value == "") { 
 	  alert("태어난 일을 선택해 주세요.");
 	  id.focus();
@@ -83,14 +77,12 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	  mobile.focus(); 
 	  return false; 
 	};
-	
 	var result = confirm("회원가입 하시겠습니까?");
 	if(result){
 		location.href="login.do";
 	}else {
 	}
 }
-  	
 </script>
 <style type="text/css">
 /* 레이아웃 틀 */
@@ -308,7 +300,6 @@ select {
         </div>
         <div id="wrapper">
             <div id="content">
-               
                 <!-- 아이디 -->
                 <div>
                     <h3 class="join_title">
@@ -515,7 +506,8 @@ function checkId() {
         error[0].style.display = "block";
     }
 }
-function checkPw() {
+
+function checkPw() {   
     var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;
     if(pw1.value === "") {
         error[1].innerHTML = "필수 정보입니다.";
