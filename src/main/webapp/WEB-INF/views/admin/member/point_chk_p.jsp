@@ -11,7 +11,6 @@
 <body>
 	<main>
 		<section id="mem_sec">
-			<div class="point_r">
 				<form>
 					<table>
 						<caption>포인트 지급 사유</caption>
@@ -41,7 +40,6 @@
 						</tbody>
 					</table>
 				</form>
-			</div>
 		</section>
 	</main>
 </body>

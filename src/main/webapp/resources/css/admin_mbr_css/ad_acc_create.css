@@ -37,6 +37,16 @@ main {
 		font-weight: 800;
 	}
 	
+	a {
+		display: inline-block;
+	    width: 138.08px;
+	    text-decoration: none;
+		color: #666;
+		padding: 20px;
+	}
+	a:hover {
+		color: #fff;
+	}
 	
 	#last_il {
 		border-right: none;

@@ -13,11 +13,13 @@
 	<!-- 쿠폰 검색 없어서 안만들었는데 필요한 경우 다른데서 코드 복사해 사용할 것  -->
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="pdt_sec">
+		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
+				id="page_mKate">쿠폰 관리</span>
 			<div class="search_list">
 				<form>
 					<table id="list_table">
 						<caption>쿠폰 목록<br>
-							<button class="b_btn" onclick="()">+ 쿠폰 등록</button>
+							<button type="button" class="b_btn" onclick="location.href='adm_mkt_addcp.do'">+ 쿠폰 등록</button>
 						</caption>
 						<thead>
 							<tr>

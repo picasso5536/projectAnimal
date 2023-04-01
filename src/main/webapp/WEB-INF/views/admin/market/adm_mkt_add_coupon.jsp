@@ -12,6 +12,9 @@
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="pdt_sec">
+		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
+				id="page_mKate">쿠폰 관리</span> <span id="sep2">></span> <span
+				id="page_sKate">쿠폰 등록</span>
 			<div class="add_coupon">
 				<form id="search_form">
 					<table>

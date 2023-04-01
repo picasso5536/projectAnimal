@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>(임시)관리자 계정 생성 </title>
+<title>관리자 계정 생성 </title>
 <link rel="stylesheet" href="resources/css/admin_mbr_css/ad_acc_create.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -12,6 +12,10 @@
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="mem_sec">
+		<ul id="crm_sub">
+				<li class="mli"><a class="ad-link" href="admin_mbr_admin.do">관리자 정보관리</a></li>
+				<li class="mli"><a class="ad-link" href="#">관리자 계정 만들기</a></li>
+			</ul>
 			<div class="member_list">
 				<form>
 					<table>
