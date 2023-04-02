@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문완료창</title>
+<title>주문창</title>
 <link rel="stylesheet" href="resources/css/market_css/market_pdt_one.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
@@ -15,7 +15,7 @@
   margin-right:auto;
   margin-top:50px;
   width : 1100px;
-  height: 1900px;
+  height: 1700px;
   border: 1px solid black;
   border-width: medium;
   border-radius: 30px; /* 모서리 둥글게 */
@@ -35,7 +35,7 @@
 .div_2{
   margin-left:auto;
   margin-right:auto;
-  margin-top:30px;
+  /* margin-top:30px; */
   width : 1000px;
   height: 395px;
   border: 1px solid black;
@@ -122,7 +122,21 @@ width : 390px;
   border-right: hidden;
   border-top: hidden;
 } */
+
+.but:hover{
+	color: red;
+}
 </style>
+<script type="text/javascript">
+function completion(f) {
+    var result = confirm("결제하시겠습니까?");
+    if(result){
+    f.action="completion.do"
+    f.submit();
+    }else {
+    }
+}
+</script>
 </head>
 <body>
 	<header>
@@ -149,7 +163,9 @@ width : 390px;
 		</div>
 		<br>
 		
-			<p style="font-size: 20px; margin-left: -890px; margin-top: 20px;">받는사람 정보</p>
+			<p style="font-size: 20px; margin-left: -890px; margin-top: 20px; white-space:nowrap;">받는사람 정보</p>
+			<button class="but" style=" margin-left:963px; background-color: #F5F5F5;"
+			onclick="window.open('shipping.do','window_name','width=650,height=600,location=no,toolbar=no,menubar=no,status=no,scrollbars=no');">저장 배송지</button>
 		<div class="div_2" >
 			<div>
 		 	<p class="box" style="float:left; ">이름</p>
@@ -172,8 +188,8 @@ width : 390px;
 		 	<p class="box" style="float:left;  ">요청사항</p>
 		 	 <select style="margin-left: 10px;margin-top: 15px;">
                  <option>요청사항</option>
-                    <option>부재 시 문 앞에 놔주세요</option>
-                    <option>부재 시 택배함에 놔주세요</option>
+                    <option>부재 시 문 앞에 놓아주세요.</option>
+                    <option>부재 시 택배함에 놓아주세요.</option>
                     <option>부재 시 경비실에 맡겨 주세요</option>
                     <option>파손 위험이 있어요. 조심해주세요</option>
                     <option>배송 전에 연락주세요.</option>
@@ -185,7 +201,8 @@ width : 390px;
 			<div class="div_3" >
 			<div>
 		 	<p class="box" style="float:left; ">쿠폰</p>
-		 	 <button style="width: 150px; height: 30px; margin-top: 18px; margin-left: 10px; background-color: #F5F5F5;"
+		 	 <input style="margin-left: 10px; margin-top: 15px;" type="text">
+		 	 <button class="but" style="width: 150px; height: 30px; margin-top: 18px; margin-left: 10px; background-color: #F5F5F5;"
 		 	 onclick="window.open('coupon.do','window_name','width=650,height=600,location=no,toolbar=no,menubar=no,status=no,scrollbars=no');">쿠폰조회</button>
 		 	 <!-- 로그인한 사람에 따라서 주소값이 달라져야 하는데 이건 쌤한테 물어보자 -->
 			</div>
@@ -214,20 +231,13 @@ width : 390px;
 		 	 <input class="input_1" style="margin-left: 10px; margin-top: 15px;" type="text">
 			</div><br>
 			<div>
-		 	<p class="box" style="float:left; color: red;">총 결재 금액</p>
+		 	<p class="box" style="float:left; color: red;">총 결제 금액</p>
 		 	 <input class="input_1" style="margin-left: 10px; margin-top: 15px;" type="text">
 			</div><br>
 		</div>
-		 <p style="font-size: 20px; margin-left: -960px; margin-top: 20px;">쿠폰</p>
-			<div class="div_5" >
-			<div>
-		 	<p class="box" style="float:left; ">포인트 결제</p>
-		 	 <input style="margin-left: 10px; margin-top: 15px;" type="text">
-			</div><br>
-		 	<p class="box" style="float:left; ">포인트 잔액</p>
-		 	 <input style="margin-left: 10px; margin-top: 15px;" type="text">
-			</div><br>
-			<button style="border-radius: 30px; width: 400px; height: 70px; margin-left: 320px; background-color:#EB455F; font-size:20px; color:white; font-weight: bold;">결제하기</button>
+			<br>
+			<button style="border-radius: 30px; width: 400px; height: 70px; margin-left: 320px; background-color:#EB455F; font-size:20px; color:white; font-weight: bold;" 
+			onclick="completion(this.form)">결제하기</button>
 		</form>
 	</div>
 	</main>

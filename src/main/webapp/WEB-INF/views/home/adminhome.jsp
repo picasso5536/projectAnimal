@@ -28,7 +28,6 @@ function elm(x){
         return document.getElementsByTagName(x);
     }
 }
-
 // ACCOUNT CLICK
 window.onclick = function(){
     elm(".accountLinks")[0].style.display = 'none';

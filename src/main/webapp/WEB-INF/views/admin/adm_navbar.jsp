@@ -153,11 +153,11 @@ ul ul {
 			</ul>
 			<br>
 			<li class="large"><img
-				src="resources/img/home/my_community_img.png"><a href="#">커뮤니티
+				src="resources/img/home/my_community_img.png"><a href="#">제휴
 					관리</a></li>
 			<ul>
-				<li><a href="admin_comm_post.do">게시글 관리</a></li>
-				<li><a href="admin_comm_comment.do">댓글 관리</a></li>
+				<li><a href="admin_comm_post.do">공급사 관리</a></li>
+				<li><a href="admin_comm_comment.do">택배사 관리</a></li>
 			</ul>
 		</ul>
 	</nav>

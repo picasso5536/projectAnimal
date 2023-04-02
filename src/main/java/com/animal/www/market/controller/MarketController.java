@@ -36,8 +36,16 @@ public class MarketController {
 		return new ModelAndView("market/m_product_ok");
 	}
 
-	@RequestMapping("coupon.do")
+	@RequestMapping("coupon.do") // 쿠폰함
 	public ModelAndView coupon() {
 		return new ModelAndView("market/m_coupon");
+	}
+	@RequestMapping("shipping.do")  // 저장배송지
+	public ModelAndView shipping() {
+		return new ModelAndView("market/m_shipping");
+	}
+	@RequestMapping("completion.do")  // 구매완료
+	public ModelAndView completion() {
+		return new ModelAndView("market/m_completion");
 	}
 }

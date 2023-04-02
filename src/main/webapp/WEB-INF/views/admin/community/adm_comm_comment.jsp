@@ -85,7 +85,7 @@ table.type11 th {
 	font-weight: bold;
 	vertical-align: top;
 	color: #fff;
-	background: ##9fc4db ;
+	background: #9fc4db ;
 }
 table.type11 td {
 	width: 155px;

@@ -180,7 +180,6 @@ function admin_main() {
 &ensp;&ensp;&ensp;&ensp;
 <span  style="font-size: 14pt; font-weight:bold; cursor:pointer;">닫기</span> 
 </div>
-
 </div>
 <!-- 모달은 여기까지 -->
  <header>
