@@ -105,7 +105,9 @@ public class AdminController {
 	
 	@RequestMapping("admin_intg_terms.do")
 	public ModelAndView admIntgTerms() {
-		return new ModelAndView("admin/integrate/adm_intg_terms");
+		ModelAndView mv = new ModelAndView("");
+		
+		return mv;
 	}
 	
 	// 留덉폆愿�由�-荑좏룿愿�由�
