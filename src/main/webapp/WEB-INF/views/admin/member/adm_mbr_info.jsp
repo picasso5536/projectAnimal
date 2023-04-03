@@ -7,15 +7,6 @@
 <title>고객 정보 관리</title>
 <link rel="stylesheet" href="resources/css/admin_mbr_css/mbr_info_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-
-$(document).ready(function() {
-	$("#mem_link").click(function() {
-		location.href="member_update.do";
-	});
-	
-}); 
-</script>
 </head>
 <body>
 	<main>
@@ -28,13 +19,13 @@ $(document).ready(function() {
 			<div class="search_mbr">
 				<form id="search_form">
 					<span class="search_text">
-						고객 고유번호 : <input type="text" name="m_idx" size="25">
-					</span>
-					<span class="search_text">
-						고객 이름 : <input type="text" name="m_name" size="25">
-					</span>
-					<span class="search_text">
-						고객 아이디 : <input type="text" name="m_id" size="25">
+						검색조건 : 
+						<select name="bott" >
+						    <option value="none">고유번호</option>
+						    <option value="cat">고객 이름</option>
+						    <option value="dog">고객 아이디</option>
+						  </select>
+						<input type="text" name="m_idx" size="25">
 					</span>
 					<span class="search_btns">
 						<input type="button" value="조회" id="search_btn">
@@ -45,10 +36,11 @@ $(document).ready(function() {
 			<div class="member_list">
 				<table>
 					<thead>
-						<tr>
+						<tr onclick="location.href='member_update.do'">
 							<th>고객 고유번호</th>
 							<th>이름</th>
 							<th>아이디</th>
+							<th>닉네임</th>
 							<th>휴대전화</th>
 							<th>생년월일</th>
 							<th>가입일</th>
@@ -60,6 +52,7 @@ $(document).ready(function() {
 							<td>AS34FS8GJEL</td>
 							<td>문년지</td>
 							<td>test1</td>
+							<td>test1</td>
 							<td>010-1111-2222</td>
 							<td>1997.03.19</td>
 							<td>2022.03.19</td>
@@ -68,6 +61,7 @@ $(document).ready(function() {
 						<tr onclick="location.href='member_update.do'">
 							<td>AS34FS8GJEL</td>
 							<td>문년지</td>
+							<td>test1</td>
 							<td>test1</td>
 							<td>010-1111-2222</td>
 							<td>1997.03.19</td>

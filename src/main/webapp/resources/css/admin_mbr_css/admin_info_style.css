@@ -65,7 +65,7 @@ main {
 	.search_btns {
 		display: flex;
 	    margin-top: 35px;
-	    margin-left: 380px;
+	    margin-left: 120px;
 	}
 	
 	#search_btn {
@@ -161,7 +161,7 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	margin: 0 auto;
-	max-width: 1000px;
+	max-width: 1140px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 	margin-top: 100px;
 }
@@ -180,11 +180,7 @@ thead th {
 	font-weight: bold;
 }
 
-table td:first-child {
-	font-size: 14px;
-	color: #666;
-	width: 10%;
-}
+
 
 /* tbody tr 마우스 오버시 배경색 변경 */
 tbody tr:hover {
@@ -248,4 +244,11 @@ td {
 .toggleSwitch.blue .toggleButton {  
   background: #8db6d4;
 }
+
+select {
+		min-width: 120px;
+    	min-height: 27px;
+    	padding: 0px 5px;
+    	margin: 0px 5px;
+	}
 

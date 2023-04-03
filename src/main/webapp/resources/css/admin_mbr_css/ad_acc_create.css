@@ -52,7 +52,7 @@ main {
 		border-right: none;
 	}
 	
-	form input[type=text], form select {
+	form input[type=text], form input[type="password"], form select {
 		height: 25px;
 		border: 1xp solid #666;
 		font-family: 'NanumSquareRound';

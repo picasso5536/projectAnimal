@@ -120,6 +120,8 @@ main {
 }
 
 #mem_sec {
+	margin-top: 80px;
+	font-family: 'NanumSquareRound';
 	margin-right: 60px;
 	margin-left: 30px;
 	max-width: 1500px;
@@ -150,9 +152,9 @@ td {
 	}
 	
 	table caption {
-	    font-size:20px;
+	    font-size:24px;
 	    font-weight:bold;
-	    margin-bottom:10px;
+	    margin-bottom:30px;
 	}
 	
 	
@@ -164,10 +166,12 @@ td {
 	}
 		
 	.title {
+	 font-family: 'NanumSquareRound';
 	 background-color: #9fc4db;
 	 color: white;
 	 min-width: 120px;
 	 padding: 15px;
+	 border:1px solid black;
 	 
 	 }
 	 .td_text {
@@ -178,7 +182,7 @@ td {
 	 }
 	 
 	 form select {
-		width: 400px;
+		width: 200px;
 		padding: 5px;
   		min-height: 31px;
 	}

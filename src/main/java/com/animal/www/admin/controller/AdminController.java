@@ -42,6 +42,11 @@ public class AdminController {
 	public ModelAndView admAdmAccountCreate() {
 		return new ModelAndView("admin/member/admin_account");
 	}
+	// 관리자 내정보 수정페이지
+	@RequestMapping("ad_acc_update.do")
+	public ModelAndView admAdmAccountUpdate() {
+		return new ModelAndView("admin/member/adm_account_update");
+	}
 	// 관리자 메시지 확인
 	@RequestMapping("admin_mbr_message.do")
 	public ModelAndView admAdminMessage() {
@@ -52,15 +57,30 @@ public class AdminController {
 	public ModelAndView admAdminSendMessage() {
 		return new ModelAndView("admin/member/adm_mbr_sendmsg");
 	}
-	
+	// 관리자 메시지 상세보기
+	@RequestMapping("mbr_msg_onelist.do")
+	public ModelAndView admAdminMessageOneList() {
+		return new ModelAndView("admin/member/adm_mbr_msgonelist");
+	}
+	// 관리자 포인트 관리
 	@RequestMapping("admin_mbr_point.do")
 	public ModelAndView admMemberPoint() {
 		return new ModelAndView("admin/member/adm_mbr_point");
 	}
-	
+	// 관리자 포인트 지급/차감
 	@RequestMapping("point_chk.do")
 	public ModelAndView pointChk() {
 		return new ModelAndView("admin/member/point_chk_p");
+	}
+	// 관리자 회원 포인트 상세
+	@RequestMapping("adm_point_info.do")
+	public ModelAndView adminPointInfo() {
+		return new ModelAndView("admin/member/adm_mbr_point_info");
+	}
+	// 관리자 회원 포인트 충전 신청
+	@RequestMapping("adm_p_add_req.do")
+	public ModelAndView adminPointAddReq() {
+		return new ModelAndView("admin/member/adm_point_add_reqest");
 	}
 	
 	@RequestMapping("admin_intg_announce.do")

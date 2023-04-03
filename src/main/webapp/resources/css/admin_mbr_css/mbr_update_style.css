@@ -183,9 +183,9 @@ td {
 	 
 	 form input[type=button], form input[type=reset] {
 		height: 35px;
-		width: 90px;
+		width: 100px;
 		border: 1px solid #666;
-		border-right: 6px;
+		border-radius: 6px;
 		font-family: 'NanumSquareRound';
 		font-size: 14px;
 		font-weight: 500;
