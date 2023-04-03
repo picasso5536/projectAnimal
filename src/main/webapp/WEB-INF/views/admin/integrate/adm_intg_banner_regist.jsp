@@ -222,7 +222,7 @@ tbody tr:hover {
 		<section id="sec1">
 			<span id="page_info">관리자</span> <span id="sep1">|</span> <span
 				id="page_mKate">통합 관리</span> <span id="sep2">></span> <span
-				id="page_sKate">배너 수정</span>
+				id="page_sKate">배너 등록</span>
 			<div class="border">
 				<div class="ann_rounce">
 					<form action="">

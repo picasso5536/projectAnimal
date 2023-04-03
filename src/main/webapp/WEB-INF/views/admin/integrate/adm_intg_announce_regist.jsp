@@ -222,7 +222,7 @@ tbody tr:hover {
 		<section id="sec1">
 			<span id="page_info">관리자</span> <span id="sep1">|</span> <span
 				id="page_mKate">통합 관리</span> <span id="sep2">></span> <span
-				id="page_sKate">공지 관리</span>
+				id="page_sKate">공지 등록</span>
 			<div class="border">
 				<div class="ann_rounce">
 					<form action="">
@@ -264,8 +264,7 @@ tbody tr:hover {
 								</tr>
 								<tr>
 									<th>내용</th>
-									<td><input type="text" name="info_ann_r"
-										id="content_ann_r"></td>
+									<td><textarea name="info_ann_r" id="content_ann_r"></textarea></td>
 								</tr>
 								<tr>
 									<th>공개여부</th>

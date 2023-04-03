@@ -219,7 +219,7 @@ div.modalContent button.modal_cancel {
 								<td>2023.03.29</td>
 								<td>2023.03.30</td>
 								<td><button id="up_banner"
-										onclick="gref.location='admin_intg_banner_up.do'">수정</button></td>
+										onclick="location.href='admin_intg_banner_up.do'">수정</button></td>
 							</tr>
 						</tbody>
 					</table>

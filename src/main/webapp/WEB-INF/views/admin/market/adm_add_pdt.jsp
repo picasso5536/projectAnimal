@@ -133,7 +133,7 @@
 							<tr>
 								<th class="title">상품 설명 이미지</th>
 								<td colspan="4">
-									<input type="file" name="f_param"/>
+									<input type="file" name="f_param" multiple="multiple"/>
 								</td>
 							</tr>
 							<tr>

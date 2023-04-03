@@ -210,7 +210,7 @@ div.modalContent button.modal_cancel {
 									<c:forEach items="${termslist}" var="k" varStatus="vs">
 										<tr>
 											<th>${k.terms_name}</th>
-											<td id="terms">${k.terms_info}</td>
+											<td id="terms${vs.count}">${k.terms_info}</td>
 										</tr>
 									</c:forEach>
 								</c:otherwise>
