@@ -109,7 +109,6 @@ tbody tr:hover {
 	background-color: #f5f5f5;
 }
 
-
 ::-webkit-input-placeholder {
 	color: #aaa;
 	opacity: 1;
@@ -187,20 +186,6 @@ div.modalContent button.modal_cancel {
 </style>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).on(
-			"click",
-			"#up_banner",
-			function() {
-				//$(".replyModal").attr("style", "display:block;");
-				$(".replyModal").fadeIn(200);
-				var repNum = $(this).attr("data-repNum");
-				var repCon = $(this).parent().parent()
-						.children(".replyContent").text();
-				$(".modal_repCon").val(repCon);
-				$(".modal_modify_btn").attr("data-repNum", repNum);
-			});
-</script>
 </head>
 <body>
 	<main>
@@ -233,58 +218,16 @@ div.modalContent button.modal_cancel {
 								<td>보임</td>
 								<td>2023.03.29</td>
 								<td>2023.03.30</td>
-								<td><button id="up_banner">수정</button></td>
+								<td><button id="up_banner"
+										onclick="gref.location='admin_intg_banner_up.do'">수정</button></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<button type="button" id="regist_btn">등록</button>
+				<button type="button" id="regist_btn"
+					onclick="location.href='admin_intg_banner_reg.do'">등록</button>
 			</div>
 		</section>
 	</main>
-	<div class="replyModal">
-		<div class="modalContent">
-			<div>
-				<textarea class="modal_repCon" name="modal_repCon"></textarea>
-			</div>
-			<div>
-				<button type="button" class="modal_regist_btn">등록</button>
-				<button type="button" class="modal_cancel">취소</button>
-			</div>
-		</div>
-		<div class="modalBackground"></div>
-	</div>
-	<script>
-		$(".modal_cancel").click(function() {
-			$(".replyModal").attr("style", "display:none;");
-		});
-
-		$(".modal_regist_btn").click(function() {
-			var modifyConfirm = confirm("등록하시겠습니까?");
-			if (modifyConfirm) {
-				var data = {
-					repNum : $(this).attr("data-repNum"),
-					repCon : $(".modal_repCon").val()
-				}; // ReplyVO 형태로 데이터 생성
-				$.ajax({
-					url : "",
-					type : "post",
-					data : data,
-					success : function(result) {
-
-						if (result == 1) {
-							replyList();
-							$(".replyModal").fadeOut(200);
-						} else {
-							alert("오류입니다.");
-						}
-					},
-					error : function() {
-						alert("등록 에러")
-					}
-				});
-			}
-		});
-	</script>
 </body>
 </html>

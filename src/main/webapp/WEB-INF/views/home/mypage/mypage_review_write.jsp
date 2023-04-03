@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 > 문의 내역</title>
+<title>마이페이지 > 리뷰 작성</title>
 <style type="text/css">
 body {
 	font-family: Arial, sans-serif;
@@ -41,7 +41,6 @@ main {
 	font-color: #fff;
 	max-width: 1500px;
 	min-width: 1300px;
-	max-height: 2000px;
 }
 
 table {
@@ -68,24 +67,31 @@ tbody th {
 	width: 30%;
 }
 
-table td:first-child {
-	font-size: 14px;
-	color: #666;
-	width: 10%;
-}
-
 /* tbody tr 마우스 오버시 배경색 변경 */
-tbody tr>input:hover {
+tbody tr:hover {
 	background-color: #f5f5f5;
 }
 
-a {
-	text-decoration: none;
-	color: #4CAF50;
+#content_rev {
+	display: inline-block;
+	width: 650px;
+	height: 400px;
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 14px;
 }
 
-.processing {
-	color: red;
+#title_rev {
+	display: inline-block;
+	width: 400px;
+	height: 35px;
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 14px;
 }
 
 button {
@@ -100,37 +106,12 @@ button {
 	margin: 4px 2px;
 	cursor: pointer;
 	border-radius: 4px;
+}
+
+#regist_btn {
 	position: absolute;
 	bottom: 20px;
 	right: 30px;
-}
-
-input[type="text"], #msg_info {
-	padding: 10px;
-	border-radius: 8px;
-	border: none;
-	font-size: 15px;
-	width: 300px;
-	margin-left: 0px;
-}
-
-input[type="text"]:focus, #msg_info:focus {
-	outline: none;
-	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-	padding-left: 5px;
-	border: none;
-	border-bottom: 2px solid rgba(126, 192, 238, 0.8);
-	transition: border-bottom-color 0.4s linear;
-	border-bottom-width: 1px;
-}
-
-button:hover {
-	background-color: #2980b9;
-}
-
-#msg_info {
-	width: 640px;
-	heigth: 100px;
 }
 </style>
 </head>
@@ -139,35 +120,31 @@ button:hover {
 		<jsp:include page="my_navbar.jsp"></jsp:include>
 		<section id="sec1">
 			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
-				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
-				id="page_sKate">받은 메시지</span>
+				id="page_mKate">주문 내역</span> <span id="sep2">></span> <span
+				id="page_sKate">리뷰 작성</span>
 			<div class="banned">
 				<table>
 					<tbody>
 						<tr>
-							<th>받는이</th>
-							<td><input type="text" id="msg_receiver"></td>
+							<th>제목</th>
+							<td><input type="text" name="title" id="title_rev" /></td>
 						</tr>
 						<tr>
-							<th>메시지 제목</th>
-							<td><input type="text" id="msg_title"></td>
+							<th>첨부파일</th>
+							<td><input type="file" name="fileName" multiple="multiple" /></td>
 						</tr>
 						<tr>
-							<th>첨부 파일</th>
-							<td><input type="file" id="msg_f_name"></td>
-						</tr>
-						<tr>
-							<th>메시지 내용</th>
-							<td><textarea rows="40" name="msg_info" id="msg_info"></textarea></td>
+							<th>내용</th>
+							<td><textarea name="content" id="content_rev"></textarea></td>
 						</tr>
 					</tbody>
 				</table>
-				<button>전송</button>
+				<button type="button" id="regist_btn" onclick="">저장</button>
 			</div>
 		</section>
 	</main>
 	<footer>
-		<jsp:include page="../../footer.jsp"/>
+		<jsp:include page="../../footer.jsp" />
 	</footer>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 > 받은 메시지</title>
+<title>마이페이지 > 문의 내역</title>
 <style type="text/css">
 body {
 	font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@ main {
 	flex: 1;
 }
 
-.message {
+.banned {
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -32,7 +32,7 @@ main {
 	margin-top: 15px;
 	height: auto;
 	min-height: 100%;
-	padding-bottom: 300px;
+	padding-bottom: 150px;
 }
 
 #sec1 {
@@ -60,10 +60,11 @@ table td, table th {
 	font-family: 'NanumSquareRound';
 }
 
-thead th {
+tbody th {
 	background-color: #8db6d4; /* 헤더 배경색 */
 	color: #fff; /* 헤더 글자색 */
 	font-weight: bold;
+	width: 30%;
 }
 
 table td:first-child {
@@ -117,11 +118,11 @@ a {
 	color: #4CAF50;
 }
 
-.message_info {
-	color: #3498db;
+.processing {
+	color: red;
 }
 
-#send_msg {
+#inquire_btn {
 	background-color: #3498db;
 	border: none;
 	color: white;
@@ -138,8 +139,50 @@ a {
 	right: 30px;
 }
 
-#send_msg:hover {
+#inquire_btn:hover {
 	background-color: #2980b9;
+}
+
+#content_inq {
+	display: inline-block;
+	width: 650px;
+	height: 400px;
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 14px;
+}
+
+#title_inq {
+	display: inline-block;
+	width: 400px;
+	height: 35px;
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 14px;
+}
+
+button {
+	background-color: #3498db;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+#regist_btn {
+	position: absolute;
+	bottom: 20px;
+	right: 30px;
 }
 </style>
 </head>
@@ -149,32 +192,26 @@ a {
 		<section id="sec1">
 			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
 				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
-				id="page_sKate">받은 메시지</span>
-			<div class="message">
+				id="page_sKate">문의 내역</span>
+			<div class="banned">
 				<table>
-					<thead>
-						<tr>
-							<th></th>
-							<th>보낸이</th>
-							<th>메시지 제목</th>
-							<th>수신일</th>
-						</tr>
-					</thead>
 					<tbody>
 						<tr>
-							<td>2</td>
-							<td>테스트1</td>
-							<td><a href="my_message_view.do">테스트 1</a></td>
-							<td>2022.03.15 13:22:28</td>
+							<th>제목</th>
+							<td><input type="text" name="title" id="title_inq"/></td>
 						</tr>
 						<tr>
-							<td>1</td>
-							<td>내옆펫 운영진</td>
-							<td><a href="my_message_view.do">가입을 축하드립니다 !</a></td>
-							<td>2022.03.13 18:49:32</td>
+							<th>첨부파일</th>
+							<td><input type="file" name="fileName" multiple="multiple"/></td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td><textarea name="content" id="content_inq"></textarea></td>
 						</tr>
 					</tbody>
 				</table>
+				<button type="button" id="regist_btn"
+					onclick="">저장</button>
 			</div>
 		</section>
 	</main>

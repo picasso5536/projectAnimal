@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 > 배송지 정보</title>
+<title>마이페이지 > 배송지 추가</title>
 <style type="text/css">
 body {
 	font-family: Arial, sans-serif;
@@ -153,6 +153,12 @@ button {
 #add_btn:hover {
 	background-color: #2980b9;
 }
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
 </style>
 </head>
 <body>
@@ -161,39 +167,20 @@ button {
 		<section id="sec1">
 			<span id="page_info">마이페이지</span> <span id="sep1">|</span> <span
 				id="page_mKate">계정관리</span> <span id="sep2">></span> <span
-				id="page_sKate">배송지 관리</span>
+				id="page_sKate">배송지 추가</span>
 			<div class="border">
 				<div class="shipping-address">
 					<div class="shipping-address-header">
 						<h3>배송지 1</h3>
-						<div class="shipping-address-action">
-							<button class="edit-button" onclick="location.href='my_shipping_up.do'">수정</button>
-							<button class="delete-button">삭제</button>
-						</div>
 					</div>
 					<div class="shipping-address-body">
-						<p class="shipping-address-name">이름: 홍길동</p>
-						<p class="shipping-address-address">주소: 서울시 강남구 역삼동 123-45</p>
-						<p class="shipping-address-phone">연락처: 010-1234-5678</p>
-						<p class="shipping-address-text">메시지: 문 앞</p>
+						<p class="shipping-address-name">이름: <input type="text" name="" id="" class="shipping-address-name"/></p>
+						<p class="shipping-address-address">주소: <input type="button" name="" id="" class="shipping-address-address"/></p>
+						<p class="shipping-address-phone">연락처: <input type="number" name="" id="" class="shipping-address-phone"/></p>
+						<p class="shipping-address-text">메시지: <input type="text" name="" id="" class="shipping-address-text"/></p>
 					</div>
 				</div>
-				<div class="shipping-address">
-					<div class="shipping-address-header">
-						<h3>배송지 2</h3>
-						<div class="shipping-address-action">
-							<button class="edit-button">수정</button>
-							<button class="delete-button">삭제</button>
-						</div>
-					</div>
-					<div class="shipping-address-body">
-						<p class="shipping-address-name">이름: 홍동길</p>
-						<p class="shipping-address-address">주소: 인천시 연수구</p>
-						<p class="shipping-address-phone">연락처: 010-8765-4321</p>
-						<p class="shipping-address-text">메시지: 경비실</p>
-					</div>
-				</div>
-				<button type="button" id="add_btn" onclick="location.href='my_shipping_add.do'">등록</button>
+				<button type="button" id="add_btn" onclick="">저장</button>
 			</div>
 		</section>
 	</main>

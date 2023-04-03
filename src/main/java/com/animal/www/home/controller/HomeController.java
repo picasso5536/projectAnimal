@@ -46,6 +46,11 @@ public class HomeController {
 		return new ModelAndView("home/mypage/mypage_info");
 	}
 	
+	@RequestMapping("my_info_up.do")
+	public ModelAndView myInfoUpdate() {
+		return new ModelAndView("home/mypage/mypage_info_up");
+	}
+	
 	@RequestMapping("my_point.do")
 	public ModelAndView myPoint() {
 		return new ModelAndView("home/mypage/mypage_point");
@@ -54,6 +59,23 @@ public class HomeController {
 	@RequestMapping("my_pet.do")
 	public ModelAndView myPet() {
 		return new ModelAndView("home/mypage/mypage_pet");
+	}
+
+	@RequestMapping("my_pet_up.do")
+	public ModelAndView myPetUpdate() {
+		return new ModelAndView("home/mypage/mypage_pet_up");
+	}
+
+	@RequestMapping("my_pet_reg.do")
+	public ModelAndView myPetRegist() {
+		return new ModelAndView("home/mypage/mypage_pet_regist");
+	}
+	
+	@RequestMapping("my_pet_ins.do")
+	public ModelAndView myPetInsert() {
+		ModelAndView mv = new ModelAndView("");
+		
+		return mv;
 	}
 	
 	@RequestMapping("my_banned.do")
@@ -71,6 +93,16 @@ public class HomeController {
 		return new ModelAndView("home/mypage/mypage_order_detail");
 	}
 	
+	@RequestMapping("my_review_write.do")
+	public ModelAndView myReviewWrite() {
+		return new ModelAndView("home/mypage/mypage_review_write");
+	}
+	
+	@RequestMapping("my_review_send.do")
+	public ModelAndView myReviewSend() {
+		return new ModelAndView("home/mypage/mypage_review_send");
+	}
+	
 	@RequestMapping("my_inquire.do")
 	public ModelAndView myInquire() {
 		return new ModelAndView("home/mypage/mypage_inquire");
@@ -79,6 +111,11 @@ public class HomeController {
 	@RequestMapping("my_inquire_view.do")
 	public ModelAndView myInquireView() {
 		return new ModelAndView("home/mypage/mypage_inquire_view");
+	}
+
+	@RequestMapping("my_inquire_send.do")
+	public ModelAndView myInquireSend() {
+		return new ModelAndView("home/mypage/mypage_inquire_send");
 	}
 	
 	@RequestMapping("my_answer_view.do")
@@ -96,11 +133,6 @@ public class HomeController {
 		return new ModelAndView("home/mypage/mypage_message_view");
 	}
 	
-	@RequestMapping("my_message_send.do")
-	public ModelAndView myMessageSend() {
-		return new ModelAndView("home/mypage/mypage_message_send");
-	}
-	
 	@RequestMapping("my_cartlist.do")
 	public ModelAndView myCartList() {
 		return new ModelAndView("home/mypage/mypage_cartlist");
@@ -109,6 +141,16 @@ public class HomeController {
 	@RequestMapping("my_shipping_address.do")
 	public ModelAndView myShippingAddress() {
 		return new ModelAndView("home/mypage/mypage_shipping_address");
+	}
+	
+	@RequestMapping("my_shipping_up.do")
+	public ModelAndView myShippingUpdate() {
+		return new ModelAndView("home/mypage/mypage_shipping_up");
+	}
+
+	@RequestMapping("my_shipping_add.do")
+	public ModelAndView myShippingAdd() {
+		return new ModelAndView("home/mypage/mypage_shipping_add");
 	}
 	
 	@RequestMapping("my_dibs.do")

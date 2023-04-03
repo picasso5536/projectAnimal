@@ -494,7 +494,8 @@ a{
 								<td>2023.03.28</td>
 								<td id="order_no"><a href="my_order_detail.do">20230328235732302</a></td>
 								<td>59,000<br>1개</td>
-								<td>구매 확정&nbsp;&nbsp;&nbsp;&nbsp;<button type="button">리뷰작성</button></td>
+								<td>구매 확정&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" onclick="location.href='my_review_write.do'">리뷰작성</button></td>
 							</tr>
 						</tbody>
 					</table>
