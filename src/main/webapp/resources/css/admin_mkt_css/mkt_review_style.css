@@ -118,25 +118,6 @@ main {
 	}
 	
 	
-	.add_pdt {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	align-items: center;
-	justify-content: space-between;
-	border: 1px solid #ccc;
-	border-radius: 20px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	margin-bottom: 20px;
-	margin-left: 230px;
-	margin-top: 15px;
-	height: auto;
-	min-width: 1300px;
-	min-height: 1300px;
-	max-height: 1300px;
-	padding-top: 30px;
-	overflow: overlay;
-}
 	.search_review {
 	display: flex;
 	flex-direction: column;
@@ -150,7 +131,7 @@ main {
 	margin-left: 230px;
 	margin-top: 15px;
 	height: auto;
-	min-width: 1300px;
+	min-width: 1600px;
 	min-height: 280px;
 	max-height: 380px;
 	padding-top: 50px;
@@ -171,7 +152,7 @@ main {
 	margin-left: 230px;
 	margin-top: 15px;
 	height: auto;
-	min-width: 1300px;
+	min-width: 1600px;
 	min-height: 600px;
 	padding-bottom: 80px;
 	padding-top: 30px;
@@ -200,7 +181,7 @@ main {
 #pdt_sec {
 	margin-right: 60px;
 	margin-left: 30px;
-	max-width: 1600px;
+	max-width: 1795px;
     min-width: 1400px;
 }
 

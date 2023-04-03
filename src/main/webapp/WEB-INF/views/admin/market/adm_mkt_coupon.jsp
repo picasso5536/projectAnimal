@@ -7,6 +7,11 @@
 <title>고객 정보 수정 </title>
 <link rel="stylesheet" href="resources/css/admin_mkt_css/mkt_coupon_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function p_pay() {
+		location.href="adm_mkt_cp_update.do";
+	} 
+</script>
 </head>
 <body>
 	<main>
@@ -39,7 +44,7 @@
 								<td>5%</td>
 								<td>제한없음</td>
 								<td colspan="2">
-									<button class="update_btn" onclick="p_pay()">수정</button>
+									<button type="button" class="update_btn" onclick="p_pay()">수정</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
 								</td>
 							</tr>
@@ -50,7 +55,7 @@
 								<td>5%</td>
 								<td>제한없음</td>
 								<td colspan="2">
-									<button class="update_btn" onclick="p_pay()">수정</button>
+									<button type="button" class="update_btn" onclick="p_pay()">수정</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
 								</td>
 							</tr>

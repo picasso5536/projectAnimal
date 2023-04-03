@@ -128,15 +128,21 @@ public class AdminController {
 		return new ModelAndView("admin/integrate/adm_intg_terms");
 	}
 	
-	// 留덉폆愿�由�-荑좏룿愿�由�
+	// 관리자-쿠폰 관리목록
 	@RequestMapping("admin_mkt_coupon.do")
 	public ModelAndView admMktCoupon() {
 		return new ModelAndView("admin/market/adm_mkt_coupon");
 	}
-	// 留덉폆愿�由�-荑좏룿�벑濡�
+	// 관리자 - 쿠폰 등록
 	@RequestMapping("adm_mkt_addcp.do")
 	public ModelAndView admMktAddCoupon() {
 		return new ModelAndView("admin/market/adm_mkt_add_coupon");
+	}
+	
+	// 관리자 - 쿠폰 수정
+	@RequestMapping("adm_mkt_cp_update.do")
+	public ModelAndView admMktCouponUpdate() {
+		return new ModelAndView("admin/market/adm_mkt_coupon_update");
 	}
 	
 	@RequestMapping("admin_mkt_delivery.do")
@@ -148,33 +154,38 @@ public class AdminController {
 	public ModelAndView admMktInven() {
 		return new ModelAndView("admin/market/adm_mkt_inven");
 	}
-	//留덉폆愿�由�-二쇰Ц愿�由ы럹�씠吏�
+	//관리자 - 마켓 주문관리
 	@RequestMapping("admin_mkt_order.do")
 	public ModelAndView admMktOrder() {
 		return new ModelAndView("admin/market/adm_mkt_order");
 	}
-	// 留덉폆愿�由�-二쇰Ц�긽�꽭
+	//관리자 - 마켓 주문상세 
 	@RequestMapping("adm_order_more.do")
 	public ModelAndView admMktOrderMore() {
 		return new ModelAndView("admin/market/adm_mkt_order_onelist");
 	}
 	
-	// 留덉폆愿�由�-�긽�뭹愿�由�
+	// 관리자 - 마켓 상품관리
 	@RequestMapping("admin_mkt_product.do")
 	public ModelAndView admMktPdt() {
 		return new ModelAndView("admin/market/adm_mkt_product");
 	}
-	// 留덉폆愿�由�-�긽�뭹�벑濡앺럹�씠吏�
+	// 관리자 - 마켓 상품등록
 	@RequestMapping("adm_add_pdt.do")
 	public ModelAndView admMktAddPdt() {
 		return new ModelAndView("admin/market/adm_add_pdt");
 	}
-	// 留덉폆愿�由�-由щ럭愿�由�
+	// 관리자 - 마켓 상품수정
+	@RequestMapping("adm_up_pdt.do")
+	public ModelAndView admMktUpdatePdt() {
+		return new ModelAndView("admin/market/adm_update_pdt");
+	}
+	// 관리자 - 마켓 상품리뷰
 	@RequestMapping("admin_mkt_review.do")
 	public ModelAndView admMktReview() {
 		return new ModelAndView("admin/market/adm_mkt_review");
 	}
-	// 留덉폆愿�由�-由щ럭�긽�꽭
+	// 관리자 - 마켓 상품리뷰상세
 	@RequestMapping("adm_review_onelist.do")
 	public ModelAndView admMktReviewOneList() {
 		return new ModelAndView("admin/market/adm_review_onelist");

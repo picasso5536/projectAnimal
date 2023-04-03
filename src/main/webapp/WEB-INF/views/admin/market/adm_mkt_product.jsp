@@ -7,6 +7,11 @@
 <title>상품 관리 </title>
 <link rel="stylesheet" href="resources/css/admin_mkt_css/mkt_product_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function p_update() {
+		location.href='adm_up_pdt.do';
+	}
+</script>
 </head>
 <body>
 	<main>
@@ -120,9 +125,8 @@
 								<td>xx</td>
 								<td></td>
 								<td colspan="2">
-									<button class="update_btn" onclick="p_pay()">수정</button>
+									<button type="button" class="update_btn" onclick="p_update()">수정</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
-									<button class="more_btn" onclick="more_info()">상세</button>
 								</td>
 							</tr>
 							<tr>
@@ -134,9 +138,8 @@
 								<td>xx</td>
 								<td></td>
 								<td colspan="2">
-									<button class="update_btn" onclick="p_pay()">수정</button>
+									<button type="button" class="update_btn" onclick="p_update()">수정</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
-									<button class="more_btn" onclick="more_info()">상세</button>
 								</td>
 							</tr>
 							<tr>
@@ -148,9 +151,8 @@
 								<td>xx</td>
 								<td></td>
 								<td colspan="2">
-									<button class="update_btn" onclick="p_pay()">수정</button>
+									<button type="button" class="update_btn" onclick="p_update()">수정</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
-									<button class="more_btn" onclick="more_info()">상세</button>
 								</td>
 							</tr>
 							<tr>
@@ -162,9 +164,8 @@
 								<td>xx</td>
 								<td></td>
 								<td colspan="2">
-									<button class="update_btn" onclick="p_pay()">수정</button>
+									<button type="button" class="update_btn" onclick="p_update()">수정</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
-									<button class="more_btn" onclick="more_info()">상세</button>
 								</td>
 							</tr>
 							<tr>
@@ -176,9 +177,8 @@
 								<td>xx</td>
 								<td></td>
 								<td colspan="2">
-									<button class="update_btn" onclick="p_pay()">수정</button>
+									<button type="button" class="update_btn" onclick="p_update()">수정</button>
 									<button class="del_btn" onclick="more_info()">삭제</button>
-									<button class="more_btn" onclick="more_info()">상세</button>
 								</td>
 							</tr>
 						</tbody>
