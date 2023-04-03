@@ -160,7 +160,7 @@ user-select: none;
 		<div class="div">
 		<img class="img1" src="resources/img/Completion.png"  >
 		<br>
-		<h2 style="text-align: center; ">결제가 정상적으로 완료 되었습니다&nbsp;<em style="color: red; font: inherit;">&nbsp;완료</em>되었습니다.</h2>
+		<h2 style="text-align: center; ">결제가 정상적으로<em style="color: red; font: inherit;">&nbsp;완료</em>되었습니다.</h2>
 		<br><hr>
 		<p><img class="img" src="resources/img/market/img_icon.png" style="width: 200px; user-select: none;" ></p>
 	    <hr style="margin-bottom: 30px;">

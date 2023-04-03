@@ -164,7 +164,7 @@ function completion(f) {
 		<br>
 		
 			<p style="font-size: 20px; margin-left: -890px; margin-top: 20px; white-space:nowrap;">받는사람 정보</p>
-			<button class="but" style=" margin-left:963px; background-color: #F5F5F5;"
+			<button class="but" style=" margin-left:963px; background-color: #8db6d4; border-radius: 5px; color: white; "
 			onclick="window.open('shipping.do','window_name','width=650,height=600,location=no,toolbar=no,menubar=no,status=no,scrollbars=no');">배송지 변경</button>
 		<div class="div_2" >
 			<div>
