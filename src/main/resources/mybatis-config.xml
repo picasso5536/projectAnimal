@@ -20,7 +20,7 @@
 			<!-- <typeAlias alias="" type="com.animal.www."/> -->
 			
 		<!-- 김회철 -->
-        	<!-- <typeAlias alias="" type="com.animal.www."/> -->
+        	<typeAlias alias="tvo" type="com.animal.www.admin.model.vo.TermsVO"/>
     </typeAliases>
 	<mappers>
 		<mapper resource="mappers/market-mapper.xml" />
@@ -28,5 +28,6 @@
 		<mapper resource="mappers/hospital-mapper.xml" />
 		<mapper resource="mappers/memorial-mapper.xml" />
 		<mapper resource="mappers/abandoned-mapper.xml" />
+		<mapper resource="mappers/admin-mapper.xml" />
 	</mappers>
 </configuration>
