@@ -23,16 +23,19 @@ function my_cartlist() {
 </script>
 <style type="text/css">
 .img{
+white-space:nowrap;
  display : block;
  margin : auto;
 }
 .img1{
+white-space:nowrap;
  display : block;
  margin : auto;
  height: 130px;
  margin-top: 50px;
 }
 .border {
+white-space:nowrap;
  	position: relative;
 	/* display: flex; flex-direction : column; */
 	align-items: center;
@@ -52,6 +55,7 @@ function my_cartlist() {
 	
 }
 button {
+white-space:nowrap;
 	background-color: #3498db;
 	border: none;
 	color: white;
@@ -65,22 +69,27 @@ button {
 	border-radius: 4px;
 }
 #add_btn {
+white-space:nowrap;
 width:230px;
 height:70px;
  margin-left: 1400px;
 }
 #add_btn:hover {
+white-space:nowrap;
 	background-color: #2980b9;
 }
 #add_btn1 {
+white-space:nowrap;
 width:230px;
 height:70px;
  margin-left: 1100px;
 }
 #add_btn1:hover {
+white-space:nowrap;
 	background-color: #2980b9;
 }
 .text{
+white-space:nowrap;
 	margin-top:10px;
 	margin-left:21px;
 	width:315px;
@@ -92,11 +101,13 @@ height:70px;
 	font-size: 20px; 
 } 
 table{
+white-space:nowrap;
 margin-left: 270px;
 }
 
 
 table td {
+white-space:nowrap;
 	font-weight: bold;	
 	font-size: 25px; 
 	width: 155px;
@@ -105,11 +116,41 @@ table td {
 	border-bottom: 1px solid #ccc; */
 	background: white;
 }
-.footBtwrap{margin-top: 15px; user-select: none;}
-.footBtwrap>li{float: left;width: 40%;height: 60px; user-select: none;}
-.footBtwrap>li>button{display: block; width: 100%;height: 100%; font-size: 20px;text-align: center; user-select: none;}
-.fpmgBt1{background-color: #9fc4db; color:#fff;border-color: #fff; user-select: none;} 
-.fpmgBt2{background-color: #9fc4db; color: #fff; border-color: #eee; user-select: none;}  
+.footBtwrap{
+white-space:nowrap;
+margin-top: 15px; 
+user-select: none;
+}
+.footBtwrap>li{
+white-space:nowrap;
+float: left;
+width: 40%;
+height: 60px; 
+user-select: none;
+}
+.footBtwrap>li>button{
+white-space:nowrap;
+display: block; 
+width: 100%;
+height: 100%; 
+font-size: 20px;
+text-align: center; 
+user-select: none;
+}
+.fpmgBt1{
+white-space:nowrap;
+background-color: #9fc4db; 
+color:#fff;
+border-color: #fff; 
+user-select: none;
+} 
+.fpmgBt2{
+white-space:nowrap;
+background-color: #9fc4db; 
+color: #fff; 
+border-color: #eee; 
+user-select: none;
+}  
 </style>
 </head>
 <body>

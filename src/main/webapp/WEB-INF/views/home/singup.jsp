@@ -419,9 +419,17 @@ select {
                 <div>
                     <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
                     <span class="box int_mobile">
-                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="예)010-1111-2222">
                     </span>
                     <span class="error_next_box">휴대폰 번호를 입력해 주세요</span>    
+                </div>
+
+                <div>
+                    <h3 class="join_title"><label for="phoneNo">전화번호</label></h3>
+                    <span class="box int_mobile">
+                        <input type="tel" id="mobile_1" class="int" maxlength="16" placeholder="예)031-1111-2222">
+                    </span>
+                    <span class="error_next_box">집 번호를 입력해 주세요</span>    
                 </div>
 
 
@@ -461,6 +469,7 @@ var gender = document.querySelector('#gender');
 var email = document.querySelector('#email');
 
 var mobile = document.querySelector('#mobile');
+var mobile_1 = document.querySelector('#mobile_1');
 
 var error = document.querySelectorAll('.error_next_box');
 
@@ -486,6 +495,7 @@ $(function() {
 	})
 	email.addEventListener("focusout", isEmailCorrect);
 	mobile.addEventListener("focusout", checkPhoneNum);
+	mobile_1.addEventListener("focusout", checkPhoneNum_1);
 
 
 });
@@ -611,8 +621,10 @@ function checkAge() {
     }
 }
 function isEmailCorrect() {
-    var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/;
-
+    /* var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/; */
+	var emailPattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+	/* 숫자나 영어로 시작하고 - _ .을 포함한 숫자나 영어만 있고 @가 들어간다 숫자나 영어로 다시 시작하고 - _ . 을 포함한 영어나 숫자만 있고 .이 들어간다 그리고 2개 또는 3개의 글자인 영어로 끝난다 */
+	
     if(email.value === ""){ 
         error[7].style.display = "none"; 
     } else if(!emailPattern.test(email.value)) {
@@ -637,6 +649,20 @@ function checkPhoneNum() {
         error[8].style.display = "block";
     } else {
         error[8].style.display = "none";
+    }
+}
+
+function checkPhoneNum_1() {
+    var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
+
+    if(mobile_1.value === "") {
+        error[9].innerHTML = "필수 정보입니다.";
+        error[9].style.display = "block";
+    } else if(!isPhoneNum.test(mobile.value)) {
+        error[9].innerHTML = "형식에 맞지 않는 번호입니다.";
+        error[9].style.display = "block";
+    } else {
+        error[9].style.display = "none";
     }
 }
 </script>
