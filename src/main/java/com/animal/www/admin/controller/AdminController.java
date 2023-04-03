@@ -53,7 +53,12 @@ public class AdminController {
 	public ModelAndView admAdmAccountCreate() {
 		return new ModelAndView("admin/member/admin_account");
 	}
-
+	// 관리자 내정보 수정페이지
+	@RequestMapping("ad_acc_update.do")
+	public ModelAndView admAdmAccountUpdate() {
+		return new ModelAndView("admin/member/adm_account_update");
+	}
+	// 관리자 메시지 확인
 	@RequestMapping("admin_mbr_message.do")
 	public ModelAndView admAdminMessage() {
 		return new ModelAndView("admin/member/adm_mbr_message");
@@ -63,17 +68,32 @@ public class AdminController {
 	public ModelAndView admAdminSendMessage() {
 		return new ModelAndView("admin/member/adm_mbr_sendmsg");
 	}
-
+	// 관리자 메시지 상세보기
+	@RequestMapping("mbr_msg_onelist.do")
+	public ModelAndView admAdminMessageOneList() {
+		return new ModelAndView("admin/member/adm_mbr_msgonelist");
+	}
+	// 관리자 포인트 관리
 	@RequestMapping("admin_mbr_point.do")
 	public ModelAndView admMemberPoint() {
 		return new ModelAndView("admin/member/adm_mbr_point");
 	}
-
+	// 관리자 포인트 지급/차감
 	@RequestMapping("point_chk.do")
 	public ModelAndView pointChk() {
 		return new ModelAndView("admin/member/point_chk_p");
 	}
-
+	// 관리자 회원 포인트 상세
+	@RequestMapping("adm_point_info.do")
+	public ModelAndView adminPointInfo() {
+		return new ModelAndView("admin/member/adm_mbr_point_info");
+	}
+	// 관리자 회원 포인트 충전 신청
+	@RequestMapping("adm_p_add_req.do")
+	public ModelAndView adminPointAddReq() {
+		return new ModelAndView("admin/member/adm_point_add_reqest");
+	}
+	
 	@RequestMapping("admin_intg_announce.do")
 	public ModelAndView admIntgAnnoun() {
 		return new ModelAndView("admin/integrate/adm_intg_announce");
@@ -121,19 +141,24 @@ public class AdminController {
 		mv.addObject("termslist", termslist);
 		return mv;
 	}
-
-	// 留덉폆愿�由�-荑좏룿愿�由�
+	
+	// 관리자-쿠폰 관리목록
 	@RequestMapping("admin_mkt_coupon.do")
 	public ModelAndView admMktCoupon() {
 		return new ModelAndView("admin/market/adm_mkt_coupon");
 	}
-
-	// 留덉폆愿�由�-荑좏룿�벑濡�
+	// 관리자 - 쿠폰 등록
 	@RequestMapping("adm_mkt_addcp.do")
 	public ModelAndView admMktAddCoupon() {
 		return new ModelAndView("admin/market/adm_mkt_add_coupon");
 	}
-
+	
+	// 관리자 - 쿠폰 수정
+	@RequestMapping("adm_mkt_cp_update.do")
+	public ModelAndView admMktCouponUpdate() {
+		return new ModelAndView("admin/market/adm_mkt_coupon_update");
+	}
+	
 	@RequestMapping("admin_mkt_delivery.do")
 	public ModelAndView admMktDlvr() {
 		return new ModelAndView("admin/market/adm_mkt_delivery");
@@ -143,38 +168,38 @@ public class AdminController {
 	public ModelAndView admMktInven() {
 		return new ModelAndView("admin/market/adm_mkt_inven");
 	}
-
-	// 留덉폆愿�由�-二쇰Ц愿�由ы럹�씠吏�
+	//관리자 - 마켓 주문관리
 	@RequestMapping("admin_mkt_order.do")
 	public ModelAndView admMktOrder() {
 		return new ModelAndView("admin/market/adm_mkt_order");
 	}
-
-	// 留덉폆愿�由�-二쇰Ц�긽�꽭
+	//관리자 - 마켓 주문상세 
 	@RequestMapping("adm_order_more.do")
 	public ModelAndView admMktOrderMore() {
 		return new ModelAndView("admin/market/adm_mkt_order_onelist");
 	}
-
-	// 留덉폆愿�由�-�긽�뭹愿�由�
+	// 관리자 - 마켓 상품관리
 	@RequestMapping("admin_mkt_product.do")
 	public ModelAndView admMktPdt() {
 		return new ModelAndView("admin/market/adm_mkt_product");
 	}
-
-	// 留덉폆愿�由�-�긽�뭹�벑濡앺럹�씠吏�
+	// 관리자 - 마켓 상품등록
 	@RequestMapping("adm_add_pdt.do")
 	public ModelAndView admMktAddPdt() {
 		return new ModelAndView("admin/market/adm_add_pdt");
 	}
+	// 관리자 - 마켓 상품수정
+	@RequestMapping("adm_up_pdt.do")
+	public ModelAndView admMktUpdatePdt() {
+		return new ModelAndView("admin/market/adm_update_pdt");
+	}
+	// 관리자 - 마켓 상품리뷰
 
-	// 留덉폆愿�由�-由щ럭愿�由�
 	@RequestMapping("admin_mkt_review.do")
 	public ModelAndView admMktReview() {
 		return new ModelAndView("admin/market/adm_mkt_review");
 	}
-
-	// 留덉폆愿�由�-由щ럭�긽�꽭
+	// 관리자 - 마켓 상품리뷰상세
 	@RequestMapping("adm_review_onelist.do")
 	public ModelAndView admMktReviewOneList() {
 		return new ModelAndView("admin/market/adm_review_onelist");

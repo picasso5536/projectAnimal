@@ -155,7 +155,7 @@ main {
 #pdt_sec {
 	margin-right: 60px;
 	margin-left: 30px;
-	max-width: 1500px;
+	max-width: 1700px;
 	min-width: 1300px;
 }
 
@@ -387,3 +387,13 @@ input[type="number"] {
 		float: right;
 	}
 	
+	td span {
+		display: flex;
+	    flex-direction: row;
+	    flex-wrap: nowrap;
+	    align-items: center;
+	}
+	
+	.cbox_td {
+		
+	}

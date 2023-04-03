@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="resources/css/market_css/market_home.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+/* 
+수정전 배너
+$(document).ready(function() {
 		var $banner = $(".banner").find("#banner_list");
 
 		var $bannerWidth = $banner.children().outerWidth();//이미지의 폭
@@ -36,7 +38,48 @@
 			});
 		}
 		
-	}); 
+	});  */
+	
+	// 수정 후 배너
+	$(document).ready(function() {
+		$(window).scroll(function() {
+			if ($(this).scrollTop() >= 99999999999) {
+				$('#header').addClass('sticky');
+			} else if ($(this).scrollTop() <= 99999999999) {
+				$('#header').removeClass('sticky');
+			}
+		});
+
+		$('nav ul li').mouseover(function() {
+			$('.navMenu.over').removeClass('over');
+			$(this).children(":first").addClass('over');
+		});
+		$('nav ul li').mouseout(function() {
+			$('.navMenu.over').removeClass('over');
+		});
+	
+	
+	 	var idx_lgth = $("#visual>div").length;
+		var srt = 1;
+		
+		$("section>a").click(function(){
+			var idx = $(this).index();
+			srt = idx;
+			$(this).addClass('on').siblings().removeClass('on');
+			$("#visual>div").eq(idx).addClass('on').siblings().removeClass('on');
+		});
+		
+	setInterval(AutoRun, 3000);
+		
+	function AutoRun(){
+		if(srt == idx_lgth){
+				srt = 0;	
+		}
+		$("section>a").eq(srt).addClass('on').siblings().removeClass('on');
+		$("#visual>div").eq(srt).addClass('on').siblings().removeClass('on');
+		srt++;	
+	} 
+	});
 	
 		$(window).scroll(function() {
 		    if ($(this).scrollTop() > 250) { //250 넘으면 버튼이 보인다
@@ -68,7 +111,8 @@
 <body>
 <jsp:include page="m_home_test.jsp" />
 	<a id="topBtn2" href="#"><img alt="" src="resources/img/market/top.png" style="width: 60px; height: 60px;"> </a>
-	<div class="contents">
+	<!-- 수정전 배너
+		<div class="contents">
 		<div class="banner">
 			<ul id="banner_list">
 				<li>
@@ -82,7 +126,25 @@
 				</li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
+	    <div id="visual">     
+             <div class="on"><a class="on1 active" href="https://www.youtube.com/watch?v=uuevTJE-RLw">
+             <img src="resources/img/market/banner1.jpg" alt="1" width="2550px" height="950px">
+             </a></div>
+             <div><a class="on1" href="https://www.youtube.com/watch?v=uuevTJE-RLw">
+             <img src="resources/img/market/banner2.jpg" alt="2" width="2550px" height="950px">
+             </a></div>
+             <div><a class="on1" href="https://www.youtube.com/watch?v=uuevTJE-RLw">
+             <img src="resources/img/market/banner3.jpg" alt="3" width="2550px" height="950px">
+             </a></div>
+             
+        <section id="control">
+            <a class="on1" href="#"></a>
+            <a class="on1" href="#"></a>
+            <a class="on1" href="#"></a>
+        </section>
+ 		 </div> 
+	
 	<!-- 대분류 반려동문 종류 선택 버튼-->
 	<div id="contents_con">
 	<div class="type_div">

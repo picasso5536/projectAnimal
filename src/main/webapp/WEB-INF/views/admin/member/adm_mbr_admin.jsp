@@ -28,18 +28,20 @@ $(document).ready(function() {
 		<ul id="crm_sub">
 				<li class="mli"><a class="ad-link" href="#">관리자 정보관리</a></li>
 				<li class="mli"><a class="ad-link" href="ad_acc_create.do">관리자 계정 만들기</a></li>
+				<li class="mli"><a class="ad-link" href="ad_acc_update.do">(임시) 계정 수정</a></li>
+				
 			</ul>
 			<div class="search_mbr">
 				<form id="search_form">
 					<span class="search_text">
-						관리자 번호 : <input type="text" name="m_idx" size="25">
-					</span>
-					<span class="search_text">
-						관리자 이름 : <input type="text" name="m_name" size="25">
-					</span>
-					<span class="search_text">
-						관리자 아이디 : <input type="text" name="m_id" size="25">
-					</span>
+						검색조건 : 
+						<select name="bott" >
+						    <option value="none">관리자 번호</option>
+						    <option value="cat">관리자 이름</option>
+						    <option value="dog">관리자 아이디</option>
+						  </select>
+						<input type="text" name="m_idx" size="25">					
+						</span>
 					<span class="search_btns">
 						<input type="button" value="조회" id="search_btn">
 						<input type="reset" value="초기화" id="reset_btn">

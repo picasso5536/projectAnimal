@@ -19,6 +19,7 @@ main {
 	flex: 1;
 }
 
+
 	#crm_sub {
 		margin-left: 20px;
 		display: flex;
@@ -73,7 +74,7 @@ main {
 	.search_btns {
 		display: flex;
 	    margin-top: 35px;
-	    margin-left: 245px;
+	    margin-left: 155px;
 	}
 	
 	#search_btn {
@@ -156,17 +157,45 @@ main {
 	padding-bottom: 80px;
 	overflow: overlay;
 }
+.point_info {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	margin-bottom: 20px;
+	margin-left: 230px;
+	margin-top: 15px;
+	height: auto;
+	min-height: 100%;
+	max-height: 900px;
+	min-width: auto;
+    max-width: 1500px;
+	padding-bottom: 80px;
+	overflow: overlay;
+}
 
 #mem_sec {
 	margin-right: 60px;
 	margin-left: 30px;
-	max-width: 1500px;
+	max-width: 1700px;
 	min-width: 1300px;
 }
 
 table {
 	border-collapse: collapse;
-	width: 100%;
+	width: auto;
+	margin: 0 auto;
+	min-width: 1100px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+	margin-top: 100px;
+}
+.p_info_t {
+	border-collapse: collapse;
+	width: 1325px;
 	margin: 0 auto;
 	min-width: 1100px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -213,7 +242,7 @@ td {
 	color: red;
 }
 
- tr .more_btn,  tr .pay_btn {
+.more_btn, .pay_btn {
 	width: 85px;
 	height: 30px;
 	border: 1px solid #fff;
@@ -226,14 +255,26 @@ td {
 	cursor: pointer;
 }
 
-tr .more_btn:hover {
+.more_btn:hover {
 		background-color: #679ec7;
 }
 
-tr .pay_btn:hover {
+.pay_btn:hover {
 		background-color: #679ec7;
 }
 
 input[type="number"] {
     width: 120px;
 }
+
+select {
+		min-width: 120px;
+    	min-height: 27px;
+    	padding: 0px 5px;
+    	margin: 0px 5px;
+	}
+	
+	.point_list_div {
+		margin-top:30px;
+		float: right;
+	}

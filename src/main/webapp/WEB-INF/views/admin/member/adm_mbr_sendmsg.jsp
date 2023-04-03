@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메시지 보내기</title>
+<link rel="stylesheet" href="resources/css/summernote-lite.css">
 <link rel="stylesheet" href="resources/css/admin_mbr_css/mbr_message_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -66,5 +67,40 @@
 			</div>
 		</section>
 	</main>
+	<script src="resources/js/summernote-lite.js"></script>
+	<script src="resources/js/lang/summernote-ko-kr.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#content").summernote({
+				lang : "ko-KR",
+				height : 300,
+				focus : true,
+				callbacks : {
+					onImageUpload : function(files, editor) {
+						for (var i = 0; i < files.length; i++) {
+							sendImage(files[i], editor)
+						}
+					}
+				}
+			});
+		});
+		
+		function sendImage(file, editor) {
+			var frm = new FormData(); 
+			frm.append("upload", file);
+
+			// 비동기 통신
+			$.ajax({
+				url : "resources/view/saveImage.jsp", 
+				data : frm, // 전달하고자 하는 파라미터 값
+				type : "post", // 전송 방식
+				contentType : false,
+				processData : false,
+				dataType : "json",
+			}).done(function(data) {
+				$("#content").summernote("editor.insertImage", data.img_url);
+			});
+		}
+	</script>
 </body>
 </html>

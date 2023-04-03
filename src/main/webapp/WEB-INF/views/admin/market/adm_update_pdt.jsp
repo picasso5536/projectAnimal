@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 등록</title>
+<title>등록상품 수정</title>
 <link rel="stylesheet" href="resources/css/admin_mkt_css/mkt_product_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -14,7 +14,7 @@
 		<section id="add_pdt_sec">
 		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
 				id="page_mKate">상품 관리</span> <span id="sep2">></span> <span
-				id="page_sKate">상품 등록</span>
+				id="page_sKate">상품 수정</span>
 			<div class="add_pdt">
 				<form id="search_form">
 					<table>
@@ -144,7 +144,7 @@
 							</tr>
 							<tr>
 								<td colspan="5" style="text-align: center; padding: 20px;">
-									<input type="button" value="상품등록" >
+									<input type="button" value="상품수정" >
 									<input type="button" value="초기화" >
 									<input type="button" value="목록" >
 								</td>

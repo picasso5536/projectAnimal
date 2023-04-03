@@ -8,6 +8,15 @@
 <link rel="stylesheet" href="resources/css/admin_mbr_css/mbr_message_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$("#mem_link").click(function() {
+		location.href="member_update.do";
+	});
+	
+}); 
+</script>
 </head>
 <body>
 	<main>
@@ -61,53 +70,39 @@
 					</table>
 				<table>
 					<thead>
-						<tr>
+						<tr onclick="location.href='mbr_msg_onelist.do'">
 							<th></th>
 							<th>보낸날짜</th>
 							<th>고객명</th>
 							<th>닉네임</th>
 							<th>내용</th>
 							<th>종류</th>
-							<th>
-							</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr onclick="location.href='mbr_msg_onelist.do'">
 							<td>1</td>
 							<td>2023.03.19</td>
 							<td>무년</td>
 							<td>test1</td>
 							<td>신고결과를 알려드립니다....</td>
 							<td>신고결과</td>
-							<td>
-								<input type="button" value="회수" class="btns">
-								<input type="button" value="삭제" class="btns">
-							</td>
 						</tr>
-						<tr>
+						<tr onclick="location.href='mbr_msg_onelist.do'">
 							<td>1</td>
 							<td>2023.03.19</td>
 							<td>무년</td>
 							<td>test1</td>
 							<td>**이벤트 참여결과를 알려드립니다**</td>
 							<td>이벤트성</td>
-							<td>
-								<input type="button" value="회수" class="btns">
-								<input type="button" value="삭제" class="btns">
-							</td>
 						</tr>
-						<tr>
+						<tr onclick="location.href='mbr_msg_onelist.do'">
 							<td>1</td>
 							<td>2023.03.19</td>
 							<td>무년</td>
 							<td>test1</td>
 							<td>**어쩌구 저쩌구에 대한 알림** ...</td>
 							<td>알림</td>
-							<td>
-								<input type="button" value="회수" class="btns">
-								<input type="button" value="삭제" class="btns">
-							</td>
 						</tr>
 					</tbody>
 				</table>
