@@ -546,7 +546,7 @@ div.modalContent button.modal_cancel {
 				<textarea class="modal_repCon" name="modal_repCon"></textarea>
 			</div>
 			<div>
-				<button type="button" class="modal_regist_btn">등록</button>
+				<button type="button" class="modal_regist_btn">수정</button>
 				<button type="button" class="modal_cancel">취소</button>
 			</div>
 		</div>
@@ -578,7 +578,7 @@ div.modalContent button.modal_cancel {
 						}
 					},
 					error : function() {
-						alert("등록 에러")
+						alert("수정 에러")
 					}
 				});
 			}

@@ -169,11 +169,11 @@ button {
 						<p>펫 증명서 : -</p>
 					</div>
 					<div class="up_del_btn">
-						<button type="button" class="update">수정</button>
+						<button type="button" class="update" onclick="location.href='my_pet_up.do'">수정</button>
 						<button type="button" class="delete">삭제</button>
 					</div>
 				</div>
-				<button type="button" id="regist_btn">등록</button>
+				<button type="button" id="regist_btn" onclick="location.href='my_pet_reg.do'">등록</button>
 			</div>
 		</section>
 	</main>

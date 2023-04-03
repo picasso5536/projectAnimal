@@ -71,22 +71,6 @@ main {
 	letter-spacing: 1px;
 }
 
-.delete-button {
-	background-color: #ff3333;
-	color: #fff;
-	border: none;
-	padding: 6px 12px;
-	border-radius: 4px;
-	font-size: 0.875rem;
-	font-weight: 600;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-}
-
-.delete-button:hover {
-	background-color: #ee2222;
-}
-
 .rev_body p {
 	margin: 0;
 	font-size: 1rem;
@@ -138,7 +122,6 @@ button {
 					<div class="rev_header">
 						<h3>리뷰 제목</h3>
 						<div class="rev_action">
-							<button class="delete-button">삭제</button>
 						</div>
 					</div>
 					<div class="rev_body">
@@ -151,7 +134,6 @@ button {
 					<div class="rev_header">
 						<h3>리뷰 제목</h3>
 						<div class="rev_action">
-							<button class="delete-button">삭제</button>
 						</div>
 					</div>
 					<div class="rev_body">
@@ -164,7 +146,6 @@ button {
 					<div class="rev_header">
 						<h3>리뷰 제목</h3>
 						<div class="rev_action">
-							<button class="delete-button">삭제</button>
 						</div>
 					</div>
 					<div class="rev_body">

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 > 내 정보</title>
+<title>마이페이지 > 내 정보 수정</title>
 <style type="text/css">
 @import
 	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css)
@@ -219,25 +219,6 @@ ul ul {
 .profile-button:hover {
 	background-color: #ddd;
 }
-
-.btn-upload {
-	width: 150px;
-	height: 30px;
-	background: #fff;
-	border: 1px solid rgb(77, 77, 77);
-	border-radius: 10px;
-	font-weight: 500;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center; &: hover { background : rgb( 77, 77, 77);
-	color: #fff;
-}
-
-}
-#file {
-	display: none;
-}
 </style>
 </head>
 <body>
@@ -256,24 +237,19 @@ ul ul {
 						<div id="info_1">
 							<p>이름 : 김회철</p>
 							<p>이메일 : picasso5536@gmail.com</p>
-							<p>핸드폰번호 : 010-1234-5678</p>
+							<p>핸드폰번호 :
+							<input type="number" placeholder="JSTL 사용" /></p>
 							<p>생년월일 : 2000년 1월 1일</p>
 							<p>성별 : 남자</p>
 						</div>
 						<div id="info_2">
 							<p>닉네임 : 회철짱짱123</p>
-							<p>주소 : 인천광역시 연수구</p>
+							<p>주소 :<input type="text" placeholder="주소">
+							<button type="button">주소 찾기</button></p>
 							<p>접속일 : 2023년 3월 20일</p>
 							<p>로그인 플랫폼 : 카카오</p>
 							<p>보유 포인트 : 120,000</p>
 						</div>
-					</div>
-					<div class="profile-buttons">
-						<label for="file">
-							<div class="profile-button">프로필 사진 수정</div>
-						</label> <input type="file" name="file" id="file">
-						<button class="profile-button"
-							onclick="location.href='my_info_up.do'">회원 정보 수정</button>
 					</div>
 				</div>
 			</div>
