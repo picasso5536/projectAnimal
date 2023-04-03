@@ -173,4 +173,14 @@ public class AdminController {
 	public ModelAndView admCommComment() {
 		return new ModelAndView("admin/community/adm_comm_comment");
 	}
+
+	@RequestMapping("admin_comm_comment_management.do")
+	public ModelAndView admCommCommentManagement() {
+		return new ModelAndView("admin/community/adm_comm_comment_management");
+	}
+	
+	@RequestMapping("admin_comm_comment_registration.do")
+	public ModelAndView admCommCommentRegistration() {
+		return new ModelAndView("admin/community/adm_comm_comment_registration");
+	}
 }
