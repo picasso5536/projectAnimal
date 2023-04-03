@@ -11,7 +11,7 @@
 	function p_pay() {
 		var result = confirm("지급을 승인하시겠습니까?");
 		if(result){
-			var url = "point_chk_p.jsp";
+			var url = "point_chk.do";
 	        var name = "point popup";
 	        var option = "width=650,height=600,location=no,toolbar=no,menubar=no,status=no,scrollbars=no"
 	        window.open(url, name, option);			
@@ -28,6 +28,8 @@
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="mem_sec">
+		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
+				id="page_mKate">포인트 관리</span>
 			<div class="search_mbr">
 				<form id="search_form">
 					<span class="search_text">

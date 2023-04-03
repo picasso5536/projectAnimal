@@ -12,6 +12,9 @@
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="pdt_sec">
+		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
+				id="page_mKate">리뷰 관리</span> <span id="sep2">></span> <span
+				id="page_sKate">리뷰 상세</span>
 			<div class="review11">
 				<form id="search_form">
 					<table>
@@ -66,7 +69,7 @@
 							<tr>
 								<td colspan="4" style="text-align: center">
 									<input type="button" value="삭제" onclick="del_go(this.form)">
-									<input type="button" value="목록">
+									<input type="button" value="목록" onclick="location.href='admin_mkt_review.do'">
 								</td>
 							</tr>
 						</tbody>

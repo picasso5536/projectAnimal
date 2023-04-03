@@ -21,11 +21,10 @@ $(document).ready(function() {
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="mem_sec">
-		<!-- 	<ul id="crm_sub">
+			<ul id="crm_sub">
 				<li class="mli"><a class="ad-link" href="#">고객 정보관리</a></li>
-				<li class="mli"><a class="ad-link" href="admin_list.do">관리자 계정관리</a></li>
-				<li class="mli" id="last_il"><a class="ad-link" href="admin_point.do">고객 포인트 관리</a></li>
-			</ul> -->
+				<li class="mli"><a class="ad-link" href="mbr_withdrawal.do">탈퇴회원관리</a></li>
+			</ul>
 			<div class="search_mbr">
 				<form id="search_form">
 					<span class="search_text">
