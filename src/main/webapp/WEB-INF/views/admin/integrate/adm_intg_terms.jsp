@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -202,22 +203,18 @@ div.modalContent button.modal_cancel {
 				<div class="terms">
 					<table>
 						<tbody>
-							<tr>
-								<th>이용약관</th>
-								<td id="terms1">블라블라1</td>
-							</tr>
-							<tr>
-								<th>개인 정보의 수집 항목 및 수집 방법</th>
-								<td id="terms2">블라블라2</td>
-							</tr>
-							<tr>
-								<th>개인 정보의 수집 목적 및 이용 목적</th>
-								<td id="terms3">블라블라3</td>
-							</tr>
-							<tr>
-								<th>개인 정보의 보유 및 이용 기간</th>
-								<td id="terms4">블라블라4</td>
-							</tr>
+							<c:choose>
+								<c:when test="${empty termslist}">
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${termslist}" var="k" varStatus="vs">
+										<tr>
+											<th>${k.terms_name}</th>
+											<td id="terms">${k.terms_info}</td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</tbody>
 					</table>
 				</div>
