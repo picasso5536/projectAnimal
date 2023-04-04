@@ -134,14 +134,14 @@ ul ul {
 		</ul>
 		<br>
 		<li class="large"><img
-			src="resources/img/home/my_community_img.png"><a href="#">커뮤니티</a></li>
+			src="resources/img/home/my_community_img.png"><a href="#">커뮤니티(예정)</a></li>
 		<ul>
 			<li><a href="#">게시글</a></li>
 			<li><a href="#">댓글/답글</a></li>
 		</ul>
 		<br>
 		<li class="large"><img
-			src="resources/img/home/my_memorial_img.png"><a href="#">추모</a></li>
+			src="resources/img/home/my_memorial_img.png"><a href="#">추모(예정)</a></li>
 		<ul>
 			<li><a href="#">게시글 관리</a></li>
 		</ul>
