@@ -447,10 +447,10 @@ select {
                     <span class="box int_email" >
                         <input type="text" id="email_1" name="email_1" class="mail-check-input" maxlength="100" placeholder="인증번호 6자리를 입력해주세요">
                         <button id="emailChk2" name="emailChk2" style="border:none; background-color:transparent;"  type="submit" class="step_url"  >인증</button>
-	                    <span class="point successEmailChk">이메일 입력후 인증번호 보내기를 해주십시오.</span> 
                         <input type="hidden" id="emailDoubleChk"/>
                     </span>
-                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
+		                <span class="point successEmailChk">이메일 입력후 인증번호 보내기를 해주십시오.</span> 
+                    <!-- <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span> -->    
                 </div>
                 <!-- 핸드폰번호 -->
                 <div>
@@ -551,7 +551,7 @@ var dd = document.querySelector('#dd');
 
 var gender = document.querySelector('#gender');
 
-var email = document.querySelector('#email');
+/* var email = document.querySelector('#email'); */
 
 var mobile = document.querySelector('#mobile');
 var mobile_1 = document.querySelector('#mobile_1');
@@ -578,7 +578,7 @@ $(function() {
 	        error[5].style.display = "none";
 	    }
 	})
-	email.addEventListener("focusout", isEmailCorrect);
+	/* email.addEventListener("focusout", isEmailCorrect); */
 	mobile.addEventListener("focusout", checkPhoneNum);
 	mobile_1.addEventListener("focusout", checkPhoneNum_1);
 
@@ -706,10 +706,8 @@ function checkAge() {
     }
 }
 
-function isEmailCorrect() {
-    /* var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/; */
+/* function isEmailCorrect() {
 	var emailPattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-	/* 숫자나 영어로 시작하고 - _ .을 포함한 숫자나 영어만 있고 @가 들어간다 숫자나 영어로 다시 시작하고 - _ . 을 포함한 영어나 숫자만 있고 .이 들어간다 그리고 2개 또는 3개의 글자인 영어로 끝난다 */
 	
     if(email.value === ""){ 
     	error[7].style.display = "none"; 
@@ -723,7 +721,7 @@ function isEmailCorrect() {
     	error[7].innerHTML = "필수 정보입니다.";
     	error[7].style.display = "block";
     }
-}
+} */
 
 
 function checkPhoneNum() {
