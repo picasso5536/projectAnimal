@@ -173,10 +173,20 @@ public class AdminController {
 	public ModelAndView admMktDlvr() {
 		return new ModelAndView("admin/market/adm_mkt_delivery");
 	}
-
+	//관리자 - 마켓 재고
 	@RequestMapping("admin_mkt_inven.do")
 	public ModelAndView admMktInven() {
 		return new ModelAndView("admin/market/adm_mkt_inven");
+	}
+	//관리자 - 마켓 재고 수정
+	@RequestMapping("adm_mkt_inven_up.do")
+	public ModelAndView admMktInvenUpdate() {
+		return new ModelAndView("admin/market/adm_mkt_inven_update");
+	}
+	//관리자 - 마켓 재고 등록
+	@RequestMapping("adm_mkt_inven_insert.do")
+	public ModelAndView admMktInvenInsert() {
+		return new ModelAndView("admin/market/adm_mkt_inven_insert");
 	}
 	//관리자 - 마켓 주문관리
 	@RequestMapping("admin_mkt_order.do")
@@ -204,7 +214,6 @@ public class AdminController {
 		return new ModelAndView("admin/market/adm_update_pdt");
 	}
 	// 관리자 - 마켓 상품리뷰
-
 	@RequestMapping("admin_mkt_review.do")
 	public ModelAndView admMktReview() {
 		return new ModelAndView("admin/market/adm_mkt_review");

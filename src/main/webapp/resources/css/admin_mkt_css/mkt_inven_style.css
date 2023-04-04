@@ -133,22 +133,21 @@ main {
 
 .search_list {
 	display: flex;
-	flex-direction: column;
-	position: relative;
-	align-items: center;
-	justify-content: space-between;
-	border: 1px solid #ccc;
-	border-radius: 20px;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	margin-bottom: 20px;
-	margin-left: 230px;
-	margin-top: 15px;
-	height: auto;
-	min-width: 1300px;
-	min-height: 750px;
-	padding-bottom: 80px;
-	padding-top: 30px;
-	overflow: overlay;
+    margin-left: 230px;
+    margin-top: 15px;
+    height: auto;
+    min-width: 1300px;
+    min-height: 750px;
+    padding-bottom: 80px;
+    padding-top: 30px;
+    overflow: overlay;
 }
 
 #pdt_sec {
@@ -253,24 +252,29 @@ td {
 	 	margin: 9px;
 	 }
 	 
-	 form input[type=button] {
+	 form input[type=button], form input[type=reset] {
 		height: 25px;
 		width: 90px;
 		border: 1px solid #666;
-		border-right: 6px;
+		border-radius: 6px;
 		font-family: 'NanumSquareRound';
 		font-size: 14px;
 		font-weight: 500;
 		box-shadow: 2px 4px 7px -2px gray;
+		margin: 5px;
 	}
 	
-	form input[type=button] {
+	form input[type=button], form input[type=reset] {
 		background-color: #9fc4db;
 		color: white;
 	}
 	
 	
 	form input[type=button]:hover {
+		background-color: #68a3c6;
+		color: white;
+	}
+	form input[type=reset]:hover {
 		background-color: #68a3c6;
 		color: white;
 	}
