@@ -154,6 +154,9 @@ public class AdminController {
 		return new ModelAndView("admin/market/adm_mkt_sup");
 	}
 	
+	
+	
+	// 제휴사 관리
 	@RequestMapping("admin_comm_post.do")
 	public ModelAndView admCommPost() {
 		return new ModelAndView("admin/community/adm_comm_post");

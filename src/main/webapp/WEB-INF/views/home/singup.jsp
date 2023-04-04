@@ -161,6 +161,17 @@ h3 {
     user-select: none;
 }
 
+.mail-check-input {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+    user-select: none;
+}
+
 input {
     font-family: Dotum,'돋움',Helvetica,sans-serif;
     user-select: none;  
@@ -191,6 +202,24 @@ input {
     border-color: #fff;
    border-color: #fff;
    user-select: none;
+   
+}
+.successEmailChk:hover{
+	color: red;
+	user-select: none;
+}
+
+.successEmailChk {
+    /*@naver.com*/
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    color: skyblue;
+    border-color: #fff;
+   border-color: #fff;
+   user-select: none;
+   
 }
 .step_url:hover{
 	color: red;
@@ -409,12 +438,18 @@ select {
                 <!-- 이메일 -->
                 <div>
                     <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
-                    <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100" placeholder="API 공부해보자">
+                   
+                    <span class="box int_email" >
+                        <input type="text" id="email" name="email" class="int" maxlength="100" style=" white-space: nowrap;" placeholder="예)sanswer@naver.com">
+                        <button id="emailChk" name="emailChk" style="border:none; background-color:transparent;" type="submit" class="step_url"  >인증번호 받기</button> 
+                    </span>
+                    <br>
+                    <span class="box int_email" >
+                        <input type="text" id="email_1" name="email_1" class="mail-check-input" maxlength="100" placeholder="인증번호 6자리를 입력해주세요">
+                        <button id="emailChk2" name="emailChk2" style="border:none; background-color:transparent;"  type="submit" class="step_url"  >인증</button> 
                     </span>
                     <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
                 </div>
-
                 <!-- 핸드폰번호 -->
                 <div>
                     <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
@@ -447,7 +482,32 @@ select {
             </div> 
         </div> 
    <script>
+
+
+/* 인증번호 발송 jsp  */
+$('#emailChk').click(function() {
+		const eamil = $('#email').val(); // 이메일 주소값 얻어오자
+		console.log('니녀석에 이메일이 맞는가?: ' + eamil); // 이메일 오는지 확인해보자
+		alert('너가 입력한 이메일 맞지?: ' + eamil);
+		const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+		
+		$.ajax({
+			type : 'get',
+			url : '<c:url value ="/user/mailCheck?email="/>'+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+			success : function (data) {
+				console.log("data : " +  data);
+				checkInput.attr('disabled',false);
+				code =data;
+				alert('인증번호가 전송되었습니다.')
+			}			
+		}); 
+	}); 
+
+
+
+
 /*변수 선언*/
+
 
 var id = document.querySelector('#id');
 
@@ -620,6 +680,7 @@ function checkAge() {
         error[5].style.display = "none";
     }
 }
+
 function isEmailCorrect() {
     /* var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/; */
 	var emailPattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
@@ -638,6 +699,8 @@ function isEmailCorrect() {
         error[7].style.display = "block";
     }
 }
+
+
 function checkPhoneNum() {
     var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
 

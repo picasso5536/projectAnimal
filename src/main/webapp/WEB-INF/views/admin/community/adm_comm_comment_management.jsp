@@ -8,6 +8,15 @@
 <link rel="stylesheet" href="resources/css/admin_mkt_css/mkt_sup_style.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/admin_mbr_css/mbr_info_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+function comment() {
+	var result = confirm("등록 하시겠습니까?");
+	if(result){
+		location.href="admin_comm_comment.do";
+	}else {
+	}
+}
+</script>
 </head>
 <body>
 	<main>
@@ -15,60 +24,51 @@
 		<section id="pdt_sec">
 			<div class="search_pdt">
 				<form id="search_form">
-				<table id="sup_list">
-				<caption>택배사 리스트</caption>
+					<h2 style="margin-left: 10px;">택배사 등록</h2>
+					<span style="margin-left:10px;  color: red; font-size: 15px; ">지역할증 2500p 고정</span>
+					<table class="type07">
 						<tbody>
 							<tr>
-								<th scope="row" class="title">공급사명</th>
-								<td><input class="input_1" type="text"></td>
-							</tr>
-							<tr>
-								<th scope="row" class="title">공급사 코드</th>
-								<td>자동 생성</td>
-							</tr>
-							<tr>
-								<th scope="row" class="title">사용여부</th>
+								<th scope="row" class="title">택배사 이름</th>
 								<td>
-									<input type="radio" name="using" checked>사용함&emsp;&emsp;
-									<input type="radio" name="using">사용안함
+									&emsp;&emsp;<input type="text" name="deliver" placeholder="예)한진택배">&emsp;
 								</td>
 							</tr>
 							<tr>
-								<th scope="row" class="title">공급사 유형</th>
+								<th scope="row" class="title">배송무료</th>
 								<td>
-									<input type="radio" name="type" checked>사입&emsp;&emsp;&emsp;
-									<input type="radio" name="type">직배송
+									<input type="radio" name="deliver" checked>&emsp;배송비 전액무료
 								</td>
 							</tr>
 							<tr>
-								<th scope="row" class="title">공급사 구조</th>
+								<th scope="row" class="title">수신자 부담(착불)</th>
 								<td>
-									<input type="radio" name="const" checked>도매&emsp;
-									<input type="radio" name="const">사입업체&emsp;
-									<input type="radio" name="const">입점업체&emsp;
-									<input type="radio" name="const">기타
+									<input type="radio" name="deliver">&emsp;수신자 착불부담
 								</td>
 							</tr>
 							<tr>
-								<th scope="row" class="title">거래 상태</th>
+								<th scope="row" class="title">고정값</th>
 								<td>
-									<input type="radio" name="state" checked>거래중&emsp;&emsp;
-									<input type="radio" name="state">거래중지&emsp;&emsp;
-									<input type="radio" name="state">거래해지
+									<input type="radio" name="deliver">
+									<input class="input_1" type="text"placeholder="1,000"> P
 								</td>
 							</tr>
 							<tr>
-								<th scope="row" class="title">거래상품유형</th>
-								<td><input class="input_1" type="text" placeholder="예시)식품"></td>
+								<th scope="row" class="title">지역 할증</th>
+								<td colspan="3">
+									<input type="radio" name="deliver">제주도
+									<input type="radio" name="deliver">독도
+									<input type="radio" name="deliver">울릉도
+									<input type="radio" name="deliver">옥도
+									<input type="radio" name="deliver">보령
+								</td>
+								
 							</tr>
 							<tr>
-								<th scope="row" colspan="2">
-									<span class="search_btns" style="margin-left: 500px;">
-										<input type="button" value="저장" id="insert_btn" onclick="location.href='admin_comm_comment.do'">
+								<th scope="row" colspan="4">
+										<input type="button" value="저장" id="insert_btn" onclick="comment()">
 										<input type="reset" value="초기화" id="reset_btn">
-									</span>
 								</th>
-
 							</tr>
 						</tbody>
 					</table>

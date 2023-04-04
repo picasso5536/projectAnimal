@@ -30,28 +30,26 @@ white-space:nowrap;
 			<div class="search_pdt">
 				<form id="search_form">
 				<table id="sup_list">
-						<caption>공급사 정보</caption>
+						<caption>택배사 정보</caption>
 						<tbody>
 							<tr>
-								<th class="title">공급사 명</th>
+								<th class="title">택배사 명</th>
 								<td><input placeholder="참 좋은 회사" class="text" type="text" style="height:23px; "></td>
-								<th class="title">공급사 주소</th>
+								<th class="title">택배사 주소</th>
 								<td><input placeholder="수원시 팔달구 매교동74-64" class="text" type="text" style="height:23px; "></td>
 							</tr>
 							<tr>
 								<th class="title">전화번호</th>
 								<td><input placeholder="010-4114-3331" class="text" type="text" style="height:23px; "></td>
-								<th class="title">회사 전화</th>
+								<th class="title">택배사 전화</th>
 								<td><input placeholder="031-1111-2222" class="text" type="text" style="height:23px; "></td>
 							</tr>
 							<tr>
-								<th class="title">상품 유형</th>
-								<td><input placeholder="의류" class="text" type="text" style="height:23px; "></td>
 								<th class="title">거래 상태</th>
 								<td><input placeholder="거래중" class="text" type="text" style="height:23px; "></td>
 							</tr>
 							<tr>
-								<th class="title">공급사 정보</th>
+								<th class="title">택배사 정보</th>
 								<td class="td_text" colspan="3">
 									<textarea disabled style="resize: none;" name="content" id="content" cols="110" rows="20" readonly></textarea>
 								</td>

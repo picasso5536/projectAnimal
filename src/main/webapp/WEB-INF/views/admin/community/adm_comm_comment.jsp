@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공급사 관리</title>
+<title>택배사 관리</title>
 <link rel="stylesheet" href="resources/css/admin_mkt_css/mkt_sup_style.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/admin_mbr_css/mbr_info_style.css" type="text/css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
@@ -397,14 +397,13 @@ $(document).on(
 			$(".modal_repCon").val(repCon);
 			$(".modal_modify_btn").attr("data-repNum", repNum);
 		});
-		
 
-function adm_comm_comment_management() {
-    var result = confirm("등록 하시겠습니까?");
-    if(result){
-    location.href="adm_comm_comment_management.do";
-    }else {
-    }
+function management() {
+	var result = confirm("등록 하시겠습니까?");
+	if(result){
+		location.href="admin_comm_comment_management.do";
+	}else {
+	}
 }
 </script>
 </head>
@@ -496,7 +495,7 @@ function adm_comm_comment_management() {
 					</form>
 				<form id="search_form">
 				<table id="sup_list">
-				<caption>공급사 리스트</caption>
+				<caption>택배사 리스트</caption>
 						<thead>
 							<tr >
 								<th><input type="checkbox" name="check"></th>
@@ -512,7 +511,7 @@ function adm_comm_comment_management() {
 								<td><input type="checkbox" name="check"></td>
 								<td>1</td>
 								<td>50000A</td>
-								<td  onclick="location.href='adm_comm_comment_registration.do'">택배사 이름 1</td>
+								<td  onclick="location.href='admin_comm_comment_registration.do'">택배사 이름 1</td>
 								<td>거래중</td>
 								<td>yyyy/MM/dd</td>
 							</tr>
@@ -520,15 +519,14 @@ function adm_comm_comment_management() {
 								<td><input type="checkbox" name="check"></td>
 								<td>1</td>
 								<td>50000A</td>
-								<td  onclick="location.href='adm_comm_comment_registration.do'">택배사 이름 1</td>
+								<td  onclick="location.href='admin_comm_comment_registration.do'">택배사 이름 1</td>
 								<td>거래중</td>
 								<td>yyyy/MM/dd</td>
 							</tr>
-						
 						</tbody>
 					</table>
 				</form>
-					<button type="button" class="select_ann1" onclick="adm_comm_comment_management()" >등록</button>
+					<button type="button" class="select_ann1" onclick="management()" >등록</button>
 			</div>
 		</section>
 	</main>
