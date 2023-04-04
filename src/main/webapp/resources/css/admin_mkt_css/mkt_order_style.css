@@ -252,7 +252,7 @@ td {
 		height: 25px;
 		width: 90px;
 		border: 1px solid #666;
-		border-right: 6px;
+		border-radius: 6px;
 		font-family: 'NanumSquareRound';
 		font-size: 14px;
 		font-weight: 500;
@@ -325,7 +325,7 @@ input[type="number"] {
 	
 		height: auto;	
 		min-width: 650px;
-  		margin: 10px;
+  		margin: 30px 10px;
 	    border:1px solid black;
 	    border-collapse:collapse;
 	    font-size:14px;

@@ -19,6 +19,10 @@ $(document).ready(function() {
 		});
 	
 }); 
+
+function adm_more_info() {
+	location.href="adm_more_info.do";
+}
 </script>
 </head>
 <body>
@@ -57,7 +61,8 @@ $(document).ready(function() {
 							<th>아이디</th>
 							<th>최근접속일자</th>
 							<th>계정생성일자</th>
-							<th>활성화/비활성화</th>
+							<th>활성/비활성</th>
+							<th>상세보기</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -72,6 +77,7 @@ $(document).ready(function() {
 								  <span class="toggleButton"></span>
 								</label>
 							</td>
+							<td><button type="button" class="btns" onclick="adm_more_info()">상세정보</button> </td>
 						</tr>
 						<tr>
 							<td>AS34FS8GJEL</td>
@@ -84,6 +90,7 @@ $(document).ready(function() {
 								  <span class="toggleButton"></span>
 								</label>
 							</td>
+							<td><button type="button" class="btns" onclick="adm_more_info()">상세정보</button> </td>
 						</tr>
 					</tbody>
 				</table>

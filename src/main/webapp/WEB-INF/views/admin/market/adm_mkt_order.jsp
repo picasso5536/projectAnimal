@@ -32,10 +32,11 @@
 									    <option value="delivery_pre">배송준비중</option>
 									    <option value="delivery_s">배송시작</option>
 									    <option value="delivery_com">배송완료</option>
-									    <option value="order_c">주문취소</option>
 									    <option value="cancel_req">취소요청</option>
+									    <option value="order_c">주문취소</option>
 									    <option value="ex_req">교환요청</option>
 									    <option value="ex_com">교환완료</option>
+									    <option value="ex_com">구매확정</option>
 									  </select>
 									  <input type="button" value="조회" id="search_btn">
 								</td>
@@ -60,78 +61,92 @@
 					<caption>총 주문수 : XX </caption>
 						<thead>
 							<tr>
-								<th class="chk_box">선택</th>
+								<th class="chk_box">번호</th>
 								<th>주문일</th>
 								<th>주문번호</th>
+								<th>상품명</th>
 								<th>주문자명</th>
 								<th>주문방법</th>
 								<th>주문포인트</th>
-								<th>기능</th>
+								<th>주문상태</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
+								<th class="chk_box">1</th>
 								<td>yyyy/MM/dd</td>
 								<td>10115264789100</td>
+								<td>상품사웊ㅁㅁ</td>
 								<td>주문자</td>
 								<td>포인트</td>
 								<td>XXXXX P</td>
+								<td>결제완료</td>
 								<td colspan="2">
 									<button type="button" class="more_btn" onclick="location.href='adm_order_more.do'">상세</button>
 								</td>
 							</tr>
 							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
+								<th class="chk_box">2</th>
 								<td>yyyy/MM/dd</td>
 								<td>10115264789100</td>
+								<td>상품사웊ㅁㅁ</td>
 								<td>주문자</td>
 								<td>포인트</td>
 								<td>XXXXX P</td>
+								<td>결제완료</td>
 								<td colspan="2">
 									<button type="button" class="more_btn" onclick="location.href='adm_order_more.do'">상세</button>
 								</td>
 							</tr>
 							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
+								<th class="chk_box">3</th>
 								<td>yyyy/MM/dd</td>
 								<td>10115264789100</td>
+								<td>상품사웊ㅁㅁ</td>
 								<td>주문자</td>
 								<td>포인트</td>
 								<td>XXXXX P</td>
+								<td>결제완료</td>
 								<td colspan="2">
 									<button type="button" class="more_btn" onclick="location.href='adm_order_more.do'">상세</button>
 								</td>
 							</tr>
 							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
+								<th class="chk_box">4</th>
 								<td>yyyy/MM/dd</td>
 								<td>10115264789100</td>
+								<td>상품사웊ㅁㅁ</td>
 								<td>주문자</td>
 								<td>포인트</td>
 								<td>XXXXX P</td>
+								<td>결제완료</td>
 								<td colspan="2">
 									<button type="button" class="more_btn" onclick="location.href='adm_order_more.do'">상세</button>
 								</td>
 							</tr>
 							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
+								<th class="chk_box">5</th>
 								<td>yyyy/MM/dd</td>
 								<td>10115264789100</td>
+								<td>상품사웊ㅁㅁ</td>
 								<td>주문자</td>
 								<td>포인트</td>
 								<td>XXXXX P</td>
+								<td>결제완료</td>
 								<td colspan="2">
 									<button type="button" class="more_btn" onclick="location.href='adm_order_more.do'">상세</button>
 								</td>
 							</tr>
 							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
+								<th class="chk_box">6</th>
 								<td>yyyy/MM/dd</td>
 								<td>10115264789100</td>
+								<td>상품사웊ㅁㅁ</td>
 								<td>주문자</td>
 								<td>포인트</td>
 								<td>XXXXX P</td>
+								<td>결제완료</td>
 								<td colspan="2">
 									<button type="button" class="more_btn" onclick="location.href='adm_order_more.do'">상세</button>
 								</td>
