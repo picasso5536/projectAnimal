@@ -106,7 +106,7 @@ body {
 }
 
 #header {
-    padding-top: 62px;
+    padding-top: 20px;
     padding-bottom: 20px;
     text-align: center;
     user-select: none;
@@ -323,7 +323,7 @@ select {
 </style>
 </head>
 <body>	
-	<form action="">
+	<form action="" onsubmit="return false">
         <div id="header">
             <a href="" target="_blank" title="내옆Pet 회원가입 페이지 "><img src="resources/img/petpet.png" id="logo"></a>
         </div>
@@ -441,12 +441,14 @@ select {
                    
                     <span class="box int_email" >
                         <input type="text" id="email" name="email" class="int" maxlength="100" style=" white-space: nowrap;" placeholder="예)sanswer@naver.com">
-                        <button id="emailChk" name="emailChk" style="border:none; background-color:transparent;" type="submit" class="step_url"  >인증번호 받기</button> 
+                        <button id="emailChk" name="emailChk" style="border:none; background-color:transparent;" type="submit" class="step_url"  >인증번호 보내기</button> 
                     </span>
                     <br>
                     <span class="box int_email" >
                         <input type="text" id="email_1" name="email_1" class="mail-check-input" maxlength="100" placeholder="인증번호 6자리를 입력해주세요">
-                        <button id="emailChk2" name="emailChk2" style="border:none; background-color:transparent;"  type="submit" class="step_url"  >인증</button> 
+                        <button id="emailChk2" name="emailChk2" style="border:none; background-color:transparent;"  type="submit" class="step_url"  >인증</button>
+	                    <span class="point successEmailChk">이메일 입력후 인증번호 보내기를 해주십시오.</span> 
+                        <input type="hidden" id="emailDoubleChk"/>
                     </span>
                     <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
                 </div>
@@ -481,28 +483,51 @@ select {
 
             </div> 
         </div> 
-   <script>
-
+<script>
 
 /* 인증번호 발송 jsp  */
-$('#emailChk').click(function() {
-		const eamil = $('#email').val(); // 이메일 주소값 얻어오자
-		console.log('니녀석에 이메일이 맞는가?: ' + eamil); // 이메일 오는지 확인해보자
-		alert('너가 입력한 이메일 맞지?: ' + eamil);
-		const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
-		
-		$.ajax({
-			type : 'get',
-			url : '<c:url value ="/user/mailCheck?email="/>'+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
-			success : function (data) {
-				console.log("data : " +  data);
-				checkInput.attr('disabled',false);
-				code =data;
-				alert('인증번호가 전송되었습니다.')
-			}			
-		}); 
-	}); 
+var code = "";
+$("#emailChk").click(function(){
+	var email = $("#email").val();
+	/* console.log('니녀석에 이메일이 맞는가?: ' + email); // 이메일 오는지 확인해보자
+	alert('너가 입력한 이메일 맞지?: ' + email);		//  alert창으로도 이메일 오는지 확인 */
+	$.ajax({
+        type:"GET",
+        url:"mailCheck.do?email=" + email,
+        cache : false,
+        success:function(data){
+        	if(data == "error"){
+        		alert("이메일 주소가 올바르지 않습니다. 유효한 이메일 주소를 입력해주세요.");
+				$("#email").attr("autofocus",true);
+				$(".successEmailChk").text("유효한 이메일 주소를 입력해주세요.");
+				$(".successEmailChk").css("color","red");
+        	}else{	        		
+				alert("인증번호 발송이 완료되었습니다.\n입력한 이메일에서 인증번호 확인을 해주십시오.");
+        		$("#email_1").attr("disabled",false);
+        		$("#emailChk2").css("display","inline-block");
+        		$(".successEmailChk").text("인증번호를 입력한 뒤 이메일 인증을 눌러주십시오.");
+        		$(".successEmailChk").css("color","green");
 
+        		code = data;
+        	}
+        }
+    });
+});
+
+$("#emailChk2").click(function(){
+	if($("#email_1").val() == code){
+		$(".successEmailChk").text("인증번호가 일치합니다.");
+		$(".successEmailChk").css("color","green");
+		$("#emailDoubleChk").val("true");
+		$("#email_1").attr("disabled",true);
+		//$("#sm_email").attr("disabled",true);
+	}else{
+		$(".successEmailChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
+		$(".successEmailChk").css("color","red");
+		$("#emailDoubleChk").val("false");
+		$("#email_1").attr("autofocus",true);
+	}
+});
 
 
 
@@ -687,16 +712,16 @@ function isEmailCorrect() {
 	/* 숫자나 영어로 시작하고 - _ .을 포함한 숫자나 영어만 있고 @가 들어간다 숫자나 영어로 다시 시작하고 - _ . 을 포함한 영어나 숫자만 있고 .이 들어간다 그리고 2개 또는 3개의 글자인 영어로 끝난다 */
 	
     if(email.value === ""){ 
-        error[7].style.display = "none"; 
+    	error[7].style.display = "none"; 
     } else if(!emailPattern.test(email.value)) {
-        error[7].style.display = "block";
+    	error[7].style.display = "block";
     } else {
-        error[7].style.display = "none"; 
+    	error[7].style.display = "none"; 
     }
 	
     if(email.value === "") {
-        error[7].innerHTML = "필수 정보입니다.";
-        error[7].style.display = "block";
+    	error[7].innerHTML = "필수 정보입니다.";
+    	error[7].style.display = "block";
     }
 }
 

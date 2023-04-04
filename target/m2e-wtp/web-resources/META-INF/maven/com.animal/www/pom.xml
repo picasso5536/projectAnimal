@@ -183,12 +183,11 @@
 		
 		<!-- 회원가입 이메일 인증 필수 라이브러리 -->
 		<!--${org.springframework-version} 최신주소 사용 -->
-		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
           <groupId>javax.mail</groupId>
           <artifactId>javax.mail-api</artifactId>
           <version>1.5.5</version>
-       </dependency>
+      	</dependency>
 		<dependency>
 		    <groupId>javax.mail</groupId>
 		    <artifactId>mail</artifactId>
@@ -197,7 +196,7 @@
 		<dependency>
 		    <groupId>com.sun.mail</groupId>
 		    <artifactId>javax.mail</artifactId>
-		    <version>1.5.3</version>
+		    <version>1.6.2</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.apache.httpcomponents</groupId>
@@ -209,12 +208,12 @@
 		    <artifactId>commons-email</artifactId>
 		    <version>1.5</version>
 		</dependency>
-	 	<dependency>
+		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context-support</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-					
+		
 		
 		
 	</dependencies>

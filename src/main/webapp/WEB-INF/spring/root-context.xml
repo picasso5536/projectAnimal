@@ -35,6 +35,28 @@
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 	
+	<!-- 이메일인증  -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> <!-- mailSender 선언 -->
+		<property name="host" value="smtp.naver.com"/> <!-- 메이서버 호스트 -->
+		<property name="port" value="587"/> <!-- 메이서버 포트번호 -->
+		<property name="username" value="zkfmakzmzm@naver.com"/> <!-- 자신의 이메일 아이디 -->
+		<property name="password" value="a0718324@@!!"/> <!-- 자신의 비밀번호 -->
+		<!-- 보안연결 SSL과 관련된 설정 -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>  <!--  여기는 우선 복붙 나중에 공부해보자 -->
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtps.checkserveridentity">true</prop>
+				<prop key="mail.transport.protocol">smtp</prop><!--   이메일을 전송하기 위해 사용되는 통신규약  Simple Mail Transfer Protocol -->
+				<prop key="mail.smtps.ssl.trust">*</prop>
+				<prop key="mail.debug">true</prop>   <!-- 프로토콜 --> 
+				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	
 	<!-- DAO 어노테이션 -->
 	<context:annotation-config />
 	<context:component-scan base-package="com.animal.*" />		
