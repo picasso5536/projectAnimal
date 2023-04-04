@@ -50,14 +50,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr onclick="location.href='adm_mbr_withdrawal_info.do'">
 							<td>AS34FS8GJEL</td>
 							<td>문년지</td>
 							<td>test1</td>
 							<td>2022.03.19</td>
 							<td>2023.02.10</td>
 						</tr>
-						<tr>
+						<tr onclick="location.href='adm_mbr_withdrawal_info.do'">
 							<td>AS34FS8GJEL</td>
 							<td>문년지</td>
 							<td>test1</td>

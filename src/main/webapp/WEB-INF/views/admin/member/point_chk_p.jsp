@@ -42,7 +42,7 @@
 							</tr>
 							<tr>
 								<td colspan="4">
-									<textarea name="content" id="content" cols="80" rows="10"></textarea>
+									<textarea name="content" id="content" cols="77" rows="10"></textarea>
 								</td>
 							</tr>
 							<tr>

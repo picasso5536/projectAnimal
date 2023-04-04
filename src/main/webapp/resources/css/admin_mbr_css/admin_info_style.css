@@ -203,7 +203,7 @@ td {
   width: 85px;
   margin: 10px;
   height: 40px;
-  display: block;
+  display: inline-block;
   position: relative;
   border-radius: 30px;
   background-color: #fff;
@@ -251,4 +251,22 @@ select {
     	padding: 0px 5px;
     	margin: 0px 5px;
 	}
+	
+	.btns{
+	height: 35px;
+    width: 90px;
+    border: 1px solid #666;
+    border-radius: 6px;
+    font-family: 'NanumSquareRound';
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 2px 4px 7px -2px gray;
+    margin: 10px 0px;
+    background-color: #9fc4db;
+    color: white;
+	}
 
+	.btns:hover {
+    background-color: #68a3c6;
+    color: white;
+    }

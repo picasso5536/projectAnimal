@@ -38,12 +38,17 @@ public class AdminController {
 	public ModelAndView admMemberInfo() {
 		return new ModelAndView("admin/member/adm_mbr_info");
 	}
-
+	//탈퇴회원리스트
 	@RequestMapping("mbr_withdrawal.do")
-	public ModelAndView memberwithdrawal() {
+	public ModelAndView memberWithdrawal() {
 		return new ModelAndView("admin/member/mbr_withdrawal");
 	}
-
+	// 탈퇴회원정보
+	@RequestMapping("adm_mbr_withdrawal_info.do")
+	public ModelAndView memberWithdrawalInfo() {
+		return new ModelAndView("admin/member/adm_mbr_withdrawal_info");
+	}
+	
 	@RequestMapping("member_update.do")
 	public ModelAndView admMemberUpdate() {
 		return new ModelAndView("admin/member/adm_mbr_update");
@@ -53,7 +58,12 @@ public class AdminController {
 	public ModelAndView admAdminInfo() {
 		return new ModelAndView("admin/member/adm_mbr_admin");
 	}
-
+	// 관리자
+	@RequestMapping("adm_more_info.do")
+	public ModelAndView admAdmMoreInfo() {
+		return new ModelAndView("admin/member/adm_more_info");
+	}
+	
 	@RequestMapping("ad_acc_create.do")
 	public ModelAndView admAdmAccountCreate() {
 		return new ModelAndView("admin/member/admin_account");
@@ -221,10 +231,20 @@ public class AdminController {
 	public ModelAndView admMktDlvr() {
 		return new ModelAndView("admin/market/adm_mkt_delivery");
 	}
-
+	//관리자 - 마켓 재고
 	@RequestMapping("admin_mkt_inven.do")
 	public ModelAndView admMktInven() {
 		return new ModelAndView("admin/market/adm_mkt_inven");
+	}
+	//관리자 - 마켓 재고 수정
+	@RequestMapping("adm_mkt_inven_up.do")
+	public ModelAndView admMktInvenUpdate() {
+		return new ModelAndView("admin/market/adm_mkt_inven_update");
+	}
+	//관리자 - 마켓 재고 등록
+	@RequestMapping("adm_mkt_inven_insert.do")
+	public ModelAndView admMktInvenInsert() {
+		return new ModelAndView("admin/market/adm_mkt_inven_insert");
 	}
 
 	// 관리자 - 마켓 주문관리
@@ -257,7 +277,6 @@ public class AdminController {
 		return new ModelAndView("admin/market/adm_update_pdt");
 	}
 	// 관리자 - 마켓 상품리뷰
-
 	@RequestMapping("admin_mkt_review.do")
 	public ModelAndView admMktReview() {
 		return new ModelAndView("admin/market/adm_mkt_review");
