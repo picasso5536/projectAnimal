@@ -313,7 +313,7 @@ div.modalContent textarea {
 	font-family: '맑은 고딕', verdana;
 	padding: 10px;
 	width: 780px;
-	height: 440px;
+	height: 400px;
 	border-radius: 10px;
 }
 
@@ -434,6 +434,18 @@ div.modalContent button.modal_cancel {
 		<div class="modalContent">
 			<div>
 				<textarea class="modal_repCon" name="modal_repCon"></textarea>
+			</div>
+			<div>
+				<select class="selectbox">
+					<option value="" disabled selected hidden>처리 선택</option>
+					<option value="1"> 1일 정지
+					<option value="3"> 3일 정지
+					<option value="7"> 7일 정지
+					<option value="15"> 15일 정지
+					<option value="30"> 30일 정지
+					<option value="permanent"> 영구 정지
+					<option value="0"> 무죄
+				</select>
 			</div>
 			<div>
 				<button type="button" class="modal_process_btn">처리</button>

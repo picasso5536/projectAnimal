@@ -206,7 +206,7 @@ div.modalContent button.modal_cancel {
 								<th>노출 여부</th>
 								<th>등록일</th>
 								<th>수정일</th>
-								<th>수정</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -219,7 +219,9 @@ div.modalContent button.modal_cancel {
 								<td>2023.03.29</td>
 								<td>2023.03.30</td>
 								<td><button id="up_banner"
-										onclick="location.href='admin_intg_banner_up.do'">수정</button></td>
+										onclick="location.href='admin_intg_banner_up.do'">수정</button>
+									<button id="del_banner"
+										onclick="">삭제</button></td>
 							</tr>
 						</tbody>
 					</table>

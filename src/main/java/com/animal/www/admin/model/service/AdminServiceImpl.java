@@ -21,4 +21,19 @@ public class AdminServiceImpl implements AdminService{
 	public List<TermsVO> termsList() {
 		return adminDAO.termsList();
 	}
+	
+	@Override
+	public int termsDelete(String termsName) {
+		return adminDAO.termsDelete(termsName);
+	}
+	
+	@Override
+	public int termsUpdate(String termsName, String termsInfo) {
+		return adminDAO.termsUpdate(termsName, termsInfo);
+	}
+	
+	@Override
+	public int termsInsert(String termsName, String termsInfo) {
+		return adminDAO.termsInsert(termsName, termsInfo);
+	}
 }

@@ -138,58 +138,55 @@ div.modalContent button:hover {
 div.modalContent button.modal_cancel {
 	margin-left: 20px;
 }
+
+#regist_btn {
+	position: absolute;
+	bottom: 20px;
+	right: 30px;
+	background-color: #3498db;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 4px;
+	width: 70px;
+	height: 30px;
+}
+
+#regist_btn:hover {
+	background-color: #2980b9;
+}
 </style>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).on(
-			"click",
-			"#terms1",
-			function() {
-				//$(".replyModal").attr("style", "display:block;");
-				$(".replyModal").fadeIn(200);
-				var repNum = $(this).attr("data-repNum");
-				var repCon = $(this).parent().parent()
-						.children(".replyContent").text();
-				$(".modal_repCon").val(repCon);
-				$(".modal_modify_btn").attr("data-repNum", repNum);
-			});
-	$(document).on(
-			"click",
-			"#terms2",
-			function() {
-				//$(".replyModal").attr("style", "display:block;");
-				$(".replyModal").fadeIn(200);
-				var repNum = $(this).attr("data-repNum");
-				var repCon = $(this).parent().parent()
-						.children(".replyContent").text();
-				$(".modal_repCon").val(repCon);
-				$(".modal_modify_btn").attr("data-repNum", repNum);
-			});
-	$(document).on(
-			"click",
-			"#terms3",
-			function() {
-				//$(".replyModal").attr("style", "display:block;");
-				$(".replyModal").fadeIn(200);
-				var repNum = $(this).attr("data-repNum");
-				var repCon = $(this).parent().parent()
-						.children(".replyContent").text();
-				$(".modal_repCon").val(repCon);
-				$(".modal_modify_btn").attr("data-repNum", repNum);
-			});
-	$(document).on(
-			"click",
-			"#terms4",
-			function() {
-				//$(".replyModal").attr("style", "display:block;");
-				$(".replyModal").fadeIn(200);
-				var repNum = $(this).attr("data-repNum");
-				var repCon = $(this).parent().parent()
-						.children(".replyContent").text();
-				$(".modal_repCon").val(repCon);
-				$(".modal_modify_btn").attr("data-repNum", repNum);
-			});
+	$(document).on("click", "#terms1, #terms2, #terms3, #terms4", function() {
+		var repNum = $(this).attr("data-repNum");
+		var termsName = $(this).closest('tr').find('th').text();
+		var termsInfo = $(this).text();
+		$(".modal_repCon").val(termsInfo);
+		$(".modal_modify_btn").attr("data-repNum", repNum);
+		$(".modal_terms_name").text(termsName);
+		$(".replyModal").fadeIn(200);
+	});
+
+	$(document).on("click", ".terms td", function() {
+		var termsName = $(this).prev().text();
+		var termsInfo = $(this).text();
+		$(".modal_repCon").val(termsInfo);
+		$(".modal_modify_btn").attr("data-termsName", termsName);
+		$(".modal_modify_btn").attr("data-termsInfo", termsInfo);
+		$(".modal_modify_btn").parent().attr("data-termsName", termsName); // 추가된 코드
+		$(".replyModal").fadeIn(200);
+	});
+
+	$(document).on("click", ".modal_cancel", function() {
+		$(".replyModal").fadeOut(200);
+	});
 </script>
 </head>
 <body>
@@ -207,10 +204,10 @@ div.modalContent button.modal_cancel {
 								<c:when test="${empty termslist}">
 								</c:when>
 								<c:otherwise>
-									<c:forEach items="${termslist}" var="k" varStatus="vs">
+									<c:forEach items="${termslist}" var="k">
 										<tr>
-											<th>${k.terms_name}</th>
-											<td id="terms${vs.count}">${k.terms_info}</td>
+											<th id="idx">${k.terms_name}</th>
+											<td>${k.terms_info}</td>
 										</tr>
 									</c:forEach>
 								</c:otherwise>
@@ -218,6 +215,7 @@ div.modalContent button.modal_cancel {
 						</tbody>
 					</table>
 				</div>
+				<button type="button" id="regist_btn" class="modal_regist_btn" onclick="location.href='admin_intg_terms_reg.do'">등록</button>
 			</div>
 		</section>
 	</main>
@@ -227,39 +225,67 @@ div.modalContent button.modal_cancel {
 				<textarea class="modal_repCon" name="modal_repCon"></textarea>
 			</div>
 			<div>
-				<button type="button" class="modal_regist_btn">등록</button>
+				<button type="button" class="modal_update_btn">수정</button>
+				<button type="button" class="modal_delete_btn">삭제</button>
 				<button type="button" class="modal_cancel">취소</button>
 			</div>
 		</div>
 		<div class="modalBackground"></div>
 	</div>
-	<script>
-		$(".modal_cancel").click(function() {
-			$(".replyModal").attr("style", "display:none;");
-		});
-
-		$(".modal_regist_btn").click(function() {
-			var modifyConfirm = confirm("등록하시겠습니까?");
-			if (modifyConfirm) {
-				var data = {
-					repNum : $(this).attr("data-repNum"),
-					repCon : $(".modal_repCon").val()
-				}; // ReplyVO 형태로 데이터 생성
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).on("click", ".modal_delete_btn", function() {
+			var deleteConfirm = confirm("삭제하시겠습니까?");
+			if (deleteConfirm) {
+				var termsName = $("#idx").text();
+				console.log(termsName);
 				$.ajax({
-					url : "",
+					url : "admin_delete_terms.do",
 					type : "post",
-					data : data,
+					data : {
+						termsName : termsName
+					},
+					async : false,
 					success : function(result) {
-
-						if (result == 1) {
-							replyList();
+						if (result == "1") {
 							$(".replyModal").fadeOut(200);
+							location.reload();
 						} else {
 							alert("오류입니다.");
 						}
 					},
 					error : function() {
-						alert("등록 에러")
+						alert("삭제 에러")
+					}
+				});
+			}
+		});
+
+		$(document).on("click", ".modal_update_btn", function() {
+			var updateConfirm = confirm("수정하시겠습니까?");
+			if (updateConfirm) {
+				var termsName = $("#idx").text();
+				var termsInfo = $(".modal_repCon").val();
+				console.log(termsName);
+				console.log(termsInfo);
+				$.ajax({
+					url : "admin_update_terms.do",
+					type : "post",
+					data : {
+						termsName : termsName,
+						termsInfo : termsInfo
+					},
+					async : false,
+					success : function(result) {
+						if (result == "1") {
+							$(".replyModal").fadeOut(200);
+							location.reload();
+						} else {
+							alert("오류입니다.");
+						}
+					},
+					error : function() {
+						alert("수정 에러")
 					}
 				});
 			}

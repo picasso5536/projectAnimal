@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 > 배너 수정</title>
+<title>관리자 > 공지 등록</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 <style type="text/css">
@@ -222,68 +222,24 @@ tbody tr:hover {
 		<section id="sec1">
 			<span id="page_info">관리자</span> <span id="sep1">|</span> <span
 				id="page_mKate">통합 관리</span> <span id="sep2">></span> <span
-				id="page_sKate">배너 등록</span>
+				id="page_sKate">약관 등록</span>
 			<div class="border">
 				<div class="ann_rounce">
-					<form action="">
-						<div class="option_ann_r">
-							노출영역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
-								class="selectbox">
-								<option value="" disabled selected hidden>카테고리 선택</option>
-								<option value="ann_rounce_ann_r">홈</option>
-								<option value="event_ann_r">마켓</option>
-								<option value="event_ann_r">소통</option>
-							</select>
-						</div>
-						<div class="option_ann_r">
-							<div id="radio_ann_r">
-								노출순서&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input
-									type="radio" name="priority_ann_r" value="1" checked="checked"> 1
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="2"> 2
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="3"> 3
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="4"> 4
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="5"> 5
-								</label>
-							</div>
-						</div>
-						<div class="option_ann_r">
-							<div id="radio_ann_r">
-								상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
-									<input type="radio" name="area_ann_r" value="announce" checked="checked"> 공지사항
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="event"> 이벤트
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="etc"> 기타
-								</label>
-							</div>
-						</div>
+					<form action="admin_intg_terms_ins.do" method="post">
 						<table>
 							<tbody>
 								<tr>
-									<th>배너명</th>
-									<td><input type="text" name="" id="title_ann_r"></td>
+									<th>약관명</th>
+									<td><input type="text" name="title" id="title_ann_r"></td>
 								</tr>
 								<tr>
-									<th>이미지</th>
-									<td><input type="file" name=""
-										id=""></td>
-								</tr>
-								<tr>
-									<th>노출여부</th>
-									<td><label> <input type="radio"
-											name="visible_ann_r" value="yes" checked> 보임
-									</label> &nbsp;&nbsp;<label> <input type="radio"
-											name="visible_ann_r" value="no"> 안보임
-									</label></td>
+									<th>약관 내용</th>
+									<td><textarea name="content" id="content_ann_r"></textarea></td>
 								</tr>
 							</tbody>
 						</table>
-						<button type="button" id="regist_btn"
-							onclick="regist_ann_r(this.form)">저장</button>
+						<button type="submit" id="regist_btn"
+							onclick="regist_go(this.form)">등록</button>
 					</form>
 				</div>
 			</div>
