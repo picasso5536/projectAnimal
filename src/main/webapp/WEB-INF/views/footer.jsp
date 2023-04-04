@@ -102,7 +102,6 @@ footer {
 		<ul>
 			<li><a href="#">개인정보 처리 방침</a></li>
 			<li><a href="#">이용약관</a></li>
-			<li><a href="#">Digital Marketing</a></li>
 		</ul>
 	</div>
 	<div class="footer-column">
