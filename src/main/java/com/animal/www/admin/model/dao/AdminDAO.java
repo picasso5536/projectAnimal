@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.animal.www.admin.model.vo.TermsVO;
+import com.animal.www.commons.vo.BannerVO;
 
 @Repository
 public class AdminDAO {
@@ -39,6 +40,20 @@ public class AdminDAO {
 		map.put("terms_name", termsName);
 		map.put("terms_info", termsInfo);
 		return sqlSessionTemplate.insert("admin.termsInsert", map);
+	}
+
+	public int bannerInsert(BannerVO bvo) {
+		System.out.println(bvo.getBnr_div());
+		System.out.println(bvo.getBnr_state());
+		System.out.println(bvo.getBnr_img());
+		System.out.println(bvo.getBnr_order());
+		try {
+			return sqlSessionTemplate.insert("admin.bannerInsert", bvo);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.animal.www.admin.model.dao.AdminDAO;
 import com.animal.www.admin.model.vo.TermsVO;
+import com.animal.www.commons.vo.BannerVO;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -35,5 +36,22 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int termsInsert(String termsName, String termsInfo) {
 		return adminDAO.termsInsert(termsName, termsInfo);
+	}
+	
+	@Override
+	public int bannerDelete() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public int bannerInsert(BannerVO bvo) {
+		return adminDAO.bannerInsert(bvo);
+	}
+	
+	@Override
+	public int bannerUpdate() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

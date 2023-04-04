@@ -68,13 +68,13 @@ button {
 	height: 30px;
 }
 
-#regist_btn {
+#insert_btn {
 	position: absolute;
 	bottom: 20px;
 	right: 30px;
 }
 
-#regist_btn:hover {
+#insert_btn:hover {
 	background-color: #2980b9;
 }
 
@@ -225,66 +225,62 @@ tbody tr:hover {
 				id="page_sKate">배너 등록</span>
 			<div class="border">
 				<div class="ann_rounce">
-					<form action="">
+					<form action="admin_intg_banner_ins.do" id="banner_ins"
+						method="post" enctype="multipart/form-data">
 						<div class="option_ann_r">
 							노출영역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
-								class="selectbox">
-								<option value="" disabled selected hidden>카테고리 선택</option>
-								<option value="ann_rounce_ann_r">홈</option>
-								<option value="event_ann_r">마켓</option>
-								<option value="event_ann_r">소통</option>
+								class="selectbox" name="bnr_div">
+								<option value="x" disabled selected hidden>카테고리 선택</option>
+								<option value="home">홈</option>
+								<option value="market">마켓</option>
 							</select>
 						</div>
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
 								노출순서&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input
-									type="radio" name="priority_ann_r" value="1" checked="checked"> 1
+									type="radio" name="bnr_order" value="1" checked="checked">
+									1
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="2"> 2
+									name="bnr_order" value="2"> 2
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="3"> 3
+									name="bnr_order" value="3"> 3
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="4"> 4
+									name="bnr_order" value="4"> 4
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="5"> 5
+									name="bnr_order" value="5"> 5
 								</label>
 							</div>
 						</div>
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
 								상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
-									<input type="radio" name="area_ann_r" value="announce" checked="checked"> 공지사항
+									<input type="radio" name="bnr_state" value="announce"
+									checked="checked"> 공지사항
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="event"> 이벤트
+									name="bnr_state" value="event"> 이벤트
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="etc"> 기타
+									name="bnr_state" value="etc"> 기타
 								</label>
 							</div>
 						</div>
 						<table>
 							<tbody>
 								<tr>
-									<th>배너명</th>
-									<td><input type="text" name="" id="title_ann_r"></td>
-								</tr>
-								<tr>
 									<th>이미지</th>
-									<td><input type="file" name=""
-										id=""></td>
+									<td><input type="file" name="bnr_param" id=""></td>
 								</tr>
 								<tr>
 									<th>노출여부</th>
-									<td><label> <input type="radio"
-											name="visible_ann_r" value="yes" checked> 보임
+									<td><label> <input type="radio" name="bnr_visible"
+											value="1" checked> 보임
 									</label> &nbsp;&nbsp;<label> <input type="radio"
-											name="visible_ann_r" value="no"> 안보임
+											name="bnr_visible" value="0"> 안보임
 									</label></td>
 								</tr>
 							</tbody>
 						</table>
-						<button type="button" id="regist_btn"
-							onclick="regist_ann_r(this.form)">저장</button>
 					</form>
+					<button type="submit" id="insert_btn" form="banner_ins">등록</button>
 				</div>
 			</div>
 		</section>

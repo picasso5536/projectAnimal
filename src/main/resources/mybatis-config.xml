@@ -21,6 +21,7 @@
 			
 		<!-- 김회철 -->
         	<typeAlias alias="tvo" type="com.animal.www.admin.model.vo.TermsVO"/>
+        	<typeAlias alias="bvo" type="com.animal.www.commons.vo.BannerVO"/>
     </typeAliases>
 	<mappers>
 		<mapper resource="mappers/market-mapper.xml" />

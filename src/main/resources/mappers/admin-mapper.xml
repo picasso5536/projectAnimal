@@ -16,4 +16,8 @@
 	<insert id="termsInsert" parameterType="Map">
 		INSERT INTO TERMS(TERMS_IDX, TERMS_NAME, TERMS_INFO) VALUES(TERMS_IDX_SEQ.NEXTVAL, #{terms_name}, #{terms_info})
 	</insert>
+	<insert id="bannerInsert" parameterType="bvo">
+		INSERT INTO BANNER(BNR_IDX, BNR_IMG, BNR_DIV, BNR_ORDER, BNR_VISIBLE, BNR_DATE, BNR_UPDATE, BNR_STATE, ADM_IDX) VALUES(BANNER_IDX_SEQ.NEXTVAL, '1as', #{bnr_div}, #{bnr_order}, #{bnr_visible}, sysdate, null, #{bnr_state}, 1)
+	</insert>
+	
 </mapper>
