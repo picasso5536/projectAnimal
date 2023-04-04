@@ -7,4 +7,13 @@
 	<select id="termslist" resultType="tvo">
 		SELECT * FROM TERMS
 	</select>
+	<update id="termsUpdate" parameterType="Map">
+		UPDATE TERMS SET TERMS_INFO = #{terms_info} WHERE TERMS_NAME = #{terms_name}
+	</update>
+	<delete id="termsDelete" parameterType="String">
+		DELETE FROM TERMS WHERE TERMS_NAME = #{termsName}
+	</delete>
+	<insert id="termsInsert" parameterType="Map">
+		INSERT INTO TERMS(TERMS_IDX, TERMS_NAME, TERMS_INFO) VALUES(TERMS_IDX_SEQ.NEXTVAL, #{terms_name}, #{terms_info})
+	</insert>
 </mapper>
