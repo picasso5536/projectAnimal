@@ -36,7 +36,7 @@
 			<div class="member_list">
 				<table>
 					<thead>
-						<tr onclick="location.href='member_update.do'">
+						<tr>
 							<th>고객 고유번호</th>
 							<th>이름</th>
 							<th>아이디</th>
@@ -48,7 +48,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr id="mem_link">
+						<tr onclick="location.href='member_update.do'">
 							<td>AS34FS8GJEL</td>
 							<td>문년지</td>
 							<td>test1</td>

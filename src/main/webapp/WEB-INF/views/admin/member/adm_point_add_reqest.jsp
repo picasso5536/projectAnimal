@@ -50,7 +50,10 @@
 								<td>2023.03.27</td>
 								<td>1,000,000</td>
 								<td>처리대기중</td>
-								<td><button class="pay_btn" onclick="p_pay()">지급하기</button></td>
+								<td>
+									<button class="pay_btn" onclick="p_pay()">지급하기</button>
+									<button class="pay_btn" onclick="c_pay()">거절하기</button>
+								</td>
 							</tr>
 							<tr>
 								<td>1</td>
@@ -58,7 +61,10 @@
 								<td>2023.03.27</td>
 								<td>1,000,000</td>
 								<td>처리대기중</td>
-								<td><button class="pay_btn" onclick="p_pay()">지급하기</button></td>
+								<td>
+									<button class="pay_btn" onclick="p_pay()">지급하기</button>
+									<button class="pay_btn" onclick="c_pay()">거절하기</button>
+								</td>
 							</tr>
 							<tr>
 								<td>1</td>
@@ -66,7 +72,10 @@
 								<td>2023.03.27</td>
 								<td>1,000,000</td>
 								<td>처리대기중</td>
-								<td><button class="pay_btn" onclick="p_pay()">지급하기</button></td>
+								<td>
+									<button class="pay_btn" onclick="p_pay()">지급하기</button>
+									<button class="pay_btn" onclick="c_pay()">거절하기</button>
+								</td>
 							</tr>
 							<tr>
 								<td>1</td>
@@ -74,7 +83,10 @@
 								<td>2023.03.27</td>
 								<td>1,000,000</td>
 								<td>처리대기중</td>
-								<td><button class="pay_btn" onclick="p_pay()">지급하기</button></td>
+								<td>
+									<button class="pay_btn" onclick="p_pay()">지급하기</button>
+									<button class="pay_btn" onclick="c_pay()">거절하기</button>
+								</td>
 							</tr>
 						</tbody>
 					</table>

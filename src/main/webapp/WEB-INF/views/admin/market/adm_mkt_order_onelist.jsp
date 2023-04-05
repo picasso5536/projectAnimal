@@ -66,6 +66,9 @@
 									    <option value="order">결제완료</option>
 									    <option value="delivery_com">배송완료</option>
 									    <option value="order_c">주문취소</option>
+									    <option value="order_c">교환요청</option>
+									    <option value="order_c">교환완료</option>
+									    <option value="order_c">구매확정</option>
 									  </select>
 								</td>
 								<th class="title">발송일자</th>
@@ -80,12 +83,30 @@
 												<th>주문접수</th>
 												<th>결제완료</th>
 												<th>배송완료</th>
-												<th>주문취소</th>
+												<th>구매확정</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td class="td_text">yyyy/MM/dd</td>
+												<td class="td_text">-</td>
+												<td class="td_text">-</td>
+												<td class="td_text">-</td>
+											</tr>
+										</tbody>
+									</table>
+									<table class="inner_t">
+										<thead>
+											<tr>
+												<th>교환요청</th>
+												<th>교환완료</th>
+												<th>주문취소</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="td_text">-</td>
 												<td class="td_text">-</td>
 												<td class="td_text">-</td>
 												<td class="td_text">-</td>
@@ -135,7 +156,7 @@
 						<caption>수취인 정보</caption>
 						<tbody>
 							<tr>
-								<th class="title">주문자명</th>
+								<th class="title">수취인명</th>
 								<td><input type="text" name="m_name" size="27" placeholder="무년지"></td>
 								<th class="title">이메일</th>
 								<td colspan="3">
@@ -171,8 +192,8 @@
 							</tr>
 							<tr>
 								<td colspan="4" style="text-align: center">
+									<input type="button" value="저장하기"/>
 									<input type="button" value="목록" onclick="sendupdate_go(this.form)"/>
-									<input type="button" value="확인"/>
 								</td>
 							</tr>
 						</tbody>
