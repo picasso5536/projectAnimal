@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.animal.www.admin.model.vo.TermsVO;
+import com.animal.www.commons.vo.KategorieVO;
 
 @Repository
 public class AdminDAO {
@@ -39,6 +40,11 @@ public class AdminDAO {
 		map.put("terms_name", termsName);
 		map.put("terms_info", termsInfo);
 		return sqlSessionTemplate.insert("admin.termsInsert", map);
+	}
+	
+	// 상품등록 셀렉트박스 최상위 카테고리
+	public List<KategorieVO> getKategoryList() {
+		return sqlSessionTemplate.selectList("admin.kategorylist");
 	}
 
 }

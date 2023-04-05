@@ -14,7 +14,7 @@
 			<!-- <typeAlias alias="" type="com.animal.www."/> -->
 			
 		<!-- 문현지 -->
-			<!-- <typeAlias alias="" type="com.animal.www."/> -->
+			<typeAlias alias="katevo" type="com.animal.www.commons.vo.KategorieVO"/>
 			
 		<!-- 김석중 -->
 			<!-- <typeAlias alias="" type="com.animal.www."/> -->

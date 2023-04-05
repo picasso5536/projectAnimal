@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.animal.www.admin.model.service.AdminService;
 import com.animal.www.admin.model.vo.TermsVO;
+import com.animal.www.commons.vo.KategorieVO;
 
 @Controller
 public class AdminController {
@@ -268,7 +269,21 @@ public class AdminController {
 	// 관리자 - 마켓 상품등록
 	@RequestMapping("adm_add_pdt.do")
 	public ModelAndView admMktAddPdt() {
-		return new ModelAndView("admin/market/adm_add_pdt");
+		ModelAndView mv = new ModelAndView("admin/market/adm_add_pdt");
+		// 로드하면서 출력할 카테고리정보 가져오기
+		List<KategorieVO> katelist = adminService.getKategoryList();
+		
+		mv.addObject("katelist", katelist);
+		
+		// 탑리스트 담기
+		List<KategorieVO> toplist; 
+		for (KategorieVO topvo : katelist) {
+			if (topvo == null) {
+				toplist = katelist;
+				mv.addObject("toplist", toplist);
+			}
+		}
+		return mv;
 	}
 
 	// 관리자 - 마켓 상품수정

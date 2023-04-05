@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,21 @@
 <title>상품 등록</title>
 <link rel="stylesheet" href="resources/css/admin_mkt_css/mkt_product_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	/* $(document).ready(function() {
+		$("#top_select").change(function() {
+			var top_idx = $(this).val();
+			 console.log(top_idx);
+			
+		});
+		
+	}); */
+	function topBoxChange(value) {
+		console.log(value);
+	}
+	
+</script>
+
 </head>
 <body>
 	<main>
@@ -23,12 +39,17 @@
 							<tr>
 								<th class="title">상품분류</th>
 								<td colspan="4">
-									<select name="top" >
+									<select id="top_select" onchange="topBoxChange(this.value)">
 									    <option value="none">::대분류::</option>
-									    <option value="cat">고양이</option>
-									    <option value="dog">강아지</option>
+										    <c:forEach var="topk" items="${toplist}">
+										    	<option value="${topk.kate_idx}">${topk.kate_name}</option>
+										    </c:forEach>
 									  </select>
-									  <select name="mid" >
+									  <select id="mid_select" >
+									  	<c:forEach var="midk" items="${katelist}">
+									  		<c:if test="${midk.kate_kind==1}">
+									  		</c:if>
+									  	</c:forEach>
 									    <option value="none">::중분류::</option>
 									    <option value="food">식품</option>
 									    <option value="snack">간식</option>
@@ -36,7 +57,7 @@
 									    <option value="house">하우스</option>
 									    <option value="wear">의류</option>
 									  </select>
-									  <select name="bott" >
+									  <select id="bott_select" >
 									    <option value="none">::소분류::</option>
 									    <option value="cat">건식</option>
 									    <option value="dog">주식파우치</option>

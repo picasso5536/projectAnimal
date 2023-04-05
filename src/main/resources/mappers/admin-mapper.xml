@@ -16,4 +16,8 @@
 	<insert id="termsInsert" parameterType="Map">
 		INSERT INTO TERMS(TERMS_IDX, TERMS_NAME, TERMS_INFO) VALUES(TERMS_IDX_SEQ.NEXTVAL, #{terms_name}, #{terms_info})
 	</insert>
+	<!-- 관리자 mkt mapper -->
+	<select id="kategorylist" resultType="katevo">
+		SELECT * FROM KATEGORIE
+	</select>
 </mapper>

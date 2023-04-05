@@ -1,6 +1,6 @@
 package com.animal.www.commons.vo;
 
-// Ä«Å×°í¸® VO
+// ì¹´í…Œê³ ë¦¬ VO
 public class KategorieVO {
 	private String kate_idx, kate_name, kate_kind, kate_ref;
 
