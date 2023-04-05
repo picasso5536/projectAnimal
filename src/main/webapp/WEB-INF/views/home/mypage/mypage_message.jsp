@@ -142,11 +142,6 @@ a {
 	background-color: #2980b9;
 }
 </style>
-<script type="text/javascript">
-	function msg_send() {
-		location.href="my_message_send.do";
-	}
-</script>
 </head>
 <body>
 	<main>
@@ -180,7 +175,6 @@ a {
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" id="send_msg" onclick="msg_send()">메시지 보내기</button>
 			</div>
 		</section>
 	</main>

@@ -7,7 +7,8 @@
 <title>마이페이지 > 내 정보</title>
 <style type="text/css">
 @import
-	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css);
+	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css)
+	;
 /* 전체 폰트 설정 */
 body {
 	font-family: 'NanumSquareRound';
@@ -109,7 +110,6 @@ ul ul {
 	width: 300px;
 	height: 300px;
 }
-
 
 .profile-info {
 	display: inline-block;
@@ -219,6 +219,25 @@ ul ul {
 .profile-button:hover {
 	background-color: #ddd;
 }
+
+.btn-upload {
+	width: 150px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid rgb(77, 77, 77);
+	border-radius: 10px;
+	font-weight: 500;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center; &: hover { background : rgb( 77, 77, 77);
+	color: #fff;
+}
+
+}
+#file {
+	display: none;
+}
 </style>
 </head>
 <body>
@@ -250,15 +269,18 @@ ul ul {
 						</div>
 					</div>
 					<div class="profile-buttons">
-						<button class="profile-button">프로필 사진 변경</button>
-						<button class="profile-button">회원 정보 수정</button>
+						<label for="file">
+							<div class="profile-button">프로필 사진 수정</div>
+						</label> <input type="file" name="file" id="file">
+						<button class="profile-button"
+							onclick="location.href='my_info_up.do'">회원 정보 수정</button>
 					</div>
 				</div>
 			</div>
 		</section>
 	</main>
 	<footer>
-		<jsp:include page="../../footer.jsp"/>
+		<jsp:include page="../../footer.jsp" />
 	</footer>
 </body>
 </html>

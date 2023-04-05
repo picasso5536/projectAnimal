@@ -19,10 +19,12 @@
 			<div class="search_mbr">
 				<form id="search_form">
 					<span class="search_text">
-						고객 아이디 : <input type="text" name="m_id" size="25">
-					</span>
-					<span class="search_text">
-						고객 이름 : <input type="text" name="m_name" size="25">
+					검색조건 : 
+						<select name="bott" >
+						    <option value="cat">고객 이름</option>
+						    <option value="dog">고객 아이디</option>
+						  </select>
+						  <input type="text" name="m_name" size="25">
 					</span>
 					<br>
 					<span class="search_text">
@@ -45,25 +47,22 @@
 							<th>아이디</th>
 							<th>계정생성일자</th>
 							<th>탈퇴일자</th>
-							<th>삭제</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr onclick="location.href='adm_mbr_withdrawal_info.do'">
 							<td>AS34FS8GJEL</td>
 							<td>문년지</td>
 							<td>test1</td>
 							<td>2022.03.19</td>
 							<td>2023.02.10</td>
-							<td><button class="delete_btn" onclick="delete_mbr_info()">삭제</button></td>
 						</tr>
-						<tr>
+						<tr onclick="location.href='adm_mbr_withdrawal_info.do'">
 							<td>AS34FS8GJEL</td>
 							<td>문년지</td>
 							<td>test1</td>
 							<td>2020.03.19</td>
 							<td>2022.12.31</td>
-							<td><button class="delete_btn" onclick="delete_mbr_info()">삭제</button></td>
 						</tr>
 					</tbody>
 				</table>

@@ -86,9 +86,9 @@
 								</td>
 								<th class="title">재고량</th>
 								<td colspan="2">
-									<input type="radio" name="show_yn" value="" checked>품절&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="show_yn" value="">무제한&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="show_yn" value="">수량
+									<input type="radio" name="show_yn1" value="" checked>품절&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="show_yn1" value="">무제한&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="show_yn1" value="">수량
 									<input type="text" name="su" size="5"> 개
 									
 								</td>
@@ -101,21 +101,17 @@
 							<tr>
 								<th class="title">검색조건</th>
 								<td colspan="3">
-									<input type="radio" name="show_yn" value="" checked>기본 배송정책&emsp;&emsp;
-									<input type="radio" name="show_yn" value="">무료배송&emsp;&emsp;
-									<input type="radio" name="show_yn" value="">상품별 배송비
+									<input type="radio" name="show_yn2" value="" checked>기본 배송정책&emsp;&emsp;
+									<input type="radio" name="show_yn2" value="">무료배송&emsp;&emsp;
+									<input type="radio" name="show_yn2" value="">상품별 배송비
 									<input type="text" name="su" size="6"> P&emsp;&emsp;
-									<input type="radio" name="show_yn" value="">수신자부담(착불)
+									<input type="radio" name="show_yn2" value="">수신자부담(착불)
 								</td>
 							</tr>
 						</tbody>
 					</table>
 					<table>
-						<caption>상품사진&emsp;&emsp;
-							<label style="font-size: 16px; font-weight: 400;">
-								<input type="checkbox" name="add_img" value="">이미지 추가
-							</label>
-						</caption>
+						<caption>상품사진</caption>
 						<tbody>
 							<tr>
 								<th class="title">원본 이미지</th>
@@ -137,13 +133,20 @@
 							<tr>
 								<th class="title">상품 설명 이미지</th>
 								<td colspan="4">
-									<input type="file" name="f_param"/>
+									<input type="file" name="f_param" multiple="multiple"/>
 								</td>
 							</tr>
 							<tr>
 								<th class="title">이미지 확인</th>
 								<td colspan="5">
 									<img alt="" src="resources/img/market/info.jpg" style="width: 300px; margin-left: 10px;">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="5" style="text-align: center; padding: 20px;">
+									<input type="button" value="상품등록" >
+									<input type="button" value="초기화" >
+									<input type="button" value="목록" >
 								</td>
 							</tr>
 						</tbody>

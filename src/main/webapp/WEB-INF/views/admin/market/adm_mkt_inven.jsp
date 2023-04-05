@@ -7,6 +7,12 @@
 <title>재고 관리 </title>
 <link rel="stylesheet" href="resources/css/admin_mkt_css/mkt_inven_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function inven_info() {
+		location.href="adm_mkt_inven_up.do";
+	}
+	
+</script>
 </head>
 <body>
 	<main>
@@ -69,17 +75,18 @@
 				</form>
 			</div>
 			<div class="search_list">
+			<button type="button" id="add_pdt_btn" onclick="location.href='adm_mkt_inven_insert.do'">+ 재고등록</button>
 			<form>
 					<table id="list_table">
 						<thead>
 							<tr>
-								<th>상품코드</th>
+								<th>재고번호</th>
 								<th>상품이미지</th>
 								<th>상품이름</th>
 								<th>상품가격</th>
-								<th>여유</th>
-								<th>재고</th>
-								<th>안전재고</th>
+								<th>공급사</th>
+								<th>상태</th>
+								<th>재고수량</th>
 								<th colspan="2">기능</th>
 							</tr>
 						</thead>
@@ -89,102 +96,11 @@
 								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
 								<td>캣타워</td>
 								<td>50,000 P</td>
-								<td>O</td>
-								<td></td>
-								<td></td>
+								<td>회사명</td>
+								<td>품절</td>
+								<td>0</td>
 								<td colspan="2">
-									<button class="btns" onclick="p_pay()">수정</button>
-									<button class="btns" onclick="more_info()">복사</button>
-								</td>
-							</tr>
-							<tr>
-								<td>2342423</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>캣타워</td>
-								<td>50,000 P</td>
-								<td>O</td>
-								<td></td>
-								<td></td>
-								<td colspan="2">
-									<button class="btns" onclick="p_pay()">수정</button>
-									<button class="btns" onclick="more_info()">복사</button>
-								</td>
-							</tr>
-							<tr>
-								<td>2342423</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>캣타워</td>
-								<td>50,000 P</td>
-								<td>O</td>
-								<td></td>
-								<td></td>
-								<td colspan="2">
-									<button class="btns" onclick="p_pay()">수정</button>
-									<button class="btns" onclick="more_info()">복사</button>
-								</td>
-							</tr>
-							<tr>
-								<td>2342423</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>캣타워</td>
-								<td>50,000 P</td>
-								<td>O</td>
-								<td></td>
-								<td></td>
-								<td colspan="2">
-									<button class="btns" onclick="p_pay()">수정</button>
-									<button class="btns" onclick="more_info()">복사</button>
-								</td>
-							</tr>
-							<tr>
-								<td>2342423</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>캣타워</td>
-								<td>50,000 P</td>
-								<td>O</td>
-								<td></td>
-								<td></td>
-								<td colspan="2">
-									<button class="btns" onclick="p_pay()">수정</button>
-									<button class="btns" onclick="more_info()">복사</button>
-								</td>
-							</tr>
-							<tr>
-								<td>2342423</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>캣타워</td>
-								<td>50,000 P</td>
-								<td>O</td>
-								<td></td>
-								<td></td>
-								<td colspan="2">
-									<button class="btns" onclick="p_pay()">수정</button>
-									<button class="btns" onclick="more_info()">복사</button>
-								</td>
-							</tr>
-							<tr>
-								<td>2342423</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>캣타워</td>
-								<td>50,000 P</td>
-								<td>O</td>
-								<td></td>
-								<td></td>
-								<td colspan="2">
-									<button class="btns" onclick="p_pay()">수정</button>
-									<button class="btns" onclick="more_info()">복사</button>
-								</td>
-							</tr>
-							<tr>
-								<td>2342423</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>캣타워</td>
-								<td>50,000 P</td>
-								<td>O</td>
-								<td></td>
-								<td></td>
-								<td colspan="2">
-									<button class="btns" onclick="p_pay()">수정</button>
+									<button type="button" class="btns" onclick="inven_info()">수정</button>
 									<button class="btns" onclick="more_info()">복사</button>
 								</td>
 							</tr>

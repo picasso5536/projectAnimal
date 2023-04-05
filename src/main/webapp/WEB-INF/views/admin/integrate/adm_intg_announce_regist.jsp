@@ -85,7 +85,7 @@ table {
 	max-width: 1000px;
 	min-width: 800px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-	margin-top: 40px; 
+	margin-top: 40px;
 }
 
 table td, table th {
@@ -222,7 +222,7 @@ tbody tr:hover {
 		<section id="sec1">
 			<span id="page_info">관리자</span> <span id="sep1">|</span> <span
 				id="page_mKate">통합 관리</span> <span id="sep2">></span> <span
-				id="page_sKate">공지 관리</span>
+				id="page_sKate">공지 등록</span>
 			<div class="border">
 				<div class="ann_rounce">
 					<form action="">
@@ -237,10 +237,7 @@ tbody tr:hover {
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
 								우선순위&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input
-									type="radio" name="priority_ann_r" value="priority_all" checked>
-									전체
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="1"> 최상위
+									type="radio" name="priority_ann_r" value="1" checked="checked"> 최상위
 								</label> &nbsp;&nbsp;<label> <input type="radio"
 									name="priority_ann_r" value="2"> 중요
 								</label> &nbsp;&nbsp;<label> <input type="radio"
@@ -251,10 +248,7 @@ tbody tr:hover {
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
 								영역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
-									<input type="radio" name="area_ann_r" value="area_all" checked>
-									전체
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="main"> 메인
+									<input type="radio" name="area_ann_r" value="main" checked="checked"> 메인
 								</label> &nbsp;&nbsp;<label> <input type="radio"
 									name="area_ann_r" value="market"> 마켓
 								</label> &nbsp;&nbsp;<label> <input type="radio"
@@ -270,8 +264,7 @@ tbody tr:hover {
 								</tr>
 								<tr>
 									<th>내용</th>
-									<td><input type="text" name="info_ann_r"
-										id="content_ann_r"></td>
+									<td><textarea name="info_ann_r" id="content_ann_r"></textarea></td>
 								</tr>
 								<tr>
 									<th>공개여부</th>

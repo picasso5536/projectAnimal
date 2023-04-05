@@ -192,7 +192,7 @@ a {
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" id="inquire_btn">문의하기</button>
+				<button type="button" id="inquire_btn" onclick="location.href='my_inquire_send.do'">문의하기</button>
 			</div>
 		</section>
 	</main>

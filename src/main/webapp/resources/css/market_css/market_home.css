@@ -61,6 +61,50 @@
 		padding:0;
 	}
 	
+	#visual {
+  position: relative;
+  width: 2540px;
+  height: 950px;
+  margin: 0 auto;
+  overflow: hidden;           
+  box-shadow: 1px 5px 10px 2px #666;
+
+}      
+#visual>div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s ease;
+  opacity: 0;
+}
+#visual>div.on{
+  opacity: 1;
+}
+#control { 
+  position: absolute;
+  width: 100%;
+  bottom: 30px;
+  text-align: center;         
+}
+#control .on1 {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #f6f5f5;                       
+  line-height: 26px;
+  font-size: 0.8em;
+  border-radius: 14px;
+  margin: 0 2px
+}
+
+#control .on1 .on {
+  background: #9ab3f5;
+}	
+	
+	
+	
 	/* 강아지 고양이 버튼 */
 	
 	.type_div {
@@ -69,7 +113,7 @@
 		width: 205px;
 		height: auto;
 		border: 2px solid #666666;
-		margin: 20px auto;
+		margin: 60px auto;
 		text-align: center;
 		padding: 3px;
 		border-radius: 1em;

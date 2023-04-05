@@ -8,6 +8,7 @@ import com.animal.www.home.model.dao.HomeDAO;
 
 @Service
 public class HomeServiceImpl implements HomeService, AllService{
+	
 	@Autowired
 	private HomeDAO homeDAO;
 

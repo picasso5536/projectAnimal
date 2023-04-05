@@ -9,7 +9,6 @@
 <title>메인화면</title>
 <!-- 왜 안먹는거지; -->
 <style type="text/css">
-<<<<<<< HEAD
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquareRound/nanumsquare.css);
 </style>
 <script

@@ -2,12 +2,13 @@ package com.animal.www.commons.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-// ÀÏ¹İÈ¸¿ø VO
+// ï¿½Ï¹ï¿½È¸ï¿½ï¿½ VO
 public class MemberVO {
 	private String mbr_idx, mbr_id, mbr_pw, mbr_email, mbr_cellphone, mbr_telephone, mbr_name, mbr_birth, mbr_gender;
 	private String mbr_join, mbr_address, mbr_nickname, mbr_access, mbr_withdraw, mbr_attention, mbr_path, mbr_picture;
 	private String mbr_like, mbr_ban, mbr_ban_reason, mbr_sns;
-	private MultipartFile mbr_param; // ÇÁ·ÎÇÊ ÀÌ¹ÌÁö(½ºÆ®¸²¿ë)
+	private MultipartFile mbr_param; // í”„ë¡œí•„ ì´ë¯¸ì§€
+	
 	
 	public String getMbr_idx() {
 		return mbr_idx;

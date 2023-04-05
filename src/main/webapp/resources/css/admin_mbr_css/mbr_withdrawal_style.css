@@ -73,7 +73,7 @@ main {
 	.search_btns {
 		display: flex;
 	    margin-top: 35px;
-	    margin-left: 245px;
+	    margin-left: 150px;
 	}
 	
 	#search_btn {
@@ -187,11 +187,7 @@ thead th {
 	font-weight: bold;
 }
 
-table td:first-child {
-	font-size: 14px;
-	color: #666;
-	width: 10%;
-}
+
 
 /* tbody tr 마우스 오버시 배경색 변경 */
 tbody tr:hover {
@@ -228,3 +224,10 @@ tr .delete_btn:hover {
 		background-color: #679ec7;
 	
 }
+
+select {
+		min-width: 120px;
+    	min-height: 27px;
+    	padding: 0px 5px;
+    	margin: 0px 5px;
+	}

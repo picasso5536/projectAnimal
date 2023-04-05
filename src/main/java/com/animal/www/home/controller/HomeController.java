@@ -206,6 +206,24 @@ public class HomeController {
 		    }
 		    return num;
 		}
+	// 아이디 중복검사
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
-	
+		
 }

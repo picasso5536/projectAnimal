@@ -100,6 +100,31 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	}else {
 	}
 }
+	$(function(){
+	    $("#checkId").click(function(){
+	        let member_id = $("#id").val();
+	         
+	        $.ajax({
+	            type:'post', //post 형식으로 controller 에 보내기위함!!
+	            url:"checkId.do", // 컨트롤러로 가는 mapping 입력
+	            data: {"id":id}, // 원하는 값을 중복확인하기위해서  JSON 형태로 DATA 전송
+	            success: function(data){ 
+	                if(data == "N"){ // 만약 성공할시
+	                    result = "사용 가능한 아이디입니다.";
+	                    $("#result_checkId").html(result).css("color", "green");
+	                    $("#id").trigger("focus");
+	                 
+	             }else{ // 만약 실패할시
+	                 result="이미 사용중인 아이디입니다.";
+	                     $("#result_checkId").html(result).css("color","red");
+	                     $("#id").val("").trigger("focus");
+	             }
+	                 
+	         },
+	            error : function(error){alert(error);}
+	        });
+	    });
+	});
 </script>
 <style type="text/css">
 /* 레이아웃 틀 */
@@ -236,6 +261,17 @@ input {
    border-color: #fff;
    user-select: none;
    
+}
+
+.result_checkId {
+    /*@naver.com*/
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    color: skyblue;
+    border-color: #fff;
+   border-color: #fff;
+   user-select: none;
    
 }
 .step_url:hover{
@@ -337,6 +373,20 @@ select {
     font-family: Dotum,'돋움',Helvetica,sans-serif;
     user-select: none;
 }
+#btnJoin1 {
+	float:right;
+	margin:5px;
+    width: 30%;
+    padding: 21px 0 17px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #E4DCCF;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    user-select: none;
+}
 </style>
 </head>
 <body>	
@@ -352,23 +402,22 @@ select {
                         <label for="id">아이디</label>
                     </h3>
                     <span class="box int_id">
-                        <input type="text" id="id" class="int" maxlength="20" >
-                         <button  style="border:none; background-color:transparent;" type="submit" class="step_url"  >중복확인</button> 
+                        <input type="text" id="id" name="id" class="int" maxlength="20" >
+                        <button   id="checkId" name="checkId" style="border:none; background-color:transparent;" type="submit" class="step_url" onclick="fn_idchk()" >중복확인</button>
                     </span>
+                     <div><span id="result_checkId" style="font-size:12px;"></span></div>
                     <span class="error_next_box"></span>
                 </div>
-
                 <!-- 비밀번호 -->
                 <div>
                     <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="password" id="pswd1" class="int" maxlength="20">
+                        <input type="password" id="pswd1" name="pswd1" class="int" maxlength="20">
                         <span id="alertTxt">사용불가</span>
                         <img src="resources/img/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
                     </span>
                     <span class="error_next_box"></span>
                 </div>
-
                 <!-- 비밀번호 재확인 -->
                 <div>
                     <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
@@ -378,7 +427,6 @@ select {
                     </span>
                     <span class="error_next_box"></span>
                 </div>
-				
 				<!-- 닉네임 -->
 				  <div>
                     <h3 class="join_title">
@@ -390,7 +438,6 @@ select {
                     </span>
                     <span class="error_next_box"></span>
                 </div>
-                
                 <!-- 이름 -->
                 <div>
                     <h3 class="join_title"><label for="name">이름</label></h3>
@@ -438,7 +485,6 @@ select {
                     </div>
                     <span class="error_next_box"></span>    
                 </div>
-
                 <!-- 성별 -->
                  <div>
                     <h3 class="join_title"><label for="gender">성별</label></h3>
@@ -457,13 +503,13 @@ select {
                 	   <input type="text" id="sample6_postcode"  class="int" maxlength="100" style=" white-space: nowrap;" placeholder="우편번호">
 						<input type="button" class="step_url" style="border:none; background-color:transparent;" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 						</span>
-						<span class="box gender_code">
+					   <span class="box gender_code">
 						<input type="text" id="sample6_address"  class="int" maxlength="100" style=" white-space: nowrap;" placeholder="주소"><br>
-						</span>
-						<span class="box gender_code">
+					  </span>
+					  <span class="box gender_code">
 						<input type="text" id="sample6_detailAddress"  class="int" maxlength="100" style=" white-space: nowrap;" placeholder="상세주소">
 				 		<input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
-                	   </span>
+                	  </span>
                 </div>
 					
                 <!-- 이메일 -->
@@ -500,7 +546,7 @@ select {
                 </div>
 
                 <div class="btn_area">
-                    <button type="button" id="btnJoin" onclick="login_01()"  style="background-color: #E4DCCF ">
+                    <button type="button" id="btnJoin1" onclick="login_01()"  style="background-color: #E4DCCF ">
                       <span>가입하기</span>
                     </button>
                     <button type="button" id="btnJoin" onclick="consent()" > 
@@ -512,16 +558,13 @@ select {
         </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
 <script>
-/* 아이디 중복검사 */
+/* 아이디 중복 검사 */
 
 
 
 
- 
 
- 
 /* 닉네임 중복검사 */
-
 
 
 
@@ -599,7 +642,6 @@ $("#emailChk").click(function(){
         		$("#emailChk2").css("display","inline-block");
         		$(".successEmailChk").text("인증번호를 입력한 뒤 이메일 인증을 눌러주십시오.");
         		$(".successEmailChk").css("color","green");
-
         		code = data;
         	}
         }
@@ -673,7 +715,7 @@ $(function() {
 	})
 	/* email.addEventListener("focusout", isEmailCorrect); */
 	mobile.addEventListener("focusout", checkPhoneNum);
-	mobile_1.addEventListener("focusout", checkPhoneNum_1);
+
 
 
 });
@@ -689,7 +731,7 @@ function checkId() {
         error[0].innerHTML = "5~10자의 영문 소문자,숫자만 사용 가능합니다.";
         error[0].style.display = "block";
     } else {
-        error[0].innerHTML = "사용가능한 ID입니다";
+        error[0].innerHTML = "사용가능한 ID입니다. 중복검사해주세요";
         error[0].style.color = "#08A600";
         error[0].style.display = "block";
     }
@@ -731,7 +773,6 @@ function comparePw() {
         error[2].style.display = "block";
     }
 }
-
 function checkNickname() {
     var namePattern = /[a-zA-Z가-힣]/;
     if(Nickname.value === "") {
@@ -739,6 +780,7 @@ function checkNickname() {
         error[3].style.display = "block";
     } 
 }
+
 function checkName() {
     var namePattern = /[a-zA-Z가-힣]/;
     if(userName.value === "") {
@@ -751,6 +793,7 @@ function checkName() {
         error[4].style.display = "none";
     }
 }
+
 function isBirthCompleted() {
     var yearPattern = /[0-9]{4}/;
 

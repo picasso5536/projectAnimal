@@ -145,10 +145,8 @@ ul ul {
 			<ul>
 				<li><a href="admin_mkt_product.do">상품 관리</a></li>
 				<li><a href="admin_mkt_inven.do">재고 관리</a></li>
-				<li><a href="admin_mkt_delivery.do">배송 관리</a></li>
 				<li><a href="admin_mkt_order.do">주문 관리</a></li>
 				<li><a href="admin_mkt_coupon.do">쿠폰 관리</a></li>
-				<li><a href="admin_mkt_sup.do">공급사 관리</a></li>
 				<li><a href="admin_mkt_review.do">리뷰 관리</a></li>
 			</ul>
 			<br>

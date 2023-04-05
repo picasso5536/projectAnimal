@@ -167,7 +167,7 @@ button {
 					<div class="shipping-address-header">
 						<h3>배송지 1</h3>
 						<div class="shipping-address-action">
-							<button class="edit-button">수정</button>
+							<button class="edit-button" onclick="location.href='my_shipping_up.do'">수정</button>
 							<button class="delete-button">삭제</button>
 						</div>
 					</div>
@@ -193,7 +193,7 @@ button {
 						<p class="shipping-address-text">메시지: 경비실</p>
 					</div>
 				</div>
-				<button type="button" id="add_btn">추가</button>
+				<button type="button" id="add_btn" onclick="location.href='my_shipping_add.do'">등록</button>
 			</div>
 		</section>
 	</main>

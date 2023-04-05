@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+	<!-- 관리자 mapper -->
+	<select id="termslist" resultType="tvo">
+		SELECT * FROM TERMS
+	</select>
+	<update id="termsUpdate" parameterType="Map">
+		UPDATE TERMS SET TERMS_INFO = #{terms_info} WHERE TERMS_NAME = #{terms_name}
+	</update>
+	<delete id="termsDelete" parameterType="String">
+		DELETE FROM TERMS WHERE TERMS_NAME = #{termsName}
+	</delete>
+	<insert id="termsInsert" parameterType="Map">
+		INSERT INTO TERMS(TERMS_IDX, TERMS_NAME, TERMS_INFO) VALUES(TERMS_IDX_SEQ.NEXTVAL, #{terms_name}, #{terms_info})
+	</insert>
+</mapper>

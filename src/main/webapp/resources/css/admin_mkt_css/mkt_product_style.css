@@ -105,8 +105,8 @@ main {
 	margin-top: 15px;
 	height: auto;
 	min-width: 1300px;
+	max-width: 1300px;
 	min-height: 1300px;
-	max-height: 1300px;
 	padding-top: 30px;
 	overflow: overlay;
 }
@@ -173,8 +173,7 @@ td {
 }
 	table, #list_table {
 	    min-width: 1000px;
-	    margin:0 auto;
-	    margin-top:20px;
+	    margin:30px auto;
 	    border:1px solid black;
 	    border-collapse:collapse;
 	    font-size:14px;
@@ -254,10 +253,10 @@ td {
 	 }
 	 
 	 form input[type=button] {
-		height: 25px;
+		height: 30px;
 		width: 90px;
 		border: 1px solid #666;
-		border-right: 6px;
+		border-radius: 6px;
 		font-family: 'NanumSquareRound';
 		font-size: 14px;
 		font-weight: 500;

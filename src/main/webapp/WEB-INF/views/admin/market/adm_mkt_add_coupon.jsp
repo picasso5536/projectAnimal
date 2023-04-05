@@ -57,57 +57,20 @@
 							<tr>
 								<th class="title">발급회원</th>
 								<td colspan="4">
-									<button class="b_btn" onclick="">전체발급</button>
-									<button class="b_btn" onclick="">지정발급</button>
-									<table class="inner_t">
-										<thead>
-											<tr>
-												<th>번호</th>
-												<th>회원아이디</th>
-												<th>쿠폰이름</th>
-												<th>사용여부</th>
-												<th>삭제</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>1</td>
-												<td>test1</td>
-												<td>가입축하쿠폰</td>
-												<td>Y</td>
-												<td>
-													<button class="del_btn" onclick="cp_del()">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>test1</td>
-												<td>가입축하쿠폰</td>
-												<td>Y</td>
-												<td>
-													<button class="del_btn" onclick="cp_del()">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>test1</td>
-												<td>가입축하쿠폰</td>
-												<td>Y</td>
-												<td>
-													<button class="del_btn" onclick="cp_del()">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>test1</td>
-												<td>가입축하쿠폰</td>
-												<td>Y</td>
-												<td>
-													<button class="del_btn" onclick="cp_del()">삭제</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
+									 <select name="" style="min-width: 200px;">
+									    <option value="none">::발급범위::</option>
+									    <option value="coupon1">전체발급</option>
+									    <option value="coupon2">지정발급</option>
+									 </select>
+								</td>
+							</tr>
+							<tr>
+								<th class="title">지정발급 선택</th>
+								<td class="cbox_td" colspan="4">
+									 <span><input type="checkbox" name="scope" value="">신규가입자</span>
+									 <span><input type="checkbox" name="scope" value="">생일자</span>
+									 <span><input type="checkbox" name="scope" value="">강아지등록회원</span>
+									 <span><input type="checkbox" name="scope" value="">고양이등록회원</span>
 								</td>
 							</tr>
 							<tr class="t_bottom">

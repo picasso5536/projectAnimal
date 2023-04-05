@@ -13,12 +13,25 @@
 		<section id="mem_sec">
 				<form>
 					<table>
-						<caption>포인트 지급 사유</caption>
+						<caption>포인트 지급/차감</caption>
 						<tbody>
 							<tr>
+								<td class="title" style="font-family: 'NanumSquareRound'; text-align: center; font-weight: 800;" colspan="4">
+									<input type="radio" name="add_sub" value="" checked> 포인트 지급하기&emsp;&emsp;&emsp;
+									<input type="radio" name="add_sub" value=""> 포인트 차감하기
+								</td>
+							</tr>
+							<tr>
+								<th class="title" style="font-family: 'NanumSquareRound';">변경 포인트</th>
+								<td class="td_text" colspan="4">
+									<input type="number" name="point" value="">&emsp;p
+								</td>
+							</tr>
+							<tr>
+								<th class="title" style="font-family: 'NanumSquareRound';">사유선택</th>
 								<td class="td_text" colspan="4">
 									<select name="reason_ref" >
-									    <option value="none">::선택하세요::</option>
+									    <option value="none">::지급 사유::</option>
 									    <option value="apply">신청포인트</option>
 									    <option value="review">리뷰 작성</option>
 									    <option value="post">게시글 작성</option>
@@ -29,7 +42,7 @@
 							</tr>
 							<tr>
 								<td colspan="4">
-									<textarea name="content" id="content" cols="76" rows="24"></textarea>
+									<textarea name="content" id="content" cols="77" rows="10"></textarea>
 								</td>
 							</tr>
 							<tr>
