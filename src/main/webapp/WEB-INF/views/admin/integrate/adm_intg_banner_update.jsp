@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 > 배너 등록</title>
+<title>관리자 > 배너 수정</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 <style type="text/css">
@@ -225,66 +226,89 @@ tbody tr:hover {
 				id="page_sKate">배너 수정</span>
 			<div class="border">
 				<div class="ann_rounce">
-					<form action="">
+					<form action="admin_intg_banner_up_ok.do" id="banner_ins"
+						method="post" enctype="multipart/form-data">
 						<div class="option_ann_r">
 							노출영역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
-								class="selectbox">
-								<option value="" disabled selected hidden>카테고리 선택</option>
-								<option value="ann_rounce_ann_r">홈</option>
-								<option value="event_ann_r">마켓</option>
-								<option value="event_ann_r">소통</option>
+								class="selectbox" name="bnr_div">
+								<option value="x" disabled hidden>카테고리 선택</option>
+								<option value="home"
+									<c:if test="${bvo.bnr_div eq 'home'}">selected</c:if>>홈</option>
+								<option value="market"
+									<c:if test="${bvo.bnr_div eq 'market'}">selected</c:if>>마켓</option>
 							</select>
 						</div>
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
-								노출순서&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input
-									type="radio" name="priority_ann_r" value="1" checked="checked"> 1
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="2"> 2
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="3"> 3
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="4"> 4
-								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="5"> 5
+								노출순서&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
+									type="radio" name="bnr_order" value="1"
+									<c:if test="${bvo.bnr_order eq 1}">checked</c:if>>1
+								</label> &nbsp;&nbsp; <label> <input type="radio"
+									name="bnr_order" value="2"
+									<c:if test="${bvo.bnr_order eq 2}">checked</c:if>>2
+								</label> &nbsp;&nbsp; <label> <input type="radio"
+									name="bnr_order" value="3"
+									<c:if test="${bvo.bnr_order eq 3}">checked</c:if>>3
+								</label> &nbsp;&nbsp; <label> <input type="radio"
+									name="bnr_order" value="4"
+									<c:if test="${bvo.bnr_order eq 4}">checked</c:if>>4
+								</label> &nbsp;&nbsp; <label> <input type="radio"
+									name="bnr_order" value="5"
+									<c:if test="${bvo.bnr_order eq 5}">checked</c:if>>5
 								</label>
 							</div>
 						</div>
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
-								영역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
-									<input type="radio" name="area_ann_r" value="main" checked="checked"> 메인
+								상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
+									<input type="radio" name="bnr_state" value="announce"
+									<c:if test="${bvo.bnr_state eq 'announce'}">checked</c:if>>
+									공지사항
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="market"> 마켓
+									name="bnr_state" value="event"
+									<c:if test="${bvo.bnr_state eq 'event'}">checked</c:if>>
+									이벤트
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="community"> 소통
+									name="bnr_state" value="etc"
+									<c:if test="${bvo.bnr_state eq 'etc'}">checked</c:if>>
+									기타
 								</label>
 							</div>
 						</div>
 						<table>
 							<tbody>
 								<tr>
-									<th>배너명</th>
-									<td><input type="text" name="" id="title_ann_r"></td>
-								</tr>
-								<tr>
 									<th>이미지</th>
-									<td><input type="file" name=""
-										id=""></td>
+									<td><c:choose>
+											<c:when test="${empty bvo.bnr_img}">
+												<input type="file" name="bnr_param">
+												<b>이전 파일 없음</b>
+												<input type="hidden" name="old_f_name" value="">
+											</c:when>
+											<c:otherwise>
+												<input type="file" name="bnr_param">
+												<b>이전 파일 ${bvo.bnr_img}</b>
+												<input type="hidden" name="old_f_name" value="${bvo.bnr_img}">
+											</c:otherwise>
+										</c:choose></td>
 								</tr>
 								<tr>
 									<th>노출여부</th>
-									<td><label> <input type="radio"
-											name="visible_ann_r" value="yes" checked> 보임
+									<td><label> <input type="radio" name="bnr_visible"
+											value="1" <c:if test="${bvo.bnr_visible eq 1}">checked</c:if>>
+											보임
 									</label> &nbsp;&nbsp;<label> <input type="radio"
-											name="visible_ann_r" value="no"> 안보임
+											name="bnr_visible" value="0"
+											<c:if test="${bvo.bnr_visible eq 0}">checked</c:if>>
+											안보임
 									</label></td>
 								</tr>
 							</tbody>
 						</table>
-						<button type="button" id="regist_btn"
-							onclick="regist_ann_r(this.form)">저장</button>
+						<input type="hidden" value="${cPage}" name="cPage"/>
+						<input type="hidden" value="${bvo.bnr_idx}" name="bnr_idx"/>
 					</form>
+					<button type="submit" id="regist_btn" form="banner_ins">저장</button>
 				</div>
 			</div>
 		</section>

@@ -20,14 +20,17 @@ public class AdminDAO {
 		this.sqlSessionTemplate = sessionTemplate;
 	}
 
+	// 약관 리스트
 	public List<TermsVO> termsList() {
-		return sqlSessionTemplate.selectList("admin.termslist");
+		return sqlSessionTemplate.selectList("admin.termsList");
 	}
 
+	// 선택 약관 삭제
 	public int termsDelete(String termsName) {
 		return sqlSessionTemplate.delete("admin.termsDelete", termsName);
 	}
 
+	// 선택 약관 수정
 	public int termsUpdate(String termsName, String termsInfo) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("terms_name", termsName);
@@ -35,6 +38,7 @@ public class AdminDAO {
 		return sqlSessionTemplate.delete("admin.termsUpdate", map);
 	}
 
+	// 약관 등록
 	public int termsInsert(String termsName, String termsInfo) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("terms_name", termsName);
@@ -42,18 +46,42 @@ public class AdminDAO {
 		return sqlSessionTemplate.insert("admin.termsInsert", map);
 	}
 
-	public int bannerInsert(BannerVO bvo) {
-		System.out.println(bvo.getBnr_div());
-		System.out.println(bvo.getBnr_state());
-		System.out.println(bvo.getBnr_img());
-		System.out.println(bvo.getBnr_order());
-		try {
-			return sqlSessionTemplate.insert("admin.bannerInsert", bvo);
+	// 배너 리스트 개수
+	public int getbannerCount() {
+		return sqlSessionTemplate.selectOne("admin.bannerCount");
+	}
+	
+	// 배너 리스트
+	public List<BannerVO> bannerList(int begin, int end){
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", begin);
+		map.put("end", end);
+		return sqlSessionTemplate.selectList("admin.bannerList", map);
+	}
 
+	// 배너 등록
+	public int bannerInsert(BannerVO bvo) {
+		return sqlSessionTemplate.insert("admin.bannerInsert", bvo);
+	}
+	
+	// 선택 배너 삭제
+	public int bannerDelete(int bnr_idx) {
+		return sqlSessionTemplate.delete("admin.bannerDelete", bnr_idx);
+	}
+	
+	// 해당 배너 상세정보
+	public BannerVO bannerOneList(int bnr_idx) {
+		return sqlSessionTemplate.selectOne("admin.bannerOneList", bnr_idx);
+	}
+
+	// 해당 배너 수정
+	public int bannerUpdate(BannerVO bvo) {
+		try {
+			return sqlSessionTemplate.update("admin.bannerUpdate", bvo);
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return 0;
 	}
-
 }

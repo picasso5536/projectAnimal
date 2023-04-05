@@ -11,7 +11,10 @@ public interface AdminService {
 	int termsUpdate(String termsName, String termsInfo);
 	int termsInsert(String termsName, String termsInfo);
 	
-	int bannerDelete();
-	int bannerUpdate();
+	int getBannerCount();
+	BannerVO BannerOneList(int bnr_idx);
+	List<BannerVO> BannerList(int begin, int end);
+	int bannerDelete(int bnr_idx);
+	int bannerUpdate(BannerVO bvo);
 	int bannerInsert(BannerVO bvo);
 }

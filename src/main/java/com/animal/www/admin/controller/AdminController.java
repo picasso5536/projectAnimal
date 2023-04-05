@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.animal.www.admin.model.service.AdminService;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.FileReName;
+import com.animal.www.commons.Paging;
 import com.animal.www.commons.vo.BannerVO;
 
 @Controller
@@ -37,6 +39,13 @@ public class AdminController {
 		this.fileReName = fileReName;
 	}
 
+	@Autowired
+	private Paging paging;
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+
 	@RequestMapping("admin_login.do")
 	public ModelAndView logInAdmin() {
 		return new ModelAndView("admin/adm_login");
@@ -51,17 +60,19 @@ public class AdminController {
 	public ModelAndView admMemberInfo() {
 		return new ModelAndView("admin/member/adm_mbr_info");
 	}
-	//탈퇴회원리스트
+
+	// 탈퇴회원리스트
 	@RequestMapping("mbr_withdrawal.do")
 	public ModelAndView memberWithdrawal() {
 		return new ModelAndView("admin/member/mbr_withdrawal");
 	}
+
 	// 탈퇴회원정보
 	@RequestMapping("adm_mbr_withdrawal_info.do")
 	public ModelAndView memberWithdrawalInfo() {
 		return new ModelAndView("admin/member/adm_mbr_withdrawal_info");
 	}
-	
+
 	@RequestMapping("member_update.do")
 	public ModelAndView admMemberUpdate() {
 		return new ModelAndView("admin/member/adm_mbr_update");
@@ -71,12 +82,13 @@ public class AdminController {
 	public ModelAndView admAdminInfo() {
 		return new ModelAndView("admin/member/adm_mbr_admin");
 	}
+
 	// 관리자
 	@RequestMapping("adm_more_info.do")
 	public ModelAndView admAdmMoreInfo() {
 		return new ModelAndView("admin/member/adm_more_info");
 	}
-	
+
 	@RequestMapping("ad_acc_create.do")
 	public ModelAndView admAdmAccountCreate() {
 		return new ModelAndView("admin/member/admin_account");
@@ -145,35 +157,108 @@ public class AdminController {
 	}
 
 	@RequestMapping("admin_intg_banner.do")
-	public ModelAndView admIntgBanner() {
-		return new ModelAndView("admin/integrate/adm_intg_banner");
+	public ModelAndView admIntgBanner(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_banner");
+		int count = adminService.getBannerCount();
+		paging.setTotalRecord(count);
+
+		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+			paging.setTotalpage(1);
+		} else {
+			paging.setTotalpage(paging.getTotalRecord() / paging.getNumPerPage());
+			if (paging.getTotalRecord() % paging.getNumPerPage() != 0) {
+				paging.setTotalpage(paging.getTotalpage() + 1);
+			}
+		}
+		String cPage = request.getParameter("cPage");
+		if (cPage == null) {
+			paging.setNowPage(1);
+		} else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+
+		paging.setBeginBlock(
+				(int) ((paging.getNowPage() - 1) / paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+
+		if (paging.getEndBlock() > paging.getTotalpage()) {
+			paging.setEndBlock(paging.getTotalpage());
+		}
+
+		List<BannerVO> bannerlist = adminService.BannerList(paging.getBegin(), paging.getEnd());
+
+		mv.addObject("bannerlist", bannerlist);
+		mv.addObject("paging", paging);
+		return mv;
 	}
 
 	@RequestMapping("admin_intg_banner_ins.do")
 	public ModelAndView admIntgBannerInsert(BannerVO bvo, HttpSession session) {
-		System.out.println(bvo.getBnr_state());
-		System.out.println(bvo.getBnr_div());
-		
 		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
 		try {
-			String path = session.getServletContext().getRealPath("/resources/images");
+			String path = session.getServletContext().getRealPath("/resources/upload");
 			MultipartFile bvo_img = bvo.getBnr_param();
 
-			String reName1 = fileReName.exec(path, bvo_img.getOriginalFilename());
-
-			bvo.setBnr_img(reName1);
-
+			if (bvo_img.isEmpty()) {
+				bvo.setBnr_img("");
+			} else {
+				String reName1 = fileReName.exec(path, bvo_img.getOriginalFilename());
+				bvo.setBnr_img(reName1);
+			}
+			mv.addObject("cPage", "1");
 			if (adminService.bannerInsert(bvo) > 0) {
-				bvo_img.transferTo(new File(path + "/" + reName1));
+				bvo_img.transferTo(new File(path + "/" + bvo.getBnr_img()));
 			}
 		} catch (Exception e) {
 		}
+		System.out.println(bvo.getBnr_img() + 111);
 		return mv;
 	}
 
 	@RequestMapping("admin_intg_banner_up.do")
-	public ModelAndView admIntgBannerUp() {
-		return new ModelAndView("admin/integrate/adm_intg_banner_update");
+	public ModelAndView admIntgBannerUp(@RequestParam("bnr_idx") int bnr_idx) {
+		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_banner_update");
+		BannerVO bvo = adminService.BannerOneList(bnr_idx);
+		mv.addObject("bvo", bvo);
+		return mv;
+	}
+
+	@RequestMapping("admin_intg_banner_up_ok.do")
+	public ModelAndView admIntgBannerUpOk(BannerVO bvo, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
+		try {
+			String path = request.getSession().getServletContext().getRealPath("/resources/upload");
+			MultipartFile bvo_img = bvo.getBnr_param();
+			String old_f_name = request.getParameter("old_f_name");
+			String ori_filename = bvo_img.getOriginalFilename();
+			
+			if (ori_filename.equals("") || ori_filename == null) {
+				bvo.setBnr_img(old_f_name);
+			} else {
+				String str = fileReName.exec(path, bvo.getBnr_param().getOriginalFilename());
+				bvo.setBnr_img(str);
+			}
+			
+			if(adminService.bannerUpdate(bvo)>0) {
+				bvo_img.transferTo(new File(path + "/" + bvo.getBnr_param()));
+			}
+			mv.addObject(request.getParameter("bnr_idx"));
+			mv.addObject(request.getParameter("cPage"));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return mv;
+	}
+
+	@RequestMapping("admin_intg_banner_del.do")
+	public ModelAndView admIntgBannerDelete(@RequestParam("bnr_idx") int bnr_idx) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
+		int result = adminService.bannerDelete(bnr_idx);
+		mv.addObject(result);
+		return mv;
 	}
 
 	@RequestMapping("admin_intg_banner_reg.do")
@@ -266,17 +351,20 @@ public class AdminController {
 	public ModelAndView admMktDlvr() {
 		return new ModelAndView("admin/market/adm_mkt_delivery");
 	}
-	//관리자 - 마켓 재고
+
+	// 관리자 - 마켓 재고
 	@RequestMapping("admin_mkt_inven.do")
 	public ModelAndView admMktInven() {
 		return new ModelAndView("admin/market/adm_mkt_inven");
 	}
-	//관리자 - 마켓 재고 수정
+
+	// 관리자 - 마켓 재고 수정
 	@RequestMapping("adm_mkt_inven_up.do")
 	public ModelAndView admMktInvenUpdate() {
 		return new ModelAndView("admin/market/adm_mkt_inven_update");
 	}
-	//관리자 - 마켓 재고 등록
+
+	// 관리자 - 마켓 재고 등록
 	@RequestMapping("adm_mkt_inven_insert.do")
 	public ModelAndView admMktInvenInsert() {
 		return new ModelAndView("admin/market/adm_mkt_inven_insert");
@@ -311,6 +399,7 @@ public class AdminController {
 	public ModelAndView admMktUpdatePdt() {
 		return new ModelAndView("admin/market/adm_update_pdt");
 	}
+
 	// 관리자 - 마켓 상품리뷰
 	@RequestMapping("admin_mkt_review.do")
 	public ModelAndView admMktReview() {

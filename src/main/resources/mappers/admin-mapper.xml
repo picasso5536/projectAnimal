@@ -4,20 +4,69 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
 	<!-- 관리자 mapper -->
-	<select id="termslist" resultType="tvo">
+
+	<!-- 약관 리스트 -->
+	<select id="termsList" resultType="tvo">
 		SELECT * FROM TERMS
 	</select>
+
+	<!-- 약관 수정 -->
 	<update id="termsUpdate" parameterType="Map">
-		UPDATE TERMS SET TERMS_INFO = #{terms_info} WHERE TERMS_NAME = #{terms_name}
+		UPDATE TERMS SET
+		TERMS_INFO = #{terms_info} WHERE TERMS_NAME = #{terms_name}
 	</update>
+
+	<!-- 약관 삭제 -->
 	<delete id="termsDelete" parameterType="String">
-		DELETE FROM TERMS WHERE TERMS_NAME = #{termsName}
+		DELETE FROM TERMS WHERE
+		TERMS_NAME = #{termsName}
 	</delete>
+
+	<!-- 약관 등록 -->
 	<insert id="termsInsert" parameterType="Map">
-		INSERT INTO TERMS(TERMS_IDX, TERMS_NAME, TERMS_INFO) VALUES(TERMS_IDX_SEQ.NEXTVAL, #{terms_name}, #{terms_info})
+		INSERT INTO
+		TERMS(TERMS_IDX, TERMS_NAME, TERMS_INFO) VALUES(TERMS_IDX_SEQ.NEXTVAL,
+		#{terms_name}, #{terms_info})
 	</insert>
+
+	<!-- 배너 개수 -->
+	<select id="bannerCount" resultType="int">
+		SELECT COUNT(*) FROM BANNER
+	</select>
+
+	<!-- 해당 배너 상세정보 -->
+	<select id="bannerOneList" resultType="bvo" parameterType="int">
+		SELECT * FROM BANNER WHERE BNR_IDX = #{bnr_idx}
+	</select>
+
+	<!-- 배너 리스트 -->
+	<select id="bannerList" resultType="bvo" parameterType="Map">
+		SELECT * FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM BANNER ORDER BY BNR_IDX DESC) A
+		) WHERE R_NUM BETWEEN #{begin} and #{end}
+	</select>
+
+	<!-- 배너 등록 -->
 	<insert id="bannerInsert" parameterType="bvo">
-		INSERT INTO BANNER(BNR_IDX, BNR_IMG, BNR_DIV, BNR_ORDER, BNR_VISIBLE, BNR_DATE, BNR_UPDATE, BNR_STATE, ADM_IDX) VALUES(BANNER_IDX_SEQ.NEXTVAL, '1as', #{bnr_div}, #{bnr_order}, #{bnr_visible}, sysdate, null, #{bnr_state}, 1)
+		INSERT INTO
+		BANNER(BNR_IDX, BNR_IMG, BNR_DIV, BNR_ORDER, BNR_VISIBLE, BNR_DATE,
+		BNR_UPDATE, BNR_STATE, ADM_IDX) VALUES(BANNER_IDX_SEQ.NEXTVAL,
+		#{bnr_img}, #{bnr_div}, #{bnr_order}, #{bnr_visible}, sysdate, null,
+		#{bnr_state}, 1)
 	</insert>
-	
+
+	<!-- 배너 삭제 -->
+	<delete id="bannerDelete" parameterType="int">
+		DELETE FROM BANNER WHERE
+		BNR_IDX = #{bnr_idx}
+	</delete>
+
+	<!-- 배너 수정 -->
+	<update id="bannerUpdate" parameterType="bvo">
+		UPDATE BANNER SET
+		BNR_DIV = #{bnr_div}, BNR_ORDER = #{bnr_order}, BNR_VISIBLE =
+		#{bnr_visible}, BNR_STATE = #{bnr_state}, BNR_UPDATE = SYSDATE,
+		BNR_IMG = #{bnr_img} WHERE BNR_IDX = #{bnr_idx}
+	</update>
 </mapper>
