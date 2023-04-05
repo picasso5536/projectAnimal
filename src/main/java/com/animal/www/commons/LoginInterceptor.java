@@ -5,30 +5,30 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.AsyncHandlerInterceptor;
 
-// spring 5.3ºÎÅÍ deprecated => AsyncHandlerInterceptor »ç¿ë
+// spring 5.3ï¿½ï¿½ï¿½ï¿½ deprecated => AsyncHandlerInterceptor ï¿½ï¿½ï¿½
 // public class LoginInterceptor extends HandlerInterceptorAdapter {
    public class LoginInterceptor implements AsyncHandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		// ·Î±×ÀÎ Ã¼Å©¸¦ ÇØ¼­ ¸¸¾à! ·Î±×ÀÎÀÌ ¾ÈµÈ »óÅÂ¶ó¸é value¿¡ false¸¦ ÀúÀå
-		// ¸ÕÀú HttpSession¾òÀ½
-		HttpSession session = request.getSession(true);
-		// trueÀÇ ÀÇ¹Ì´Â
-		// sessionÀÌ »èÁ¦µÈ »óÅÂ¶ó¸é »õ·Î¿î sessionÀ» »ı¼ºÇØÁÜ
-		// »èÁ¦°¡ ¾ÈµÈ »óÅÂ¶ó¸é »ç¿ëÇÏ°í ÀÖ´ø sessionÀ» ±×´ë·Î Àü´ŞÇØÁÜ
+		// ë¡œê·¸ì¸ ì²´í¬ë¥¼ í•´ì„œ ë§Œì•½! ë¡œê·¸ì¸ì´ ì•ˆëœ ìƒíƒœë¼ë©´ valueì— falseë¥¼ ì €ì¥
+				// ë¨¼ì € HttpSessionì–»ìŒ
+				HttpSession session = request.getSession(true);
+				// trueì˜ ì˜ë¯¸ëŠ”
+				// sessionì´ ì‚­ì œëœ ìƒíƒœë¼ë©´ ìƒˆë¡œìš´ sessionì„ ìƒì„±í•´ì¤Œ
+				// ì‚­ì œê°€ ì•ˆëœ ìƒíƒœë¼ë©´ ì‚¬ìš©í•˜ê³  ìˆë˜ sessionì„ ê·¸ëŒ€ë¡œ ì „ë‹¬í•´ì¤Œ
 
-		// ·Î±×ÀÎ ½Ã ÀúÀåÇß´ø °´Ã¼(mvo)¸¦ ¾ò¾î³¿
-		Object obj = session.getAttribute("login");
-		if (obj == null) {
-			// ·Î±×ÀÎÀ» ÇÏÁö ¾ÊÀº °æ¿ì¸¦ Àâ¾Æ³½ »óÅÂ
-			request.getRequestDispatcher("/WEB-INF/views/member/login_error.jsp").forward(request, response);
-			
-			return false;
-		}
+				// ë¡œê·¸ì¸ ì‹œ ì €ì¥í–ˆë˜ ê°ì²´(mvo)ë¥¼ ì–»ì–´ëƒ„
+				Object obj = session.getAttribute("login");
+				if (obj == null) {
+					// ë¡œê·¸ì¸ì„ í•˜ì§€ ì•Šì€ ê²½ìš°ë¥¼ ì¡ì•„ë‚¸ ìƒíƒœ
+					request.getRequestDispatcher("/WEB-INF/views/member/login_error.jsp").forward(request, response);
+					
+					return false;
+				}
 
-		// ·Î±×ÀÎÀÌ µÈ »óÅÂÀÎ °æ¿ì ÇØ¾ßÇÒ ÀÏµéÀÌ ÀÖÀ¸¸é ¿©±â¿¡ ÄÚµåÀÛ¼º
-		return true;
+				// ë¡œê·¸ì¸ì´ ëœ ìƒíƒœì¸ ê²½ìš° í•´ì•¼í•  ì¼ë“¤ì´ ìˆìœ¼ë©´ ì—¬ê¸°ì— ì½”ë“œì‘ì„±
+				return true;
 	}
 }

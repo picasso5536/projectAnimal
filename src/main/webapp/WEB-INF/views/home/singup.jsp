@@ -29,6 +29,8 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	var mm = document.getElementById("mm");
 	var dd = document.getElementById("dd");
 	var gender = document.getElementById("gender");
+	var sample6_address = document.getElementById("sample6_address"); // 주소
+	var sample6_detailAddress = document.getElementById("sample6_detailAddress"); // 상세주소
 	var email = document.getElementById("email");
 	var mobile = document.getElementById("mobile");
 	
@@ -67,9 +69,24 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	  id.focus();
 	  return false; 
 	};
+	if (sample6_address.value == "") { 
+	  alert("주소를 입력해 주세요.");
+	  id.focus();
+	  return false; 
+	};
+	if (sample6_detailAddress.value == "") { 
+	  alert("상세주소를 입력해 주세요..");
+	  id.focus();
+	  return false; 
+	};
 	if (email.value == "") { 
 	  alert("이메일을 입력하세요.");
 	  email.focus(); 
+	  return false; 
+	};
+	if (email_1.value == "") { 
+	  alert("인증번호를 입력하세요.");
+	  email_1.focus(); 
 	  return false; 
 	};
 	if (mobile.value == "") { 
@@ -131,7 +148,7 @@ input:focus {
 }
 
 h3 {
-    margin: 19px 0 8px;
+    margin: 5px 0 1px;
     font-size: 14px;
     font-weight: 700;
     user-select: none;
@@ -204,14 +221,13 @@ input {
    user-select: none;
    
 }
-.successEmailChk:hover{
+/* .successEmailChk:hover{
 	color: red;
 	user-select: none;
-}
+} */
 
 .successEmailChk {
     /*@naver.com*/
-    position: absolute;
     top: 16px;
     right: 13px;
     font-size: 15px;
@@ -219,6 +235,7 @@ input {
     border-color: #fff;
    border-color: #fff;
    user-select: none;
+   
    
 }
 .step_url:hover{
@@ -423,7 +440,7 @@ select {
                 </div>
 
                 <!-- 성별 -->
-                <div>
+                 <div>
                     <h3 class="join_title"><label for="gender">성별</label></h3>
                     <span class="box gender_code">
                         <select id="gender" class="sel">
@@ -433,6 +450,20 @@ select {
                         </select>                            
                     </span>
                     <span class="error_next_box">필수 정보입니다.</span>
+                </div> 
+                <div>
+                	  <h3 class="join_title"><label for="gender">주소</label></h3>
+                	   <span class="box gender_code">
+                	   <input type="text" id="sample6_postcode"  class="int" maxlength="100" style=" white-space: nowrap;" placeholder="우편번호">
+						<input type="button" class="step_url" style="border:none; background-color:transparent;" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+						</span>
+						<span class="box gender_code">
+						<input type="text" id="sample6_address"  class="int" maxlength="100" style=" white-space: nowrap;" placeholder="주소"><br>
+						</span>
+						<span class="box gender_code">
+						<input type="text" id="sample6_detailAddress"  class="int" maxlength="100" style=" white-space: nowrap;" placeholder="상세주소">
+				 		<input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
+                	   </span>
                 </div>
 					
                 <!-- 이메일 -->
@@ -443,14 +474,13 @@ select {
                         <input type="text" id="email" name="email" class="int" maxlength="100" style=" white-space: nowrap;" placeholder="예)sanswer@naver.com">
                         <button id="emailChk" name="emailChk" style="border:none; background-color:transparent;" type="submit" class="step_url"  >인증번호 보내기</button> 
                     </span>
-                    <br>
-                    <span class="box int_email" >
+                    <span class="box int_email" style="margin-top: 5px;" >
                         <input type="text" id="email_1" name="email_1" class="mail-check-input" maxlength="100" placeholder="인증번호 6자리를 입력해주세요">
                         <button id="emailChk2" name="emailChk2" style="border:none; background-color:transparent;"  type="submit" class="step_url"  >인증</button>
                         <input type="hidden" id="emailDoubleChk"/>
                     </span>
-		                <span class="point successEmailChk">이메일 입력후 인증번호 보내기를 해주십시오.</span> 
-                    <!-- <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span> -->    
+		                <span class="successEmailChk">이메일 입력후 인증번호 보내기를 해주십시오.</span> 
+                   <!--  <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span> -->
                 </div>
                 <!-- 핸드폰번호 -->
                 <div>
@@ -469,7 +499,6 @@ select {
                     <span class="error_next_box">집 번호를 입력해 주세요</span>    
                 </div>
 
-
                 <div class="btn_area">
                     <button type="button" id="btnJoin" onclick="login_01()"  style="background-color: #E4DCCF ">
                       <span>가입하기</span>
@@ -479,11 +508,74 @@ select {
                     </button>
                 </div>
 
-                
-
             </div> 
-        </div> 
+        </div>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
 <script>
+/* 아이디 중복검사 */
+
+
+
+
+ 
+
+ 
+/* 닉네임 중복검사 */
+
+
+
+
+
+
+
+/* 주소입력 */
+ function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample6_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+            }
+        }).open();
+    }
 
 /* 인증번호 발송 jsp  */
 var code = "";
@@ -520,16 +612,16 @@ $("#emailChk2").click(function(){
 		$(".successEmailChk").css("color","green");
 		$("#emailDoubleChk").val("true");
 		$("#email_1").attr("disabled",true);
+		$("#email_1").css("pointer-events","none");  // 성공하면 마우스 클릭 금지
+// 		$("#email_1").css("background-color","");
 		//$("#sm_email").attr("disabled",true);
 	}else{
-		$(".successEmailChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
+		$(".successEmailChk").text("인증번호가 일치하지 않습니다.");
 		$(".successEmailChk").css("color","red");
 		$("#emailDoubleChk").val("false");
 		$("#email_1").attr("autofocus",true);
 	}
 });
-
-
 
 /*변수 선언*/
 
@@ -557,6 +649,7 @@ var mobile = document.querySelector('#mobile');
 var mobile_1 = document.querySelector('#mobile_1');
 
 var error = document.querySelectorAll('.error_next_box');
+var error_1 = document.querySelectorAll('.successEmailChk');
 
 /*이벤트 핸들러 연결*/
 
@@ -693,10 +786,10 @@ function isBirthRight() {
 }
 function checkAge() {
     if(Number(yy.value) < 1923) {
-        error[5].innerHTML = "정말이세요?";
+        error[5].innerHTML = "다시 입력해주세요.";
         error[5].style.display = "block";
     } else if(Number(yy.value) > 2023) {
-        error[5].innerHTML = "미래에서 오셨나요?";
+        error[5].innerHTML = "다시 입력해주세요.";
         error[5].style.display = "block";
     } else if(Number(yy.value) > 2008) {
         error[5].innerHTML = "만 14세 미만의 어린이는 가입할수 없습니다.";
@@ -705,7 +798,7 @@ function checkAge() {
         error[5].style.display = "none";
     }
 }
-
+/* 이메일 이벤트핸들러 */
 /* function isEmailCorrect() {
 	var emailPattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 	
@@ -728,17 +821,17 @@ function checkPhoneNum() {
     var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
 
     if(mobile.value === "") {
-        error[8].innerHTML = "필수 정보입니다.";
-        error[8].style.display = "block";
+        error[7].innerHTML = "필수 정보입니다.";
+        error[7].style.display = "block";
     } else if(!isPhoneNum.test(mobile.value)) {
-        error[8].innerHTML = "형식에 맞지 않는 번호입니다.";
-        error[8].style.display = "block";
+        error[7].innerHTML = "형식에 맞지 않는 번호입니다.";
+        error[7].style.display = "block";
     } else {
-        error[8].style.display = "none";
+        error[7].style.display = "none";
     }
 }
 
-function checkPhoneNum_1() {
+/* function checkPhoneNum_1() {
     var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
 
     if(mobile_1.value === "") {
@@ -750,7 +843,7 @@ function checkPhoneNum_1() {
     } else {
         error[9].style.display = "none";
     }
-}
+} */
 </script>
     </form>
    </body>

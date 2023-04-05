@@ -186,7 +186,7 @@ public class HomeController {
 		    
 		    String from = "zkfmakzmzm@naver.com";//보내는 이 메일주소
 		    String to = email;
-		    String title = "회원가입시 필요한 인증번호 입니다.";
+		    String title = "내옆Pet 회원가입 인증번호 입니다.";
 		    String content = "[인증번호] "+ serti +" 입니다. <br/> 인증번호 확인란에 입력해주십시오.";
 		    String num = "";
 		    try {
