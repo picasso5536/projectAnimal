@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 // 배너 VO
 public class BannerVO {
-	private String bnr_idx, bnr_start, bnr_end, bng_idx, bng_name, bnr_title, bnr_url, bnr_width, bnr_height, bnr_hit, bnr_order, bnr_img, bnr_visible, bnr_date, bnr_ip, amd_idx;
+	private String bnr_idx, bnr_img, bnr_div, bnr_order, bnr_visible, bnr_date, bnr_update, bnr_state, adm_idx;
 	private MultipartFile bnr_param; // 배너 이미지 등록(스트림용)
 	
 	public String getBnr_idx() {
@@ -13,71 +13,23 @@ public class BannerVO {
 	public void setBnr_idx(String bnr_idx) {
 		this.bnr_idx = bnr_idx;
 	}
-	public String getBnr_start() {
-		return bnr_start;
+	public String getBnr_img() {
+		return bnr_img;
 	}
-	public void setBnr_start(String bnr_start) {
-		this.bnr_start = bnr_start;
+	public void setBnr_img(String bnr_img) {
+		this.bnr_img = bnr_img;
 	}
-	public String getBnr_end() {
-		return bnr_end;
+	public String getBnr_div() {
+		return bnr_div;
 	}
-	public void setBnr_end(String bnr_end) {
-		this.bnr_end = bnr_end;
-	}
-	public String getBng_idx() {
-		return bng_idx;
-	}
-	public void setBng_idx(String bng_idx) {
-		this.bng_idx = bng_idx;
-	}
-	public String getBng_name() {
-		return bng_name;
-	}
-	public void setBng_name(String bng_name) {
-		this.bng_name = bng_name;
-	}
-	public String getBnr_title() {
-		return bnr_title;
-	}
-	public void setBnr_title(String bnr_title) {
-		this.bnr_title = bnr_title;
-	}
-	public String getBnr_url() {
-		return bnr_url;
-	}
-	public void setBnr_url(String bnr_url) {
-		this.bnr_url = bnr_url;
-	}
-	public String getBnr_width() {
-		return bnr_width;
-	}
-	public void setBnr_width(String bnr_width) {
-		this.bnr_width = bnr_width;
-	}
-	public String getBnr_height() {
-		return bnr_height;
-	}
-	public void setBnr_height(String bnr_height) {
-		this.bnr_height = bnr_height;
-	}
-	public String getBnr_hit() {
-		return bnr_hit;
-	}
-	public void setBnr_hit(String bnr_hit) {
-		this.bnr_hit = bnr_hit;
+	public void setBnr_div(String bnr_div) {
+		this.bnr_div = bnr_div;
 	}
 	public String getBnr_order() {
 		return bnr_order;
 	}
 	public void setBnr_order(String bnr_order) {
 		this.bnr_order = bnr_order;
-	}
-	public String getBnr_img() {
-		return bnr_img;
-	}
-	public void setBnr_img(String bnr_img) {
-		this.bnr_img = bnr_img;
 	}
 	public String getBnr_visible() {
 		return bnr_visible;
@@ -91,17 +43,23 @@ public class BannerVO {
 	public void setBnr_date(String bnr_date) {
 		this.bnr_date = bnr_date;
 	}
-	public String getBnr_ip() {
-		return bnr_ip;
+	public String getBnr_update() {
+		return bnr_update;
 	}
-	public void setBnr_ip(String bnr_ip) {
-		this.bnr_ip = bnr_ip;
+	public void setBnr_update(String bnr_update) {
+		this.bnr_update = bnr_update;
 	}
-	public String getAmd_idx() {
-		return amd_idx;
+	public String getBnr_state() {
+		return bnr_state;
 	}
-	public void setAmd_idx(String amd_idx) {
-		this.amd_idx = amd_idx;
+	public void setBnr_state(String bnr_state) {
+		this.bnr_state = bnr_state;
+	}
+	public String getAdm_idx() {
+		return adm_idx;
+	}
+	public void setAdm_idx(String adm_idx) {
+		this.adm_idx = adm_idx;
 	}
 	public MultipartFile getBnr_param() {
 		return bnr_param;

@@ -1,8 +1,10 @@
 package com.animal.www.admin.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.animal.www.admin.model.service.AdminService;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.KategorieVO;
+import com.animal.www.commons.FileReName;
+import com.animal.www.commons.vo.BannerVO;
 
 @Controller
 public class AdminController {
@@ -23,6 +28,14 @@ public class AdminController {
 
 	public void setAdminService(AdminService adminService) {
 		this.adminService = adminService;
+	}
+
+	// 관리자 페이지에서 처리
+	@Autowired
+	private FileReName fileReName;
+
+	public void setFileReName(FileReName fileReName) {
+		this.fileReName = fileReName;
 	}
 
 	@RequestMapping("admin_login.do")
@@ -135,6 +148,28 @@ public class AdminController {
 	@RequestMapping("admin_intg_banner.do")
 	public ModelAndView admIntgBanner() {
 		return new ModelAndView("admin/integrate/adm_intg_banner");
+	}
+
+	@RequestMapping("admin_intg_banner_ins.do")
+	public ModelAndView admIntgBannerInsert(BannerVO bvo, HttpSession session) {
+		System.out.println(bvo.getBnr_state());
+		System.out.println(bvo.getBnr_div());
+		
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
+		try {
+			String path = session.getServletContext().getRealPath("/resources/images");
+			MultipartFile bvo_img = bvo.getBnr_param();
+
+			String reName1 = fileReName.exec(path, bvo_img.getOriginalFilename());
+
+			bvo.setBnr_img(reName1);
+
+			if (adminService.bannerInsert(bvo) > 0) {
+				bvo_img.transferTo(new File(path + "/" + reName1));
+			}
+		} catch (Exception e) {
+		}
+		return mv;
 	}
 
 	@RequestMapping("admin_intg_banner_up.do")

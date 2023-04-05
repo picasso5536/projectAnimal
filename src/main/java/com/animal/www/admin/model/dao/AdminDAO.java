@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.KategorieVO;
+import com.animal.www.commons.vo.BannerVO;
 
 @Repository
 public class AdminDAO {
@@ -45,6 +46,20 @@ public class AdminDAO {
 	// 상품등록 셀렉트박스 최상위 카테고리
 	public List<KategorieVO> getKategoryList() {
 		return sqlSessionTemplate.selectList("admin.kategorylist");
+	}
+
+	public int bannerInsert(BannerVO bvo) {
+		System.out.println(bvo.getBnr_div());
+		System.out.println(bvo.getBnr_state());
+		System.out.println(bvo.getBnr_img());
+		System.out.println(bvo.getBnr_order());
+		try {
+			return sqlSessionTemplate.insert("admin.bannerInsert", bvo);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
 	}
 
 }
