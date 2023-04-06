@@ -381,6 +381,18 @@ a {
 </style>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+		function del_go(f) {
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="admin_intg_announce_del.do?notice_idx="+f;
+			}			
+		}
+	
+		function up_go(k) {
+			location.href="admin_intg_announce_up.do?notice_idx="+k;
+		}
+	</script>
 </head>
 <body>
 	<main>
@@ -534,7 +546,8 @@ a {
 									<c:forEach items="${noticelist}" var="k" varStatus="c">
 										<tr>
 											<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + c.index)}</td>
-											<td><img src="resources/upload/${k.notice_img}"	id="bannerimg"></td>
+											<td><img src="resources/upload/${k.notice_img}"
+												id="bannerimg"></td>
 											<td>${k.notice_div}</td>
 											<td>${k.notice_date}</td>
 											<td><a href="admin_intg_announce_up.do">${k.notice_title}</a></td>
