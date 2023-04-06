@@ -20,7 +20,7 @@ public interface AdminService {
 	int bannerUpdate(BannerVO bvo);
 	
 	int getNoticeCount();
-//	List<NotificationVO> noticeList(int begin, int end);
+	List<NotificationVO> noticeList(int begin, int end);
 	int noticeInsert(NotificationVO nvo);
 	
 }

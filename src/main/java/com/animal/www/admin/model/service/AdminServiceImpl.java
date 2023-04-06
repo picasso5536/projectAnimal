@@ -77,11 +77,11 @@ public class AdminServiceImpl implements AdminService {
 	public int getNoticeCount() {
 		return adminDAO.getNoticeCount();
 	}
-	
-	/*
-	 * @Override public List<NotificationVO> noticeList(int begin, int end) { return
-	 * adminDAO.noticeList(begin, end); }
-	 */
+
+	@Override
+	public List<NotificationVO> noticeList(int begin, int end) {
+		return adminDAO.noticeList(begin, end);
+	}
 
 	@Override
 	public int noticeInsert(NotificationVO nvo) {

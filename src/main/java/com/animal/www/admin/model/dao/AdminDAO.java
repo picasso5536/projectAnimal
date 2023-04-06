@@ -51,9 +51,9 @@ public class AdminDAO {
 	public int getbannerCount() {
 		return sqlSessionTemplate.selectOne("admin.bannerCount");
 	}
-	
+
 	// 諛곕꼫 由ъ뒪�듃
-	public List<BannerVO> bannerList(int begin, int end){
+	public List<BannerVO> bannerList(int begin, int end) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("begin", begin);
 		map.put("end", end);
@@ -64,12 +64,12 @@ public class AdminDAO {
 	public int bannerInsert(BannerVO bvo) {
 		return sqlSessionTemplate.insert("admin.bannerInsert", bvo);
 	}
-	
+
 	// �꽑�깮 諛곕꼫 �궘�젣
 	public int bannerDelete(int bnr_idx) {
 		return sqlSessionTemplate.delete("admin.bannerDelete", bnr_idx);
 	}
-	
+
 	// �빐�떦 諛곕꼫 �긽�꽭�젙蹂�
 	public BannerVO bannerOneList(int bnr_idx) {
 		return sqlSessionTemplate.selectOne("admin.bannerOneList", bnr_idx);
@@ -79,24 +79,24 @@ public class AdminDAO {
 	public int bannerUpdate(BannerVO bvo) {
 		try {
 			return sqlSessionTemplate.update("admin.bannerUpdate", bvo);
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return 0;
 	}
-	
+
 	public int getNoticeCount() {
 		return sqlSessionTemplate.selectOne("admin.noticeCount");
 	}
-	
-	/*
-	 * public List<NotificationVO> noticeList(int begin, int end) { Map<String,
-	 * Integer> map = new HashMap<String, Integer>(); map.put("begin", begin);
-	 * map.put("end", end); return sqlSessionTemplate.selectList("admin.noticeList",
-	 * map); }
-	 */
-	
+
+	public List<NotificationVO> noticeList(int begin, int end) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", begin);
+		map.put("end", end);
+		return sqlSessionTemplate.selectList("admin.noticeList", map);
+	}
+
 	public int noticeInsert(NotificationVO nvo) {
 		return sqlSessionTemplate.insert("admin.noticeInsert", nvo);
 	}

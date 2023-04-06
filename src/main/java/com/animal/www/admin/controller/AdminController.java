@@ -142,35 +142,44 @@ public class AdminController {
 	}
 
 	// 공지 리스트 페이지 호출
-	/*
-	 * @RequestMapping("admin_intg_announce.do") public ModelAndView
-	 * admIntgAnnoun(HttpServletRequest request) { ModelAndView mv = new
-	 * ModelAndView("admin/integrate/adm_intg_banner"); int count =
-	 * adminService.getNoticeCount(); paging.setTotalRecord(count);
-	 * 
-	 * if (paging.getTotalRecord() <= paging.getNumPerPage()) {
-	 * paging.setTotalpage(1); } else { paging.setTotalpage(paging.getTotalRecord()
-	 * / paging.getNumPerPage()); if (paging.getTotalRecord() %
-	 * paging.getNumPerPage() != 0) { paging.setTotalpage(paging.getTotalpage() +
-	 * 1); } } String cPage = request.getParameter("cPage"); if (cPage == null) {
-	 * paging.setNowPage(1); } else { paging.setNowPage(Integer.parseInt(cPage)); }
-	 * 
-	 * paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
-	 * paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
-	 * 
-	 * paging.setBeginBlock( (int) ((paging.getNowPage() - 1) /
-	 * paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
-	 * paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
-	 * 
-	 * if (paging.getEndBlock() > paging.getTotalpage()) {
-	 * paging.setEndBlock(paging.getTotalpage()); }
-	 * 
-	 * List<NotificationVO> noticelist = adminService.noticeList(paging.getBegin(),
-	 * paging.getEnd());
-	 * 
-	 * mv.addObject("noticelist", noticelist); mv.addObject("paging", paging);
-	 * return mv; }
-	 */
+	@RequestMapping("admin_intg_announce.do")
+	public ModelAndView admIntgAnnoun(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_announce");
+		int count = adminService.getNoticeCount();
+		paging.setTotalRecord(count);
+
+		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+			paging.setTotalpage(1);
+		} else {
+			paging.setTotalpage(paging.getTotalRecord() / paging.getNumPerPage());
+			if (paging.getTotalRecord() % paging.getNumPerPage() != 0) {
+				paging.setTotalpage(paging.getTotalpage() + 1);
+			}
+		}
+		String cPage = request.getParameter("cPage");
+		if (cPage == null) {
+			paging.setNowPage(1);
+		} else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+
+		paging.setBeginBlock(
+				(int) ((paging.getNowPage() - 1) / paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+
+		if (paging.getEndBlock() > paging.getTotalpage()) {
+			paging.setEndBlock(paging.getTotalpage());
+		}
+
+		List<NotificationVO> noticelist = adminService.noticeList(paging.getBegin(), paging.getEnd());
+
+		mv.addObject("noticelist", noticelist);
+		mv.addObject("paging", paging);
+		return mv;
+	}
 
 	// 공지 수정 페이지 호출
 	@RequestMapping("admin_intg_announce_up.do")

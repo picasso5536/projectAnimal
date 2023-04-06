@@ -73,7 +73,7 @@
 	</update>
 
 	<!-- 공지 개수 -->
-	<select id="bannerCount" resultType="int">
+	<select id="noticeCount" resultType="int">
 		SELECT COUNT(*) FROM
 		NOTIFICATION
 	</select>
@@ -89,7 +89,7 @@
 	</select>
 
 	<!-- 공지 등록 -->
-	<insert id="noticeInsert" parameterMap="nvo">
+	<insert id="noticeInsert" parameterType="nvo">
 		INSERT INTO
 		NOTIFICATION(NOTICE_IDX, NOTICE_TITLE, NOTICE_INFO, NOTICE_HIT,
 		NOTICE_VISIBLE, NOTICE_IMG, NOTICE_DATE, NOTICE_STATE, NOTICE_PRIORTY,
