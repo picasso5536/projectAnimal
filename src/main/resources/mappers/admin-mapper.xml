@@ -94,7 +94,7 @@
 		NOTIFICATION(NOTICE_IDX, NOTICE_TITLE, NOTICE_INFO, NOTICE_HIT,
 		NOTICE_VISIBLE, NOTICE_IMG, NOTICE_DATE, NOTICE_STATE, NOTICE_PRIORTY,
 		NOTICE_DIV, ADM_IDX) VALUES(NOTICE_IDX_SEQ.NEXTVAL, #{notice_title},
-		#{notice_info}, '0', #{notice_visible}, #{notice_img}, sysdate,
+		#{notice_info}, 0, #{notice_visible}, #{notice_img}, sysdate,
 		#{notice_state}, #{notice_priorty}, #{notice_div}, 1)
 	</insert>
 </mapper>

@@ -273,9 +273,9 @@ tbody tr:hover {
 								<tr>
 									<th>공개여부</th>
 									<td><label> <input type="radio"
-											name="notice_visible" value="yes" checked> 보임
+											name="notice_visible" value="1" checked> 보임
 									</label> &nbsp;&nbsp;<label> <input type="radio"
-											name="notice_visible" value="no"> 안보임
+											name="notice_visible" value="0"> 안보임
 									</label></td>
 								</tr>
 							</tbody>

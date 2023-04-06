@@ -175,7 +175,6 @@ public class AdminController {
 		}
 
 		List<NotificationVO> noticelist = adminService.noticeList(paging.getBegin(), paging.getEnd());
-
 		mv.addObject("noticelist", noticelist);
 		mv.addObject("paging", paging);
 		return mv;

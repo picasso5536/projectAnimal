@@ -98,6 +98,12 @@ public class AdminDAO {
 	}
 
 	public int noticeInsert(NotificationVO nvo) {
-		return sqlSessionTemplate.insert("admin.noticeInsert", nvo);
+		try {
+			return sqlSessionTemplate.insert("admin.noticeInsert", nvo);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
 	}
 }

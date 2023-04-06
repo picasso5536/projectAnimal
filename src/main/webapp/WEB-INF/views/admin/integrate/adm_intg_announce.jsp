@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -520,23 +520,23 @@ a {
 								<th>상태</th>
 								<th>우선 순위</th>
 								<th>공개 여부</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:choose>
-								<c:when test="${empty bannerlist}">
+								<c:when test="${empty noticelist}">
 									<tr>
-										<td colspan="10"><h2>등록된 배너 정보가 없습니다.</h2></td>
+										<td colspan="11"><h2>등록된 배너 정보가 없습니다.</h2></td>
 									</tr>
 								</c:when>
 								<c:otherwise>
-									<c:forEach items="${bannerlist}" var="k" varStatus="c">
+									<c:forEach items="${noticelist}" var="k" varStatus="c">
 										<tr>
 											<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + c.index)}</td>
-											<td><img src="resources/upload/${k.notice_img}"
-												id="bannerimg"></td>
+											<td><img src="resources/upload/${k.notice_img}"	id="bannerimg"></td>
 											<td>${k.notice_div}</td>
-											<td>${k.bnr_date}</td>
+											<td>${k.notice_date}</td>
 											<td><a href="admin_intg_announce_up.do">${k.notice_title}</a></td>
 											<td>${k.adm_idx}</td>
 											<td>${k.notice_hit}</td>
@@ -556,7 +556,7 @@ a {
 						</tbody>
 						<tfoot>
 							<tr>
-								<td colspan="10">
+								<td colspan="11">
 									<ol class="paging">
 										<%-- 이전 --%>
 										<c:choose>
