@@ -225,34 +225,34 @@ tbody tr:hover {
 				id="page_sKate">공지 등록</span>
 			<div class="border">
 				<div class="ann_rounce">
-					<form action="">
+					<form action="admin_intg_announce_ins.do" method="post" enctype="multipart/form-data">
 						<div class="option_ann_r">
 							카테고리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
-								class="selectbox">
+								class="selectbox" name="notice_div">
 								<option value="" disabled selected hidden>카테고리 선택</option>
-								<option value="ann_rounce_ann_r">공지사항</option>
-								<option value="event_ann_r">이벤트</option>
+								<option value="home">홈</option>
+								<option value="market">마켓</option>
 							</select>
 						</div>
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
 								우선순위&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input
-									type="radio" name="priority_ann_r" value="1" checked="checked"> 최상위
+									type="radio" name="notice_priorty" value="1" checked="checked"> 최상위
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="2"> 중요
+									name="notice_priorty" value="2"> 중요
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="3"> 일반
+									name="notice_priorty" value="3"> 일반
 								</label>
 							</div>
 						</div>
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
 								영역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
-									<input type="radio" name="area_ann_r" value="main" checked="checked"> 메인
+									<input type="radio" name="notice_state" value="announce" checked="checked"> 공지사항
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="market"> 마켓
+									name="notice_state" value="event"> 이벤트
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="community"> 소통
+									name="notice_state" value="etc"> 기타
 								</label>
 							</div>
 						</div>
@@ -260,23 +260,27 @@ tbody tr:hover {
 							<tbody>
 								<tr>
 									<th>제목</th>
-									<td><input type="text" name="title_ann_r" id="title_ann_r"></td>
+									<td><input type="text" name="notice_title" id="title_ann_r"></td>
+								</tr>
+								<tr>
+									<th>이미지</th>
+									<td><input type="file" name="notice_profile_param"></td>
 								</tr>
 								<tr>
 									<th>내용</th>
-									<td><textarea name="info_ann_r" id="content_ann_r"></textarea></td>
+									<td><textarea name="notice_info" id="content_ann_r"></textarea></td>
 								</tr>
 								<tr>
 									<th>공개여부</th>
 									<td><label> <input type="radio"
-											name="visible_ann_r" value="yes" checked> 보임
+											name="notice_visible" value="yes" checked> 보임
 									</label> &nbsp;&nbsp;<label> <input type="radio"
-											name="visible_ann_r" value="no"> 안보임
+											name="notice_visible" value="no"> 안보임
 									</label></td>
 								</tr>
 							</tbody>
 						</table>
-						<button type="button" id="regist_btn"
+						<button type="submit" id="regist_btn"
 							onclick="regist_ann_r(this.form)">등록</button>
 					</form>
 				</div>

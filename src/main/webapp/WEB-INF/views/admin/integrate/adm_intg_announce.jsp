@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,6 +107,9 @@ table td:first-child {
 	width: 10%;
 }
 
+td:nth-child(2) {
+	width: 100px; /* 이미지 크기에 맞게 조절 */
+}
 /* tbody tr 마우스 오버시 배경색 변경 */
 tbody tr:hover {
 	background-color: #f5f5f5;
@@ -365,9 +369,14 @@ div.modalContent button.modal_cancel {
 	cursor: pointer;
 }
 
-a{
+a {
 	text-decoration: none;
 	color: black;
+}
+
+#bannerimg {
+	max-width: 100%;
+	height: auto;
 }
 </style>
 <script
@@ -502,6 +511,7 @@ a{
 						<thead>
 							<tr>
 								<th></th>
+								<th>공지 이미지</th>
 								<th>공지 영역</th>
 								<th>공지 작성일</th>
 								<th>공지 제목</th>
@@ -513,18 +523,70 @@ a{
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>마켓</td>
-								<td>2023.03.28</td>
-								<td>공지입니다.</td>
-								<td><a href="admin_intg_announce_up.do">admin14</a></td>
-								<td>523</td>
-								<td>이벤트</td>
-								<td>3</td>
-								<td>공개</td>
-							</tr>
+							<c:choose>
+								<c:when test="${empty bannerlist}">
+									<tr>
+										<td colspan="10"><h2>등록된 배너 정보가 없습니다.</h2></td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${bannerlist}" var="k" varStatus="c">
+										<tr>
+											<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + c.index)}</td>
+											<td><img src="resources/upload/${k.notice_img}"
+												id="bannerimg"></td>
+											<td>${k.notice_div}</td>
+											<td>${k.bnr_date}</td>
+											<td><a href="admin_intg_announce_up.do">${k.notice_title}</a></td>
+											<td>${k.adm_idx}</td>
+											<td>${k.notice_hit}</td>
+											<td>${k.notice_state}</td>
+											<td>${k.notice_priorty}</td>
+											<td><c:choose>
+													<c:when test="${k.notice_visible eq '1'}">공개</c:when>
+													<c:otherwise>비공개</c:otherwise>
+												</c:choose></td>
+											<td><button id="up_banner"
+													onclick="up_go(${k.notice_idx})">수정</button>
+												<button id="del_banner" onclick="del_go(${k.notice_idx})">삭제</button></td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="10">
+									<ol class="paging">
+										<%-- 이전 --%>
+										<c:choose>
+											<c:when test="${paging.beginBlock > paging.pagePerBlock }">
+												<a
+													href="admin_intg_announce.do?cPage=${paging.beginBlock-paging.pagePerBlock}">이전으로</a>
+											</c:when>
+										</c:choose>
+
+										<!-- 블록안에 들어간 페이지번호들 -->
+										<c:forEach begin="${paging.beginBlock}"
+											end="${paging.endBlock}" step="1" var="k">
+											<%-- 현재 페이지는 링크X, 나머지는 해당 페이지로 링크 처리 --%>
+											<c:if test="${k==paging.nowPage}">${k}</c:if>
+											<c:if test="${k!=paging.nowPage}">
+												<a href="admin_intg_announce.do?cPage=${k}">${k}</a>
+											</c:if>
+										</c:forEach>
+
+										<!-- 다음 -->
+										<c:choose>
+											<c:when test="${paging.endBlock < paging.totalpage }">
+												<li><a
+													href="admin_intg_announce.do?cPage=${paging.beginBlock+paging.pagePerBlock}">다음으로</a></li>
+											</c:when>
+										</c:choose>
+									</ol>
+								</td>
+							</tr>
+						</tfoot>
 					</table>
 				</div>
 				<button type="button" id="regist_btn"

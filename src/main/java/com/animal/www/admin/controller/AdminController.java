@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +20,7 @@ import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.FileReName;
 import com.animal.www.commons.Paging;
 import com.animal.www.commons.vo.BannerVO;
+import com.animal.www.commons.vo.NotificationVO;
 
 @Controller
 public class AdminController {
@@ -141,21 +141,75 @@ public class AdminController {
 		return new ModelAndView("admin/member/adm_point_add_reqest");
 	}
 
-	@RequestMapping("admin_intg_announce.do")
-	public ModelAndView admIntgAnnoun() {
-		return new ModelAndView("admin/integrate/adm_intg_announce");
-	}
+	// 공지 리스트 페이지 호출
+	/*
+	 * @RequestMapping("admin_intg_announce.do") public ModelAndView
+	 * admIntgAnnoun(HttpServletRequest request) { ModelAndView mv = new
+	 * ModelAndView("admin/integrate/adm_intg_banner"); int count =
+	 * adminService.getNoticeCount(); paging.setTotalRecord(count);
+	 * 
+	 * if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+	 * paging.setTotalpage(1); } else { paging.setTotalpage(paging.getTotalRecord()
+	 * / paging.getNumPerPage()); if (paging.getTotalRecord() %
+	 * paging.getNumPerPage() != 0) { paging.setTotalpage(paging.getTotalpage() +
+	 * 1); } } String cPage = request.getParameter("cPage"); if (cPage == null) {
+	 * paging.setNowPage(1); } else { paging.setNowPage(Integer.parseInt(cPage)); }
+	 * 
+	 * paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+	 * paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+	 * 
+	 * paging.setBeginBlock( (int) ((paging.getNowPage() - 1) /
+	 * paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+	 * paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+	 * 
+	 * if (paging.getEndBlock() > paging.getTotalpage()) {
+	 * paging.setEndBlock(paging.getTotalpage()); }
+	 * 
+	 * List<NotificationVO> noticelist = adminService.noticeList(paging.getBegin(),
+	 * paging.getEnd());
+	 * 
+	 * mv.addObject("noticelist", noticelist); mv.addObject("paging", paging);
+	 * return mv; }
+	 */
 
+	// 공지 수정 페이지 호출
 	@RequestMapping("admin_intg_announce_up.do")
 	public ModelAndView admIntgAnnounUp() {
 		return new ModelAndView("admin/integrate/adm_intg_announce_up");
 	}
 
+	// 공지 작성 페이지로 호출
 	@RequestMapping("admin_intg_announce_regist.do")
 	public ModelAndView admIntgAnnounRegist() {
 		return new ModelAndView("admin/integrate/adm_intg_announce_regist");
 	}
 
+	// 작성된 공지 등록
+	@RequestMapping("admin_intg_announce_ins.do")
+	public ModelAndView admIntgAnnounRegistOk(NotificationVO nvo, HttpSession session) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_announce.do");
+		try {
+			String path = session.getServletContext().getRealPath("/resources/upload");
+			MultipartFile nvo_img = nvo.getNotice_profile_param();
+
+			if (nvo_img.isEmpty()) {
+				nvo.setNotice_img("");
+			} else {
+				String reName1 = fileReName.exec(path, nvo_img.getOriginalFilename());
+				nvo.setNotice_img(reName1);
+			}
+			mv.addObject("cPage", "1");
+			if (adminService.noticeInsert(nvo) > 0) {
+				nvo_img.transferTo(new File(path + "/" + nvo.getNotice_img()));
+			}
+		} catch (Exception e) {
+		}
+		System.out.println(nvo.getNotice_img() + 111);
+
+		return mv;
+	}
+
+	// 배너 리스트 페이징 처리
 	@RequestMapping("admin_intg_banner.do")
 	public ModelAndView admIntgBanner(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_banner");
@@ -195,6 +249,7 @@ public class AdminController {
 		return mv;
 	}
 
+	// 배너 등록
 	@RequestMapping("admin_intg_banner_ins.do")
 	public ModelAndView admIntgBannerInsert(BannerVO bvo, HttpSession session) {
 		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
@@ -214,10 +269,10 @@ public class AdminController {
 			}
 		} catch (Exception e) {
 		}
-		System.out.println(bvo.getBnr_img() + 111);
 		return mv;
 	}
 
+	// 등록된 배너 수정 페이지 호출
 	@RequestMapping("admin_intg_banner_up.do")
 	public ModelAndView admIntgBannerUp(@RequestParam("bnr_idx") int bnr_idx) {
 		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_banner_update");
@@ -226,24 +281,26 @@ public class AdminController {
 		return mv;
 	}
 
+	// 등록된 배너 수정
 	@RequestMapping("admin_intg_banner_up_ok.do")
 	public ModelAndView admIntgBannerUpOk(BannerVO bvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
 		try {
 			String path = request.getSession().getServletContext().getRealPath("/resources/upload");
+
 			MultipartFile bvo_img = bvo.getBnr_param();
 			String old_f_name = request.getParameter("old_f_name");
 			String ori_filename = bvo_img.getOriginalFilename();
-			
+
 			if (ori_filename.equals("") || ori_filename == null) {
 				bvo.setBnr_img(old_f_name);
 			} else {
 				String str = fileReName.exec(path, bvo.getBnr_param().getOriginalFilename());
 				bvo.setBnr_img(str);
 			}
-			
-			if(adminService.bannerUpdate(bvo)>0) {
-				bvo_img.transferTo(new File(path + "/" + bvo.getBnr_param()));
+
+			if (adminService.bannerUpdate(bvo) > 0) {
+				bvo_img.transferTo(new File(path + "/" + bvo.getBnr_img()));
 			}
 			mv.addObject(request.getParameter("bnr_idx"));
 			mv.addObject(request.getParameter("cPage"));
@@ -253,6 +310,7 @@ public class AdminController {
 		return mv;
 	}
 
+	// 등록된 배너 삭제
 	@RequestMapping("admin_intg_banner_del.do")
 	public ModelAndView admIntgBannerDelete(@RequestParam("bnr_idx") int bnr_idx) {
 		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
@@ -281,6 +339,7 @@ public class AdminController {
 		return new ModelAndView("admin/integrate/adm_intg_report");
 	}
 
+	// 약관 리스트 페이지
 	@RequestMapping("admin_intg_terms.do")
 	public ModelAndView admIntgTerms() {
 		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_terms");
@@ -289,11 +348,13 @@ public class AdminController {
 		return mv;
 	}
 
+	// 약관 등록 페이지 호출
 	@RequestMapping("admin_intg_terms_reg.do")
 	public ModelAndView admIntgTermsRegist() {
 		return new ModelAndView("admin/integrate/adm_intg_terms_regist");
 	}
 
+	// 약관 등록
 	@RequestMapping("admin_intg_terms_ins.do")
 	public ModelAndView admIntgTermsInsert(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("redirect:admin_intg_terms.do");
@@ -304,6 +365,7 @@ public class AdminController {
 		return mv;
 	}
 
+	// 약관 삭제
 	@RequestMapping(value = "/admin_delete_terms.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String admIntgTermsDelete(@RequestParam("termsName") String termsName) {
@@ -316,6 +378,7 @@ public class AdminController {
 		return String.valueOf(result);
 	}
 
+	// 약관 수정
 	@RequestMapping(value = "/admin_update_terms.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String admIntgTermsUpdate(@RequestParam("termsName") String termsName,

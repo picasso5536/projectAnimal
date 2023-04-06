@@ -41,9 +41,11 @@
 
 	<!-- 배너 리스트 -->
 	<select id="bannerList" resultType="bvo" parameterType="Map">
-		SELECT * FROM(
+		SELECT *
+		FROM(
 		SELECT ROWNUM R_NUM, A.*
-		FROM (SELECT * FROM BANNER ORDER BY BNR_IDX DESC) A
+		FROM (SELECT * FROM BANNER ORDER BY
+		BNR_IDX DESC) A
 		) WHERE R_NUM BETWEEN #{begin} and #{end}
 	</select>
 
@@ -69,4 +71,30 @@
 		#{bnr_visible}, BNR_STATE = #{bnr_state}, BNR_UPDATE = SYSDATE,
 		BNR_IMG = #{bnr_img} WHERE BNR_IDX = #{bnr_idx}
 	</update>
+
+	<!-- 공지 개수 -->
+	<select id="bannerCount" resultType="int">
+		SELECT COUNT(*) FROM
+		NOTIFICATION
+	</select>
+
+	<!-- 공지 리스트 -->
+	<select id="noticeList" resultType="nvo" parameterType="Map">
+		SELECT *
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM NOTIFICATION ORDER BY
+		NOTICE_IDX DESC) A
+		) WHERE R_NUM BETWEEN #{begin} and #{end}
+	</select>
+
+	<!-- 공지 등록 -->
+	<insert id="noticeInsert" parameterMap="nvo">
+		INSERT INTO
+		NOTIFICATION(NOTICE_IDX, NOTICE_TITLE, NOTICE_INFO, NOTICE_HIT,
+		NOTICE_VISIBLE, NOTICE_IMG, NOTICE_DATE, NOTICE_STATE, NOTICE_PRIORTY,
+		NOTICE_DIV, ADM_IDX) VALUES(NOTICE_IDX_SEQ.NEXTVAL, #{notice_title},
+		#{notice_info}, '0', #{notice_visible}, #{notice_img}, sysdate,
+		#{notice_state}, #{notice_priorty}, #{notice_div}, 1)
+	</insert>
 </mapper>
