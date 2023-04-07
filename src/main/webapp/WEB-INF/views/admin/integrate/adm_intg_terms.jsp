@@ -164,7 +164,7 @@ div.modalContent button.modal_cancel {
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).on("click", "#terms1, #terms2, #terms3, #terms4", function() {
+	/* $(document).on("click", "#terms1, #terms2, #terms3, #terms4", function() {
 		var repNum = $(this).attr("data-repNum");
 		var termsName = $(this).closest('tr').find('th').text();
 		var termsInfo = $(this).text();
@@ -172,10 +172,11 @@ div.modalContent button.modal_cancel {
 		$(".modal_modify_btn").attr("data-repNum", repNum);
 		$(".modal_terms_name").text(termsName);
 		$(".replyModal").fadeIn(200);
-	});
-
-	$(document).on("click", ".terms td", function() {
+	}); */
+	var tName = 0;
+	$(document).on("click", "#terms1, #terms2, #terms3, #terms4", function() {
 		var termsName = $(this).prev().text();
+		    tName =termsName;
 		var termsInfo = $(this).text();
 		$(".modal_repCon").val(termsInfo);
 		$(".modal_modify_btn").attr("data-termsName", termsName);
@@ -204,10 +205,10 @@ div.modalContent button.modal_cancel {
 								<c:when test="${empty termslist}">
 								</c:when>
 								<c:otherwise>
-									<c:forEach items="${termslist}" var="k">
+									<c:forEach items="${termslist}" var="k" varStatus="vs">
 										<tr>
-											<th id="idx">${k.terms_name}</th>
-											<td>${k.terms_info}</td>
+											<th>${k.terms_name}</th>
+											<td id="terms${vs.index + 1}">${k.terms_info}</td>
 										</tr>
 									</c:forEach>
 								</c:otherwise>
@@ -237,7 +238,7 @@ div.modalContent button.modal_cancel {
 		$(document).on("click", ".modal_delete_btn", function() {
 			var deleteConfirm = confirm("삭제하시겠습니까?");
 			if (deleteConfirm) {
-				var termsName = $("#idx").text();
+				var termsName = tName;
 				console.log(termsName);
 				$.ajax({
 					url : "admin_delete_terms.do",
@@ -264,7 +265,7 @@ div.modalContent button.modal_cancel {
 		$(document).on("click", ".modal_update_btn", function() {
 			var updateConfirm = confirm("수정하시겠습니까?");
 			if (updateConfirm) {
-				var termsName = $("#idx").text();
+				var termsName = tName;
 				var termsInfo = $(".modal_repCon").val();
 				console.log(termsName);
 				console.log(termsInfo);

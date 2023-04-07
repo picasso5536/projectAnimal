@@ -1,11 +1,8 @@
 package com.animal.www.commons.vo;
 
-import org.springframework.web.multipart.MultipartFile;
-
 // 업체정보 VO
 public class CorporationVO {
-	private String corp_idx, corp_name, corp_phone, corp_local, corp_addr, corp_info, corp_img;
-	private MultipartFile[] corp_info_param;
+	private String corp_idx, corp_name, corp_phone, corp_local, corp_addr, corp_info;
 	
 	public String getCorp_idx() {
 		return corp_idx;
@@ -42,17 +39,5 @@ public class CorporationVO {
 	}
 	public void setCorp_info(String corp_info) {
 		this.corp_info = corp_info;
-	}
-	public String getCorp_img() {
-		return corp_img;
-	}
-	public void setCorp_img(String corp_img) {
-		this.corp_img = corp_img;
-	}
-	public MultipartFile[] getCorp_info_param() {
-		return corp_info_param;
-	}
-	public void setCorp_info_param(MultipartFile[] corp_info_param) {
-		this.corp_info_param = corp_info_param;
 	}
 }
