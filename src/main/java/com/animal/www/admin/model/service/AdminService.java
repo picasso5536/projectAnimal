@@ -22,5 +22,7 @@ public interface AdminService {
 	int getNoticeCount();
 	List<NotificationVO> noticeList(int begin, int end);
 	int noticeInsert(NotificationVO nvo);
-	
+	int noticeDelete(int notice_idx);
+	int noticeUpdate(NotificationVO nvo);
+	NotificationVO noticeOneList(int notice_idx);
 }

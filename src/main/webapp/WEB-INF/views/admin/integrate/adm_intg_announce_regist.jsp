@@ -225,7 +225,8 @@ tbody tr:hover {
 				id="page_sKate">공지 등록</span>
 			<div class="border">
 				<div class="ann_rounce">
-					<form action="admin_intg_announce_ins.do" method="post" enctype="multipart/form-data">
+					<form action="admin_intg_announce_ins.do" method="post"
+						enctype="multipart/form-data">
 						<div class="option_ann_r">
 							카테고리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
 								class="selectbox" name="notice_div">
@@ -237,7 +238,8 @@ tbody tr:hover {
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
 								우선순위&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input
-									type="radio" name="notice_priorty" value="1" checked="checked"> 최상위
+									type="radio" name="notice_priorty" value="1" checked="checked">
+									최상위
 								</label> &nbsp;&nbsp;<label> <input type="radio"
 									name="notice_priorty" value="2"> 중요
 								</label> &nbsp;&nbsp;<label> <input type="radio"
@@ -247,8 +249,9 @@ tbody tr:hover {
 						</div>
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
-								영역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
-									<input type="radio" name="notice_state" value="announce" checked="checked"> 공지사항
+								상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
+									<input type="radio" name="notice_state" value="announce"
+									checked="checked"> 공지사항
 								</label> &nbsp;&nbsp;<label> <input type="radio"
 									name="notice_state" value="event"> 이벤트
 								</label> &nbsp;&nbsp;<label> <input type="radio"
@@ -260,7 +263,8 @@ tbody tr:hover {
 							<tbody>
 								<tr>
 									<th>제목</th>
-									<td><input type="text" name="notice_title" id="title_ann_r"></td>
+									<td><input type="text" name="notice_title"
+										id="title_ann_r"></td>
 								</tr>
 								<tr>
 									<th>이미지</th>
@@ -280,8 +284,7 @@ tbody tr:hover {
 								</tr>
 							</tbody>
 						</table>
-						<button type="submit" id="regist_btn"
-							onclick="regist_ann_r(this.form)">등록</button>
+						<button type="submit" id="regist_btn">등록</button>
 					</form>
 				</div>
 			</div>

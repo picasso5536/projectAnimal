@@ -57,7 +57,13 @@ public class AdminDAO {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("begin", begin);
 		map.put("end", end);
-		return sqlSessionTemplate.selectList("admin.bannerList", map);
+		try {
+			return sqlSessionTemplate.selectList("admin.bannerList", map);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
 	}
 
 	// 諛곕꼫 �벑濡�
@@ -100,10 +106,28 @@ public class AdminDAO {
 	public int noticeInsert(NotificationVO nvo) {
 		try {
 			return sqlSessionTemplate.insert("admin.noticeInsert", nvo);
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return 0;
 	}
+
+	public int noticeUpdate(NotificationVO nvo) {
+		try {
+			return sqlSessionTemplate.update("admin.noticeUpdate", nvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	public int noticeDelete(int notice_idx) {
+		return sqlSessionTemplate.delete("admin.noticeDelete", notice_idx);
+	}
+	
+	public NotificationVO noticeOneList(int notice_idx) {
+		return sqlSessionTemplate.selectOne("admin.noticeOneList", notice_idx);
+	}
+	
 }

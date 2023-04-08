@@ -539,7 +539,7 @@ a {
 							<c:choose>
 								<c:when test="${empty noticelist}">
 									<tr>
-										<td colspan="11"><h2>등록된 배너 정보가 없습니다.</h2></td>
+										<td colspan="11"><h2>등록된 게시물 정보가 없습니다.</h2></td>
 									</tr>
 								</c:when>
 								<c:otherwise>

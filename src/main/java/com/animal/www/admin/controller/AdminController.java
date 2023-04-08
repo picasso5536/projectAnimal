@@ -143,7 +143,7 @@ public class AdminController {
 
 	// 공지 리스트 페이지 호출
 	@RequestMapping("admin_intg_announce.do")
-	public ModelAndView admIntgAnnoun(HttpServletRequest request) {
+	public ModelAndView admIntgAnnounce(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_announce");
 		int count = adminService.getNoticeCount();
 		paging.setTotalRecord(count);
@@ -182,17 +182,56 @@ public class AdminController {
 
 	// 공지 수정 페이지 호출
 	@RequestMapping("admin_intg_announce_up.do")
-	public ModelAndView admIntgAnnounUp() {
-		return new ModelAndView("admin/integrate/adm_intg_announce_up");
+	public ModelAndView admIntgAnnounceUp(@RequestParam("notice_idx") int notice_idx) {
+		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_announce_up");
+		NotificationVO nvo = adminService.noticeOneList(notice_idx);
+		mv.addObject("nvo", nvo);
+		return mv;
+	}
+
+	// 공지 수정
+	@RequestMapping("admin_intg_announce_up_ok.do")
+	public ModelAndView admIntgAnnounceUpOk(NotificationVO nvo, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_announce.do");
+		try {
+			String path = request.getSession().getServletContext().getRealPath("/resources/upload");
+
+			MultipartFile nvo_img = nvo.getNotice_profile_param();
+			String old_f_name = request.getParameter("old_f_name");
+			String ori_filename = nvo_img.getOriginalFilename();
+
+			if (ori_filename.equals("") || ori_filename == null) {
+				nvo.setNotice_img(old_f_name);
+			} else {
+				String str = fileReName.exec(path, nvo.getNotice_profile_param().getOriginalFilename());
+				nvo.setNotice_img(str);
+			}
+
+			if (adminService.noticeUpdate(nvo) > 0) {
+				nvo_img.transferTo(new File(path + "/" + nvo.getNotice_img()));
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return mv;
 	}
 
 	// 공지 작성 페이지로 호출
 	@RequestMapping("admin_intg_announce_regist.do")
-	public ModelAndView admIntgAnnounRegist() {
+	public ModelAndView admIntgAnnounceRegist() {
 		return new ModelAndView("admin/integrate/adm_intg_announce_regist");
 	}
 
-	// 작성된 공지 등록
+	// 공지 삭제
+	@RequestMapping("admin_intg_announce_del.do")
+	public ModelAndView admIntgAnnounceDelete(@RequestParam("notice_idx") int notice_idx) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_announce.do");
+		int result = adminService.noticeDelete(notice_idx);
+		mv.addObject("result", result);
+		return mv;
+	}
+
+	// 공지 등록
 	@RequestMapping("admin_intg_announce_ins.do")
 	public ModelAndView admIntgAnnounRegistOk(NotificationVO nvo, HttpSession session) {
 		ModelAndView mv = new ModelAndView("redirect:admin_intg_announce.do");
@@ -212,8 +251,6 @@ public class AdminController {
 			}
 		} catch (Exception e) {
 		}
-		System.out.println(nvo.getNotice_img() + 111);
-
 		return mv;
 	}
 
@@ -276,6 +313,7 @@ public class AdminController {
 				bvo_img.transferTo(new File(path + "/" + bvo.getBnr_img()));
 			}
 		} catch (Exception e) {
+			System.out.println(e);
 		}
 		return mv;
 	}
@@ -289,7 +327,7 @@ public class AdminController {
 		return mv;
 	}
 
-	// 등록된 배너 수정
+	// 배너 수정
 	@RequestMapping("admin_intg_banner_up_ok.do")
 	public ModelAndView admIntgBannerUpOk(BannerVO bvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
@@ -327,6 +365,7 @@ public class AdminController {
 		return mv;
 	}
 
+	// 배너 등록 페이지 호출
 	@RequestMapping("admin_intg_banner_reg.do")
 	public ModelAndView admIntgBannerWrite() {
 		return new ModelAndView("admin/integrate/adm_intg_banner_regist");
@@ -391,12 +430,7 @@ public class AdminController {
 	@ResponseBody
 	public String admIntgTermsUpdate(@RequestParam("termsName") String termsName,
 			@RequestParam("termsInfo") String termsInfo) {
-		int result = 0;
-		try {
-			result = adminService.termsUpdate(termsName, termsInfo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		int result = adminService.termsUpdate(termsName, termsInfo);
 		return String.valueOf(result);
 	}
 

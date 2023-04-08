@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class NotificationVO {
 	private String notice_idx, notice_title, adm_idx, notice_div, notice_info, notice_hit, notice_visible, notice_file, notice_date, notice_img, notice_state, notice_priorty;
 	private MultipartFile notice_profile_param; // 공지/이벤트/문의사항에 들어갈 대표 이미지(스트림용)
-	private MultipartFile[] notice_info_param; // 공지/이벤트/문의사항에 들어갈 내용 이미지(스트림용)
 	
 	public String getNotice_div() {
 		return notice_div;
@@ -86,11 +85,5 @@ public class NotificationVO {
 	}
 	public void setNotice_profile_param(MultipartFile notice_profile_param) {
 		this.notice_profile_param = notice_profile_param;
-	}
-	public MultipartFile[] getNotice_info_param() {
-		return notice_info_param;
-	}
-	public void setNotice_info_param(MultipartFile[] notice_info_param) {
-		this.notice_info_param = notice_info_param;
 	}
 }

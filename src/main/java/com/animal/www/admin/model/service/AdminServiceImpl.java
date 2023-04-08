@@ -19,72 +19,99 @@ public class AdminServiceImpl implements AdminService {
 		this.adminDAO = adminDAO;
 	}
 
+	// 약관 리스트
 	@Override
 	public List<TermsVO> termsList() {
 		return adminDAO.termsList();
 	}
 
+	// 해당 약관 삭제
 	@Override
 	public int termsDelete(String termsName) {
 		return adminDAO.termsDelete(termsName);
 	}
 
+	// 해당 약관 수정
 	@Override
 	public int termsUpdate(String termsName, String termsInfo) {
 		return adminDAO.termsUpdate(termsName, termsInfo);
 	}
 
+	// 약관 등록
 	@Override
 	public int termsInsert(String termsName, String termsInfo) {
 		return adminDAO.termsInsert(termsName, termsInfo);
 	}
 
+	// 해당 배너 삭제
 	@Override
 	public int bannerDelete(int bnr_idx) {
 		return adminDAO.bannerDelete(bnr_idx);
 	}
 
+	// 배너 등록
 	@Override
 	public int bannerInsert(BannerVO bvo) {
 		return adminDAO.bannerInsert(bvo);
 	}
 
-	// �빐�떦 諛곕꼫 �긽�꽭�젙蹂�
+	// 해당 배너 상세보기(수정용)
 	@Override
 	public BannerVO BannerOneList(int bnr_idx) {
 		return adminDAO.bannerOneList(bnr_idx);
 	}
 
-	// 諛곕꼫 �닔�젙
+	// 해당 배너 수정
 	@Override
 	public int bannerUpdate(BannerVO bvo) {
 		return adminDAO.bannerUpdate(bvo);
 	}
 
-	// 諛곕꼫 由ъ뒪�듃 媛쒖닔
+	// 등록된 배너 개수
 	@Override
 	public int getBannerCount() {
 		return adminDAO.getbannerCount();
 	}
 
-	// 諛곕꼫 �쟾泥� 由ъ뒪�듃
+	// 배너 리스트
 	@Override
 	public List<BannerVO> BannerList(int begin, int end) {
 		return adminDAO.bannerList(begin, end);
 	}
 
+	// 알림게시글 개수
 	@Override
 	public int getNoticeCount() {
 		return adminDAO.getNoticeCount();
 	}
 
+	// 알림 게시글 리스트
 	@Override
 	public List<NotificationVO> noticeList(int begin, int end) {
 		return adminDAO.noticeList(begin, end);
 	}
 
+	// 알림 게시글 등록
 	@Override
 	public int noticeInsert(NotificationVO nvo) {
 		return adminDAO.noticeInsert(nvo);
+	}
+
+	// 해당 알림 게시글 삭제
+	@Override
+	public int noticeDelete(int notice_idx) {
+		return adminDAO.noticeDelete(notice_idx);
+	}
+
+	// 알림 게시글 수정
+	@Override
+	public int noticeUpdate(NotificationVO nvo) {
+		return adminDAO.noticeUpdate(nvo);
+	}
+
+	// 해당 알림 게시글 상세정보
+	@Override
+	public NotificationVO noticeOneList(int notice_idx) {
+		return adminDAO.noticeOneList(notice_idx);
 	}
 }

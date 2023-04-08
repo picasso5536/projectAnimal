@@ -88,6 +88,11 @@
 		) WHERE R_NUM BETWEEN #{begin} and #{end}
 	</select>
 
+	<!-- 해당 공지 상세정보 -->
+	<select id="noticeOneList" resultType="nvo" parameterType="int">
+		SELECT * FROM NOTIFICATION WHERE NOTICE_IDX = #{notice_idx}
+	</select>
+
 	<!-- 공지 등록 -->
 	<insert id="noticeInsert" parameterType="nvo">
 		INSERT INTO
@@ -97,4 +102,22 @@
 		#{notice_info}, 0, #{notice_visible}, #{notice_img}, sysdate,
 		#{notice_state}, #{notice_priorty}, #{notice_div}, 1)
 	</insert>
+
+	<!-- 공지 수정 -->
+	<update id="noticeUpdate" parameterType="nvo">
+		UPDATE NOTIFICATION SET
+		NOTICE_DIV = #{notice_div}, NOTICE_PRIORTY = #{notice_priorty},
+		NOTICE_VISIBLE =
+		#{notice_visible}, NOTICE_STATE = #{notice_state},
+		NOTICE_IMG = #{notice_img}, NOTICE_TITLE = #{notice_title},
+		NOTICE_INFO = #{notice_info}
+		WHERE NOTICE_IDX = #{notice_idx}
+	</update>
+
+	<!-- 공지 삭제 -->
+	<delete id="noticeDelete" parameterType="int">
+		DELETE FROM NOTIFICATION
+		WHERE
+		NOTICE_IDX = #{notice_idx}
+	</delete>
 </mapper>
