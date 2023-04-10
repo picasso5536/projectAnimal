@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.animal.www.commons.vo.MemberVO;
 import com.animal.www.home.model.service.HomeService;
 
 @Controller
@@ -208,13 +210,58 @@ public class HomeController {
 		}
 	// 아이디 중복검사
 		
+		@RequestMapping(value = "registerOK.do", method = RequestMethod.POST)
+		@ResponseBody
+		public String getRegisterOk(@ModelAttribute MemberVO vo) {
+			
+			int result = 0;
+			System.out.println("여기까지는 오지?222");
+			if (vo.getMbr_id().length() < 1) {
+				result = 0;
+			} else {
+				result = homeService.getId(vo);
+				System.out.println(result+"너는 뭐냐???");
+			}
+			if (result >= 1) {
+				System.out.println(result+"너는 뭐냐???");
+				return "1";
+			} else {
+				return "0";
+			}
+		}
+
+		// 닉네임 중복검사
 		
+		@RequestMapping(value = "registerOK1.do", method = RequestMethod.POST)
+		@ResponseBody
+		public String getRegisterOk1(@ModelAttribute MemberVO vo) {
+			
+			int result = 0;
+			System.out.println("여기까지는 오지?222");
+			if (vo.getMbr_nickname().length() < 1) {
+				result = 0;
+			} else {
+				result = homeService.getnickname(vo);
+				System.out.println(result+"너는 뭐냐???");
+			}
+			if (result >= 1) {
+				System.out.println(result+"너는 뭐냐???");
+				return "1";
+			} else {
+				return "0";
+			}
+		}
 		
-		
-		
-		
-		
-		
+		// 로그인 
+		/*
+		 * @RequestMapping("getLogin.do")
+		 * 
+		 * @ResponseBody public String returnLogin(@ModelAttribute MemberVO vo) { int
+		 * result = homeService.getLogin(vo); if(result>0) { return ("1"); }else {
+		 * return ("0"); }
+		 * 
+		 * }
+		 */
 		
 		
 		

@@ -11,8 +11,7 @@
 	<typeAliases>
 		<!-- 본인이 추가하고싶은 alias 설정하세요 -->
 		<!-- 모상인 -->
-			<!-- <typeAlias alias="" type="com.animal.www."/> -->
-			
+			<typeAlias alias="mvo" type="com.animal.www.commons.vo.MemberVO"/>
 		<!-- 문현지 -->
 			<!-- <typeAlias alias="" type="com.animal.www."/> -->
 			

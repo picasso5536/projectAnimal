@@ -175,11 +175,65 @@ function home(f) {
     }else {
     }
 }
+
+function getLogin(){
+	var username = document.getElementById('id').value;
+	var password = document.getElementById('password').value;
+	if(username.length<1){
+		alert('아이디를 입력해주세요');
+	}else if(password.length<1){
+		alert('비밀번호를 입력해주세요');
+	}else{
+	firebase.auth().signInWithEmailAndPassword(username, password)
+    .then((userCredential) => {
+      // Signed in successfully
+      const user = userCredential.user;
+      
+     
+      $(function() {
+			$.ajax({
+		        type: 'POST',
+		        url: 'getLogin.do',
+		        data: { 
+		          id: username,
+		          password: password
+		        },
+		        dataType: 'text',
+		        success: function(response) {	 
+		        	
+		        	if(response==="1"){
+		        		 const encodedEmail = btoa(username);
+	    	            
+ 	            	window.location.href = "complete.do?email=" + encodedEmail;
+		        	}else{
+		        		alert('로그인 실패');
+		        	}
+		        			
+		        },
+		        error: function(xhr, status, error) {
+		        	alert('error : ' + error);
+		        }
+		      });
+		});
+    })
+    .catch((error) => {
+      // Error occurred during sign-in
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error("Error signing in:", errorCode, errorMessage);
+    });
+	
+}
+}
+
+
+
+
 </script>
 </head>
 <body>
 	<div class="login-form">
-		<form>
+		<form id="LoginForm" method="post" onsubmit="return false"> 
 			<h2>내옆Pet</h2>
 			<br>
 			<div class="form-group with-icon">
@@ -195,7 +249,7 @@ function home(f) {
 				<input type="checkbox" id="remember-me"> 아이디 기억
 				</label>
 			</div>
-			<button type="button" onclick="home(this.form)" class="login-btn">로그인</button>
+			<button type="button" onclick="getLogin()" class="login-btn">로그인</button>
 			<div class="social-login">
 				<a href="#"> <img
 					src="resources/img/kakao_login_medium_wide.png"
@@ -212,6 +266,13 @@ function home(f) {
 				<button class="button" style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="find()">아이디/비밀번호 찾기</button>
 				<!-- <input style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="find()" value="아이디/비밀번호 찾기"> -->
 			</div>
+<script>
+
+
+			
+			
+			
+</script>
 		</form>
 	</div>
 </body>

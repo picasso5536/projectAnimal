@@ -17,6 +17,65 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 		}else {
 		}
 	}
+	/* 아이디 중복  */
+	function ConfirmEmail() {
+    var id = document.getElementById("id").value;
+
+    $.ajax({
+        type: 'POST',
+        url: 'registerOK.do',
+        data: {
+            mbr_id: $('#id').val()
+        },
+        dataType: 'text',
+        success: function(response) {
+            if (response === "1") {
+                alert('중복되는 아이디 입니다. 다시 입력해 주세요');
+                $('#id').css('pointer-events', 'auto');
+            } else {
+                emailConfirm = true;
+                alert('사용가능합니다.');
+                $('#id').css('pointer-events', 'none');                
+            }
+        },
+        error: function(xhr, status, error) {
+            alert('error : ' + error);
+        },
+        complete: function() {
+            $('#id').val(id);
+        }
+    });
+}
+	
+	/* 닉네임 중복 검사 */
+	function butnickname() {
+    var Nickname = document.getElementById("Nickname").value;
+
+    $.ajax({
+        type: 'POST',
+        url: 'registerOK1.do',
+        data: {
+        	mbr_nickname: $('#Nickname').val()
+        },
+        dataType: 'text',
+        success: function(response) {
+            if (response === "1") {
+                alert('중복되는 닉네임 입니다. 다시 입력해 주세요');
+                $('#Nickname').css('pointer-events', 'auto');
+            } else {
+                emailConfirm = true;
+                alert('사용가능합니다.');
+                $('#Nickname').css('pointer-events', 'none');                
+            }
+        },
+        error: function(xhr, status, error) {
+            alert('error : ' + error);
+        },
+        complete: function() {
+            $('#Nickname').val(Nickname);
+        }
+    });
+}
 	/* 필수입력  */
 	function login_01() {
 		
@@ -100,31 +159,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	}else {
 	}
 }
-	$(function(){
-	    $("#checkId").click(function(){
-	        let member_id = $("#id").val();
-	         
-	        $.ajax({
-	            type:'post', //post 형식으로 controller 에 보내기위함!!
-	            url:"checkId.do", // 컨트롤러로 가는 mapping 입력
-	            data: {"id":id}, // 원하는 값을 중복확인하기위해서  JSON 형태로 DATA 전송
-	            success: function(data){ 
-	                if(data == "N"){ // 만약 성공할시
-	                    result = "사용 가능한 아이디입니다.";
-	                    $("#result_checkId").html(result).css("color", "green");
-	                    $("#id").trigger("focus");
-	                 
-	             }else{ // 만약 실패할시
-	                 result="이미 사용중인 아이디입니다.";
-	                     $("#result_checkId").html(result).css("color","red");
-	                     $("#id").val("").trigger("focus");
-	             }
-	                 
-	         },
-	            error : function(error){alert(error);}
-	        });
-	    });
-	});
+
 </script>
 <style type="text/css">
 /* 레이아웃 틀 */
@@ -387,10 +422,22 @@ select {
     font-family: Dotum,'돋움',Helvetica,sans-serif;
     user-select: none;
 }
+
+/* 중복아이디 존재하지 않는경우 */
+	.id_input_re_1{
+		color : green;
+		display : none;
+	}
+	/* 중복아이디 존재하는 경우 */
+	.id_input_re_2{
+		color : red;
+		display : none;
+	}
 </style>
 </head>
 <body>	
-	<form action="" onsubmit="return false">
+<div class="form">
+		<form id="signUpForm" method="post" onsubmit="return false"> 
         <div id="header">
             <a href="" target="_blank" title="내옆Pet 회원가입 페이지 "><img src="resources/img/petpet.png" id="logo"></a>
         </div>
@@ -403,9 +450,10 @@ select {
                     </h3>
                     <span class="box int_id">
                         <input type="text" id="id" name="id" class="int" maxlength="20" >
-                        <button   id="checkId" name="checkId" style="border:none; background-color:transparent;" type="submit" class="step_url" onclick="fn_idchk()" >중복확인</button>
+                        <button   id="checkId" name="checkId" style="border:none; background-color:transparent;" type="submit" class="step_url" onclick="ConfirmEmail()" >중복확인</button>
                     </span>
-                     <div><span id="result_checkId" style="font-size:12px;"></span></div>
+                    	<div></div>
+                  	<div><span id="getEmailPara" class="getEmailPara" style="font-size:12px;"></span></div> 
                     <span class="error_next_box"></span>
                 </div>
                 <!-- 비밀번호 -->
@@ -433,8 +481,8 @@ select {
                         <label for="id">닉네임</label>
                     </h3>
                     <span class="box int_id">
-                        <input type="text" id="Nickname" class="int" maxlength="20">
-                         <button style="border:none; background-color:transparent;" type="submit" class="step_url"  >중복확인</button> 
+                        <input type="text" id="Nickname" name="Nickname" class="int" maxlength="20">
+                         <button style="border:none; background-color:transparent;" type="submit" class="step_url" onclick="butnickname()"  >중복확인</button> 
                     </span>
                     <span class="error_next_box"></span>
                 </div>
@@ -450,7 +498,6 @@ select {
                 <!-- 생년월일 -->
                 <div>
                     <h3 class="join_title"><label for="yy">생년월일</label></h3>
-
                     <div id="bir_wrap">
                         <div id="bir_yy">
                             <span class="box">
@@ -491,8 +538,8 @@ select {
                     <span class="box gender_code">
                         <select id="gender" class="sel">
                             <option>성별</option>
-                            <option value="M">남자</option>
-                            <option value="F">여자</option>
+                            <option value="1">남자</option>
+                            <option value="2">여자</option>
                         </select>                            
                     </span>
                     <span class="error_next_box">필수 정보입니다.</span>
@@ -532,7 +579,7 @@ select {
                 <div>
                     <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
                     <span class="box int_mobile">
-                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="예)010-1111-2222">
+                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="예) 01055238429">
                     </span>
                     <span class="error_next_box">휴대폰 번호를 입력해 주세요</span>    
                 </div>
@@ -558,18 +605,6 @@ select {
         </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
 <script>
-/* 아이디 중복 검사 */
-
-
-
-
-
-/* 닉네임 중복검사 */
-
-
-
-
-
 
 /* 주소입력 */
  function sample6_execDaumPostcode() {
@@ -666,10 +701,7 @@ $("#emailChk2").click(function(){
 });
 
 /*변수 선언*/
-
-
 var id = document.querySelector('#id');
-
 var pw1 = document.querySelector('#pswd1');
 var pwMsg = document.querySelector('#alertTxt');
 var pwImg1 = document.querySelector('#pswd1_img1');
@@ -678,14 +710,11 @@ var pwImg2 = document.querySelector('#pswd2_img1');
 var pwMsgArea = document.querySelector('.int_pass');
 var Nickname = document.querySelector('#Nickname');
 var userName = document.querySelector('#name');
-
 var yy = document.querySelector('#yy');
 var mm = document.querySelector('#mm');
 var dd = document.querySelector('#dd');
 
 var gender = document.querySelector('#gender');
-
-/* var email = document.querySelector('#email'); */
 
 var mobile = document.querySelector('#mobile');
 var mobile_1 = document.querySelector('#mobile_1');
@@ -693,7 +722,7 @@ var mobile_1 = document.querySelector('#mobile_1');
 var error = document.querySelectorAll('.error_next_box');
 var error_1 = document.querySelectorAll('.successEmailChk');
 
-/*이벤트 핸들러 연결*/
+/*변수와 이벤트 핸들러 연결*/
 
 $(function() {
 	id.addEventListener("focusout", checkId);
@@ -713,14 +742,13 @@ $(function() {
 	        error[5].style.display = "none";
 	    }
 	})
-	/* email.addEventListener("focusout", isEmailCorrect); */
 	mobile.addEventListener("focusout", checkPhoneNum);
 
 
 
 });
 
-/*콜백 함수*/
+/*조건에 걸자!! 콜백 함수*/
 
 function checkId() {
     var idPattern = /[a-zA-Z0-9_-]{5,10}/;
@@ -887,8 +915,10 @@ function checkPhoneNum() {
         error[9].style.display = "none";
     }
 } */
+
 </script>
     </form>
+    </div>
    </body>
 </html>
 
