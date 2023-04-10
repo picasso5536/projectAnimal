@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.BannerVO;
+import com.animal.www.commons.vo.MemberVO;
 import com.animal.www.commons.vo.NotificationVO;
 
 @Repository
@@ -121,13 +122,42 @@ public class AdminDAO {
 		}
 		return 0;
 	}
-	
+
 	public int noticeDelete(int notice_idx) {
 		return sqlSessionTemplate.delete("admin.noticeDelete", notice_idx);
 	}
-	
+
 	public NotificationVO noticeOneList(int notice_idx) {
 		return sqlSessionTemplate.selectOne("admin.noticeOneList", notice_idx);
 	}
-	
+
+	public int getMbrCount() {
+		return sqlSessionTemplate.selectOne("admin.mbrCount");
+	}
+
+	public List<MemberVO> getMbrByIdx(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		System.out.println(txt);
+		return sqlSessionTemplate.selectOne("admin.getMbrByIdx", map);
+	}
+
+	public List<MemberVO> getMbrByName(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getMbrByName", map);
+	}
+
+	public List<MemberVO> getMbrById(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getMbrById", map);
+	}
+
 }

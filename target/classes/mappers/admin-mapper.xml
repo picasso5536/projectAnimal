@@ -120,4 +120,29 @@
 		WHERE
 		NOTICE_IDX = #{notice_idx}
 	</delete>
+	
+	<!-- 전체 회원 수 -->
+	<select id="mbrCount" resultType="int">
+		SELECT COUNT(*) FROM MEMBERS
+	</select>
+	
+	<!-- 회원 리스트 -->
+	<select id="getMbrByName" parameterType="Map" resultType="mvo">
+		SELECT *
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM MEMBERS WHERE MBR_NAME = #{txt} ORDER BY
+		MBR_NICKNAME DESC) A
+		) WHERE R_NUM BETWEEN #{begin} and #{end}
+	</select>
+	
+	<!-- 회원 리스트 -->
+	<select id="getMbrById" parameterType="Map" resultType="mvo">
+		SELECT *
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM MEMBERS WHERE MBR_ID = #{txt} ORDER BY
+		MBR_NICKNAME DESC) A
+		) WHERE R_NUM BETWEEN #{begin} and #{end}
+	</select>
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.animal.www.admin.model.dao.AdminDAO;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.BannerVO;
+import com.animal.www.commons.vo.MemberVO;
 import com.animal.www.commons.vo.NotificationVO;
 
 @Service
@@ -113,5 +114,23 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public NotificationVO noticeOneList(int notice_idx) {
 		return adminDAO.noticeOneList(notice_idx);
+	}
+	
+	// 전체 회원 수
+	@Override
+	public int getMbrCount() {
+		return adminDAO.getMbrCount();
+	}
+	
+	// 회원 아이디로 검색
+	@Override
+	public List<MemberVO> getMbrById(String txt, int begin, int end) {
+		return adminDAO.getMbrById(txt, begin, end);
+	}
+	
+	// 회원 이름으로 검색
+	@Override
+	public List<MemberVO> getMbrByName(String txt, int begin, int end) {
+		return adminDAO.getMbrByName(txt, begin, end);
 	}
 }

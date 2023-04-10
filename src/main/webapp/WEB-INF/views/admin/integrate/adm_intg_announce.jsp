@@ -403,22 +403,22 @@ a {
 				id="page_sKate">공지 관리</span>
 			<div class="border">
 				<div class="announce">
-					<form action="">
+					<form action="adm_intg_announce_search.do" method="get">
 						<div class="option_ann">
 							검색어&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
-								class="selectbox">
-								<option value="author">작성자</option>
+								class="selectbox" name="search_option">
+								<option value="" disabled selected hidden>검색어 선택</option>
 								<option value="title">제목</option>
 								<option value="content">제목 + 내용</option>
 							</select><input type="text" class="search_ann" id="search_slot"
-								placeholder="검색어 입력">
+								name="search_ann" placeholder="검색어 입력">
 						</div>
 						<div class="option_ann">
 							카테고리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
-								class="selectbox">
+								class="selectbox" name="category_option">
 								<option value="" disabled selected hidden>카테고리 선택</option>
-								<option value="announce_ann">공지사항</option>
-								<option value="event_ann">이벤트</option>
+								<option value="announce">공지사항</option>
+								<option value="event">이벤트</option>
 							</select>
 						</div>
 						<div class="option_ann">
@@ -515,8 +515,9 @@ a {
 									});
 						</script>
 						<div id="search_ann_btn">
-							<button type="button" id="select_ann">조회</button>
-							<button type="button" id="init_ann">검색 초기화</button>
+							<input type="hidden" value="${noticelist}" name="noticelist" />
+							<button type="submit" id="select_ann">조회</button>
+							<button type="submit" id="init_ann">검색 초기화</button>
 						</div>
 					</form>
 					<table class="cols">
@@ -550,7 +551,8 @@ a {
 												id="bannerimg"></td>
 											<td>${k.notice_div}</td>
 											<td>${k.notice_date}</td>
-											<td><a href="admin_intg_announce_up.do">${k.notice_title}</a></td>
+											<td><a
+												href="admin_intg_announce_detail.do?notice_idx=${k.notice_idx}">${k.notice_title}</a></td>
 											<td>${k.adm_idx}</td>
 											<td>${k.notice_hit}</td>
 											<td>${k.notice_state}</td>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.BannerVO;
+import com.animal.www.commons.vo.MemberVO;
 import com.animal.www.commons.vo.NotificationVO;
 
 public interface AdminService {
@@ -25,4 +26,8 @@ public interface AdminService {
 	int noticeDelete(int notice_idx);
 	int noticeUpdate(NotificationVO nvo);
 	NotificationVO noticeOneList(int notice_idx);
+	
+	int getMbrCount();
+	List<MemberVO> getMbrByName(String txt, int begin, int end);
+	List<MemberVO> getMbrById(String txt, int begin, int end);
 }
