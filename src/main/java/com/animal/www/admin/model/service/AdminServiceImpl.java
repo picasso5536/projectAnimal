@@ -58,7 +58,7 @@ public class AdminServiceImpl implements AdminService {
 
 	// 해당 배너 상세보기(수정용)
 	@Override
-	public BannerVO BannerOneList(int bnr_idx) {
+	public BannerVO bannerOneList(int bnr_idx) {
 		return adminDAO.bannerOneList(bnr_idx);
 	}
 
@@ -132,5 +132,12 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<MemberVO> getMbrByName(String txt, int begin, int end) {
 		return adminDAO.getMbrByName(txt, begin, end);
+	}
+	
+	// 회원 상세 정보(수정용)
+	@Override
+	public MemberVO memberOneList(String nickname) {
+		return adminDAO.memberOneList(nickname);
+				
 	}
 }

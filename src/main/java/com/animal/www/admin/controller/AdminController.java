@@ -1,6 +1,7 @@
 package com.animal.www.admin.controller;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,14 +65,13 @@ public class AdminController {
 		return new ModelAndView("admin/member/adm_mbr_info");
 	}
 
-	@RequestMapping("admin_mbr_info_search.do")
+	@RequestMapping(value = "/admin_mbr_info_search.do", produces = "text/xml; charset=utf-8")
 	@ResponseBody
-	public List<MemberVO> search(@RequestParam("bott") String bott, @RequestParam("m_idx") String mIdx,
-			HttpServletRequest request) {
+	public String search(@RequestParam("bott") String bott, @RequestParam("m_idx") String mIdx,
+			@RequestParam("cPage") String cPage) {
 		int count = adminService.getMbrCount();
 		paging.setTotalRecord(count);
-		System.out.println(bott);
-		System.out.println(mIdx);
+
 		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
 			paging.setTotalpage(1);
 		} else {
@@ -80,7 +80,6 @@ public class AdminController {
 				paging.setTotalpage(paging.getTotalpage() + 1);
 			}
 		}
-		String cPage = request.getParameter("cPage");
 		if (cPage == null) {
 			paging.setNowPage(1);
 		} else {
@@ -101,16 +100,38 @@ public class AdminController {
 		int begin = paging.getBegin();
 		int end = paging.getEnd();
 
+		StringBuffer sb = new StringBuffer();
 		List<MemberVO> mbrlist = null;
-		if (bott.equals("name")) {
-			// 이름로 검색
-			mbrlist = adminService.getMbrByName(mIdx, begin, end);
-		} else if (bott.equals("id")) {
-			// id로 검색
-			mbrlist = adminService.getMbrById(mIdx, begin, end);
+		try {
+			if (bott.equals("name")) {
+				// 이름로 검색
+				mbrlist = adminService.getMbrByName(mIdx, begin, end);
+			} else if (bott.equals("id")) {
+				// id로 검색
+				mbrlist = adminService.getMbrById(mIdx, begin, end);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e + " db과정에서의 오류");
 		}
 
-		return mbrlist;
+		try {
+			sb.append("[");
+			for (int i = 0; i < mbrlist.size(); i++) {
+				sb.append("{\"cnt\":\""+(i+1)+"\",\"name\":\"" + mbrlist.get(i).getMbr_name() + "\",\"id\":\"" + mbrlist.get(i).getMbr_id()
+						+ "\", \"nickname\":\"" + mbrlist.get(i).getMbr_nickname() + "\", \"cellphone\":\""
+						+ mbrlist.get(i).getMbr_cellphone() + "\", \"birth\":\"" + mbrlist.get(i).getMbr_birth()
+						+ "\",\"join\":\"" + mbrlist.get(i).getMbr_join() + "\",\"withdraw\":\""
+						+ mbrlist.get(i).getMbr_withdraw() + "\"},");
+			}
+			String str = sb.toString().substring(0, sb.toString().length() - 1);
+			str = str + "]";
+
+			return str;
+		} catch (Exception e) {
+			System.out.println(e + " josn 파싱에서의 오류");
+		}
+		return null;
 	}
 
 	// 탈퇴회원리스트
@@ -126,8 +147,13 @@ public class AdminController {
 	}
 
 	@RequestMapping("member_update.do")
-	public ModelAndView admMemberUpdate() {
-		return new ModelAndView("admin/member/adm_mbr_update");
+	public ModelAndView admMemberUpdate(@RequestParam("mbr_nickname") String nickname) {
+		ModelAndView mv = new ModelAndView("admin/member/adm_mbr_update");
+		
+		MemberVO mvo = adminService.memberOneList(nickname);
+		
+		mv.addObject("mvo", mvo);
+		return mv;
 	}
 
 	@RequestMapping("admin_mbr_admin.do")
@@ -395,7 +421,7 @@ public class AdminController {
 	@RequestMapping("admin_intg_banner_up.do")
 	public ModelAndView admIntgBannerUp(@RequestParam("bnr_idx") int bnr_idx) {
 		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_banner_update");
-		BannerVO bvo = adminService.BannerOneList(bnr_idx);
+		BannerVO bvo = adminService.bannerOneList(bnr_idx);
 		mv.addObject("bvo", bvo);
 		return mv;
 	}

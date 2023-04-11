@@ -6,8 +6,24 @@ import org.springframework.web.multipart.MultipartFile;
 public class MemberVO {
 	private String mbr_idx, mbr_id, mbr_pw, mbr_email, mbr_cellphone, mbr_telephone, mbr_name, mbr_birth, mbr_gender;
 	private String mbr_join, mbr_address, mbr_nickname, mbr_access, mbr_withdraw, mbr_attention, mbr_path, mbr_picture;
-	private String mbr_like, mbr_ban, mbr_ban_reason, mbr_sns;
+	private String mbr_like, mbr_ban, mbr_ban_reason, mbr_sns, mbr_ban_cnt, pnt_now;
 	private MultipartFile mbr_param; // 프로필 이미지(스트림용)
+
+	public String getMbr_ban_cnt() {
+		return mbr_ban_cnt;
+	}
+
+	public void setMbr_ban_cnt(String mbr_ban_cnt) {
+		this.mbr_ban_cnt = mbr_ban_cnt;
+	}
+	
+	public String getPnt_now() {
+		return pnt_now;
+	}
+
+	public void setPnt_now(String pnt_now) {
+		this.pnt_now = pnt_now;
+	}
 
 	public String getMbr_idx() {
 		return mbr_idx;

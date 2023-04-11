@@ -131,7 +131,7 @@
 		SELECT *
 		FROM(
 		SELECT ROWNUM R_NUM, A.*
-		FROM (SELECT * FROM MEMBERS WHERE MBR_NAME = #{txt} ORDER BY
+		FROM (SELECT * FROM MEMBERS WHERE MBR_NAME LIKE '%'||#{txt}||'%' ORDER BY
 		MBR_NICKNAME DESC) A
 		) WHERE R_NUM BETWEEN #{begin} and #{end}
 	</select>
@@ -141,8 +141,13 @@
 		SELECT *
 		FROM(
 		SELECT ROWNUM R_NUM, A.*
-		FROM (SELECT * FROM MEMBERS WHERE MBR_ID = #{txt} ORDER BY
-		MBR_NICKNAME DESC) A
+		FROM (SELECT * FROM MEMBERS WHERE MBR_ID LIKE '%'||#{txt}||'%' ORDER BY
+		MBR_ID DESC) A
 		) WHERE R_NUM BETWEEN #{begin} and #{end}
+	</select>
+	
+	<!-- 회원 상세 정보 -->
+	<select id="memberOneList" parameterType="String" resultType="mvo">
+		SELECT a.*, b.PNT_NOW FROM MEMBERS a, POINT b WHERE a.MBR_NICKNAME = #{mbr_nickname} AND a.MBR_NICKNAME = b.MBR_NICKNAME
 	</select>
 </mapper>

@@ -159,5 +159,9 @@ public class AdminDAO {
 		map.put("end", String.valueOf(end));
 		return sqlSessionTemplate.selectList("admin.getMbrById", map);
 	}
+	
+	public MemberVO memberOneList(String mbr_nickname) {
+		return sqlSessionTemplate.selectOne("admin.memberOneList", mbr_nickname);
+	}
 
 }

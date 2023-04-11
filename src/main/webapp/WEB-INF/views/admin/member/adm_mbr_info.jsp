@@ -32,21 +32,7 @@
 				</form>
 			</div>
 			<div class="member_list">
-				<table id="table">
-					<thead>
-						<tr>
-							<th></th>
-							<th>이름</th>
-							<th>아이디</th>
-							<th>닉네임</th>
-							<th>휴대전화</th>
-							<th>생년월일</th>
-							<th>가입일</th>
-							<th>탈퇴여부</th>
-						</tr>
-					</thead>
-					<tbody id="tbody">
-					</tbody>
+				<table class="mbr_table">
 				</table>
 			</div>
 		</section>
@@ -54,52 +40,49 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		  $('#search_btn').click(function() {
-		    var bott = $('select[name="bott"]').val();
+		$('#search_btn').click(function() {
+			var bott = $('select[name="bott"]').val();
 		    var m_idx = $('input[name="m_idx"]').val();
 		    $.ajax({
-		      url: 'admin_mbr_info_search.do',
-		      data: { bott: bott, m_idx: m_idx },
-		      type: 'POST',
-		      dataType: 'json',
-		      success: function(data) {
-		    	    // controller에서 보낸 mbrlist를 변수에 저장
-		    	    var mbrlist = data.mbrlist;
-
-		    	    // 테이블의 tbody 태그를 변수에 저장
-		    	    var tbody = $("#tbody");
-
-		    	    // tbody 태그의 내용을 초기화
-		    	    tbody.empty();
-
-		    	    // mbrlist를 반복문으로 확인하여 테이블에 추가
-		    	    if (mbrlist.length > 0) {
-		    	    	$.each(members, function(index, member) {
-		                    var row = '<tbody><tr>';
-		                    row += '<td>' + '</td>';
-		                    row += '<td>' + mbr.name + '</td>';
-		                    row += '<td>' + mbr.id + '</td>';
-		                    row += '<td>' + mbr.nickname + '</td>';
-		                    row += '<td>' + mbr.cellphone + '</td>';
-		                    row += '<td>' + mbr.birth + '</td>';
-		                    row += '<td>' + mbr.join + '</td>';
-		                    row += '<td>' + (mbrlist[i].mbr_withdraw == 0 ? "탈퇴" : "가입") + '</td>';
-		                    row += '</tr></tbody>';
-
-		                    table.append(row);
-		                });
-		    	    } else {
-		    	        // mbrlist가 비어있으면 테이블에 등록된 회원 정보가 없다는 메시지 추가
-		    	        var msg = $("<tr><td colspan='9'><h2>등록된 회원 정보가 없습니다.</h2></td></tr>");
-		    	        tbody.append(msg);
-		    	    }
-		    	},
-		      error: function() {
-		        alert('서버와 통신 중 오류가 발생했습니다.');
-		      }
-		    });
+		    url: 'admin_mbr_info_search.do',
+		    data: { bott: bott, m_idx: m_idx, cPage:1 },
+		    type: 'post',
+		    dataType: 'json',
+		    success: function(data) {
+		    	
+				console.log(data);
+				$(".mbr_table").empty();
+				var table="<thead><tr><th></th><th>이름</th><th>아이디</th><th>닉네임</th><th>휴대전화</th><th>생년월일</th><th>가입일</th><th>탈퇴여부</th></tr>";
+				$(data).each(function(k,v){
+					table += "<tr onclick=\"location.href='member_update.do?mbr_nickname=" + v['nickname'] + "'\">";
+					var i = v["cnt"];
+					var name = v["name"];
+					var id = v["id"];
+					var nickname = v["nickname"];
+					var cellphone = v["cellphone"];
+					var birth = v["birth"];
+					var join = v["join"].substring(0, 10);;
+					var withdraw = v["withdraw"];
+					
+					table += "<td>" + i + "</td>";
+					table += "<td>" + name + "</td>";
+					table += "<td>" + id + "</td>";
+					table += "<td>" + nickname + "</td>";
+					table += "<td>" + "0"+ cellphone + "</td>";
+					table += "<td>" + birth + "</td>";
+					table += "<td>" + join + "</td>";
+					table += "<td>" + (withdraw == 0 ? "탈퇴" : "가입") + "</td>";
+					table += "</tr>";
+				})
+					table += "</tbody>"
+					$(".mbr_table").append(table);
+		    },
+		    error: function() {
+		    	$(".mbr_table").empty();
+		    }
 		  });
 		});
+	});
 	</script>
 </body>
 </html>

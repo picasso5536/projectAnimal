@@ -15,7 +15,7 @@ public interface AdminService {
 	
 	int getBannerCount();
 	List<BannerVO> BannerList(int begin, int end);
-	BannerVO BannerOneList(int bnr_idx);
+	BannerVO bannerOneList(int bnr_idx);
 	int bannerInsert(BannerVO bvo);
 	int bannerDelete(int bnr_idx);
 	int bannerUpdate(BannerVO bvo);
@@ -30,4 +30,5 @@ public interface AdminService {
 	int getMbrCount();
 	List<MemberVO> getMbrByName(String txt, int begin, int end);
 	List<MemberVO> getMbrById(String txt, int begin, int end);
+	MemberVO memberOneList(String nickname);
 }
