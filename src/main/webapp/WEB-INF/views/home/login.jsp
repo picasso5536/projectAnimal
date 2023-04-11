@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style type="text/css">
 body {
 	display: flex;
@@ -68,6 +69,7 @@ body {
 	transition: border-bottom-color 0.4s linear;
 	border-bottom-width: 2px;
 }
+
 .login-form button[type="submit"] {
 	background-color: #4285f4;
 	color: white;
@@ -156,89 +158,100 @@ body {
 }
 </style>
 <script type="text/javascript">
-function consent() {
+ function consent() {
     var result = confirm("회원가입창으로 이동 하시겠습니까?");
     if(result){
     location.href="consent.do";
     }else {
     }
-}
+} 
 function find() {
 	location.href="find.do";
 }
 
-function home(f) {
-    var result = confirm("로그인 하시겠습니까?");
-    if(result){
-    f.action="home.do"
-    f.submit();
-    }else {
-    }
-}
 
-function getLogin(){
-	var username = document.getElementById('id').value;
-	var password = document.getElementById('password').value;
-	if(username.length<1){
-		alert('아이디를 입력해주세요');
-	}else if(password.length<1){
-		alert('비밀번호를 입력해주세요');
-	}else{
-	firebase.auth().signInWithEmailAndPassword(username, password)
-    .then((userCredential) => {
-      // Signed in successfully
-      const user = userCredential.user;
-      
-     
-      $(function() {
-			$.ajax({
-		        type: 'POST',
-		        url: 'getLogin.do',
-		        data: { 
-		          id: username,
-		          password: password
-		        },
-		        dataType: 'text',
-		        success: function(response) {	 
-		        	
-		        	if(response==="1"){
-		        		 const encodedEmail = btoa(username);
-	    	            
- 	            	window.location.href = "complete.do?email=" + encodedEmail;
-		        	}else{
-		        		alert('로그인 실패');
-		        	}
-		        			
-		        },
-		        error: function(xhr, status, error) {
-		        	alert('error : ' + error);
-		        }
-		      });
-		});
-    })
-    .catch((error) => {
-      // Error occurred during sign-in
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error("Error signing in:", errorCode, errorMessage);
-    });
+function getLogin() {
+	  var username = document.getElementById('id').value;
+	  var password = document.getElementById('password').value;
+	  console.log('아이디'+username);
+	  console.log('비번'+password);
+	  if (username == "") {
+	    alert("아이디를 입력하세요.");
+	    document.getElementById('id').focus();
+	    return false;
+	  };
+	  if (password == "") {
+	    alert("비밀번호를 입력하세요.");
+	    document.getElementById('password').focus();
+	    return false;
+	  };
+	  var remember = document.getElementById('remember-me').checked;
+	  console.log('넌 체크가 된거야?'+remember);
+	  $.ajax({
+	    type: 'POST',
+	    url: 'getLogin.do',
+	    data: {
+	      mbr_id: username,
+	      mbr_pw: password
+	    },
+	    dataType: 'text',
+	    success: function(response) {
+	      if (response === "1") {
+	        if (remember) {
+	          var expireDate = new Date();
+	          expireDate.setDate(expireDate.getDate() + 1); // 하루동안 유지하게 하기? 우선 하루로 맞추자
+	          document.cookie = "username=" + encodeURIComponent(username) + "; expires=" + expireDate.toUTCString();
+	        } else {
+	          document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";   // 쿠키 저장 시간은 1970년대로 잡고 이미 만료된 쿠키로 판단  삭제 
+	        }
+	        const encodedEmail = btoa(username);
+	        window.location.href = "home.do";
+	      } else {
+	        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";    // 
+	        alert('로그인 실패');
+	      }
+	    },
+	    error: function(xhr, status, error) {
+	      alert('error : ' + error);
+	    }
+	  });
+	}
 	
-}
-}
+	/* input 에 아이디 출력하기 */
+	window.onload = function() {
+	  var savedUsername = getCookie("username");
+	  if (savedUsername) {
+	    document.getElementById('id').value = decodeURIComponent(savedUsername);
+	    document.getElementById('remember-me').checked = true;
+	  }
+	}
 
-
-
+	function getCookie(cookieName) {
+	  var name = cookieName + "=";
+	  var decodedCookie = decodeURIComponent(document.cookie);
+	  var cookieArray = decodedCookie.split(';');
+	  for(var i = 0; i < cookieArray.length; i++) {
+	    var cookie = cookieArray[i];
+	    while (cookie.charAt(0) == ' ') {
+	      cookie = cookie.substring(1);
+	    }
+	    if (cookie.indexOf(name) == 0) {
+	      return cookie.substring(name.length, cookie.length);
+	    }
+	  }
+	  return null;
+	}
 
 </script>
 </head>
 <body>
 	<div class="login-form">
-		<form id="LoginForm" method="post" onsubmit="return false"> 
+		 <form id="LoginForm" method="post" onsubmit="return false">
 			<h2>내옆Pet</h2>
 			<br>
 			<div class="form-group with-icon">
 				<img src="resources/img/id.png" class="icon"> 
-				<input type="text" id="id" name="id" required>
+				<input  type="text" id="id" name="id" required>
 			</div>
 			<div class="form-group with-icon">
 				<img src="resources/img/password.png" class="icon"> 
@@ -246,7 +259,7 @@ function getLogin(){
 			</div>
 			<div class="form-group">
 				<label for="remember-me"> 
-				<input type="checkbox" id="remember-me"> 아이디 기억
+				<input type="checkbox" id="remember-me" name="remember"> 아이디 기억
 				</label>
 			</div>
 			<button type="button" onclick="getLogin()" class="login-btn">로그인</button>
@@ -267,11 +280,7 @@ function getLogin(){
 				<!-- <input style="border:none; background-color:transparent; font-size: 15px;" type="button" onclick="find()" value="아이디/비밀번호 찾기"> -->
 			</div>
 <script>
-
-
-			
-			
-			
+		
 </script>
 		</form>
 	</div>

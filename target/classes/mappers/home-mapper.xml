@@ -15,6 +15,8 @@
 </select>
 	
 	<!-- 로그인 -->
-
+<select id="login" parameterType="mvo" resultType="Integer">
+	SELECT COUNT(*) FROM MEMBERS WHERE mbr_id = #{mbr_id} and mbr_pw = #{mbr_pw}
+</select> 
 
 </mapper>

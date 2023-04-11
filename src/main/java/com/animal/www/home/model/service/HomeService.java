@@ -6,5 +6,5 @@ public interface HomeService {
 	
 	public int getId(MemberVO vo);
 	public int getnickname(MemberVO vo);
-	/* public int getLogin(MemberVO vo); */
+    public int getLogin(MemberVO vo); 
 }

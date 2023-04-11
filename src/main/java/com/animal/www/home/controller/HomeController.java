@@ -253,15 +253,23 @@ public class HomeController {
 		}
 		
 		// 로그인 
-		/*
-		 * @RequestMapping("getLogin.do")
-		 * 
-		 * @ResponseBody public String returnLogin(@ModelAttribute MemberVO vo) { int
-		 * result = homeService.getLogin(vo); if(result>0) { return ("1"); }else {
-		 * return ("0"); }
-		 * 
-		 * }
-		 */
+
+		
+		@RequestMapping(value = "getLogin.do")
+		@ResponseBody
+		public String returnLogin(@ModelAttribute MemberVO vo) {
+		System.out.println("여기까지만 와주라");
+		int result = homeService.getLogin(vo);
+		System.out.println("너는 지금 뭐가찍혀?"+result);
+		if(result>0) {
+			return ("1");
+		}else {
+			return ("0");
+		}
+			
+		}
+		 
+		 
 		
 		
 		

@@ -27,7 +27,9 @@ public class HomeServiceImpl implements HomeService, AllService{
 		return homeDAO.getnickname(vo);
 	}
 	
-	/*
-	 * @Override public int getLogin(MemberVO vo) { return homeDAO.getLogin(vo); }
-	 */
+	
+	@Override public int getLogin(MemberVO vo) { 
+		return homeDAO.getLogin(vo); 
+	}
+	 
 }

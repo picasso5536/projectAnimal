@@ -87,11 +87,12 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	var yy = document.getElementById("yy");
 	var mm = document.getElementById("mm");
 	var dd = document.getElementById("dd");
-	var gender = document.getElementById("gender");
+	var gender  = document.getElementById('gender').options[document.getElementById('gender').selectedIndex].value;  // 남여 선택시 1 / 2 로출력하기
 	var sample6_address = document.getElementById("sample6_address"); // 주소
 	var sample6_detailAddress = document.getElementById("sample6_detailAddress"); // 상세주소
 	var email = document.getElementById("email");
 	var mobile = document.getElementById("mobile");
+	
 	
 	if (id.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
 	  alert("아이디를 입력하세요.");
@@ -248,7 +249,6 @@ h3 {
     font-size: 15px;
     user-select: none;
 }
-
 input {
     font-family: Dotum,'돋움',Helvetica,sans-serif;
     user-select: none;  
@@ -538,8 +538,8 @@ select {
                     <span class="box gender_code">
                         <select id="gender" class="sel">
                             <option>성별</option>
-                            <option value="1">남자</option>
-                            <option value="2">여자</option>
+                            <option value="1" id="Men">남자</option>
+                            <option value="2" id="Woman">여자</option>
                         </select>                            
                     </span>
                     <span class="error_next_box">필수 정보입니다.</span>
@@ -605,6 +605,7 @@ select {
         </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
 <script>
+
 
 /* 주소입력 */
  function sample6_execDaumPostcode() {

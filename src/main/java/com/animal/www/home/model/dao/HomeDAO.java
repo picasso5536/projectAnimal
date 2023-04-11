@@ -27,8 +27,10 @@ public class HomeDAO {
 		return count > 0 ? 1 : 0;
 	}
 	
-	/*
-	 * public int getLogin(MemberVO vo) { return
-	 * sqlSessionTemplate.selectOne("home.login", vo); }
-	 */
+	
+	public int getLogin(MemberVO vo) {
+	   System.out.println("너는뭐야?? 왜 있어?");
+	   return sqlSessionTemplate.selectOne("home.login", vo);
+	}
+	 
 }
