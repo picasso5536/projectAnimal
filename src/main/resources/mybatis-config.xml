@@ -15,6 +15,9 @@
 			
 		<!-- 문현지 -->
 			<typeAlias alias="katevo" type="com.animal.www.commons.vo.KategorieVO"/>
+			<typeAlias alias="corpvo" type="com.animal.www.commons.vo.CorporationVO"/>
+			<typeAlias alias="pclvo" type="com.animal.www.commons.vo.ParcelVO"/>
+			<typeAlias alias="pdtvo" type="com.animal.www.market.model.vo.ProductVO"/>
 			
 		<!-- 김석중 -->
 			<!-- <typeAlias alias="" type="com.animal.www."/> -->

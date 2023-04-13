@@ -4,4 +4,34 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="market">
 	<!-- 마켓 mapper -->
+	<select id="topkatelist" resultType="katevo">
+		SELECT * FROM KATEGORIE START WITH KATE_KIND IS NULL CONNECT BY KATE_KIND = KATE_IDX
+	</select>
+	<!-- best상품 상품 판매 많은 순 5개 select -->
+	<select id="bestpdtlist" resultType="pdtvo">
+		SELECT *
+		FROM (
+		SELECT p.*,
+        		 DENSE_RANK() OVER(ORDER BY p.PDT_ODCNT DESC) AS rnk
+ 		FROM PRODUCT p
+		) 
+		WHERE rnk <![CDATA[<=]]> 5
+	</select>
+	
+	<!-- 카테고리 정보 idx검색 -->
+	<select id="kateinfo" resultType="katevo">
+		SELECT * FROM KATEGORIE WHERE KATE_IDX = #{kate_idx}
+	</select>
+	<!-- idx로 상위 카테고리 kind 검색 -->
+	<select id="getkatelist" resultType="katevo" parameterType="String">
+		SELECT * FROM KATEGORIE START WITH KATE_KIND = #{kate_idx} CONNECT BY KATE_KIND = KATE_IDX
+	</select>
+	<!-- 아래 노드가 없는 하위 카테고리만 select -->
+	<select id="getbottkatelistall" resultType="katevo">
+		SELECT kate_idx, kate_name, kate_kind
+		FROM KATEGORIE
+		WHERE CONNECT_BY_ISLEAF = 1
+		START WITH kate_kind IS NULL
+		CONNECT BY NOCYCLE PRIOR kate_idx = kate_kind
+	</select>
 </mapper>
