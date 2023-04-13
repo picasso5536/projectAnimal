@@ -2,7 +2,15 @@ package com.animal.www.admin.model.vo;
 
 // °ü¸®ÀÚ VO
 public class AdminVO {
-	private String adm_idx, adm_name, adm_id, adm_pw, adm_email, adm_join, adm_access, adm_close, adm_mgr;
+	private String adm_idx, adm_name, adm_id, adm_pw, adm_email, adm_join, adm_access, adm_close, adm_mgr, adm_state;
+
+	public String getAdm_state() {
+		return adm_state;
+	}
+
+	public void setAdm_state(String adm_state) {
+		this.adm_state = adm_state;
+	}
 
 	public String getAdm_idx() {
 		return adm_idx;

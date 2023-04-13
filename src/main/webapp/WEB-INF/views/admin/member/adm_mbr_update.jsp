@@ -66,13 +66,19 @@
 				}).open();
 	}
 </script>
+<script type="text/javascript">
+	function sendupdate_go(k) {
+		k.action="member_update_ok.do";
+		k.submit();
+	}
+</script>
 </head>
 <body>
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="mem_sec">
 			<div class="member_list">
-				<form>
+				<form method="post">
 					<table>
 						<caption>고객 정보 수정</caption>
 						<tbody>
@@ -87,7 +93,7 @@
 								<td><input type="text" name="m_id" size="27"
 									value="${mvo.mbr_id}" readonly></td>
 								<th class="title">닉네임</th>
-								<td><input type="text" name="m_d" size="27"
+								<td><input type="text" name="m_nickname" size="27"
 									value="${mvo.mbr_nickname}" readonly></td>
 							</tr>
 							<tr>
@@ -99,17 +105,17 @@
 							</tr>
 							<tr>
 								<th class="title">Phone</th>
-								<td colspan="3"><input type="text" name="writer" size="30"
-									value="0${mvo.mbr_cellphone}"></td>
+								<td colspan="3"><input type="text" name="m_cellphone"
+									size="30" value="0${mvo.mbr_cellphone}"></td>
 							</tr>
 							<tr>
 								<th class="title">집전화</th>
-								<td colspan="3"><input type="text" name="writer" size="30"
-									value="${mvo.mbr_telephone}"></td>
+								<td colspan="3"><input type="text" name="m_telephone"
+									size="30" value="${mvo.mbr_telephone}"></td>
 							</tr>
 							<tr>
 								<th class="title">이메일</th>
-								<td colspan="3"><input type="text" name="writer" size="35"
+								<td colspan="3"><input type="text" name="m_email" size="35"
 									value="${mvo.mbr_email}" readonly>
 							</tr>
 							<tr>
@@ -132,18 +138,14 @@
 							</tr>
 							<tr>
 								<th class="title">주소</th>
-								<td class="addr_text" colspan="3">
-									<!-- <input type="text" name="writer" size="17" placeholder="우편번호검색"><br>
-									<input type="text" name="writer" size="43" placeholder="주소"><br>
-									<input type="text" name="writer" size="43" placeholder="상세주소"> -->
-									<input type="text" id="sample6_postcode" size="17"
-									placeholder="우편번호"> <input type="button"
-									onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-									<input type="text" id="sample6_address" size="43"
-									placeholder="주소"><br> <input type="text"
-									id="sample6_detailAddress" size="43" placeholder="상세주소">
-									<input type="text" id="sample6_extraAddress" placeholder="참고항목">
-								</td>
+								<td class="addr_text" colspan="3"><input type="text" name="sample6_postcode"
+									id="sample6_postcode" size="17" placeholder="우편번호" value="${postcode}"> <input
+									type="button" onclick="sample6_execDaumPostcode()"
+									value="우편번호 찾기"><br> <input type="text" name="sample6_address"
+									id="sample6_address" size="43" placeholder="주소" value="${address}"><br>
+									<input type="text" name="sample6_detailAddress" id="sample6_detailAddress" size="43"
+									placeholder="상세주소" value="${detailAddress}"> <input type="text" name="sample6_extraAddress" 
+									id="sample6_extraAddress" placeholder="참고항목" size="28" value="${extraAddress}"></td>
 							</tr>
 							<tr>
 								<td colspan="4" style="text-align: center"><input

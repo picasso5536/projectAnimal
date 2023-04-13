@@ -19,29 +19,24 @@
 						<tbody>
 							<tr>
 								<th class="title">관리자 고유번호</th>
-								<td>15UR45GD</td>
+								<td>${avo.adm_idx}</td>
 								<th class="title">계정생성일</th>
-								<td>yyyy/MM/dd</td>
+								<td>${avo.adm_join}</td>
 							</tr>
 							<tr>
 								<th class="title">관리자 이름</th>
-								<td>무년지</td>
+								<td>${avo.adm_name}</td>
 								<th class="title">관리자 아이디</th>
-								<td>test1</td>
+								<td>${avo.adm_id}</td>
 							</tr>
 							<tr>
-								<th class="title">최근 로그인</th>
-								<td>yyyy/MM/dd hh:mm;ss</td>
-								<th class="title">최종 로그아웃</th>
-								<td>yyyy/MM/dd hh:mm;ss</td>
-								
+								<th class="title">최근 접속일</th>
+								<td>${avo.adm_access}</td>
 							</tr>
 							<tr>
 								<th class="title">이메일</th>
 								<td colspan="3">
-									<input type="text" name="writer" size="20"value="fkfkfkdksh" readonly>
-									&nbsp;@&nbsp;
-									<input type="text" name="writer" size="20" value="naver.com" readonly>
+									${avo.adm_email}
 								</td>
 							</tr>
 							<tr>

@@ -2,6 +2,7 @@ package com.animal.www.admin.model.service;
 
 import java.util.List;
 
+import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.MemberVO;
@@ -30,5 +31,14 @@ public interface AdminService {
 	int getMbrCount();
 	List<MemberVO> getMbrByName(String txt, int begin, int end);
 	List<MemberVO> getMbrById(String txt, int begin, int end);
+	List<MemberVO> getMbrByWithdraw(String txt, int begin, int end);
 	MemberVO memberOneList(String nickname);
+	int memberUpdate(MemberVO mvo);
+	
+	List<AdminVO> getAdmByName(String txt, int begin, int end);
+	List<AdminVO> getAdmById(String txt, int begin, int end);
+	List<AdminVO> getAdmByIdx(String txt, int begin, int end);
+	AdminVO adminOneList(String idx);
+	int getIdDupCheck(String adm_id);
+	int adminInsert(AdminVO avo);
 }

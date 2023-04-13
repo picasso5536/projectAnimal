@@ -15,15 +15,15 @@
 	<main>
 		<jsp:include page="../adm_navbar.jsp"></jsp:include>
 		<section id="mem_sec">
-			<ul id="crm_sub">
-				<li class="mli"><a class="ad-link" href="#">회원 정보관리</a></li>
-				<li class="mli"><a class="ad-link" href="mbr_withdrawal.do">탈퇴회원관리</a></li>
-			</ul>
+			<span id="page_info">관리자</span> <span id="sep1">|</span> <span
+				id="page_mKate">회원 정보 관리</span> <span id="sep2">></span> <span
+				id="page_sKate">고객 정보 관리</span>
 			<div class="search_mbr">
 				<form id="search_form">
 					<span class="search_text"> 검색조건 : <select name="bott">
 							<option value="name">회원 이름</option>
 							<option value="id">회원 아이디</option>
+							<option value="withdraw">탈퇴 회원</option>
 					</select> <input type="text" name="m_idx" size="25">
 					</span> <span class="search_btns"> <input type="button" value="조회"
 						id="search_btn"> <input type="reset" value="초기화"
@@ -54,14 +54,14 @@
 				$(".mbr_table").empty();
 				var table="<thead><tr><th></th><th>이름</th><th>아이디</th><th>닉네임</th><th>휴대전화</th><th>생년월일</th><th>가입일</th><th>탈퇴여부</th></tr>";
 				$(data).each(function(k,v){
-					table += "<tr onclick=\"location.href='member_update.do?mbr_nickname=" + v['nickname'] + "'\">";
+					table += "<tr onclick=\"location.href='member_update.do?mbr_nickname=" + v["nickname"] + "'\">";
 					var i = v["cnt"];
 					var name = v["name"];
 					var id = v["id"];
 					var nickname = v["nickname"];
 					var cellphone = v["cellphone"];
 					var birth = v["birth"];
-					var join = v["join"].substring(0, 10);;
+					var join = v["join"].substring(0, 10);
 					var withdraw = v["withdraw"];
 					
 					table += "<td>" + i + "</td>";

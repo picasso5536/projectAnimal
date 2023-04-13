@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.animal.www.admin.model.service.AdminService;
+import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.FileReName;
 import com.animal.www.commons.Paging;
@@ -109,6 +110,9 @@ public class AdminController {
 			} else if (bott.equals("id")) {
 				// id로 검색
 				mbrlist = adminService.getMbrById(mIdx, begin, end);
+			} else if (bott.equals("withdraw")) {
+				// 탈퇴여부로 검색
+				mbrlist = adminService.getMbrByWithdraw(mIdx, begin, end);
 			}
 
 		} catch (Exception e) {
@@ -118,11 +122,11 @@ public class AdminController {
 		try {
 			sb.append("[");
 			for (int i = 0; i < mbrlist.size(); i++) {
-				sb.append("{\"cnt\":\""+(i+1)+"\",\"name\":\"" + mbrlist.get(i).getMbr_name() + "\",\"id\":\"" + mbrlist.get(i).getMbr_id()
-						+ "\", \"nickname\":\"" + mbrlist.get(i).getMbr_nickname() + "\", \"cellphone\":\""
-						+ mbrlist.get(i).getMbr_cellphone() + "\", \"birth\":\"" + mbrlist.get(i).getMbr_birth()
-						+ "\",\"join\":\"" + mbrlist.get(i).getMbr_join() + "\",\"withdraw\":\""
-						+ mbrlist.get(i).getMbr_withdraw() + "\"},");
+				sb.append("{\"cnt\":\"" + (i + 1) + "\",\"name\":\"" + mbrlist.get(i).getMbr_name() + "\",\"id\":\""
+						+ mbrlist.get(i).getMbr_id() + "\", \"nickname\":\"" + mbrlist.get(i).getMbr_nickname()
+						+ "\", \"cellphone\":\"" + mbrlist.get(i).getMbr_cellphone() + "\", \"birth\":\""
+						+ mbrlist.get(i).getMbr_birth() + "\",\"join\":\"" + mbrlist.get(i).getMbr_join()
+						+ "\",\"withdraw\":\"" + mbrlist.get(i).getMbr_withdraw() + "\"},");
 			}
 			String str = sb.toString().substring(0, sb.toString().length() - 1);
 			str = str + "]";
@@ -149,10 +153,45 @@ public class AdminController {
 	@RequestMapping("member_update.do")
 	public ModelAndView admMemberUpdate(@RequestParam("mbr_nickname") String nickname) {
 		ModelAndView mv = new ModelAndView("admin/member/adm_mbr_update");
-		
 		MemberVO mvo = adminService.memberOneList(nickname);
-		
+
+		String fullAddress = mvo.getMbr_address();
+		String[] addressParts = fullAddress.split("/");
+		String postcode = addressParts[0];
+		String address = addressParts[1];
+		String detailAddress = addressParts[2];
+		String extraAddress = addressParts[3];
+
 		mv.addObject("mvo", mvo);
+		mv.addObject("postcode", postcode);
+		mv.addObject("address", address);
+		mv.addObject("detailAddress", detailAddress);
+		mv.addObject("extraAddress", extraAddress);
+		return mv;
+	}
+
+	@RequestMapping("member_update_ok.do")
+	public ModelAndView admMemberUpdateOk(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("redirect:admin_mbr_info.do");
+
+		String nickname = request.getParameter("m_nickname");
+		String name = request.getParameter("m_name");
+		String cellphone = request.getParameter("m_cellphone"); // 핸드폰번호
+		String telephone = request.getParameter("m_telephone"); // 집전화번호
+		String postcode = request.getParameter("sample6_postcode"); // 우편번호
+		String address = request.getParameter("sample6_address"); // 주소
+		String detailAddress = request.getParameter("sample6_detailAddress"); // 상세주소
+		String extraAddress = request.getParameter("sample6_extraAddress"); // 참고항목
+
+		MemberVO mvo = new MemberVO();
+		mvo.setMbr_name(name);
+		mvo.setMbr_nickname(nickname);
+		mvo.setMbr_cellphone(cellphone);
+		mvo.setMbr_telephone(telephone);
+		mvo.setMbr_address(postcode + "/" + address + "/" + detailAddress + "/" + extraAddress);
+
+		int result = adminService.memberUpdate(mvo);
+		mv.addObject("result", result);
 		return mv;
 	}
 
@@ -161,15 +200,128 @@ public class AdminController {
 		return new ModelAndView("admin/member/adm_mbr_admin");
 	}
 
-	// 관리자
-	@RequestMapping("adm_more_info.do")
-	public ModelAndView admAdmMoreInfo() {
-		return new ModelAndView("admin/member/adm_more_info");
+	// 관리자 검색조건 조회
+	@RequestMapping(value = "/admin_mbr_admin_info_search.do", produces = "text/xml; charset=utf-8")
+	@ResponseBody
+	public String searchAdmin(@RequestParam("bott") String bott, @RequestParam("m_idx") String mIdx,
+			@RequestParam("cPage") String cPage) {
+		int count = adminService.getMbrCount();
+		paging.setTotalRecord(count);
+
+		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+			paging.setTotalpage(1);
+		} else {
+			paging.setTotalpage(paging.getTotalRecord() / paging.getNumPerPage());
+			if (paging.getTotalRecord() % paging.getNumPerPage() != 0) {
+				paging.setTotalpage(paging.getTotalpage() + 1);
+			}
+		}
+		if (cPage == null) {
+			paging.setNowPage(1);
+		} else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+
+		paging.setBeginBlock(
+				(int) ((paging.getNowPage() - 1) / paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+
+		if (paging.getEndBlock() > paging.getTotalpage()) {
+			paging.setEndBlock(paging.getTotalpage());
+		}
+
+		int begin = paging.getBegin();
+		int end = paging.getEnd();
+
+		StringBuffer sb = new StringBuffer();
+		List<AdminVO> admlist = null;
+		try {
+			if (bott.equals("name")) {
+				// 이름로 검색
+				admlist = adminService.getAdmByName(mIdx, begin, end);
+			} else if (bott.equals("id")) {
+				// id로 검색
+				admlist = adminService.getAdmById(mIdx, begin, end);
+			} else if (bott.equals("idx")) {
+				// 관리자 번호로 검색
+				admlist = adminService.getAdmByIdx(mIdx, begin, end);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e + " db과정에서의 오류");
+		}
+
+		try {
+			sb.append("[");
+			for (int i = 0; i < admlist.size(); i++) {
+				sb.append("{\"cnt\":\"" + (i + 1) + "\", \"idx\":\"" + admlist.get(i).getAdm_idx() + "\", \"name\":\""
+						+ admlist.get(i).getAdm_name() + "\",\"id\":\"" + admlist.get(i).getAdm_id()
+						+ "\", \"access\":\"" + admlist.get(i).getAdm_access() + "\", \"join\":\""
+						+ admlist.get(i).getAdm_join() + "\",\"state\":\"" + admlist.get(i).getAdm_state() + "\"},");
+			}
+			String str = sb.toString().substring(0, sb.toString().length() - 1);
+			str = str + "]";
+
+			return str;
+		} catch (Exception e) {
+			System.out.println(e + " josn 파싱에서의 오류");
+		}
+		return null;
 	}
 
+	// 관리자
+	@RequestMapping("adm_more_info.do")
+	public ModelAndView admAdmMoreInfo(@RequestParam("adm_idx") String idx) {
+		ModelAndView mv = new ModelAndView("admin/member/adm_more_info");
+		AdminVO avo = adminService.adminOneList(idx);
+
+		mv.addObject("avo", avo);
+		return mv;
+	}
+
+	// 관리자 계정 생성 페이지 호출
 	@RequestMapping("ad_acc_create.do")
 	public ModelAndView admAdmAccountCreate() {
 		return new ModelAndView("admin/member/admin_account");
+	}
+
+	// 관리자 생성 시 아이디 중복 검사
+	@RequestMapping(value = "/ad_acc_dupCheck.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String checkIdDuplication(@RequestParam("ad_id") String ad_id) {
+		if (ad_id != "" && ad_id != null) {
+			int result = adminService.getIdDupCheck(ad_id);
+			if (result == 0) {
+				return "useable";
+			}
+		}
+		return "dup";
+	}
+
+	// 관리자 계정 생성
+	@RequestMapping("ad_acc_create_ok.do")
+	public ModelAndView admAdmAccountCreateOk(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("redirect:admin_mbr_admin.do");
+		AdminVO avo = new AdminVO();
+
+		avo.setAdm_id(request.getParameter("adm_id"));
+		avo.setAdm_pw(request.getParameter("admin_pwd"));
+		avo.setAdm_name(request.getParameter("adm_name"));
+		if(request.getParameter("writeEmail")=="" || request.getParameter("writeEmail") == null) {
+			avo.setAdm_email(request.getParameter("adm_email") + "@" + request.getParameter("mail_page"));
+		} else {
+			avo.setAdm_email(request.getParameter("adm_email") + "@" + request.getParameter("writeEmail"));
+		}
+		avo.setAdm_mgr(request.getParameter("adm_mgr"));
+
+		int result = adminService.adminInsert(avo);
+
+		mv.addObject(result);
+
+		return mv;
 	}
 
 	// 관리자 내정보 수정페이지

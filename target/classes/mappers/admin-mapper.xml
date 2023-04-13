@@ -120,34 +120,130 @@
 		WHERE
 		NOTICE_IDX = #{notice_idx}
 	</delete>
-	
+
 	<!-- 전체 회원 수 -->
 	<select id="mbrCount" resultType="int">
 		SELECT COUNT(*) FROM MEMBERS
 	</select>
-	
-	<!-- 회원 리스트 -->
+
+	<!-- 회원 리스트 : 회원명으로 검색 -->
 	<select id="getMbrByName" parameterType="Map" resultType="mvo">
-		SELECT *
+		SELECT
+		*
 		FROM(
 		SELECT ROWNUM R_NUM, A.*
-		FROM (SELECT * FROM MEMBERS WHERE MBR_NAME LIKE '%'||#{txt}||'%' ORDER BY
+		FROM (SELECT * FROM MEMBERS WHERE
+		MBR_NAME LIKE '%'||#{txt}||'%' ORDER BY
 		MBR_NICKNAME DESC) A
-		) WHERE R_NUM BETWEEN #{begin} and #{end}
+		) WHERE
+		R_NUM BETWEEN #{begin} and #{end}
 	</select>
-	
-	<!-- 회원 리스트 -->
+
+	<!-- 회원 리스트 : 회원 아이디로 검색 -->
 	<select id="getMbrById" parameterType="Map" resultType="mvo">
 		SELECT *
 		FROM(
 		SELECT ROWNUM R_NUM, A.*
-		FROM (SELECT * FROM MEMBERS WHERE MBR_ID LIKE '%'||#{txt}||'%' ORDER BY
+		FROM (SELECT * FROM MEMBERS WHERE MBR_ID
+		LIKE '%'||#{txt}||'%' ORDER BY
 		MBR_ID DESC) A
-		) WHERE R_NUM BETWEEN #{begin} and #{end}
+		) WHERE R_NUM BETWEEN
+		#{begin} and #{end}
 	</select>
-	
+
+	<!-- 회원 리스트 : 탈퇴여부로 검색 -->
+	<select id="getMbrByWithdraw" parameterType="Map"
+		resultType="mvo">
+		SELECT *
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM
+		MEMBERS WHERE MBR_WITHDRAW = 0 AND (MBR_ID LIKE '%'||#{txt}||'%' OR
+		MBR_NAME LIKE '%'||#{txt}||'%')ORDER BY
+		MBR_ID DESC) A
+		) WHERE R_NUM
+		BETWEEN
+		#{begin} and #{end}
+	</select>
+
 	<!-- 회원 상세 정보 -->
-	<select id="memberOneList" parameterType="String" resultType="mvo">
-		SELECT a.*, b.PNT_NOW FROM MEMBERS a, POINT b WHERE a.MBR_NICKNAME = #{mbr_nickname} AND a.MBR_NICKNAME = b.MBR_NICKNAME
+	<select id="memberOneList" parameterType="String"
+		resultType="mvo">
+		SELECT a.*, b.PNT_NOW FROM MEMBERS a, POINT b WHERE
+		a.MBR_NICKNAME = #{mbr_nickname} AND a.MBR_NICKNAME = b.MBR_NICKNAME
 	</select>
+
+	<!-- 회원 정보 수정 -->
+	<update id="memberUpdate" parameterType="mvo">
+		UPDATE MEMBERS SET
+		MBR_NAME = #{mbr_name}, MBR_CELLPHONE = #{mbr_cellphone},
+		MBR_TELEPHONE = #{mbr_telephone}, MBR_ADDRESS = #{mbr_address}
+		WHERE
+		MBR_NICKNAME = #{mbr_nickname}
+	</update>
+
+	<!-- 관리자 리스트 : 관리자 명으로 검색 -->
+	<select id="getAdmByName" parameterType="Map" resultType="avo">
+		SELECT
+		*
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM ADMIN WHERE
+		ADM_NAME
+		LIKE '%'||#{txt}||'%' ORDER BY
+		ADM_NAME DESC) A
+		) WHERE
+		R_NUM BETWEEN
+		#{begin} and #{end}
+	</select>
+
+	<!-- 관리자 리스트 : 관리자 아이디로 검색 -->
+	<select id="getAdmById" parameterType="Map" resultType="avo">
+		SELECT
+		*
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM ADMIN WHERE
+		ADM_ID
+		LIKE '%'||#{txt}||'%' ORDER BY
+		ADM_ID DESC) A
+		) WHERE
+		R_NUM BETWEEN
+		#{begin} and #{end}
+	</select>
+
+	<!-- 관리자 리스트 : 관리자 번호로 검색 -->
+	<select id="getAdmByIdx" parameterType="Map" resultType="avo">
+		SELECT
+		*
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM ADMIN WHERE
+		ADM_IDX
+		LIKE '%'||#{txt}||'%' ORDER BY
+		ADM_IDX DESC) A
+		) WHERE
+		R_NUM BETWEEN
+		#{begin} and #{end}
+	</select>
+
+	<!-- 관리자 상세 정보 -->
+	<select id="adminOneList" resultType="avo"
+		parameterType="String">
+		SELECT * FROM ADMIN WHERE ADM_IDX = #{adm_idx}
+	</select>
+
+	<!-- 관리자 계정 생성 : 아이디 중복확인 -->
+	<select id="getIdDupCheck" resultType="int"
+		parameterType="String">
+		SELECT COUNT(*) FROM ADMIN WHERE ADM_ID = #{adm_id}
+	</select>
+
+	<!-- 관리자 계정 생성 -->
+	<insert id="admInsert" parameterType="avo">
+		INSERT INTO ADMIN(ADM_IDX,
+		ADM_NAME, ADM_ID, ADM_PW, ADM_EMAIL, ADM_JOIN, ADM_ACCESS, ADM_CLOSE,
+		ADM_MGR, ADM_STATE) VALUES(ADM_IDX_SEQ.NEXTVAL, #{adm_name},
+		#{adm_id}, #{adm_pw}, #{adm_email}, sysdate, null, null, #{adm_mgr}, 1)
+	</insert>
 </mapper>

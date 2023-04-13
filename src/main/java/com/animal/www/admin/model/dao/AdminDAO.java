@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.MemberVO;
@@ -159,9 +160,56 @@ public class AdminDAO {
 		map.put("end", String.valueOf(end));
 		return sqlSessionTemplate.selectList("admin.getMbrById", map);
 	}
-	
+
+	public List<MemberVO> getMbrByWithdraw(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getMbrByWithdraw", map);
+	}
+
 	public MemberVO memberOneList(String mbr_nickname) {
 		return sqlSessionTemplate.selectOne("admin.memberOneList", mbr_nickname);
 	}
 
+	public int memberUpdate(MemberVO mvo) {
+		return sqlSessionTemplate.update("admin.memberUpdate", mvo);
+	}
+
+	public List<AdminVO> getAdmById(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getAdmById", map);
+	}
+	
+	public List<AdminVO> getAdmByName(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getAdmByName", map);
+	}
+	
+	public List<AdminVO> getAdmByIdx(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getAdmByIdx", map);
+	}
+	
+	public AdminVO adminOneList(String adm_idx) {
+		return sqlSessionTemplate.selectOne("admin.adminOneList", adm_idx);
+	}
+	
+	public int getIdDupCheck(String adm_id) {
+		return sqlSessionTemplate.selectOne("admin.getIdDupCheck", adm_id);
+	}
+
+	public int admInsert(AdminVO avo) {
+		return sqlSessionTemplate.insert("admin.admInsert", avo);
+	}
 }
