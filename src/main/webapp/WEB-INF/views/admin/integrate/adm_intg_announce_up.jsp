@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>\
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 > 공지 수정</title>
+<title>관리자 > 공지 등록</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 <style type="text/css">
@@ -222,37 +223,52 @@ tbody tr:hover {
 		<section id="sec1">
 			<span id="page_info">관리자</span> <span id="sep1">|</span> <span
 				id="page_mKate">통합 관리</span> <span id="sep2">></span> <span
-				id="page_sKate">공지 수정</span>
+				id="page_sKate">공지 등록</span>
 			<div class="border">
 				<div class="ann_rounce">
-					<form action="">
+					<form action="admin_intg_announce_up_ok.do" method="post"
+						enctype="multipart/form-data">
 						<div class="option_ann_r">
 							카테고리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
-								class="selectbox">
-								<option value="" disabled selected hidden>카테고리 선택</option>
-								<option value="ann_rounce_ann_r">공지사항</option>
-								<option value="event_ann_r">이벤트</option>
+								class="selectbox" name="notice_div">
+								<option value="" disabled hidden>카테고리 선택</option>
+								<option value="home"
+									<c:if test="${nvo.notice_div eq 'home'}">selected</c:if>>홈</option>
+								<option value="market"
+									<c:if test="${nvo.notice_div eq 'market'}">selected</c:if>>마켓</option>
 							</select>
 						</div>
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
 								우선순위&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input
-									type="radio" name="priority_ann_r" value="1" checked="checked"> 최상위
+									type="radio" name="notice_priorty" value="1"
+									<c:if test="${nvo.notice_priorty eq '1'}">checked</c:if>>
+									최상위
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="2"> 중요
+									name="notice_priorty" value="2"
+									<c:if test="${nvo.notice_priorty eq '2'}">checked</c:if>>
+									중요
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="priority_ann_r" value="3"> 일반
+									name="notice_priorty" value="3"
+									<c:if test="${nvo.notice_priorty eq '3'}">checked</c:if>>
+									일반
 								</label>
 							</div>
 						</div>
 						<div class="option_ann_r">
 							<div id="radio_ann_r">
-								영역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
-									<input type="radio" name="area_ann_r" value="main" checked="checked"> 메인
+								상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
+									<input type="radio" name="notice_state" value="announce"
+									<c:if test="${nvo.notice_state eq 'announce'}">checked</c:if>>
+									공지사항
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="market"> 마켓
+									name="notice_state" value="event"
+									<c:if test="${nvo.notice_state eq 'event'}">checked</c:if>>
+									이벤트
 								</label> &nbsp;&nbsp;<label> <input type="radio"
-									name="area_ann_r" value="community"> 소통
+									name="notice_state" value="etc"
+									<c:if test="${nvo.notice_state eq 'etc'}">checked</c:if>>
+									기타
 								</label>
 							</div>
 						</div>
@@ -260,24 +276,45 @@ tbody tr:hover {
 							<tbody>
 								<tr>
 									<th>제목</th>
-									<td><input type="text" name="title_ann_r" id="title_ann_r"></td>
+									<td><input type="text" name="notice_title"
+										id="title_ann_r" value="${nvo.notice_title}"></td>
+								</tr>
+								<tr>
+									<th>이미지</th>
+									<td><c:choose>
+											<c:when test="${empty nvo.notice_img}">
+												<input type="file" name="notice_profile_param">
+												<b>이전 파일 없음</b>
+												<input type="hidden" name="old_f_name" value="">
+											</c:when>
+											<c:otherwise>
+												<input type="file" name="notice_profile_param">
+												<b>이전 파일 ${nvo.notice_img}</b>
+												<input type="hidden" name="old_f_name"
+													value="${nvo.notice_img}">
+											</c:otherwise>
+										</c:choose></td>
 								</tr>
 								<tr>
 									<th>내용</th>
-									<td><textarea name="info_ann_r" id="content_ann_r"></textarea></td>
+									<td><textarea name="notice_info" id="content_ann_r">${nvo.notice_info}</textarea></td>
 								</tr>
 								<tr>
 									<th>공개여부</th>
 									<td><label> <input type="radio"
-											name="visible_ann_r" value="yes" checked> 보임
+											name="notice_visible" value="1"
+											<c:if test="${nvo.notice_visible eq 1}">checked</c:if>>
+											보임
 									</label> &nbsp;&nbsp;<label> <input type="radio"
-											name="visible_ann_r" value="no"> 안보임
+											name="notice_visible" value="0"
+											<c:if test="${nvo.notice_visible eq 0}">checked</c:if>>
+											안보임
 									</label></td>
 								</tr>
 							</tbody>
 						</table>
-						<button type="button" id="regist_btn"
-							onclick="regist_ann_r(this.form)">등록</button>
+						<input type="hidden" value="${nvo.notice_idx}" name="notice_idx"/>
+						<button type="submit" id="regist_btn">등록</button>
 					</form>
 				</div>
 			</div>

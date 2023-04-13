@@ -4,21 +4,247 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
 	<!-- 관리자 mapper -->
-	<select id="termslist" resultType="tvo">
+
+	<!-- 약관 리스트 -->
+	<select id="termsList" resultType="tvo">
 		SELECT * FROM TERMS
 	</select>
+
+	<!-- 약관 수정 -->
 	<update id="termsUpdate" parameterType="Map">
-		UPDATE TERMS SET TERMS_INFO = #{terms_info} WHERE TERMS_NAME = #{terms_name}
+		UPDATE TERMS SET
+		TERMS_INFO = #{terms_info} WHERE TERMS_NAME = #{terms_name}
 	</update>
+
+	<!-- 약관 삭제 -->
 	<delete id="termsDelete" parameterType="String">
-		DELETE FROM TERMS WHERE TERMS_NAME = #{termsName}
+		DELETE FROM TERMS WHERE
+		TERMS_NAME = #{termsName}
 	</delete>
+
+	<!-- 약관 등록 -->
 	<insert id="termsInsert" parameterType="Map">
-		INSERT INTO TERMS(TERMS_IDX, TERMS_NAME, TERMS_INFO) VALUES(TERMS_IDX_SEQ.NEXTVAL, #{terms_name}, #{terms_info})
+		INSERT INTO
+		TERMS(TERMS_IDX, TERMS_NAME, TERMS_INFO) VALUES(TERMS_IDX_SEQ.NEXTVAL,
+		#{terms_name}, #{terms_info})
 	</insert>
-	
+
+	<!-- 배너 개수 -->
+	<select id="bannerCount" resultType="int">
+		SELECT COUNT(*) FROM BANNER
+	</select>
+
+	<!-- 해당 배너 상세정보 -->
+	<select id="bannerOneList" resultType="bvo" parameterType="int">
+		SELECT * FROM BANNER WHERE BNR_IDX = #{bnr_idx}
+	</select>
+
+	<!-- 배너 리스트 -->
+	<select id="bannerList" resultType="bvo" parameterType="Map">
+		SELECT *
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM BANNER ORDER BY
+		BNR_IDX DESC) A
+		) WHERE R_NUM BETWEEN #{begin} and #{end}
+	</select>
+
+	<!-- 배너 등록 -->
 	<insert id="bannerInsert" parameterType="bvo">
-		INSERT INTO BANNER(BNR_IDX, BNR_IMG, BNR_DIV, BNR_ORDER, BNR_VISIBLE, BNR_DATE, BNR_UPDATE, BNR_STATE, ADM_IDX) VALUES(BANNER_IDX_SEQ.NEXTVAL, '1as', #{bnr_div}, #{bnr_order}, #{bnr_visible}, sysdate, null, #{bnr_state}, 1)
+		INSERT INTO
+		BANNER(BNR_IDX, BNR_IMG, BNR_DIV, BNR_ORDER, BNR_VISIBLE, BNR_DATE,
+		BNR_UPDATE, BNR_STATE, ADM_IDX) VALUES(BANNER_IDX_SEQ.NEXTVAL,
+		#{bnr_img}, #{bnr_div}, #{bnr_order}, #{bnr_visible}, sysdate, null,
+		#{bnr_state}, 1)
+	</insert>
+
+	<!-- 배너 삭제 -->
+	<delete id="bannerDelete" parameterType="int">
+		DELETE FROM BANNER WHERE
+		BNR_IDX = #{bnr_idx}
+	</delete>
+
+	<!-- 배너 수정 -->
+	<update id="bannerUpdate" parameterType="bvo">
+		UPDATE BANNER SET
+		BNR_DIV = #{bnr_div}, BNR_ORDER = #{bnr_order}, BNR_VISIBLE =
+		#{bnr_visible}, BNR_STATE = #{bnr_state}, BNR_UPDATE = SYSDATE,
+		BNR_IMG = #{bnr_img} WHERE BNR_IDX = #{bnr_idx}
+	</update>
+
+	<!-- 공지 개수 -->
+	<select id="noticeCount" resultType="int">
+		SELECT COUNT(*) FROM
+		NOTIFICATION
+	</select>
+
+	<!-- 공지 리스트 -->
+	<select id="noticeList" resultType="nvo" parameterType="Map">
+		SELECT *
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM NOTIFICATION ORDER BY
+		NOTICE_IDX DESC) A
+		) WHERE R_NUM BETWEEN #{begin} and #{end}
+	</select>
+
+	<!-- 해당 공지 상세정보 -->
+	<select id="noticeOneList" resultType="nvo" parameterType="int">
+		SELECT * FROM NOTIFICATION WHERE NOTICE_IDX = #{notice_idx}
+	</select>
+
+	<!-- 공지 등록 -->
+	<insert id="noticeInsert" parameterType="nvo">
+		INSERT INTO
+		NOTIFICATION(NOTICE_IDX, NOTICE_TITLE, NOTICE_INFO, NOTICE_HIT,
+		NOTICE_VISIBLE, NOTICE_IMG, NOTICE_DATE, NOTICE_STATE, NOTICE_PRIORTY,
+		NOTICE_DIV, ADM_IDX) VALUES(NOTICE_IDX_SEQ.NEXTVAL, #{notice_title},
+		#{notice_info}, 0, #{notice_visible}, #{notice_img}, sysdate,
+		#{notice_state}, #{notice_priorty}, #{notice_div}, 1)
+	</insert>
+
+	<!-- 공지 수정 -->
+	<update id="noticeUpdate" parameterType="nvo">
+		UPDATE NOTIFICATION SET
+		NOTICE_DIV = #{notice_div}, NOTICE_PRIORTY = #{notice_priorty},
+		NOTICE_VISIBLE =
+		#{notice_visible}, NOTICE_STATE = #{notice_state},
+		NOTICE_IMG = #{notice_img}, NOTICE_TITLE = #{notice_title},
+		NOTICE_INFO = #{notice_info}
+		WHERE NOTICE_IDX = #{notice_idx}
+	</update>
+
+	<!-- 공지 삭제 -->
+	<delete id="noticeDelete" parameterType="int">
+		DELETE FROM NOTIFICATION
+		WHERE
+		NOTICE_IDX = #{notice_idx}
+	</delete>
+
+	<!-- 전체 회원 수 -->
+	<select id="mbrCount" resultType="int">
+		SELECT COUNT(*) FROM MEMBERS
+	</select>
+
+	<!-- 회원 리스트 : 회원명으로 검색 -->
+	<select id="getMbrByName" parameterType="Map" resultType="mvo">
+		SELECT
+		*
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM MEMBERS WHERE
+		MBR_NAME LIKE '%'||#{txt}||'%' ORDER BY
+		MBR_NICKNAME DESC) A
+		) WHERE
+		R_NUM BETWEEN #{begin} and #{end}
+	</select>
+
+	<!-- 회원 리스트 : 회원 아이디로 검색 -->
+	<select id="getMbrById" parameterType="Map" resultType="mvo">
+		SELECT *
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM MEMBERS WHERE MBR_ID
+		LIKE '%'||#{txt}||'%' ORDER BY
+		MBR_ID DESC) A
+		) WHERE R_NUM BETWEEN
+		#{begin} and #{end}
+	</select>
+
+	<!-- 회원 리스트 : 탈퇴여부로 검색 -->
+	<select id="getMbrByWithdraw" parameterType="Map"
+		resultType="mvo">
+		SELECT *
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM
+		MEMBERS WHERE MBR_WITHDRAW = 0 AND (MBR_ID LIKE '%'||#{txt}||'%' OR
+		MBR_NAME LIKE '%'||#{txt}||'%')ORDER BY
+		MBR_ID DESC) A
+		) WHERE R_NUM
+		BETWEEN
+		#{begin} and #{end}
+	</select>
+
+	<!-- 회원 상세 정보 -->
+	<select id="memberOneList" parameterType="String"
+		resultType="mvo">
+		SELECT a.*, b.PNT_NOW FROM MEMBERS a, POINT b WHERE
+		a.MBR_NICKNAME = #{mbr_nickname} AND a.MBR_NICKNAME = b.MBR_NICKNAME
+	</select>
+
+	<!-- 회원 정보 수정 -->
+	<update id="memberUpdate" parameterType="mvo">
+		UPDATE MEMBERS SET
+		MBR_NAME = #{mbr_name}, MBR_CELLPHONE = #{mbr_cellphone},
+		MBR_TELEPHONE = #{mbr_telephone}, MBR_ADDRESS = #{mbr_address}
+		WHERE
+		MBR_NICKNAME = #{mbr_nickname}
+	</update>
+
+	<!-- 관리자 리스트 : 관리자 명으로 검색 -->
+	<select id="getAdmByName" parameterType="Map" resultType="avo">
+		SELECT
+		*
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM ADMIN WHERE
+		ADM_NAME
+		LIKE '%'||#{txt}||'%' ORDER BY
+		ADM_NAME DESC) A
+		) WHERE
+		R_NUM BETWEEN
+		#{begin} and #{end}
+	</select>
+
+	<!-- 관리자 리스트 : 관리자 아이디로 검색 -->
+	<select id="getAdmById" parameterType="Map" resultType="avo">
+		SELECT
+		*
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM ADMIN WHERE
+		ADM_ID
+		LIKE '%'||#{txt}||'%' ORDER BY
+		ADM_ID DESC) A
+		) WHERE
+		R_NUM BETWEEN
+		#{begin} and #{end}
+	</select>
+
+	<!-- 관리자 리스트 : 관리자 번호로 검색 -->
+	<select id="getAdmByIdx" parameterType="Map" resultType="avo">
+		SELECT
+		*
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM ADMIN WHERE
+		ADM_IDX
+		LIKE '%'||#{txt}||'%' ORDER BY
+		ADM_IDX DESC) A
+		) WHERE
+		R_NUM BETWEEN
+		#{begin} and #{end}
+	</select>
+
+	<!-- 관리자 상세 정보 -->
+	<select id="adminOneList" resultType="avo"
+		parameterType="String">
+		SELECT * FROM ADMIN WHERE ADM_IDX = #{adm_idx}
+	</select>
+
+	<!-- 관리자 계정 생성 : 아이디 중복확인 -->
+	<select id="getIdDupCheck" resultType="int"
+		parameterType="String">
+		SELECT COUNT(*) FROM ADMIN WHERE ADM_ID = #{adm_id}
+	</select>
+
+	<!-- 관리자 계정 생성 -->
+	<insert id="admInsert" parameterType="avo">
+		INSERT INTO ADMIN(ADM_IDX,
+		ADM_NAME, ADM_ID, ADM_PW, ADM_EMAIL, ADM_JOIN, ADM_ACCESS, ADM_CLOSE,
+		ADM_MGR, ADM_STATE) VALUES(ADM_IDX_SEQ.NEXTVAL, #{adm_name},
+		#{adm_id}, #{adm_pw}, #{adm_email}, sysdate, null, null, #{adm_mgr}, 1)
 	</insert>
 	
 	<!-- 관리자 mkt mapper -->

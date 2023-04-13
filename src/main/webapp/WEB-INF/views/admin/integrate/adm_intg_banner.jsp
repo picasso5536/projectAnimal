@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,6 +105,10 @@ table td:first-child {
 	width: 10%;
 }
 
+td:nth-child(2) {
+	width: 100px; /* 이미지 크기에 맞게 조절 */
+}
+
 /* tbody tr 마우스 오버시 배경색 변경 */
 tbody tr:hover {
 	background-color: #f5f5f5;
@@ -183,9 +188,31 @@ div.modalContent button:hover {
 div.modalContent button.modal_cancel {
 	margin-left: 20px;
 }
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+#bannerimg {
+	max-width: 100%;
+	height: auto;
+}
 </style>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+		function del_go(f) {
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="admin_intg_banner_del.do?bnr_idx="+f;
+			}			
+		}
+	
+		function up_go(k) {
+			location.href="admin_intg_banner_up.do?bnr_idx="+k;
+		}
+	</script>
 </head>
 <body>
 	<main>
@@ -210,19 +237,69 @@ div.modalContent button.modal_cancel {
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>배너 사진.png</td>
-								<td>커뮤니티</td>
-								<td>2</td>
-								<td>보임</td>
-								<td>2023.03.29</td>
-								<td>2023.03.30</td>
-								<td><button id="up_banner"
-										onclick="location.href='admin_intg_banner_up.do'">수정</button>
-									<button id="del_banner" onclick="">삭제</button></td>
-							</tr>
+							<c:choose>
+								<c:when test="${empty bannerlist}">
+									<tr>
+										<td colspan="8"><h2>등록된 배너 정보가 없습니다.</h2></td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${bannerlist}" var="k" varStatus="c">
+										<tr>
+											<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + c.index)}</td>
+											<td><img src="resources/upload/${k.bnr_img}"
+												id="bannerimg"></td>
+											<td>${k.bnr_div}</td>
+											<td>${k.bnr_order}</td>
+											<td><c:choose>
+													<c:when test="${k.bnr_visible eq '1'}">공개</c:when>
+													<c:otherwise>비공개</c:otherwise>
+												</c:choose></td>
+											<td>${k.bnr_date}</td>
+											<td><c:choose>
+													<c:when test="${empty k.bnr_update}">-</c:when>
+													<c:otherwise>${k.bnr_update.substring(0,10)}</c:otherwise>
+												</c:choose></td>
+											<td><button id="up_banner" onclick="up_go(${k.bnr_idx})">수정</button>
+												<button id="del_banner" onclick="del_go(${k.bnr_idx})">삭제</button></td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="8">
+									<ol class="paging">
+										<%-- 이전 --%>
+										<c:choose>
+											<c:when test="${paging.beginBlock > paging.pagePerBlock }">
+												<a
+													href="admin_intg_banner.do?cPage=${paging.beginBlock-paging.pagePerBlock}">이전으로</a>
+											</c:when>
+										</c:choose>
+
+										<!-- 블록안에 들어간 페이지번호들 -->
+										<c:forEach begin="${paging.beginBlock}"
+											end="${paging.endBlock}" step="1" var="k">
+											<%-- 현재 페이지는 링크X, 나머지는 해당 페이지로 링크 처리 --%>
+											<c:if test="${k==paging.nowPage}">${k}</c:if>
+											<c:if test="${k!=paging.nowPage}">
+												<a href="admin_intg_banner.do?cPage=${k}">${k}</a>
+											</c:if>
+										</c:forEach>
+
+										<!-- 다음 -->
+										<c:choose>
+											<c:when test="${paging.endBlock < paging.totalpage }">
+												<li><a
+													href="admin_intg_banner.do?cPage=${paging.beginBlock+paging.pagePerBlock}">다음으로</a></li>
+											</c:when>
+										</c:choose>
+									</ol>
+								</td>
+							</tr>
+						</tfoot>
 					</table>
 				</div>
 				<button type="button" id="regist_btn"

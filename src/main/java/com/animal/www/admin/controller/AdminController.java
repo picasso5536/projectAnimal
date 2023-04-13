@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,13 +23,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.animal.www.admin.model.service.AdminService;
+import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.commons.vo.ParcelVO;
 import com.animal.www.market.model.vo.ProductVO;
 import com.animal.www.commons.FileReName;
+import com.animal.www.commons.Paging;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.CorporationVO;
+import com.animal.www.commons.vo.MemberVO;
+import com.animal.www.commons.vo.NotificationVO;
 
 @Controller
 public class AdminController {
@@ -47,6 +52,13 @@ public class AdminController {
 		this.fileReName = fileReName;
 	}
 
+	@Autowired
+	private Paging paging;
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+
 	@RequestMapping("admin_login.do")
 	public ModelAndView logInAdmin() {
 		return new ModelAndView("admin/adm_login");
@@ -57,39 +69,268 @@ public class AdminController {
 		return new ModelAndView("admin/adm_main");
 	}
 
+	// 회원 관리 페이지 호출
 	@RequestMapping("admin_mbr_info.do")
 	public ModelAndView admMemberInfo() {
 		return new ModelAndView("admin/member/adm_mbr_info");
 	}
-	//탈퇴회원리스트
+
+	@RequestMapping(value = "/admin_mbr_info_search.do", produces = "text/xml; charset=utf-8")
+	@ResponseBody
+	public String search(@RequestParam("bott") String bott, @RequestParam("m_idx") String mIdx,
+			@RequestParam("cPage") String cPage) {
+		int count = adminService.getMbrCount();
+		paging.setTotalRecord(count);
+
+		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+			paging.setTotalpage(1);
+		} else {
+			paging.setTotalpage(paging.getTotalRecord() / paging.getNumPerPage());
+			if (paging.getTotalRecord() % paging.getNumPerPage() != 0) {
+				paging.setTotalpage(paging.getTotalpage() + 1);
+			}
+		}
+		if (cPage == null) {
+			paging.setNowPage(1);
+		} else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+
+		paging.setBeginBlock(
+				(int) ((paging.getNowPage() - 1) / paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+
+		if (paging.getEndBlock() > paging.getTotalpage()) {
+			paging.setEndBlock(paging.getTotalpage());
+		}
+
+		int begin = paging.getBegin();
+		int end = paging.getEnd();
+
+		StringBuffer sb = new StringBuffer();
+		List<MemberVO> mbrlist = null;
+		try {
+			if (bott.equals("name")) {
+				// 이름로 검색
+				mbrlist = adminService.getMbrByName(mIdx, begin, end);
+			} else if (bott.equals("id")) {
+				// id로 검색
+				mbrlist = adminService.getMbrById(mIdx, begin, end);
+			} else if (bott.equals("withdraw")) {
+				// 탈퇴여부로 검색
+				mbrlist = adminService.getMbrByWithdraw(mIdx, begin, end);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e + " db과정에서의 오류");
+		}
+
+		try {
+			sb.append("[");
+			for (int i = 0; i < mbrlist.size(); i++) {
+				sb.append("{\"cnt\":\"" + (i + 1) + "\",\"name\":\"" + mbrlist.get(i).getMbr_name() + "\",\"id\":\""
+						+ mbrlist.get(i).getMbr_id() + "\", \"nickname\":\"" + mbrlist.get(i).getMbr_nickname()
+						+ "\", \"cellphone\":\"" + mbrlist.get(i).getMbr_cellphone() + "\", \"birth\":\""
+						+ mbrlist.get(i).getMbr_birth() + "\",\"join\":\"" + mbrlist.get(i).getMbr_join()
+						+ "\",\"withdraw\":\"" + mbrlist.get(i).getMbr_withdraw() + "\"},");
+			}
+			String str = sb.toString().substring(0, sb.toString().length() - 1);
+			str = str + "]";
+
+			return str;
+		} catch (Exception e) {
+			System.out.println(e + " josn 파싱에서의 오류");
+		}
+		return null;
+	}
+
+	// 탈퇴회원리스트
 	@RequestMapping("mbr_withdrawal.do")
 	public ModelAndView memberWithdrawal() {
 		return new ModelAndView("admin/member/mbr_withdrawal");
 	}
+
 	// 탈퇴회원정보
 	@RequestMapping("adm_mbr_withdrawal_info.do")
 	public ModelAndView memberWithdrawalInfo() {
 		return new ModelAndView("admin/member/adm_mbr_withdrawal_info");
 	}
-	
+
 	@RequestMapping("member_update.do")
-	public ModelAndView admMemberUpdate() {
-		return new ModelAndView("admin/member/adm_mbr_update");
+	public ModelAndView admMemberUpdate(@RequestParam("mbr_nickname") String nickname) {
+		ModelAndView mv = new ModelAndView("admin/member/adm_mbr_update");
+		MemberVO mvo = adminService.memberOneList(nickname);
+
+		String fullAddress = mvo.getMbr_address();
+		String[] addressParts = fullAddress.split("/");
+		String postcode = addressParts[0];
+		String address = addressParts[1];
+		String detailAddress = addressParts[2];
+		String extraAddress = addressParts[3];
+
+		mv.addObject("mvo", mvo);
+		mv.addObject("postcode", postcode);
+		mv.addObject("address", address);
+		mv.addObject("detailAddress", detailAddress);
+		mv.addObject("extraAddress", extraAddress);
+		return mv;
+	}
+
+	@RequestMapping("member_update_ok.do")
+	public ModelAndView admMemberUpdateOk(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("redirect:admin_mbr_info.do");
+
+		String nickname = request.getParameter("m_nickname");
+		String name = request.getParameter("m_name");
+		String cellphone = request.getParameter("m_cellphone"); // 핸드폰번호
+		String telephone = request.getParameter("m_telephone"); // 집전화번호
+		String postcode = request.getParameter("sample6_postcode"); // 우편번호
+		String address = request.getParameter("sample6_address"); // 주소
+		String detailAddress = request.getParameter("sample6_detailAddress"); // 상세주소
+		String extraAddress = request.getParameter("sample6_extraAddress"); // 참고항목
+
+		MemberVO mvo = new MemberVO();
+		mvo.setMbr_name(name);
+		mvo.setMbr_nickname(nickname);
+		mvo.setMbr_cellphone(cellphone);
+		mvo.setMbr_telephone(telephone);
+		mvo.setMbr_address(postcode + "/" + address + "/" + detailAddress + "/" + extraAddress);
+
+		int result = adminService.memberUpdate(mvo);
+		mv.addObject("result", result);
+		return mv;
 	}
 
 	@RequestMapping("admin_mbr_admin.do")
 	public ModelAndView admAdminInfo() {
 		return new ModelAndView("admin/member/adm_mbr_admin");
 	}
+
+	// 관리자 검색조건 조회
+	@RequestMapping(value = "/admin_mbr_admin_info_search.do", produces = "text/xml; charset=utf-8")
+	@ResponseBody
+	public String searchAdmin(@RequestParam("bott") String bott, @RequestParam("m_idx") String mIdx,
+			@RequestParam("cPage") String cPage) {
+		int count = adminService.getMbrCount();
+		paging.setTotalRecord(count);
+
+		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+			paging.setTotalpage(1);
+		} else {
+			paging.setTotalpage(paging.getTotalRecord() / paging.getNumPerPage());
+			if (paging.getTotalRecord() % paging.getNumPerPage() != 0) {
+				paging.setTotalpage(paging.getTotalpage() + 1);
+			}
+		}
+		if (cPage == null) {
+			paging.setNowPage(1);
+		} else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+
+		paging.setBeginBlock(
+				(int) ((paging.getNowPage() - 1) / paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+
+		if (paging.getEndBlock() > paging.getTotalpage()) {
+			paging.setEndBlock(paging.getTotalpage());
+		}
+
+		int begin = paging.getBegin();
+		int end = paging.getEnd();
+
+		StringBuffer sb = new StringBuffer();
+		List<AdminVO> admlist = null;
+		try {
+			if (bott.equals("name")) {
+				// 이름로 검색
+				admlist = adminService.getAdmByName(mIdx, begin, end);
+			} else if (bott.equals("id")) {
+				// id로 검색
+				admlist = adminService.getAdmById(mIdx, begin, end);
+			} else if (bott.equals("idx")) {
+				// 관리자 번호로 검색
+				admlist = adminService.getAdmByIdx(mIdx, begin, end);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e + " db과정에서의 오류");
+		}
+
+		try {
+			sb.append("[");
+			for (int i = 0; i < admlist.size(); i++) {
+				sb.append("{\"cnt\":\"" + (i + 1) + "\", \"idx\":\"" + admlist.get(i).getAdm_idx() + "\", \"name\":\""
+						+ admlist.get(i).getAdm_name() + "\",\"id\":\"" + admlist.get(i).getAdm_id()
+						+ "\", \"access\":\"" + admlist.get(i).getAdm_access() + "\", \"join\":\""
+						+ admlist.get(i).getAdm_join() + "\",\"state\":\"" + admlist.get(i).getAdm_state() + "\"},");
+			}
+			String str = sb.toString().substring(0, sb.toString().length() - 1);
+			str = str + "]";
+
+			return str;
+		} catch (Exception e) {
+			System.out.println(e + " josn 파싱에서의 오류");
+		}
+		return null;
+	}
+
 	// 관리자
 	@RequestMapping("adm_more_info.do")
-	public ModelAndView admAdmMoreInfo() {
-		return new ModelAndView("admin/member/adm_more_info");
+	public ModelAndView admAdmMoreInfo(@RequestParam("adm_idx") String idx) {
+		ModelAndView mv = new ModelAndView("admin/member/adm_more_info");
+		AdminVO avo = adminService.adminOneList(idx);
+
+		mv.addObject("avo", avo);
+		return mv;
 	}
-	
+
+	// 관리자 계정 생성 페이지 호출
 	@RequestMapping("ad_acc_create.do")
 	public ModelAndView admAdmAccountCreate() {
 		return new ModelAndView("admin/member/admin_account");
+	}
+
+	// 관리자 생성 시 아이디 중복 검사
+	@RequestMapping(value = "/ad_acc_dupCheck.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String checkIdDuplication(@RequestParam("ad_id") String ad_id) {
+		if (ad_id != "" && ad_id != null) {
+			int result = adminService.getIdDupCheck(ad_id);
+			if (result == 0) {
+				return "useable";
+			}
+		}
+		return "dup";
+	}
+
+	// 관리자 계정 생성
+	@RequestMapping("ad_acc_create_ok.do")
+	public ModelAndView admAdmAccountCreateOk(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("redirect:admin_mbr_admin.do");
+		AdminVO avo = new AdminVO();
+
+		avo.setAdm_id(request.getParameter("adm_id"));
+		avo.setAdm_pw(request.getParameter("admin_pwd"));
+		avo.setAdm_name(request.getParameter("adm_name"));
+		if(request.getParameter("writeEmail")=="" || request.getParameter("writeEmail") == null) {
+			avo.setAdm_email(request.getParameter("adm_email") + "@" + request.getParameter("mail_page"));
+		} else {
+			avo.setAdm_email(request.getParameter("adm_email") + "@" + request.getParameter("writeEmail"));
+		}
+		avo.setAdm_mgr(request.getParameter("adm_mgr"));
+
+		int result = adminService.adminInsert(avo);
+
+		mv.addObject(result);
+
+		return mv;
 	}
 
 	// 관리자 내정보 수정페이지
@@ -139,56 +380,249 @@ public class AdminController {
 		return new ModelAndView("admin/member/adm_point_add_reqest");
 	}
 
+	// 공지 조건 검색
+	@RequestMapping("adm_intg_announce_search.do")
+	public ModelAndView admIntgAnnounceSearch(@RequestParam("search_option") String searchOption,
+			@RequestParam("category_option") String categoryOption, @RequestParam("search_ann") String searchAnn) {
+		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_announce");
+
+		return mv;
+	}
+
+	// 공지 리스트 페이지 호출
 	@RequestMapping("admin_intg_announce.do")
-	public ModelAndView admIntgAnnoun() {
-		return new ModelAndView("admin/integrate/adm_intg_announce");
+	public ModelAndView admIntgAnnounce(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_announce");
+		int count = adminService.getNoticeCount();
+		paging.setTotalRecord(count);
+
+		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+			paging.setTotalpage(1);
+		} else {
+			paging.setTotalpage(paging.getTotalRecord() / paging.getNumPerPage());
+			if (paging.getTotalRecord() % paging.getNumPerPage() != 0) {
+				paging.setTotalpage(paging.getTotalpage() + 1);
+			}
+		}
+		String cPage = request.getParameter("cPage");
+		if (cPage == null) {
+			paging.setNowPage(1);
+		} else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+
+		paging.setBeginBlock(
+				(int) ((paging.getNowPage() - 1) / paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+
+		if (paging.getEndBlock() > paging.getTotalpage()) {
+			paging.setEndBlock(paging.getTotalpage());
+		}
+
+		List<NotificationVO> noticelist = adminService.noticeList(paging.getBegin(), paging.getEnd());
+		mv.addObject("noticelist", noticelist);
+		mv.addObject("paging", paging);
+		return mv;
 	}
 
-	@RequestMapping("admin_intg_announce_up.do")
-	public ModelAndView admIntgAnnounUp() {
-		return new ModelAndView("admin/integrate/adm_intg_announce_up");
+	// 공지 상세정보
+	@RequestMapping("admin_intg_announce_detail.do")
+	public ModelAndView admIntgAnnounceDetail() {
+		return new ModelAndView("admin/integrate/adm_intg_announce_detail");
 	}
 
+	// 공지 작성 페이지 호출
 	@RequestMapping("admin_intg_announce_regist.do")
-	public ModelAndView admIntgAnnounRegist() {
+	public ModelAndView admIntgAnnounceRegist() {
 		return new ModelAndView("admin/integrate/adm_intg_announce_regist");
 	}
 
-	@RequestMapping("admin_intg_banner.do")
-	public ModelAndView admIntgBanner() {
-		return new ModelAndView("admin/integrate/adm_intg_banner");
-	}
-
-	@RequestMapping("admin_intg_banner_ins.do")
-	public ModelAndView admIntgBannerInsert(BannerVO bvo, HttpSession session) {
-		System.out.println(bvo.getBnr_state());
-		System.out.println(bvo.getBnr_div());
-		
-		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
+	// 공지 등록
+	@RequestMapping("admin_intg_announce_ins.do")
+	public ModelAndView admIntgAnnounRegistOk(NotificationVO nvo, HttpSession session) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_announce.do");
 		try {
-			String path = session.getServletContext().getRealPath("/resources/images");
-			MultipartFile bvo_img = bvo.getBnr_param();
+			String path = session.getServletContext().getRealPath("/resources/upload");
+			MultipartFile nvo_img = nvo.getNotice_profile_param();
 
-			String reName1 = fileReName.exec(path, bvo_img.getOriginalFilename());
-
-			bvo.setBnr_img(reName1);
-
-			if (adminService.bannerInsert(bvo) > 0) {
-				bvo_img.transferTo(new File(path + "/" + reName1));
+			if (nvo_img.isEmpty()) {
+				nvo.setNotice_img("");
+			} else {
+				String reName1 = fileReName.exec(path, nvo_img.getOriginalFilename());
+				nvo.setNotice_img(reName1);
+			}
+			mv.addObject("cPage", "1");
+			if (adminService.noticeInsert(nvo) > 0) {
+				nvo_img.transferTo(new File(path + "/" + nvo.getNotice_img()));
 			}
 		} catch (Exception e) {
 		}
 		return mv;
 	}
 
-	@RequestMapping("admin_intg_banner_up.do")
-	public ModelAndView admIntgBannerUp() {
-		return new ModelAndView("admin/integrate/adm_intg_banner_update");
+	// 공지 수정 페이지 호출
+	@RequestMapping("admin_intg_announce_up.do")
+	public ModelAndView admIntgAnnounceUp(@RequestParam("notice_idx") int notice_idx) {
+		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_announce_up");
+		NotificationVO nvo = adminService.noticeOneList(notice_idx);
+		mv.addObject("nvo", nvo);
+		return mv;
 	}
 
+	// 공지 수정
+	@RequestMapping("admin_intg_announce_up_ok.do")
+	public ModelAndView admIntgAnnounceUpOk(NotificationVO nvo, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_announce.do");
+		try {
+			String path = request.getSession().getServletContext().getRealPath("/resources/upload");
+
+			MultipartFile nvo_img = nvo.getNotice_profile_param();
+			String old_f_name = request.getParameter("old_f_name");
+			String ori_filename = nvo_img.getOriginalFilename();
+
+			if (ori_filename.equals("") || ori_filename == null) {
+				nvo.setNotice_img(old_f_name);
+			} else {
+				String str = fileReName.exec(path, nvo.getNotice_profile_param().getOriginalFilename());
+				nvo.setNotice_img(str);
+			}
+
+			if (adminService.noticeUpdate(nvo) > 0) {
+				nvo_img.transferTo(new File(path + "/" + nvo.getNotice_img()));
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return mv;
+	}
+
+	// 공지 삭제
+	@RequestMapping("admin_intg_announce_del.do")
+	public ModelAndView admIntgAnnounceDelete(@RequestParam("notice_idx") int notice_idx) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_announce.do");
+		int result = adminService.noticeDelete(notice_idx);
+		mv.addObject("result", result);
+		return mv;
+	}
+
+	// 배너 리스트 페이징 처리
+	@RequestMapping("admin_intg_banner.do")
+	public ModelAndView admIntgBanner(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_banner");
+		int count = adminService.getBannerCount();
+		paging.setTotalRecord(count);
+
+		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+			paging.setTotalpage(1);
+		} else {
+			paging.setTotalpage(paging.getTotalRecord() / paging.getNumPerPage());
+			if (paging.getTotalRecord() % paging.getNumPerPage() != 0) {
+				paging.setTotalpage(paging.getTotalpage() + 1);
+			}
+		}
+		String cPage = request.getParameter("cPage");
+		if (cPage == null) {
+			paging.setNowPage(1);
+		} else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+
+		paging.setBeginBlock(
+				(int) ((paging.getNowPage() - 1) / paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+
+		if (paging.getEndBlock() > paging.getTotalpage()) {
+			paging.setEndBlock(paging.getTotalpage());
+		}
+
+		List<BannerVO> bannerlist = adminService.BannerList(paging.getBegin(), paging.getEnd());
+
+		mv.addObject("bannerlist", bannerlist);
+		mv.addObject("paging", paging);
+		return mv;
+	}
+
+	// 배너 등록 페이지 호출
 	@RequestMapping("admin_intg_banner_reg.do")
 	public ModelAndView admIntgBannerWrite() {
 		return new ModelAndView("admin/integrate/adm_intg_banner_regist");
+	}
+
+	// 배너 등록
+	@RequestMapping("admin_intg_banner_ins.do")
+	public ModelAndView admIntgBannerInsert(BannerVO bvo, HttpSession session) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
+		try {
+			String path = session.getServletContext().getRealPath("/resources/upload");
+			MultipartFile bvo_img = bvo.getBnr_param();
+
+			if (bvo_img.isEmpty()) {
+				bvo.setBnr_img("");
+			} else {
+				String reName1 = fileReName.exec(path, bvo_img.getOriginalFilename());
+				bvo.setBnr_img(reName1);
+			}
+			mv.addObject("cPage", "1");
+			if (adminService.bannerInsert(bvo) > 0) {
+				bvo_img.transferTo(new File(path + "/" + bvo.getBnr_img()));
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return mv;
+	}
+
+	// 배너 수정 페이지 호출
+	@RequestMapping("admin_intg_banner_up.do")
+	public ModelAndView admIntgBannerUp(@RequestParam("bnr_idx") int bnr_idx) {
+		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_banner_update");
+		BannerVO bvo = adminService.bannerOneList(bnr_idx);
+		mv.addObject("bvo", bvo);
+		return mv;
+	}
+
+	// 배너 수정
+	@RequestMapping("admin_intg_banner_up_ok.do")
+	public ModelAndView admIntgBannerUpOk(BannerVO bvo, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
+		try {
+			String path = request.getSession().getServletContext().getRealPath("/resources/upload");
+
+			MultipartFile bvo_img = bvo.getBnr_param();
+			String old_f_name = request.getParameter("old_f_name");
+			String ori_filename = bvo_img.getOriginalFilename();
+
+			if (ori_filename.equals("") || ori_filename == null) {
+				bvo.setBnr_img(old_f_name);
+			} else {
+				String str = fileReName.exec(path, bvo.getBnr_param().getOriginalFilename());
+				bvo.setBnr_img(str);
+			}
+
+			if (adminService.bannerUpdate(bvo) > 0) {
+				bvo_img.transferTo(new File(path + "/" + bvo.getBnr_img()));
+			}
+			mv.addObject(request.getParameter("bnr_idx"));
+			mv.addObject(request.getParameter("cPage"));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return mv;
+	}
+
+	// 등록된 배너 삭제
+	@RequestMapping("admin_intg_banner_del.do")
+	public ModelAndView admIntgBannerDelete(@RequestParam("bnr_idx") int bnr_idx) {
+		ModelAndView mv = new ModelAndView("redirect:admin_intg_banner.do");
+		int result = adminService.bannerDelete(bnr_idx);
+		mv.addObject(result);
+		return mv;
 	}
 
 	@RequestMapping("admin_intg_inquire.do")
@@ -206,6 +640,7 @@ public class AdminController {
 		return new ModelAndView("admin/integrate/adm_intg_report");
 	}
 
+	// 약관 리스트 페이지
 	@RequestMapping("admin_intg_terms.do")
 	public ModelAndView admIntgTerms() {
 		ModelAndView mv = new ModelAndView("admin/integrate/adm_intg_terms");
@@ -214,11 +649,13 @@ public class AdminController {
 		return mv;
 	}
 
+	// 약관 등록 페이지 호출
 	@RequestMapping("admin_intg_terms_reg.do")
 	public ModelAndView admIntgTermsRegist() {
 		return new ModelAndView("admin/integrate/adm_intg_terms_regist");
 	}
 
+	// 약관 등록
 	@RequestMapping("admin_intg_terms_ins.do")
 	public ModelAndView admIntgTermsInsert(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("redirect:admin_intg_terms.do");
@@ -229,6 +666,7 @@ public class AdminController {
 		return mv;
 	}
 
+	// 약관 삭제
 	@RequestMapping(value = "/admin_delete_terms.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String admIntgTermsDelete(@RequestParam("termsName") String termsName) {
@@ -241,16 +679,12 @@ public class AdminController {
 		return String.valueOf(result);
 	}
 
+	// 약관 수정
 	@RequestMapping(value = "/admin_update_terms.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String admIntgTermsUpdate(@RequestParam("termsName") String termsName,
 			@RequestParam("termsInfo") String termsInfo) {
-		int result = 0;
-		try {
-			result = adminService.termsUpdate(termsName, termsInfo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		int result = adminService.termsUpdate(termsName, termsInfo);
 		return String.valueOf(result);
 	}
 
@@ -276,17 +710,20 @@ public class AdminController {
 	public ModelAndView admMktDlvr() {
 		return new ModelAndView("admin/market/adm_mkt_delivery");
 	}
-	//관리자 - 마켓 재고
+
+	// 관리자 - 마켓 재고
 	@RequestMapping("admin_mkt_inven.do")
 	public ModelAndView admMktInven() {
 		return new ModelAndView("admin/market/adm_mkt_inven");
 	}
-	//관리자 - 마켓 재고 수정
+
+	// 관리자 - 마켓 재고 수정
 	@RequestMapping("adm_mkt_inven_up.do")
 	public ModelAndView admMktInvenUpdate() {
 		return new ModelAndView("admin/market/adm_mkt_inven_update");
 	}
-	//관리자 - 마켓 재고 등록
+
+	// 관리자 - 마켓 재고 등록
 	@RequestMapping("adm_mkt_inven_insert.do")
 	public ModelAndView admMktInvenInsert() {
 		return new ModelAndView("admin/market/adm_mkt_inven_insert");
@@ -498,8 +935,6 @@ public class AdminController {
 		return mv;
 	}
 	
-	// 관리자 - 상품정보 업데이트
-	//@RequestMapping(value = "adm_pdt_update_ok.do" , method = RequestMethod.POST)
 	// 관리자 - 마켓 상품리뷰
 	@RequestMapping("admin_mkt_review.do")
 	public ModelAndView admMktReview() {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,6 +107,9 @@ table td:first-child {
 	width: 10%;
 }
 
+td:nth-child(2) {
+	width: 100px; /* 이미지 크기에 맞게 조절 */
+}
 /* tbody tr 마우스 오버시 배경색 변경 */
 tbody tr:hover {
 	background-color: #f5f5f5;
@@ -365,13 +369,30 @@ div.modalContent button.modal_cancel {
 	cursor: pointer;
 }
 
-a{
+a {
 	text-decoration: none;
 	color: black;
+}
+
+#bannerimg {
+	max-width: 100%;
+	height: auto;
 }
 </style>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+		function del_go(f) {
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="admin_intg_announce_del.do?notice_idx="+f;
+			}			
+		}
+	
+		function up_go(k) {
+			location.href="admin_intg_announce_up.do?notice_idx="+k;
+		}
+	</script>
 </head>
 <body>
 	<main>
@@ -382,22 +403,22 @@ a{
 				id="page_sKate">공지 관리</span>
 			<div class="border">
 				<div class="announce">
-					<form action="">
+					<form action="adm_intg_announce_search.do" method="get">
 						<div class="option_ann">
 							검색어&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
-								class="selectbox">
-								<option value="author">작성자</option>
+								class="selectbox" name="search_option">
+								<option value="" disabled selected hidden>검색어 선택</option>
 								<option value="title">제목</option>
 								<option value="content">제목 + 내용</option>
 							</select><input type="text" class="search_ann" id="search_slot"
-								placeholder="검색어 입력">
+								name="search_ann" placeholder="검색어 입력">
 						</div>
 						<div class="option_ann">
 							카테고리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
-								class="selectbox">
+								class="selectbox" name="category_option">
 								<option value="" disabled selected hidden>카테고리 선택</option>
-								<option value="announce_ann">공지사항</option>
-								<option value="event_ann">이벤트</option>
+								<option value="announce">공지사항</option>
+								<option value="event">이벤트</option>
 							</select>
 						</div>
 						<div class="option_ann">
@@ -494,14 +515,16 @@ a{
 									});
 						</script>
 						<div id="search_ann_btn">
-							<button type="button" id="select_ann">조회</button>
-							<button type="button" id="init_ann">검색 초기화</button>
+							<input type="hidden" value="${noticelist}" name="noticelist" />
+							<button type="submit" id="select_ann">조회</button>
+							<button type="submit" id="init_ann">검색 초기화</button>
 						</div>
 					</form>
 					<table class="cols">
 						<thead>
 							<tr>
 								<th></th>
+								<th>공지 이미지</th>
 								<th>공지 영역</th>
 								<th>공지 작성일</th>
 								<th>공지 제목</th>
@@ -510,21 +533,75 @@ a{
 								<th>상태</th>
 								<th>우선 순위</th>
 								<th>공개 여부</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>마켓</td>
-								<td>2023.03.28</td>
-								<td>공지입니다.</td>
-								<td><a href="admin_intg_announce_up.do">admin14</a></td>
-								<td>523</td>
-								<td>이벤트</td>
-								<td>3</td>
-								<td>공개</td>
-							</tr>
+							<c:choose>
+								<c:when test="${empty noticelist}">
+									<tr>
+										<td colspan="11"><h2>등록된 게시물 정보가 없습니다.</h2></td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${noticelist}" var="k" varStatus="c">
+										<tr>
+											<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + c.index)}</td>
+											<td><img src="resources/upload/${k.notice_img}"
+												id="bannerimg"></td>
+											<td>${k.notice_div}</td>
+											<td>${k.notice_date}</td>
+											<td><a
+												href="admin_intg_announce_detail.do?notice_idx=${k.notice_idx}">${k.notice_title}</a></td>
+											<td>${k.adm_idx}</td>
+											<td>${k.notice_hit}</td>
+											<td>${k.notice_state}</td>
+											<td>${k.notice_priorty}</td>
+											<td><c:choose>
+													<c:when test="${k.notice_visible eq '1'}">공개</c:when>
+													<c:otherwise>비공개</c:otherwise>
+												</c:choose></td>
+											<td><button id="up_banner"
+													onclick="up_go(${k.notice_idx})">수정</button>
+												<button id="del_banner" onclick="del_go(${k.notice_idx})">삭제</button></td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="11">
+									<ol class="paging">
+										<%-- 이전 --%>
+										<c:choose>
+											<c:when test="${paging.beginBlock > paging.pagePerBlock }">
+												<a
+													href="admin_intg_announce.do?cPage=${paging.beginBlock-paging.pagePerBlock}">이전으로</a>
+											</c:when>
+										</c:choose>
+
+										<!-- 블록안에 들어간 페이지번호들 -->
+										<c:forEach begin="${paging.beginBlock}"
+											end="${paging.endBlock}" step="1" var="k">
+											<%-- 현재 페이지는 링크X, 나머지는 해당 페이지로 링크 처리 --%>
+											<c:if test="${k==paging.nowPage}">${k}</c:if>
+											<c:if test="${k!=paging.nowPage}">
+												<a href="admin_intg_announce.do?cPage=${k}">${k}</a>
+											</c:if>
+										</c:forEach>
+
+										<!-- 다음 -->
+										<c:choose>
+											<c:when test="${paging.endBlock < paging.totalpage }">
+												<li><a
+													href="admin_intg_announce.do?cPage=${paging.beginBlock+paging.pagePerBlock}">다음으로</a></li>
+											</c:when>
+										</c:choose>
+									</ol>
+								</td>
+							</tr>
+						</tfoot>
 					</table>
 				</div>
 				<button type="button" id="regist_btn"

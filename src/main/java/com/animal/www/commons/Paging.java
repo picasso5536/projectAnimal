@@ -4,19 +4,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Paging {
-	private int nowPage = 1; // ÇöÀç ÆäÀÌÁö
-	private int nowBlock = 1; // ÇöÀç ºí·Ï
-	private int totalRecord = 0; // ÀüÃ¼ °Ô½Ã¹°ÀÇ ¼ö
-	private int totalpage = 0; // ÀüÃ¼ ÆäÀÌÁöÀÇ ¼ö
-	private int totalBlock = 0; // ÀüÃ¼ ºí·ÏÀÇ ¼ö
-	private int numPerPage = 10; // ÇÑ ÆäÀÌÁöÀÇ Á¸ÀçÇÏ´Â °Ô½Ã¹°ÀÇ ¼ö
-	private int pagePerBlock = 3; // ÇÑ ºí·Ï¾È¿¡ Á¸ÀçÇÏ´Â ÆäÀÌÁöÀÇ ¼ö
+	private int nowPage = 1; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int nowBlock = 1; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	private int totalRecord = 0; // ï¿½ï¿½Ã¼ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private int totalpage = 0; // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private int totalBlock = 0; // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private int numPerPage = 3; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private int pagePerBlock = 3; // ï¿½ï¿½ ï¿½ï¿½Ï¾È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	
-	// »ç¿ëµÇ´Â º¯¼ö
-	private int begin = 0; // ½ÃÀÛ ¹øÈ£
-	private int end = 0; // ³¡ ¹øÈ£
-	private int beginBlock = 0; // ½ÃÀÛ ºí·Ï
-	private int endBlock = 0; // ³¡ ºí·Ï
+	// ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private int begin = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
+	private int end = 0; // ï¿½ï¿½ ï¿½ï¿½È£
+	private int beginBlock = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	private int endBlock = 0; // ï¿½ï¿½ ï¿½ï¿½ï¿½
 	
 	public int getNowPage() {
 		return nowPage;

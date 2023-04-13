@@ -8,12 +8,15 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.commons.vo.ParcelVO;
 import com.animal.www.market.model.vo.ProductVO;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.CorporationVO;
+import com.animal.www.commons.vo.MemberVO;
+import com.animal.www.commons.vo.NotificationVO;
 
 @Repository
 public class AdminDAO {
@@ -24,14 +27,17 @@ public class AdminDAO {
 		this.sqlSessionTemplate = sessionTemplate;
 	}
 
+	// �빟愿� 由ъ뒪�듃
 	public List<TermsVO> termsList() {
-		return sqlSessionTemplate.selectList("admin.termslist");
+		return sqlSessionTemplate.selectList("admin.termsList");
 	}
 
+	// �꽑�깮 �빟愿� �궘�젣
 	public int termsDelete(String termsName) {
 		return sqlSessionTemplate.delete("admin.termsDelete", termsName);
 	}
 
+	// �꽑�깮 �빟愿� �닔�젙
 	public int termsUpdate(String termsName, String termsInfo) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("terms_name", termsName);
@@ -39,6 +45,7 @@ public class AdminDAO {
 		return sqlSessionTemplate.delete("admin.termsUpdate", map);
 	}
 
+	// �빟愿� �벑濡�
 	public int termsInsert(String termsName, String termsInfo) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("terms_name", termsName);
@@ -90,13 +97,44 @@ public class AdminDAO {
 		return sqlSessionTemplate.selectOne("admin.productInfo", pdt_idx);
 	}
 
-	public int bannerInsert(BannerVO bvo) {
-		System.out.println(bvo.getBnr_div());
-		System.out.println(bvo.getBnr_state());
-		System.out.println(bvo.getBnr_img());
-		System.out.println(bvo.getBnr_order());
+	// 諛곕꼫 由ъ뒪�듃 媛쒖닔
+	public int getbannerCount() {
+		return sqlSessionTemplate.selectOne("admin.bannerCount");
+	}
+
+	// 諛곕꼫 由ъ뒪�듃
+	public List<BannerVO> bannerList(int begin, int end) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", begin);
+		map.put("end", end);
 		try {
-			return sqlSessionTemplate.insert("admin.bannerInsert", bvo);
+			return sqlSessionTemplate.selectList("admin.bannerList", map);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+	// 諛곕꼫 �벑濡�
+	public int bannerInsert(BannerVO bvo) {
+		return sqlSessionTemplate.insert("admin.bannerInsert", bvo);
+	}
+
+	// �꽑�깮 諛곕꼫 �궘�젣
+	public int bannerDelete(int bnr_idx) {
+		return sqlSessionTemplate.delete("admin.bannerDelete", bnr_idx);
+	}
+
+	// �빐�떦 諛곕꼫 �긽�꽭�젙蹂�
+	public BannerVO bannerOneList(int bnr_idx) {
+		return sqlSessionTemplate.selectOne("admin.bannerOneList", bnr_idx);
+	}
+
+	// �빐�떦 諛곕꼫 �닔�젙
+	public int bannerUpdate(BannerVO bvo) {
+		try {
+			return sqlSessionTemplate.update("admin.bannerUpdate", bvo);
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -104,4 +142,122 @@ public class AdminDAO {
 		return 0;
 	}
 
+	public int getNoticeCount() {
+		return sqlSessionTemplate.selectOne("admin.noticeCount");
+	}
+
+	public List<NotificationVO> noticeList(int begin, int end) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", begin);
+		map.put("end", end);
+		return sqlSessionTemplate.selectList("admin.noticeList", map);
+	}
+
+	public int noticeInsert(NotificationVO nvo) {
+		try {
+			return sqlSessionTemplate.insert("admin.noticeInsert", nvo);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	public int noticeUpdate(NotificationVO nvo) {
+		try {
+			return sqlSessionTemplate.update("admin.noticeUpdate", nvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	public int noticeDelete(int notice_idx) {
+		return sqlSessionTemplate.delete("admin.noticeDelete", notice_idx);
+	}
+
+	public NotificationVO noticeOneList(int notice_idx) {
+		return sqlSessionTemplate.selectOne("admin.noticeOneList", notice_idx);
+	}
+
+	public int getMbrCount() {
+		return sqlSessionTemplate.selectOne("admin.mbrCount");
+	}
+
+	public List<MemberVO> getMbrByIdx(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		System.out.println(txt);
+		return sqlSessionTemplate.selectOne("admin.getMbrByIdx", map);
+	}
+
+	public List<MemberVO> getMbrByName(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getMbrByName", map);
+	}
+
+	public List<MemberVO> getMbrById(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getMbrById", map);
+	}
+
+	public List<MemberVO> getMbrByWithdraw(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getMbrByWithdraw", map);
+	}
+
+	public MemberVO memberOneList(String mbr_nickname) {
+		return sqlSessionTemplate.selectOne("admin.memberOneList", mbr_nickname);
+	}
+
+	public int memberUpdate(MemberVO mvo) {
+		return sqlSessionTemplate.update("admin.memberUpdate", mvo);
+	}
+
+	public List<AdminVO> getAdmById(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getAdmById", map);
+	}
+	
+	public List<AdminVO> getAdmByName(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getAdmByName", map);
+	}
+	
+	public List<AdminVO> getAdmByIdx(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getAdmByIdx", map);
+	}
+	
+	public AdminVO adminOneList(String adm_idx) {
+		return sqlSessionTemplate.selectOne("admin.adminOneList", adm_idx);
+	}
+	
+	public int getIdDupCheck(String adm_id) {
+		return sqlSessionTemplate.selectOne("admin.getIdDupCheck", adm_id);
+	}
+
+	public int admInsert(AdminVO avo) {
+		return sqlSessionTemplate.insert("admin.admInsert", avo);
+	}
 }

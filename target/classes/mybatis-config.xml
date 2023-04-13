@@ -19,12 +19,12 @@
 			<typeAlias alias="pclvo" type="com.animal.www.commons.vo.ParcelVO"/>
 			<typeAlias alias="pdtvo" type="com.animal.www.market.model.vo.ProductVO"/>
 			
-		<!-- 김석중 -->
-			<!-- <typeAlias alias="" type="com.animal.www."/> -->
-			
 		<!-- 김회철 -->
         	<typeAlias alias="tvo" type="com.animal.www.admin.model.vo.TermsVO"/>
         	<typeAlias alias="bvo" type="com.animal.www.commons.vo.BannerVO"/>
+        	<typeAlias alias="nvo" type="com.animal.www.commons.vo.NotificationVO"/>
+        	<typeAlias alias="mvo" type="com.animal.www.commons.vo.MemberVO"/>
+        	<typeAlias alias="avo" type="com.animal.www.admin.model.vo.AdminVO"/>
     </typeAliases>
 	<mappers>
 		<mapper resource="mappers/market-mapper.xml" />
