@@ -129,6 +129,23 @@ main {
 	padding-top: 30px;
 	overflow: overlay;
 }
+	.search_corp {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	margin: 10px;
+	height: auto;
+	min-width: 1000px;
+	min-height: 550px;
+	max-height: 350px;
+	padding-top: 30px;
+	overflow: overlay;
+}
 
 
 .search_list {
@@ -136,7 +153,6 @@ main {
 	flex-direction: column;
 	position: relative;
 	align-items: center;
-	justify-content: space-between;
 	border: 1px solid #ccc;
 	border-radius: 20px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -150,12 +166,29 @@ main {
 	padding-top: 30px;
 	overflow: overlay;
 }
+	#rqcs {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
 
 #pdt_sec {
 	margin-right: 60px;
 	margin-left: 30px;
-	max-width: 1500px;
+	max-width: 1650px;
 	min-width: 1300px;
+}
+#list_sec {
+	margin-right: 60px;
+	margin-left: 30px;
+	max-width: 1100px;
+	min-width: 600px;
+}
+
+#list_sec1 {
+	margin: 10px;
+	max-width: 1100px;
+	min-width: 600px;
 }
 
 
@@ -177,6 +210,35 @@ td {
 	    border:1px solid black;
 	    border-collapse:collapse;
 	    font-size:14px;
+	}
+	#pdtlist_table {
+	    min-width: 1000px;
+	    margin:30px auto;
+	    border:1px solid black;
+	    border-collapse:collapse;
+	    font-size:14px;
+	    
+	}
+	#pdtlist_table td {
+		text-align: center;
+	    border:1px solid black;
+	    padding:5px;
+	    max-width: 70px;
+	    min-width: 70px;
+	}
+	#pdtlist_table th {
+	    max-width: 70px;
+	    min-width: 70px;
+	}
+	#list_corp_table {
+		min-width: 600px;
+		max-width: 600px;
+	    margin:30px auto;
+	    border: none;
+	    border-collapse:collapse;
+	    box-shadow: 2px 4px 7px -2px gray;
+	    font-size:14px;
+	    /*border-radius: 6px;*/
 	    
 	}
 	
@@ -223,6 +285,8 @@ td {
 	    padding:15px;
 	}
 	
+	
+	
 	table td {
 	    text-align:left;
 	    border:1px solid black;
@@ -236,6 +300,26 @@ td {
 	    padding:5px;
 	    max-width: 200px;
 	    min-width: 140px;
+	}
+	
+	#list_corp_table tbody tr:hover {
+		background-color: #f5f5f5;
+	}
+	
+	#list_corp_table td {
+		text-align: center;
+		border: none;
+		border-bottom: 1px solid #ccc;	
+	    padding:5px;
+	    max-width: 400px;
+	    min-width: 160px;
+	}
+	#list_corp_table th {
+		text-align: center;
+		border: none;
+	    padding:5px;
+	    max-width: 400px;
+	    min-width: 160px;
 	}
 	
 	.title {
@@ -252,7 +336,7 @@ td {
 	 	margin: 9px;
 	 }
 	 
-	 form input[type=button] {
+	 form input[type=button], form input[type=reset], form input[type=submit], #search_corp_idx, #search_pcl_idx {
 		height: 30px;
 		width: 90px;
 		border: 1px solid #666;
@@ -261,18 +345,35 @@ td {
 		font-size: 14px;
 		font-weight: 500;
 		box-shadow: 2px 4px 7px -2px gray;
-	}
-	
-	form input[type=button] {
 		background-color: #9fc4db;
 		color: white;
 	}
 	
 	
+	#search_pcl_idx:hover {
+		background-color: #68a3c6;
+		color: white;
+	}
 	form input[type=button]:hover {
 		background-color: #68a3c6;
 		color: white;
 	}
+	form input[type=submit]:hover {
+		background-color: #68a3c6;
+		color: white;
+	}
+	
+	form input[type=reset]:hover {
+		background-color: #68a3c6;
+		color: white;
+	}
+	
+		#search_corp_idx:hover {
+		background-color: #68a3c6;
+		color: white;
+	}
+	
+	
 	
 	thead th {
 		background-color: #8db6d4; /* 헤더 배경색 */
@@ -283,7 +384,7 @@ td {
 }
 	
 	
-	 tr .del_btn,  tr .update_btn,  tr .more_btn {
+	 tr .del_btn,  tr .update_btn,  tr .more_btn, tr .btns {
 	width: 60px;
 	height: 30px;
 	border: 1px solid #fff;
@@ -296,6 +397,9 @@ td {
 	cursor: pointer;
 }
 
+tr .btns:hover {
+		background-color: #679ec7;
+}
 tr .del_btn:hover {
 		background-color: #679ec7;
 }

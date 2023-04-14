@@ -246,4 +246,77 @@
 		ADM_MGR, ADM_STATE) VALUES(ADM_IDX_SEQ.NEXTVAL, #{adm_name},
 		#{adm_id}, #{adm_pw}, #{adm_email}, sysdate, null, null, #{adm_mgr}, 1)
 	</insert>
+	
+	<!-- 관리자 mkt mapper -->
+	
+	<!-- 관리자 상품 조건검색 -->
+	<select id="select_pdt_searchlist" resultType="pdtvo" parameterType="Map">
+		SELECT p.*, c.corp_name, k3.kate_name as kate_name3, k2.kate_name as kate_name2, k1.kate_name as kate_name1
+		FROM PRODUCT p
+		JOIN CORPORATION c ON p.corp_idx = c.corp_idx
+		<!-- 계층형 구조를 모두 select하기 위해 KATEGORIE테이블을 각각 다른 이름으로 3번 조인 -->
+		LEFT JOIN KATEGORIE k1 ON p.kate_idx = k1.kate_idx
+		LEFT JOIN KATEGORIE k2 ON k1.kate_kind = k2.kate_idx
+		LEFT JOIN KATEGORIE k3 ON k2.kate_kind = k3.kate_idx
+		WHERE 1=1
+		<if test="kate_idx != null and kate_idx != ''">
+		<!-- pdt의kate_idx 가 파라미터값인 kate_idx이거나 카테고리 테이블의 kate_kind가 kate_idx인 경우도 포함 같은 파라미터 값으로 3번 검색 -->
+			AND (p.kate_idx = #{kate_idx} OR k1.kate_idx = #{kate_idx} OR k2.kate_idx = #{kate_idx} OR k3.kate_idx = #{kate_idx})
+		</if>
+		<choose>
+			<!-- search_type이 pdt_name 이고 keyword가 notnull일 때 PRODUCT테이블의 pdt_name중 keyword 를 포함하는 결과를 검색 -->
+			<when test="search_type == 'pdt_name' and keyword != null and keyword != ''">
+				AND p.pdt_name LIKE '%' || #{keyword} || '%'
+			</when>
+			<!-- search_type이 corp_name 이고 keyword가 notnull일 때 CORPORATION테이블의 corp_name중 keyword 를 포함하는 결과를 검색-->
+			<when test="search_type == 'corp_name' and keyword != null and keyword != ''">
+				AND c.corp_name LIKE '%' || #{keyword} || '%'
+			</when>
+		</choose>
+		<if test="pdt_inven != null and pdt_inven != ''">
+			<choose>
+			   <when test="pdt_inven == 1000 ">
+			   	   AND p.pdt_inven <![CDATA[>=]]> 1000
+			   </when>
+			   <when test="pdt_inven == 999 ">
+			   	   AND p.pdt_inven <![CDATA[<]]> 1000
+			   </when>
+			   <otherwise>
+			   	   AND p.pdt_inven <![CDATA[=]]> 0
+			   </otherwise>
+			</choose>
+		</if>
+		<if test="pdt_state != null and pdt_state != ''">
+       	 AND p.pdt_state = #{pdt_state}
+    	</if>
+	</select>
+	
+	<select id="topkategorylist" resultType="katevo">
+		SELECT * FROM KATEGORIE START WITH KATE_KIND IS NULL CONNECT BY KATE_KIND = KATE_IDX
+	</select>
+	
+	<select id="kategorylist" resultType="katevo" parameterType="int">
+		SELECT * FROM KATEGORIE START WITH KATE_KIND = #{kate_idx} CONNECT BY KATE_KIND = KATE_IDX
+	</select>
+	<select id="corplist" resultType="corpvo">
+		SELECT * FROM CORPORATION 
+	</select>
+	<select id="pcllist" resultType="pclvo">
+		SELECT * FROM PARCEL
+	</select>
+	
+	<!-- pdt_state = 0->진열/ 1->진열안함 -->
+	<insert id="pdtinsert" parameterType="pdtvo">
+		INSERT INTO PRODUCT (PDT_IDX, PDT_PRICE, PDT_INFO, PDT_IMG, PDT_NAME, PDT_LCNT, PDT_ODCNT, PDT_SALEPRICE, PDT_STAR, KATE_IDX, PCL_IDX, CORP_IDX, PDT_STATE, PDT_INVEN)
+		 values (pdt_idx_seq.NEXTVAL, #{pdt_price}, #{pdt_info}, #{pdt_img}, #{pdt_name}, 0, 0, #{pdt_saleprice}, 0, #{kate_idx}, #{pcl_idx}, #{corp_idx}, #{pdt_state}, #{pdt_inven})
+	</insert>
+	<!-- 상품수정시 사용할 카테고리 정보 -->
+	<select id="kateinfo" resultType="katevo" parameterType="String">
+		SELECT * FROM KATEGORIE WHERE KATE_IDX = #{kate_idx}
+	</select>
+	
+	<select id="productInfo" resultType="pdtvo"  parameterType="String">
+		SELECT * FROM PRODUCT WHERE PDT_IDX = #{pdt_idx}
+	</select>
+	
 </mapper>

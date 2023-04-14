@@ -14,7 +14,10 @@
 			<!-- <typeAlias alias="" type="com.animal.www."/> -->
 			
 		<!-- 문현지 -->
-			<!-- <typeAlias alias="" type="com.animal.www."/> -->
+			<typeAlias alias="katevo" type="com.animal.www.commons.vo.KategorieVO"/>
+			<typeAlias alias="corpvo" type="com.animal.www.commons.vo.CorporationVO"/>
+			<typeAlias alias="pclvo" type="com.animal.www.commons.vo.ParcelVO"/>
+			<typeAlias alias="pdtvo" type="com.animal.www.market.model.vo.ProductVO"/>
 			
 		<!-- 김회철 -->
         	<typeAlias alias="tvo" type="com.animal.www.admin.model.vo.TermsVO"/>

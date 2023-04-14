@@ -4,4 +4,63 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="market">
 	<!-- 마켓 mapper -->
+	<select id="topkatelist" resultType="katevo">
+		SELECT * FROM KATEGORIE START WITH KATE_KIND IS NULL CONNECT BY KATE_KIND = KATE_IDX
+	</select>
+	<!-- best상품 상품 판매 많은 순 5개 select -->
+	<select id="bestpdtlist" resultType="pdtvo">
+		SELECT *
+		FROM (
+		SELECT p.*,
+        		 DENSE_RANK() OVER(ORDER BY p.PDT_ODCNT DESC) AS rnk
+ 		FROM PRODUCT p
+		) 
+		WHERE rnk <![CDATA[<=]]> 5
+	</select>
+	
+	<!-- 상품 하나상세정보  -->
+	<select id="market.pdtonelist" resultType="pdtvo" parameterType="String">
+		SELECT * FROM PRODUCT WHERE PDT_IDX = #{pdt_idx}
+	</select>
+	
+	<!-- 소분류의 idx 값을 가지고 중분류, 대분류의 정보를 가져온다 -->
+	<select id="getkategories" resultType="katevo" parameterType="String">
+		SELECT * 
+		 FROM KATEGORIE 
+		 WHERE kate_idx = #{kate_idx} <!-- level 3 데이터의 kate_idx --> 
+		 UNION ALL 
+		 SELECT mid.* 
+		 FROM KATEGORIE mid  <!-- 중분류 -->
+		 JOIN KATEGORIE bott 	<!-- 소분류 -->
+	 	 ON mid.kate_idx = bott.kate_kind 	<!-- level 3 데이터의 상위 데이터 (level 2) -->
+		 WHERE bott.kate_idx = #{kate_idx}
+	 	 UNION ALL
+	 	 SELECT top.*
+	 	 FROM KATEGORIE top
+		 JOIN KATEGORIE mid ON top.kate_idx = mid.kate_kind
+		 JOIN KATEGORIE bott1 ON mid.kate_idx = bott1.kate_kind  <!-- level 2 데이터의 상위 데이터 (level 1) -->
+		 WHERE top.kate_idx = mid.kate_kind AND bott1.kate_idx = #{kate_idx}
+	</select>
+	
+	<!-- 회사정보 idx검색 -->
+	<select id="getcorpinfo" resultType="corpvo" parameterType="String">
+		SELECT * FROM CORPORATION WHERE CORP_IDX = #{corp_idx}
+	</select>
+	
+	<!-- 카테고리 정보 idx검색 -->
+	<select id="kateinfo" resultType="katevo">
+		SELECT * FROM KATEGORIE WHERE KATE_IDX = #{kate_idx}
+	</select>
+	<!-- idx로 상위 카테고리 kind 검색 -->
+	<select id="getkatelist" resultType="katevo" parameterType="String">
+		SELECT * FROM KATEGORIE START WITH KATE_KIND = #{kate_idx} CONNECT BY KATE_KIND = KATE_IDX
+	</select>
+	<!-- 아래 노드가 없는 하위 카테고리만 select -->
+	<select id="getbottkatelistall" resultType="katevo">
+		SELECT kate_idx, kate_name, kate_kind
+		FROM KATEGORIE
+		WHERE CONNECT_BY_ISLEAF = 1
+		START WITH kate_kind IS NULL
+		CONNECT BY NOCYCLE PRIOR kate_idx = kate_kind
+	</select>
 </mapper>

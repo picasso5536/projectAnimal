@@ -1,6 +1,6 @@
 package com.animal.www.admin.model.vo;
 
-// °ü¸®ÀÚ VO
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ VO
 public class AdminVO {
 	private String adm_idx, adm_name, adm_id, adm_pw, adm_email, adm_join, adm_access, adm_close, adm_mgr, adm_state;
 

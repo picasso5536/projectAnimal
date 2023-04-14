@@ -223,25 +223,7 @@
 		color: #666;
 	}
 	
-	/* 텍스트 스타일 */
 	
-/* 	.best_div {
-	display: inline-block;
-		height: 60px;
-		width: auto;
-		
-	}
-	
-	.title {
-		display: inline-block;
-		border: 0px solid #666;
-		margin: 30px 30px;
-		padding: 10px 20px;
-		font-size: 32px;
-		font-weight: 800;
-		
-	}
- */
  	/* 컨텐츠 컨테이너 */
  	#contents_con {
  		margin: auto;
@@ -260,18 +242,7 @@
 	    left: 130px;
 	}
  	
- 	.serv_list, .best_container {
- 		display: inline-block;
- 		margin: 40px;
- 		min-width: 1505px;
- 		margin-top: 150px;
- 	
- 	}
- 	
- 	.best_container {
- 		margin: auto;
- 	}
- 	
+ 
  	.serv_list .best_container .title h1 {
  		display: inline-block;
  		font-size: 32px;
@@ -280,13 +251,11 @@
  	
  	.serv_list .best_container .pdt_list {
  		border: 1px solid #eee;
- 		border-radius: 5px;
+ 		border-radius: 20px;
  		display: flex;
  		flex-wrap: wrap;
  		justify-content: space-between;
- 		/* min-width: 1750px; */ 
- 		min-width: 1500px;
- 		/* min-height:460px; */
+ 		min-width: 1755px;
  		height: auto;
  		overflow:hidden;
  		margin: auto;
@@ -300,8 +269,20 @@
  		padding: 30px;
  		margin-bottom: 40px;
  		margin: 20px;
- 		width: 300px;
+ 		width: 350px;
  		
+ 		
+ 	}
+ 	
+ 	.serv_list .best_container .pdt_list .card:hover {
+ 		border: 2px solid #eee;
+ 		background: #f8f8f8;
+ 	}
+ 	
+ 	.pdt_list{
+ 		border-radius: 30px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ 	
  	}
  	
  /* 	.serv_list .best_container .pdt_list .card {
@@ -342,11 +323,24 @@
 			color: #555;
 	   }
 	   
+	 .serv_list, .best_container {
+ 		display: inline-block;
+ 		margin: 40px;
+ 		min-width: 1505px;
+ 		margin-top: 150px;
+ 	
+ 	}
+ 	
+ 	.best_container {
+ 		margin: auto;
+ 	}
+ 	
+	   
 	   
 	   /* 리뷰 */
 	   
  	.serv_list, .rv_container {
- 		display: inline-block;
+ 		position: static;
  		margin: 40px;
  		min-width: 1505px;
  		margin-top: 150px;
@@ -369,9 +363,9 @@
  		display: flex;
  		flex-wrap: wrap;
  		justify-content: space-between;
- 		/* min-width: 1750px; */ 
- 		min-width: 1500px;
- 		/* min-height:460px; */
+ 		min-width: 1755px;
+ 		border-radius: 20px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
  		height: auto;
  		overflow:hidden;
  		margin: auto;
@@ -500,7 +494,7 @@
 		display: flex;
 	    flex-direction: column;
 	    align-items: flex-start;
-	    margin-left: 18px;
+	    padding: 0px 30px;
 	  }
 	   
 	   .card_text .profile_box .member_nickname {

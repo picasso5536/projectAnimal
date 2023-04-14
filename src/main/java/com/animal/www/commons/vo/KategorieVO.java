@@ -1,8 +1,16 @@
 package com.animal.www.commons.vo;
 
-// Ä«Å×°í¸® VO
+// ì¹´í…Œê³ ë¦¬ VO
 public class KategorieVO {
-	private String kate_idx, kate_name, kate_kind, kate_ref;
+	private String kate_idx, kate_name, kate_kind, kate_ref, level ;
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
 
 	public String getKate_idx() {
 		return kate_idx;

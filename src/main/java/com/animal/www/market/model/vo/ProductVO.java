@@ -2,12 +2,12 @@ package com.animal.www.market.model.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-// »óÇ° VO
+// ï¿½ï¿½Ç° VO
 public class ProductVO {
-	private String pdt_idx, pdt_comp_idx, pdt_comp_name, pdt_price, pdt_info, pdt_img;
-	private String pdt_name, pdt_lcnt, pdt_odcnt, pdt_saleprice, pdt_star, kate_idx;
-	private MultipartFile pdt_profile_param; // »óÇ° ´ëÇ¥ ÀÌ¹ÌÁö ¹è¿­(½ºÆ®¸²¿ë)
-	private MultipartFile[] pdt_info_param; // »óÇ° ´ëÇ¥ ÀÌ¹ÌÁö ¹è¿­(½ºÆ®¸²¿ë)
+	private String pdt_idx, corp_idx, corp_name, pdt_price, pdt_info, pdt_img, pdt_inven;
+	private String pdt_name, pdt_lcnt, pdt_odcnt, pdt_saleprice, pdt_cnt, pdt_star, kate_idx, pcl_idx, pdt_state;
+	private MultipartFile pdt_profile_param; // ï¿½ï¿½Ç° ï¿½ï¿½Ç¥ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½è¿­(ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½)
+	private MultipartFile[] pdt_info_param; // ï¿½ï¿½Ç° ï¿½ï¿½Ç¥ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½è¿­(ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½)
 	
 	
 	public String getPdt_idx() {
@@ -16,17 +16,41 @@ public class ProductVO {
 	public void setPdt_idx(String pdt_idx) {
 		this.pdt_idx = pdt_idx;
 	}
-	public String getPdt_comp_idx() {
-		return pdt_comp_idx;
+	public String getPdt_inven() {
+		return pdt_inven;
 	}
-	public void setPdt_comp_idx(String pdt_comp_idx) {
-		this.pdt_comp_idx = pdt_comp_idx;
+	public void setPdt_inven(String pdt_inven) {
+		this.pdt_inven = pdt_inven;
 	}
-	public String getPdt_comp_name() {
-		return pdt_comp_name;
+	public String getCorp_idx() {
+		return corp_idx;
 	}
-	public void setPdt_comp_name(String pdt_comp_name) {
-		this.pdt_comp_name = pdt_comp_name;
+	public void setCorp_idx(String corp_idx) {
+		this.corp_idx = corp_idx;
+	}
+	public String getCorp_name() {
+		return corp_name;
+	}
+	public void setCorp_name(String corp_name) {
+		this.corp_name = corp_name;
+	}
+	public String getPdt_cnt() {
+		return pdt_cnt;
+	}
+	public void setPdt_cnt(String pdt_cnt) {
+		this.pdt_cnt = pdt_cnt;
+	}
+	public String getPcl_idx() {
+		return pcl_idx;
+	}
+	public void setPcl_idx(String pcl_idx) {
+		this.pcl_idx = pcl_idx;
+	}
+	public String getPdt_state() {
+		return pdt_state;
+	}
+	public void setPdt_state(String pdt_state) {
+		this.pdt_state = pdt_state;
 	}
 	public String getPdt_price() {
 		return pdt_price;

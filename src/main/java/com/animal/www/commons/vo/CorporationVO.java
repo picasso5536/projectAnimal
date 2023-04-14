@@ -1,6 +1,7 @@
 package com.animal.www.commons.vo;
 
-// ¾÷Ã¼Á¤º¸ VO
+// ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ VO
+// ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ VO
 public class CorporationVO {
 	private String corp_idx, corp_name, corp_phone, corp_local, corp_addr, corp_info;
 	

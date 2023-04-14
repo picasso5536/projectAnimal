@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +9,108 @@
 <link rel="stylesheet" href="resources/css/admin_mkt_css/mkt_product_style.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-	function p_update() {
-		location.href='adm_up_pdt.do';
+	// 상품 등록버튼 이벤트
+	function p_insert_go() {
+		location.href="adm_add_pdt.do";
+	}
+	function p_update_go(f) {
+		f.action="adm_update_pdt.do";
+		f.submit();
+	}
+	// 상품 관리 로드 시 상품 상위 카테고리 정보 가져오기
+	$(document).ready(function() {
+		$.ajax({
+			url : "adm_pdt_top_selectboxlist.do",
+			method : "post",
+			dataType: 'json',
+			async : true,
+			success : function(data) {
+				$(data).each(function(k,v) {
+									
+					var kate_idx = v["kate_idx"];
+					var kate_name = v["kate_name"];
+					var kate_kind = v["kate_kind"];
+					var kate_ref = v["kate_ref"];
+					$("#top_select").append("<option value='"+kate_idx+"' class='top_s'>"+kate_name+"</option>");
+				});
+			},
+			error : function() {
+				alert("top에러")
+			}
+		});
+		
+	
+	});
+	// 상위 카테고리 선택시 중, 소분류 카테고리 셀렉트 박스 만들기
+	function topBoxChange() {
+		var top_idx =$("#top_select").val();
+		console.log(top_idx);
+		if (top_idx != "none") {
+			$.ajax({
+				url : "adm_pdt_mid_selectboxlist.do",
+				type : "post",
+				dataType: 'json', //데이터 타입 안적으면 에러^^
+				data : {
+					top_idx:$("#top_select").val()
+					},
+				async : true,
+				success : function(data) {
+					console.log(data);
+					$("#mid_select").empty();
+					$("#bott_select").empty();
+					$("#mid_select").append("<option value=''>::중분류::</option>");
+					$("#bott_select").append("<option value=''>::소분류::</option>");
+					$(data).each(function(k,v) {
+						var m_kate_idx = v["m_kate_idx"];
+						var m_kate_name = v["m_kate_name"];
+						var m_kate_kind = v["m_kate_kind"];
+						var m_kate_ref = v["m_kate_ref"];
+						$("#mid_select").append("<option value='"+m_kate_idx+"' class='mid_s'>"+m_kate_name+"</option>");
+					});
+				},
+				error : function() {
+					alert("상위 카테고리를 선택해주세요")
+				}
+			});
+		}
+	}	
+	
+	function midBoxChange() {
+		var mid_idx = $("#mid_select").val();
+		console.log(mid_idx);
+		if (mid_idx != "none") {
+			
+		$.ajax({
+			url : "adm_pdt_bott_selectboxlist.do",
+			type : "post",
+			dataType : "json",
+			data : {
+				mid_idx:$("#mid_select").val()
+				},
+			async : true,
+			success : function(data) {
+				console.log(data);
+				$("#bott_select").empty();
+				$("#bott_select").append("<option value=''>::소분류::</option>");
+				$(data).each(function(k,v) {
+					var b_kate_idx = v["b_kate_idx"];
+					var b_kate_name = v["b_kate_name"];
+					var b_kate_kind = v["b_kate_kind"];
+					var b_kate_ref = v["b_kate_ref"];
+					$("#bott_select").append("<option value='"+b_kate_idx+"' name='kate_idx' class='bott_s'>"+b_kate_name+"</option>");
+				});
+			},
+			error : function() {
+				alert("상위 카테고리를 선택해주세요.")
+			}
+
+			});
+		}
+	}
+	
+	function adm_search_pdt(f) {
+		f.action="adm_mkt_pdt_search.do";
+		f.submit();
 	}
 </script>
 </head>
@@ -20,78 +121,55 @@
 		<span id="page_info">관리자</span> <span id="sep1">|</span> <span
 				id="page_mKate">상품 관리</span>
 			<div class="search_pdt">
-				<form id="search_form">
+				<form id="search_form" method="post">
 					<table>
 						<tbody>
 							<tr>
 								<th class="title">카테고리</th>
 								<td colspan="4">
-									<select name="top" >
-									    <option value="none">::선택하세요::</option>
-									    <option value="cat">고양이</option>
-									    <option value="dog">강아지</option>
+									<select id="top_select" name="top_idx" onchange="topBoxChange()">
+									    <option value="">::대분류::</option>
 									  </select>
-									  <select name="mid" >
-									    <option value="none">::선택하세요::</option>
-									    <option value="food">식품</option>
-									    <option value="snack">간식</option>
-									    <option value="toy">장난감</option>
-									    <option value="house">하우스</option>
-									    <option value="wear">의류</option>
+									  <select id="mid_select" name="mid_idx" onchange="midBoxChange()">
+									    <option value="">::중분류::</option>
 									  </select>
-									  <select name="bott" >
-									    <option value="none">::선택하세요::</option>
-									    <option value="cat">건식</option>
-									    <option value="dog">주식파우치</option>
-									    <option value="dog">생식</option>
-									    <option value="dog">분유/우유</option>
+									  <select id="bott_select" name="bott_idx">
+									    <option value="">::소분류::</option>
 									  </select>
 								</td>
 							<tr>
 								<th class="title">검색조건</th>
-								<td colspan="2">
-									<select name="" >
-									    <option value="cat">상품명</option>
-									    <option value="dog">공급사</option>
+								<td colspan="4">
+									<select name="search_type" >
+									    <option value="">::조건선택::</option>
+									    <option value="pdt_name">상품명</option>
+									    <option value="corp_name">공급사</option>
 									  </select>
-									  <input type="text" name="m_name" size="15">
-								</td>
-								<th class="title">쿠폰적용</th>
-								<td>
-									<select name="" >
-									    <option value="none">::선택::</option>
-									    <option value="coupon">쿠폰 적용</option>
-									    <option value="coupon_n">쿠폰 미적용</option>
-									  </select>
+									  <input type="text" name="keyword" size="25">
 								</td>
 							</tr>
 							<tr>
 								<th class="title">재고여부</th>
 								<td colspan="2">
-									<select name="" >
-									    <option value="none">::재고상태::</option>
-									    <option value="">????</option>
+									<select name="pdt_inven" >
+									    <option value="">::재고상태::</option>
+									    <option value="1000">여유</option>
+									    <option value="999">부족</option>
+									    <option value="0">품절</option>
 									  </select>
-									  <input type="text" name="m_name" size="7">&nbsp;개 이하
 								</td>
 								<th class="title">진열여부</th>
 								<td>
-									<select name="" >
-									    <option value="non">::선택::</option>
-									    <option value="show">진열중</option>
-									    <option value="hid">숨김</option>
+									<select name="pdt_state" >
+									    <option value="">::선택::</option>
+									    <option value="0">진열중</option>
+									    <option value="1">진열안함</option>
 									  </select>
 								</td>
 							</tr>
 							<tr>
-								<th class="title">등록업체</th>
-								<td colspan="4">
-									<select name="top" >
-									    <option value="none">::선택하세요::</option>
-									    <option value="cat">고양이</option>
-									    <option value="dog">강아지</option>
-									  </select>
-									  <input type="button" value="조회" id="search_btn">
+								<td colspan="5" style="text-align: center;">
+								  <input type="button" value="조회" id="search_btn" onclick="adm_search_pdt(this.form)">
 								</td>
 							</tr>
 
@@ -100,91 +178,61 @@
 				</form>
 			</div>
 			<div class="search_list">
-			<form>
-				<button type="button" id="add_pdt_btn" onclick="location.href='adm_add_pdt.do'">+ 상품등록</button>
-					<table id="list_table">
+				<div id="rqcs">
+					<button type="button" id="add_pdt_btn" onclick="p_insert_go()">+ 상품등록</button>
+				</div>
+					<table id="pdtlist_table">
 						<thead>
 							<tr>
-								<th class="chk_box">선택</th>
+								<th class="chk_box">번호</th>
 								<th>상품코드</th>
 								<th>상품이미지</th>
 								<th>상품이름</th>
-								<th>상품가격</th>
+								<th>상품원가</th>
+								<th>상품판매가</th>
+								<th>진열상태</th>
 								<th>재고</th>
-								<th>진열순서</th>
 								<th colspan="2">기능</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
-								<td>2342423</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>어쩌구</td>
-								<td>5,000 P</td>
-								<td>xx</td>
-								<td></td>
-								<td colspan="2">
-									<button type="button" class="update_btn" onclick="p_update()">수정</button>
-									<button class="del_btn" onclick="more_info()">삭제</button>
-								</td>
-							</tr>
-							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
-								<td>4533463</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>어쩌구</td>
-								<td>10,000 P</td>
-								<td>xx</td>
-								<td></td>
-								<td colspan="2">
-									<button type="button" class="update_btn" onclick="p_update()">수정</button>
-									<button class="del_btn" onclick="more_info()">삭제</button>
-								</td>
-							</tr>
-							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
-								<td>4645656</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>어쩌구</td>
-								<td>15,000P</td>
-								<td>xx</td>
-								<td></td>
-								<td colspan="2">
-									<button type="button" class="update_btn" onclick="p_update()">수정</button>
-									<button class="del_btn" onclick="more_info()">삭제</button>
-								</td>
-							</tr>
-							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
-								<td>3534534</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>어쩌구</td>
-								<td>30,000 P</td>
-								<td>xx</td>
-								<td></td>
-								<td colspan="2">
-									<button type="button" class="update_btn" onclick="p_update()">수정</button>
-									<button class="del_btn" onclick="more_info()">삭제</button>
-								</td>
-							</tr>
-							<tr>
-								<td class="chk_box"><input type="checkbox" name="check"></td>
-								<td>2349234</td>
-								<td><img src="resources/img/market/img_icon.png" style="width: 40px"></td>
-								<td>어쩌구</td>
-								<td>100,000 P</td>
-								<td>xx</td>
-								<td></td>
-								<td colspan="2">
-									<button type="button" class="update_btn" onclick="p_update()">수정</button>
-									<button class="del_btn" onclick="more_info()">삭제</button>
-								</td>
-							</tr>
+							<c:choose>
+								<c:when test="${empty searchpdtlist}">
+									<td colspan="9"><h3>정보가 존재하지 않습니다.</h3></td>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${searchpdtlist}" var="pdt" varStatus="vs">
+										<tr>
+											<td class="chk_box">${vs.count}</td>
+											<td>${pdt.pdt_idx}</td>
+											<td><img src="resources/img/upload/${pdt.pdt_img}" style="width: 70px"></td>
+											<td>${pdt.pdt_name}</td>
+											<td>${pdt.pdt_price}&nbsp;P</td>
+											<td>${pdt.pdt_saleprice}&nbsp;P</td>
+											<td>
+												<c:if test="${pdt.pdt_state == '0'}">
+													진열중
+												</c:if>
+												<c:if test="${pdt.pdt_state == '1'}">
+													숨김
+												</c:if>
+											</td>
+											<td>${pdt.pdt_inven}&nbsp;개</td>
+											<td colspan="2">
+												<form method="post">
+													<input type="hidden" name="pdt_idx" value="${pdt.pdt_idx}">
+													<input type="hidden" name="kate_idx" value="${pdt.kate_idx}">
+													<button type="button" class="update_btn" onclick="p_update_go(this.form)">수정</button>
+													<button type="button" class	="del_btn" onclick="p_delete_go()">삭제</button>											
+												</form>
+											</td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</tbody>
 					</table>
-				</form>
-			</div>
+				</div>
 		</section>
 	</main>
 </body>
