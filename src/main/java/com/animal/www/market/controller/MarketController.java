@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.animal.www.commons.vo.CorporationVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.market.model.service.MarketService;
 import com.animal.www.market.model.vo.ProductVO;
@@ -98,10 +99,54 @@ public class MarketController {
 	public ModelAndView marketProductList() {
 		return new ModelAndView("market/m_category");
 	}
-
+	//@RequestParam("pdt_idx") String pdt_idx
 	@RequestMapping("m_select_product.do")
-	public ModelAndView marketselectPDT() {
-		return new ModelAndView("market/m_product");
+	public ModelAndView marketselectPDT(@RequestParam("pdt_idx") String pdt_idx) {
+		ModelAndView mv = new ModelAndView("market/m_product");
+		System.out.println(pdt_idx);
+		ProductVO pdtvo = marketService.getProductOneInfo(pdt_idx);
+		
+		// 상세보기에 경로네비게이션을 표시해 주기 위해 가져온 pdt정보에서 kate_idx만 따로 저장한 뒤 저장한 값으로
+		// 소분류를 포함하는 중분류, 중분류를 포함하는 대분류의 값을 list로 저장한다
+		String kate_idx = pdtvo.getKate_idx();
+		
+		// 회사의 이름을 함께 출력하기 위해 상품 테이블의 corp_idx값을 저장
+		String corp_idx = pdtvo.getCorp_idx();
+		// 저장한 corp_idx값을 이용해 회사정보를 select한다.
+		CorporationVO corpvo = marketService.getCorpVO(corp_idx);
+		mv.addObject("corpvo", corpvo);
+		
+		
+		List<KategorieVO> katevo = marketService.getKategories(kate_idx);
+		// 받아온 값을 대, 중, 소분류로 나누어 화면에 출력하기 위해 각각 vo를 따로 생성한다
+		KategorieVO topvo;
+		KategorieVO midvo;
+		KategorieVO bottvo;
+		
+		// 반복문을 사용해 list에 들어가있는 vo값들을 kate_kind와 받아온 idx값으로 구분해 알맞은 변수에 집어넣고 addObject로 저장한다.
+		for (int i = 0; i < katevo.size(); i++) {
+			// 받아온 리스트중 kate_kind의 값이 null인 경우 대분류vo에 저장
+			if(katevo.get(i).getKate_kind() == null) {
+				topvo = katevo.get(i);
+				mv.addObject("topvo", topvo);
+				System.out.println(topvo.getKate_idx());
+			// 받아온 카테고리 리스트 중 kate_idx의 값이 상세정보의 kate_idx와 같은경우 소분류vo에 저장 
+			} else if (katevo.get(i).getKate_idx().equals(kate_idx)) {
+				System.out.println("1111111111");
+				bottvo = katevo.get(i);
+				mv.addObject("bottvo", bottvo);
+				System.out.println(bottvo.getKate_idx());
+			// 둘다 해당하지 않는 경우 중분류vo에 저장 
+			} else {
+				midvo = katevo.get(i);
+				mv.addObject("midvo", midvo);
+				System.out.println(midvo.getKate_idx());
+			}
+		}
+		
+		
+		mv.addObject("pdtvo", pdtvo);
+		return mv;
 	}
 
 	@RequestMapping("test.do")

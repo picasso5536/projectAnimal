@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.animal.www.commons.service.AllService;
+import com.animal.www.commons.vo.CorporationVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.market.model.dao.MarketDAO;
 import com.animal.www.market.model.vo.ProductVO;
@@ -29,6 +30,22 @@ public class MarketServiceImpl implements MarketService, AllService {
 	@Override
 	public List<ProductVO> getBestPdtList() {
 		return marketDAO.getBestPdtList();
+	}
+	
+	//상품상세정보 select
+	@Override
+	public ProductVO getProductOneInfo(String pdt_idx) {
+		return marketDAO.getProductOneInfo(pdt_idx);
+	}
+	// 소분류 카테고리idx를 이용해 중분류, 대분류의 정보 select
+	@Override
+	public List<KategorieVO> getKategories(String kate_idx) {
+		return marketDAO.getKategories(kate_idx);
+	}
+	// 회사정보 idx로 select
+	@Override
+	public CorporationVO getCorpVO(String corp_idx) {
+		return marketDAO.getCorpVO(corp_idx);
 	}
 	
 	// 중,하위 카테고리 리스트 idx로 검색

@@ -162,8 +162,12 @@ function pdt_update_ok(f) {
 								</td>
 							</tr>
 							<tr>
+								<th class="title">상품 고유번호</th>
+								<td colspan="2">
+									<input type="number" name="pdt_idx"  size="50"  value="${pdtvo.pdt_idx}" readonly required> 
+								</td>
 								<th class="title">등록업체 고유번호</th>
-								<td colspan="4">
+								<td colspan="2">
 									<input type="number" name="corp_idx" id="corp_idx_input" size="50"  value="${pdtvo.corp_idx}" readonly required> 
 									<button type="button" id="search_corp_idx" onclick="search_idx()">번호조회</button>
 								</td>
@@ -222,7 +226,7 @@ function pdt_update_ok(f) {
 							<tr>
 								<th class="title">이미지 확인</th>
 								<td colspan="5">
-									<img id="prj_thumbnail" onclick="image_restart()" style="width: 300px; height: 275px; border: 0px;">
+									<img id="prj_thumbnail" src="resources/img/upload/${pdtvo.pdt_img}" onclick="image_restart()" style="width: 300px; height: 275px; border: 0px;">
 								</td>
 							</tr>
 						</tbody>
@@ -246,6 +250,8 @@ function pdt_update_ok(f) {
 							<tr>
 								<td colspan="5" style="text-align: center; padding: 20px;">
 									<input type="button" value="상품수정" onclick="pdt_update_ok(this.form)" >
+									<input type="button" value="상품삭제" onclick="pdt_delete_ok()" >
+									<input type="hidden" name="pdt_idx" value="${pdtvo.pdt_idx}" >
 									<input type="button" value="목록" >
 								</td>
 							</tr>

@@ -18,6 +18,35 @@
 		WHERE rnk <![CDATA[<=]]> 5
 	</select>
 	
+	<!-- 상품 하나상세정보  -->
+	<select id="market.pdtonelist" resultType="pdtvo" parameterType="String">
+		SELECT * FROM PRODUCT WHERE PDT_IDX = #{pdt_idx}
+	</select>
+	
+	<!-- 소분류의 idx 값을 가지고 중분류, 대분류의 정보를 가져온다 -->
+	<select id="getkategories" resultType="katevo" parameterType="String">
+		SELECT * 
+		 FROM KATEGORIE 
+		 WHERE kate_idx = #{kate_idx} <!-- level 3 데이터의 kate_idx --> 
+		 UNION ALL 
+		 SELECT mid.* 
+		 FROM KATEGORIE mid  <!-- 중분류 -->
+		 JOIN KATEGORIE bott 	<!-- 소분류 -->
+	 	 ON mid.kate_idx = bott.kate_kind 	<!-- level 3 데이터의 상위 데이터 (level 2) -->
+		 WHERE bott.kate_idx = #{kate_idx}
+	 	 UNION ALL
+	 	 SELECT top.*
+	 	 FROM KATEGORIE top
+		 JOIN KATEGORIE mid ON top.kate_idx = mid.kate_kind
+		 JOIN KATEGORIE bott1 ON mid.kate_idx = bott1.kate_kind  <!-- level 2 데이터의 상위 데이터 (level 1) -->
+		 WHERE top.kate_idx = mid.kate_kind AND bott1.kate_idx = #{kate_idx}
+	</select>
+	
+	<!-- 회사정보 idx검색 -->
+	<select id="getcorpinfo" resultType="corpvo" parameterType="String">
+		SELECT * FROM CORPORATION WHERE CORP_IDX = #{corp_idx}
+	</select>
+	
 	<!-- 카테고리 정보 idx검색 -->
 	<select id="kateinfo" resultType="katevo">
 		SELECT * FROM KATEGORIE WHERE KATE_IDX = #{kate_idx}

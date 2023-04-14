@@ -39,16 +39,28 @@
 		 });
 		  
 		  // 하트 클릭시 하트 이미지 ㅂ변경
+		  // dips테이블의
 		  var dddip = 0;
 		  $("#dipdip").click(function() {
 			  if(dddip%2 == 0){
-				$("#dip").attr("src", "resources/img/market/heart (2).png")			  
+				$("#dip").attr("src", "resources/img/market/heart (2).png")
+				
 			  }else{
 				$("#dip").attr("src", "resources/img/market/heart.png")			  
 			  }
 			  ++dddip;
 		});
 		  
+		  // 상세정보
+			  var pdt_info = "${pdtvo.pdt_info}";
+			  var info_img = pdt_info.split(", ");
+			  console.log(info_img);
+			  
+			  $.each(info_img, function(index, value) {
+			    $("#slide_img").append("<img src='resources/img/upload/"+value+"'>");
+			  });
+		  
+			  
 	});
 			var sale_price;
 			var amount;
@@ -97,30 +109,30 @@
 	<jsp:include page="m_home_nav.jsp" />
 	<a id="topBtn" href="#"><img alt="" src="resources/img/market/top.png" style="width: 60px; height: 60px;"> </a>
 	<nav class="path">
-		<span class="path_top"><a class="path_link" href="market.do">고양이</a></span>
+		<span class="path_top"><a class="path_link" href="market.do?kate_idx=${topvo.kate_idx}">${topvo.kate_name}&nbsp;</a></span>
 		<span id="sep1">|</span>
-		<span class="path_middle"><a class="path_link" href="m_pdt_list.do">장난감</a></span>
+		<span class="path_middle"><a class="path_link" href="m_pdt_list.do?kate_idx=${midvo.kate_idx}">&nbsp;${midvo.kate_name}</a></span>
 		<span id="sep2">&gt;</span>
-		<span class="path_bottom"><a class="path_link" href="m_pdt_list.do">낚시/풀</a></span>	
+		<span class="path_bottom"><a class="path_link" href="m_pdt_list.do?kate_idx=${bottvo.kate_idx}">${bottvo.kate_name}</a></span>	
 	</nav>
 	<hr>
 	<div class="pdt_Top">
 		<section class="pdt_img_section">
 			<div class="pdt_img">
-				<img alt="" src="resources/img/market/pdt.jpg" style="width: 650px">
+				<img alt="" src="resources/img/upload/${pdtvo.pdt_img}" style="width: 650px">
 			</div>
 		</section>
 		<section class="pdt_info_section">
 			<div class="pdt_info">
-				<span class="box">고양이</span>
+				<span class="box">${topvo.kate_name}</span>
 				<span class="line">
-					<span class="pdt_corp">회사명 &gt; 
-					<span class="pdt_idx"><small>상품번호 03242023</small></span>
+					<span class="pdt_corp">${corpvo.corp_name} &gt; 
+					<span class="pdt_idx"><small>상품번호 ${pdtvo.pdt_idx}</small></span>
 				</span>
 				</span>
 				<div class="pdt_box">
 					<div class="pdt_name">
-						<h2>상품이름 뭐 박스 진짜박스</h2>
+						<h2>${pdtvo.pdt_name}</h2>
 					</div>
 					<!-- <hr class="short"> -->
 					<div class="star">
@@ -138,7 +150,7 @@
 						</a>
 						<span class="pdt_dip">
 							<a id="dipdip">
-								<img class="dip" id="dip" alt="" src="resources/img/market/heart.png">
+								<img class="dip" id="dip" src="resources/img/market/heart.png"><small style="color: red;">(${pdtvo.pdt_lcnt})</small>
 							</a>
 						</span>
 					</div>
@@ -146,29 +158,31 @@
 					<div class="price">
 						<span class="real_p">
 							<h3>판매가</h3>
-							<h2>30,000 p</h2>
+							<h2><fmt:formatNumber value="${pdtvo.pdt_saleprice}" pattern="#,##0"/> p</h2>
 						</span>
 						<span class="sale_p">
 							<h3>할인가</h3>
-							<h2>15,000 p</h2><small style="color: red;">[50%]</small>
+							<h2><fmt:formatNumber value="${pdtvo.pdt_saleprice}" pattern="#,##0"/> P</h2><!-- <small style="color: red;">[50%]</small> -->
 						</span>
 						<hr class="short">						
 						<span class="save_p">
 							<h3>적립 포인트</h3>
-							<h2>900 p</h2>
+							<h2><fmt:formatNumber value="${pdtvo.pdt_saleprice * 0.03}"  pattern="#,##0"/> p</h2>
+							<%-- <c:set var="save_p_p" value="0.3" />
+							<c:set var="savepoint" value="${pdtvo.pdt_saleprice * save_p_p}" /> --%>
 						</span>
 					</div>
 					<div class="p_su">
 						<h3>수량</h3>
 						<form name="form">
-							<input type="hidden" name="sale_price" value="15000">
+							<input type="hidden" name="sale_price" value="${pdtvo.pdt_saleprice}">
 							<input type="button" value="-" name="minus"  onclick="del()" style="margin-left: 15px">
 							<input type="text" name="amount" value="1" size="3" onchange="change()">
 							<input type="button" value="+" name="addd" onclick="add_num()">
 						<!-- <input type="number" name="number" value="1" min="1"> -->
 						<h3> 총 상품 가격</h3>
 						<!-- <h2>15,000 p</h2> -->
-						<input type="text" name="sum" value="15,000" size="11" readonly><span>p</span>
+						<input type="text" name="sum" value="${pdtvo.pdt_saleprice}" size="11" readonly><span>p</span>
 						</form>
 					</div>
 					<div class="buttons">
@@ -184,11 +198,10 @@
 		<details class="pdt_info_img">
     		<summary class="show_btn">상세정보 펼치기</summary>
 			<div id="slide_img">
-				<img alt="" src="resources/img/market/info.jpg">
 			</div>
 		</details>
-	<hr>
 	</div>
+	<hr>
 	<div id="review">
 		<jsp:include page="m_review.jsp" />
 	</div>

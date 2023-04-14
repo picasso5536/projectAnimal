@@ -153,6 +153,7 @@
 </head>
 <body>
 	<jsp:include page="m_home_test.jsp" />
+	<%-- <jsp:param name="mid_kateList" value="변수값" /> --%>
 	<a id="topBtn2" href="#"><img alt=""
 		src="resources/img/market/top.png" style="width: 60px; height: 60px;">
 	</a>
@@ -226,7 +227,7 @@
 									</div>
 									<div class="card_text">
 										<h2>${best.pdt_name}</h2>
-										<h3 class="pdt_price" style="font-size: 22px"><fmt:formatNumber value="${best.pdt_saleprice}" pattern="#,##0"/> 원</h3>
+										<h3 class="pdt_price" style="font-size: 22px"><fmt:formatNumber value="${best.pdt_saleprice}" pattern="#,##0"/> P</h3>
 									</div>
 								</a>
 							</div>
