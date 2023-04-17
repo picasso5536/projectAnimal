@@ -11,13 +11,19 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-	function send_go(k) {
-		k.action = "point_chk_ok.do?mbr_nickname=${mbr_nickname}";
-		k.submit();
+	function send_go(form) {
+		$.ajax({
+			type : "POST",
+			url : "point_chk_ok.do?mbr_nickname=${mbr_nickname}",
+			data : $(form).serialize(),
+			success : function() {
+				window.close();
+			}
+		});
 	}
 </script>
 </head>
-<body>
+<body class="popup1">
 	<main>
 		<section id="mem_sec">
 			<form method="post">

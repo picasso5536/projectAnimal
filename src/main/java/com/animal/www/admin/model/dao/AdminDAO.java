@@ -283,6 +283,7 @@ public class AdminDAO {
 	}
 	
 	public int pointUpdate(PointVO pvo) {
+		System.out.println("오냐");
 		return sqlSessionTemplate.update("admin.pointUpdate", pvo);
 	}
 }

@@ -392,22 +392,37 @@
 
 	<!-- 포인트 수정 -->
 	<update id="pointUpdate" parameterType="pvo">
-		UPDATE POINT SET
-		PNT_IN = #{pnt_in},
+		UPDATE POINT
+		SET PNT_IN = #{pnt_in},
 		PNT_OUT = #{pnt_out},
 		PNT_DATE = SYSDATE,
 		PNT_TOTAL = (
-		SELECT
-		CASE
-		WHEN PNT_IN IS NOT NULL AND PNT_OUT IS NULL THEN PNT_NOW + #{pnt_in} -- 충전
-		WHEN PNT_IN IS NULL AND PNT_OUT IS NOT NULL THEN PNT_NOW - #{pnt_out}
-		-- 사용
-		ELSE PNT_NOW
-		END
-		FROM POINT
-		WHERE MBR_NICKNAME = #{mbr_nickname}
+		<choose>
+			<when test="pnt_in != null and pnt_out == null">
+				PNT_NOW + #{pnt_in}
+			</when>
+			<when test="pnt_in == null and pnt_out != null">
+				PNT_NOW - #{pnt_out}
+			</when>
+			<otherwise>
+				PNT_NOW
+			</otherwise>
+		</choose>
 		),
-		PNT_RECORD = #{pnt_record}
+		PNT_RECORD = #{pnt_record},
+		PNT_NOW = (
+		<choose>
+			<when test="pnt_in != null and pnt_out == null">
+				PNT_TOTAL + #{pnt_in}
+			</when>
+			<when test="pnt_in == null and pnt_out != null">
+				PNT_TOTAL - #{pnt_out}
+			</when>
+			<otherwise>
+				PNT_TOTAL
+			</otherwise>
+		</choose>
+		)
 		WHERE MBR_NICKNAME = #{mbr_nickname}
 	</update>
 </mapper>

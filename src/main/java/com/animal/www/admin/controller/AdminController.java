@@ -449,9 +449,9 @@ public class AdminController {
 		String content = request.getParameter("content");
 
 		PointVO pvo = new PointVO();
-		if (state == "add") {
+		if (state.equals("add")) {
 			pvo.setPnt_in(count);
-		} else if (state == "subtraction") {
+		} else if (state.equals("subtraction")) {
 			pvo.setPnt_out(count);
 		}
 		pvo.setPnt_record(reason + "/" + content);
@@ -469,7 +469,8 @@ public class AdminController {
 
 	// 관리자 회원 포인트 상세
 	@RequestMapping("adm_point_info.do")
-	public ModelAndView adminPointInfo() {
+	public ModelAndView adminPointInfo(@RequestParam("mbr_nickname") String mbr_nickname) {
+		System.out.println(mbr_nickname);
 		return new ModelAndView("admin/member/adm_mbr_point_info");
 	}
 
