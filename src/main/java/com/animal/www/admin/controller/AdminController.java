@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -442,7 +443,7 @@ public class AdminController {
 	@RequestMapping("point_chk_ok.do")
 	public ModelAndView pointChkOk(HttpServletRequest request, @RequestParam("mbr_nickname") String mbr_nickname) {
 		ModelAndView mv = new ModelAndView("redirect:admin_mbr_point.do");
-		
+
 		String state = request.getParameter("add_sub");
 		String count = request.getParameter("point");
 		String reason = request.getParameter("reason_ref");
@@ -456,9 +457,9 @@ public class AdminController {
 		}
 		pvo.setPnt_record(reason + "/" + content);
 		pvo.setMbr_nickname(mbr_nickname);
-		
+
 		int result = adminService.pointUpdate(pvo);
-		
+
 		mv.addObject(result);
 //		mv.addObject(bott);
 //		mv.addObject(m_idx);
@@ -469,9 +470,81 @@ public class AdminController {
 
 	// 관리자 회원 포인트 상세
 	@RequestMapping("adm_point_info.do")
-	public ModelAndView adminPointInfo(@RequestParam("mbr_nickname") String mbr_nickname) {
-		System.out.println(mbr_nickname);
+	public ModelAndView adminPointInfo(@ModelAttribute("mbr_nickname") String mbr_nickname) {
 		return new ModelAndView("admin/member/adm_mbr_point_info");
+	}
+
+	// 관리자 회원 포인트 상세 조건 조회
+	@RequestMapping(value = "admin_mbr_point_detail_search.do", produces = "text/xml; charset=utf-8")
+	@ResponseBody
+	public String adminPointInfoSearch(@RequestParam("bott") String bott, @RequestParam("s_date") String s_date,
+			@RequestParam("e_date") String e_date, @RequestParam("nickname") String mbr_nickname,
+			@RequestParam("cPage") String cPage) {
+		System.out.println(bott);
+		System.out.println(s_date);
+		System.out.println(e_date);
+		System.out.println(mbr_nickname);
+
+		int count = adminService.getPointDetailList();
+		paging.setTotalRecord(count);
+
+		System.out.println(count);
+
+		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+			paging.setTotalpage(1);
+		} else {
+			paging.setTotalpage(paging.getTotalRecord() / paging.getNumPerPage());
+			if (paging.getTotalRecord() % paging.getNumPerPage() != 0) {
+				paging.setTotalpage(paging.getTotalpage() + 1);
+			}
+		}
+		if (cPage == null) {
+			paging.setNowPage(1);
+		} else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+
+		paging.setBeginBlock(
+				(int) ((paging.getNowPage() - 1) / paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+
+		if (paging.getEndBlock() > paging.getTotalpage()) {
+			paging.setEndBlock(paging.getTotalpage());
+		}
+
+		int begin = paging.getBegin();
+		int end = paging.getEnd();
+
+		String.valueOf(begin);
+		String.valueOf(end);
+		
+		StringBuffer sb = new StringBuffer();
+		List<PointVO> plist = null;
+		try {
+			plist = adminService.pointDetail(mbr_nickname, bott, s_date, e_date, begin, end);
+
+		} catch (Exception e) {
+			System.out.println(e + " db과정에서의 오류");
+		}
+
+		try {
+			sb.append("[");
+			for (int i = 0; i < plist.size(); i++) {
+				sb.append("{\"nickname\":\"" + plist.get(i).getMbr_nickname() + "\", \"cnt\":\"" + (i + 1)
+						+ "\", \"amount\":\"" + (Integer.parseInt(plist.get(i).getPnt_in())-Integer.parseInt(plist.get(i).getPnt_out())) + "\",\"content\":\"" + plist.get(i).getPnt_record()
+						+ "\", \"point\":\"" + plist.get(i).getPnt_now() + "\", \"date\":\""+ plist.get(i).getPnt_date()+"\"},");
+			}
+			String str = sb.toString().substring(0, sb.toString().length() - 1);
+			str = str + "]";
+
+			return str;
+		} catch (Exception e) {
+			System.out.println(e + " josn 파싱에서의 오류");
+		}
+		return null;
 	}
 
 	// 관리자 회원 포인트 충전 신청

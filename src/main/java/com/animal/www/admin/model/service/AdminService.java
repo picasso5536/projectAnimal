@@ -60,4 +60,7 @@ public interface AdminService {
 	List<MemberVO> getPointByName(String txt, int begin, int end);
 	List<MemberVO> getPointById(String txt, int begin, int end);
 	int pointUpdate(PointVO pvo);
+	
+	int getPointDetailList();
+	List<PointVO> pointDetail(String mbr_nickname, String bott, String s_date, String e_date, int begin, int end);
 }

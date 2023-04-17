@@ -171,6 +171,7 @@
 		resultType="mvo">
 		SELECT a.*, b.PNT_NOW FROM MEMBERS a, POINT b WHERE
 		a.MBR_NICKNAME = #{mbr_nickname} AND a.MBR_NICKNAME = b.MBR_NICKNAME
+		AND ROWNUM = 1
 	</select>
 
 	<!-- 회원 정보 수정 -->
@@ -353,76 +354,70 @@
 
 	<!-- 포인트 리스트 : 회원 아이디로 검색 -->
 	<select id="getPointById" parameterType="Map" resultType="mvo">
-		SELECT
-		*
-		FROM (
-		SELECT ROWNUM R_NUM, A.*
-		FROM (
 		SELECT M.*, P.pnt_now
-		FROM MEMBERS
-		M
-		INNER JOIN POINT P
-		ON M.MBR_NICKNAME = P.MBR_NICKNAME
-		WHERE M.MBR_ID
-		LIKE '%'||#{txt}||'%'
-		ORDER BY M.MBR_ID DESC
-		) A
-		) WHERE R_NUM BETWEEN
-		#{begin} and #{end}
+		FROM MEMBERS M
+		INNER JOIN (
+		SELECT MBR_NICKNAME, MAX(PNT_IDX) AS MAX_PNT_IDX
+		FROM POINT
+		GROUP BY MBR_NICKNAME
+		) T ON M.MBR_NICKNAME = T.MBR_NICKNAME
+		INNER JOIN POINT P ON T.MAX_PNT_IDX = P.PNT_IDX AND T.MBR_NICKNAME =
+		P.MBR_NICKNAME
+		WHERE M.MBR_ID LIKE '%'||#{txt}||'%'
+		ORDER BY T.MAX_PNT_IDX DESC;
 	</select>
 
 	<!-- 포인트 리스트 : 회원명으로 검색 -->
 	<select id="getPointByName" parameterType="Map" resultType="mvo">
-		SELECT *
-		FROM (
-		SELECT ROWNUM R_NUM, A.*
-		FROM (
 		SELECT M.*, P.pnt_now
-		FROM
-		MEMBERS M
-		INNER JOIN POINT P
-		ON M.MBR_NICKNAME = P.MBR_NICKNAME
-		WHERE
-		M.MBR_NAME LIKE '%'||#{txt}||'%'
-		ORDER BY M.MBR_NAME DESC
-		) A
-		) WHERE
-		R_NUM BETWEEN #{begin} and #{end}
+		FROM MEMBERS M
+		INNER JOIN (
+		SELECT MBR_NICKNAME,
+		MAX(PNT_IDX) AS MAX_PNT_IDX
+		FROM POINT
+		GROUP BY MBR_NICKNAME
+		) T ON
+		M.MBR_NICKNAME = T.MBR_NICKNAME
+		INNER JOIN POINT P ON T.MAX_PNT_IDX =
+		P.PNT_IDX AND T.MBR_NICKNAME =
+		P.MBR_NICKNAME
+		WHERE M.MBR_NAME LIKE
+		'%'||#{txt}||'%'
+		ORDER BY T.MAX_PNT_IDX DESC
 	</select>
 
 	<!-- 포인트 수정 -->
-	<update id="pointUpdate" parameterType="pvo">
-		UPDATE POINT
-		SET PNT_IN = #{pnt_in},
-		PNT_OUT = #{pnt_out},
-		PNT_DATE = SYSDATE,
-		PNT_TOTAL = (
-		<choose>
-			<when test="pnt_in != null and pnt_out == null">
-				PNT_NOW + #{pnt_in}
-			</when>
-			<when test="pnt_in == null and pnt_out != null">
-				PNT_NOW - #{pnt_out}
-			</when>
-			<otherwise>
-				PNT_NOW
-			</otherwise>
-		</choose>
-		),
-		PNT_RECORD = #{pnt_record},
-		PNT_NOW = (
-		<choose>
-			<when test="pnt_in != null and pnt_out == null">
-				PNT_TOTAL + #{pnt_in}
-			</when>
-			<when test="pnt_in == null and pnt_out != null">
-				PNT_TOTAL - #{pnt_out}
-			</when>
-			<otherwise>
-				PNT_TOTAL
-			</otherwise>
-		</choose>
-		)
-		WHERE MBR_NICKNAME = #{mbr_nickname}
-	</update>
+	<!-- <update id="pointUpdate" parameterType="pvo"> UPDATE POINT SET PNT_IN 
+		= #{pnt_in}, PNT_OUT = #{pnt_out}, PNT_DATE = SYSDATE, PNT_TOTAL = ( <choose> 
+		<when test="pnt_in != null and pnt_out == null"> PNT_NOW + #{pnt_in} </when> 
+		<when test="pnt_in == null and pnt_out != null"> PNT_NOW - #{pnt_out} </when> 
+		<otherwise> PNT_NOW </otherwise> </choose> ), PNT_RECORD = #{pnt_record}, 
+		PNT_NOW = ( <choose> <when test="pnt_in != null and pnt_out == null"> PNT_TOTAL 
+		+ #{pnt_in} </when> <when test="pnt_in == null and pnt_out != null"> PNT_TOTAL 
+		- #{pnt_out} </when> <otherwise> PNT_TOTAL </otherwise> </choose> ) WHERE 
+		MBR_NICKNAME = #{mbr_nickname} </update> -->
+
+	<select id="getCurrentPoint" parameterType="String"
+		resultType="int">
+		SELECT * FROM (SELECT PNT_NOW FROM POINT WHERE MBR_NICKNAME
+		=
+		#{mbr_nickname} ORDER BY PNT_IDX desc) WHERE ROWNUM=1
+	</select>
+
+	<insert id="pointUpdate" parameterType="pvo">
+		INSERT INTO
+		POINT(PNT_IDX, PNT_NOW, PNT_IN, PNT_OUT, PNT_RECORD, PNT_TOTAL,
+		PNT_DATE, MBR_NICKNAME) VALUES(PNT_IDX_SEQ.NEXTVAL, #{pnt_now},
+		#{pnt_in}, #{pnt_out}, #{pnt_record}, #{pnt_total}, sysdate,
+		#{mbr_nickname})
+	</insert>
+
+	<select id="" resultType="int">
+		SELECT COUNT(*) FROM POINT
+	</select>
+
+	<select id="pointDetail" parameterType="Map" resultType="pvo">
+		SELECT *
+		FROM POINT WHERE MBR_NICKNAME = ,
+	</select>
 </mapper>

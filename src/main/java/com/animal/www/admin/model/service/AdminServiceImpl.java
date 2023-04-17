@@ -49,51 +49,57 @@ public class AdminServiceImpl implements AdminService {
 	public int termsInsert(String termsName, String termsInfo) {
 		return adminDAO.termsInsert(termsName, termsInfo);
 	}
-	
+
 	// 관리자 > 상품관리 > 상품검색
 	@Override
 	public List<ProductVO> getProductSearchList(String kate_idx, String search_type, String keyword, String pdt_inven,
 			String pdt_state) {
 		return adminDAO.getProductSearchList(kate_idx, search_type, keyword, pdt_inven, pdt_state);
 	}
+
 	// 상위 카테고리 리스트
 	@Override
 	public List<KategorieVO> getTopKategoryList() {
 		return adminDAO.getTopKategoryList();
-		
+
 	}
+
 	// 중, 하위
 	@Override
 	public List<KategorieVO> getKategoryList(int kate_idx) {
 		return adminDAO.getKategoryList(kate_idx);
 	}
+
 	// 공급사 전체리스트
 	@Override
 	public List<CorporationVO> getCorpList() {
 		return adminDAO.getCorpList();
 	}
+
 	// 배송사 전체리스트
 	@Override
 	public List<ParcelVO> getPclList() {
 		return adminDAO.getPclList();
 	}
+
 	// 관리자 - 상품관리 > productInfo
 	@Override
 	public ProductVO getProductInfo(String pdt_idx) {
 		return adminDAO.getProductInfo(pdt_idx);
 	}
-	
-	//  관리자 - 상품관리 > Product insert
+
+	// 관리자 - 상품관리 > Product insert
 	@Override
 	public int ProductInsert(ProductVO pdtvo) {
 		return adminDAO.ProductInsert(pdtvo);
 	}
+
 	// 관리자 - 상품수정 > 카테고리정보
 	@Override
 	public KategorieVO getKateInfo(String kate_idx) {
 		return adminDAO.getKateInfo(kate_idx);
 	}
-		
+
 	// 해당 배너 삭제
 	@Override
 	public int bannerDelete(int bnr_idx) {
@@ -231,34 +237,47 @@ public class AdminServiceImpl implements AdminService {
 	public int getIdDupCheck(String adm_id) {
 		return adminDAO.getIdDupCheck(adm_id);
 	}
-	
+
 	// 관리자 계정 생성
 	@Override
 	public int adminInsert(AdminVO avo) {
 		return adminDAO.admInsert(avo);
 	}
-	
+
 	// 포인트 리스트 갯수
 	@Override
 	public int getPointCount() {
 		return adminDAO.getPointCount();
 	}
-	
+
 	// 회원 아이디로 포인트 리스트 검색
 	@Override
 	public List<MemberVO> getPointById(String txt, int begin, int end) {
 		return adminDAO.getPointById(txt, begin, end);
 	}
-	
+
 	// 회원 명으로 포인트 리스트 검색
 	@Override
 	public List<MemberVO> getPointByName(String txt, int begin, int end) {
 		return adminDAO.getPointByName(txt, begin, end);
 	}
-	
+
 	// 포인트 수정
 	@Override
 	public int pointUpdate(PointVO pvo) {
 		return adminDAO.pointUpdate(pvo);
+	}
+
+	// 포인트 내역 리스트 개수
+	@Override
+	public int getPointDetailList() {
+		return adminDAO.getPointDetailList();
+	}
+
+	// 포인트 내역 리스트
+	@Override
+	public List<PointVO> pointDetail(String mbr_nickname, String bott, String s_date, String e_date, int begin,
+			int end) {
+		return adminDAO.pointDetail(mbr_nickname, bott, s_date, e_date, begin, end);
 	}
 }

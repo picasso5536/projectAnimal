@@ -10,14 +10,14 @@ import org.springframework.stereotype.Repository;
 
 import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
+import com.animal.www.commons.vo.BannerVO;
+import com.animal.www.commons.vo.CorporationVO;
 import com.animal.www.commons.vo.KategorieVO;
+import com.animal.www.commons.vo.MemberVO;
+import com.animal.www.commons.vo.NotificationVO;
 import com.animal.www.commons.vo.ParcelVO;
 import com.animal.www.commons.vo.PointVO;
 import com.animal.www.market.model.vo.ProductVO;
-import com.animal.www.commons.vo.BannerVO;
-import com.animal.www.commons.vo.CorporationVO;
-import com.animal.www.commons.vo.MemberVO;
-import com.animal.www.commons.vo.NotificationVO;
 
 @Repository
 public class AdminDAO {
@@ -283,7 +283,45 @@ public class AdminDAO {
 	}
 	
 	public int pointUpdate(PointVO pvo) {
-		System.out.println("오냐");
-		return sqlSessionTemplate.update("admin.pointUpdate", pvo);
+		try {
+			int nowP = sqlSessionTemplate.selectOne("admin.getCurrentPoint", pvo.getMbr_nickname());
+			
+			int pnt_now = 0;
+			if(pvo.getPnt_in()!=null){
+				pnt_now = nowP + Integer.parseInt(pvo.getPnt_in());
+			} else {
+				pnt_now = nowP - Integer.parseInt(pvo.getPnt_out());
+			}
+			
+			pvo.setPnt_now(String.valueOf(pnt_now));
+			pvo.setPnt_total(pvo.getPnt_now());
+			
+			return sqlSessionTemplate.insert("admin.pointUpdate", pvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+		
+	}
+	
+	public List<PointVO> pointDetail(String mbr_nickname) {
+		return sqlSessionTemplate.selectList("admin.pointUpdate", mbr_nickname);
+	}
+
+	public int getPointDetailList() {
+		return sqlSessionTemplate.selectOne("admin.getPointDetailList");
+	}
+	
+	public List<PointVO> pointDetail(String mbr_nickname, String bott, String s_date, String e_date, int begin,
+			int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mbr_nickname", mbr_nickname);
+		map.put("bott", bott);
+		map.put("s_date", s_date);
+		map.put("e_date", e_date);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		
+		return sqlSessionTemplate.selectList("admin.pointDetail", map);
 	}
 }

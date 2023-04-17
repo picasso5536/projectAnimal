@@ -4,19 +4,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Paging {
-	private int nowPage = 1; // ���� ������
-	private int nowBlock = 1; // ���� ���
-	private int totalRecord = 0; // ��ü �Խù��� ��
-	private int totalpage = 0; // ��ü �������� ��
-	private int totalBlock = 0; // ��ü ����� ��
-	private int numPerPage = 3; // �� �������� �����ϴ� �Խù��� ��
-	private int pagePerBlock = 3; // �� ��Ͼȿ� �����ϴ� �������� ��
+	private int nowPage = 1; // 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙
+	private int nowBlock = 1; // 占쏙옙占쏙옙 占쏙옙占�
+	private int totalRecord = 0; // 占쏙옙체 占쌉시뱄옙占쏙옙 占쏙옙
+	private int totalpage = 0; // 占쏙옙체 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙
+	private int totalBlock = 0; // 占쏙옙체 占쏙옙占쏙옙占� 占쏙옙
+	private int numPerPage = 10; // 占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쌉시뱄옙占쏙옙 占쏙옙
+	private int pagePerBlock = 3; // 占쏙옙 占쏙옙耉효占� 占쏙옙占쏙옙占싹댐옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙
 	
-	// ���Ǵ� ����
-	private int begin = 0; // ���� ��ȣ
-	private int end = 0; // �� ��ȣ
-	private int beginBlock = 0; // ���� ���
-	private int endBlock = 0; // �� ���
+	// 占쏙옙占실댐옙 占쏙옙占쏙옙
+	private int begin = 0; // 占쏙옙占쏙옙 占쏙옙호
+	private int end = 0; // 占쏙옙 占쏙옙호
+	private int beginBlock = 0; // 占쏙옙占쏙옙 占쏙옙占�
+	private int endBlock = 0; // 占쏙옙 占쏙옙占�
 	
 	public int getNowPage() {
 		return nowPage;

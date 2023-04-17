@@ -43,6 +43,7 @@
 		$('#search_btn').click(function() {
 			var bott = $('select[name="bott"]').val();
 		    var m_idx = $('input[name="m_idx"]').val();
+		    console.log(m_idx);
 		    $.ajax({
 		    url: 'admin_mbr_info_search.do',
 		    data: { bott: bott, m_idx: m_idx, cPage:1 },
