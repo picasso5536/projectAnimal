@@ -407,7 +407,7 @@ public class AdminController {
 			if (bott.equals("name")) {
 				// 이름으로 검색
 				mlist = adminService.getPointByName(mIdx, begin, end);
-			} else if (bott.equals("name")) {
+			} else if (bott.equals("id")) {
 				// id로 검색
 				mlist = adminService.getPointById(mIdx, begin, end);
 			}
@@ -425,7 +425,7 @@ public class AdminController {
 			}
 			String str = sb.toString().substring(0, sb.toString().length() - 1);
 			str = str + "]";
-
+			System.out.println(str);
 			return str;
 		} catch (Exception e) {
 			System.out.println(e + " josn 파싱에서의 오류");
