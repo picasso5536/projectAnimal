@@ -12,6 +12,7 @@ import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.commons.vo.ParcelVO;
+import com.animal.www.commons.vo.PointVO;
 import com.animal.www.market.model.vo.ProductVO;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.CorporationVO;
@@ -259,5 +260,29 @@ public class AdminDAO {
 
 	public int admInsert(AdminVO avo) {
 		return sqlSessionTemplate.insert("admin.admInsert", avo);
+	}
+	
+	public int getPointCount() {
+		return sqlSessionTemplate.selectOne("admin.pointCount");
+	}
+	
+	public List<MemberVO> getPointById(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getPointById", map);
+	}
+	
+	public List<MemberVO> getPointByName(String txt, int begin, int end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("txt", txt);
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		return sqlSessionTemplate.selectList("admin.getPointByName", map);
+	}
+	
+	public int pointUpdate(PointVO pvo) {
+		return sqlSessionTemplate.update("admin.pointUpdate", pvo);
 	}
 }

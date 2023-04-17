@@ -6,6 +6,7 @@ import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.commons.vo.ParcelVO;
+import com.animal.www.commons.vo.PointVO;
 import com.animal.www.market.model.vo.ProductVO;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.CorporationVO;
@@ -17,7 +18,7 @@ public interface AdminService {
 	int termsInsert(String termsName, String termsInfo);
 	int termsDelete(String termsName);
 	int termsUpdate(String termsName, String termsInfo);
-	// 관리자>상품관리>검색
+	// 愿�由ъ옄>�긽�뭹愿�由�>寃��깋
 	List<ProductVO> getProductSearchList(String kate_idx, String search_type, String keyword, String pdt_inven, String pdt_state);
 	List<KategorieVO> getTopKategoryList();
 	List<KategorieVO> getKategoryList(int kate_idx);
@@ -54,4 +55,9 @@ public interface AdminService {
 	AdminVO adminOneList(String idx);
 	int getIdDupCheck(String adm_id);
 	int adminInsert(AdminVO avo);
+	
+	int getPointCount();
+	List<MemberVO> getPointByName(String txt, int begin, int end);
+	List<MemberVO> getPointById(String txt, int begin, int end);
+	int pointUpdate(PointVO pvo);
 }

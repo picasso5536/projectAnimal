@@ -10,6 +10,7 @@ import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.commons.vo.ParcelVO;
+import com.animal.www.commons.vo.PointVO;
 import com.animal.www.market.model.vo.ProductVO;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.CorporationVO;
@@ -235,5 +236,29 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int adminInsert(AdminVO avo) {
 		return adminDAO.admInsert(avo);
+	}
+	
+	// 포인트 리스트 갯수
+	@Override
+	public int getPointCount() {
+		return adminDAO.getPointCount();
+	}
+	
+	// 회원 아이디로 포인트 리스트 검색
+	@Override
+	public List<MemberVO> getPointById(String txt, int begin, int end) {
+		return adminDAO.getPointById(txt, begin, end);
+	}
+	
+	// 회원 명으로 포인트 리스트 검색
+	@Override
+	public List<MemberVO> getPointByName(String txt, int begin, int end) {
+		return adminDAO.getPointByName(txt, begin, end);
+	}
+	
+	// 포인트 수정
+	@Override
+	public int pointUpdate(PointVO pvo) {
+		return adminDAO.pointUpdate(pvo);
 	}
 }

@@ -2,7 +2,15 @@ package com.animal.www.commons.vo;
 
 // Æ÷ÀÎÆ® VO
 public class PointVO {
-	private String pnt_idx, pnt_now, pnt_in, pnt_out, pnt_total, mbr_nickname, pnt_record;
+	private String pnt_idx, pnt_now, pnt_in, pnt_out, pnt_total, mbr_nickname, pnt_record, pnt_date;
+
+	public String getPnt_date() {
+		return pnt_date;
+	}
+
+	public void setPnt_date(String pnt_date) {
+		this.pnt_date = pnt_date;
+	}
 
 	public String getPnt_idx() {
 		return pnt_idx;

@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/animal/www/admin/controller/AdminController.java=UTF-8
 encoding//src/main/java/com/animal/www/admin/model/dao/AdminDAO.java=UTF-8
+encoding//src/main/java/com/animal/www/admin/model/service/AdminService.java=UTF-8
 encoding//src/main/java/com/animal/www/admin/model/service/AdminServiceImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/home/mypage/my_navbar.jsp=UTF-8
