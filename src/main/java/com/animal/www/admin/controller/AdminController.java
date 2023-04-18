@@ -480,10 +480,6 @@ public class AdminController {
 	public String adminPointInfoSearch(@RequestParam("bott") String bott, @RequestParam("s_date") String s_date,
 			@RequestParam("e_date") String e_date, @RequestParam("nickname") String mbr_nickname,
 			@RequestParam("cPage") String cPage) {
-		System.out.println(bott);
-		System.out.println(s_date);
-		System.out.println(e_date);
-		System.out.println(mbr_nickname);
 
 		int count = adminService.getPointDetailList();
 		paging.setTotalRecord(count);
