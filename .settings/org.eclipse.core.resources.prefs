@@ -4,4 +4,5 @@ encoding//src/main/java/com/animal/www/admin/model/dao/AdminDAO.java=UTF-8
 encoding//src/main/java/com/animal/www/admin/model/service/AdminService.java=UTF-8
 encoding//src/main/java/com/animal/www/admin/model/service/AdminServiceImpl.java=UTF-8
 encoding//src/main/java/com/animal/www/commons/Paging.java=UTF-8
+encoding//src/main/java/com/animal/www/market/model/service/MarketServiceImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/home/mypage/my_navbar.jsp=UTF-8

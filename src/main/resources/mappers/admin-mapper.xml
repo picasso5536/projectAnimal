@@ -382,17 +382,6 @@
 		ORDER BY T.MAX_PNT_IDX DESC
 	</select>
 
-	<!-- 포인트 수정 -->
-	<!-- <update id="pointUpdate" parameterType="pvo"> UPDATE POINT SET PNT_IN 
-		= #{pnt_in}, PNT_OUT = #{pnt_out}, PNT_DATE = SYSDATE, PNT_TOTAL = ( <choose> 
-		<when test="pnt_in != null and pnt_out == null"> PNT_NOW + #{pnt_in} </when> 
-		<when test="pnt_in == null and pnt_out != null"> PNT_NOW - #{pnt_out} </when> 
-		<otherwise> PNT_NOW </otherwise> </choose> ), PNT_RECORD = #{pnt_record}, 
-		PNT_NOW = ( <choose> <when test="pnt_in != null and pnt_out == null"> PNT_TOTAL 
-		+ #{pnt_in} </when> <when test="pnt_in == null and pnt_out != null"> PNT_TOTAL 
-		- #{pnt_out} </when> <otherwise> PNT_TOTAL </otherwise> </choose> ) WHERE 
-		MBR_NICKNAME = #{mbr_nickname} </update> -->
-
 	<select id="getCurrentPoint" parameterType="String"
 		resultType="int">
 		SELECT * FROM (SELECT PNT_NOW FROM POINT WHERE MBR_NICKNAME
@@ -412,8 +401,27 @@
 		SELECT COUNT(*) FROM POINT
 	</select>
 
-	<select id="pointDetail" parameterType="Map" resultType="pvo">
+	<!-- <select id="pointDetail" parameterType="Map" resultType="pvo">
 		SELECT *
-		FROM POINT WHERE MBR_NICKNAME = ,
+		FROM POINT WHERE
+	</select> -->
+	
+	<!-- 전체 충전 신청 수 -->
+	<select id="getRpntCount" resultType="int">
+		SELECT COUNT(*) FROM REQUEST_PNT
 	</select>
+	
+	<!-- 충전 신청 리스트 -->
+	<select id="rpntList" resultType="rvo" parameterType="Map">
+		SELECT *
+		FROM(
+		SELECT ROWNUM R_NUM, A.*
+		FROM (SELECT * FROM REQUEST_PNT WHERE RPNT_STATE = '처리중' ORDER BY
+		RPNT_IDX DESC) A
+		) WHERE R_NUM BETWEEN #{begin} and #{end}
+	</select>
+	
+	<update id="updateReqTable" parameterType="String">
+		UPDATE REQUEST_PNT SET RPNT_STATE = '처리완료' WHERE RPNT_IDX = #{rpnt_idx}
+	</update>
 </mapper>

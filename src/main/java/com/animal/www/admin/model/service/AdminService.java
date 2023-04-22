@@ -7,6 +7,7 @@ import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.commons.vo.ParcelVO;
 import com.animal.www.commons.vo.PointVO;
+import com.animal.www.commons.vo.RequestPointVO;
 import com.animal.www.market.model.vo.ProductVO;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.CorporationVO;
@@ -63,4 +64,7 @@ public interface AdminService {
 	
 	int getPointDetailList();
 	List<PointVO> pointDetail(String mbr_nickname, String bott, String s_date, String e_date, int begin, int end);
+	int getRpntCount();
+	List<RequestPointVO> rpntList(int begin, int end);
+	int updateRequestTable(String rpnt_idx);
 }

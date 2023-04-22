@@ -3,11 +3,10 @@ package com.animal.www.home.model.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.animal.www.commons.service.AllService;
 import com.animal.www.home.model.dao.HomeDAO;
 
 @Service
-public class HomeServiceImpl implements HomeService, AllService{
+public class HomeServiceImpl implements HomeService{
 	@Autowired
 	private HomeDAO homeDAO;
 

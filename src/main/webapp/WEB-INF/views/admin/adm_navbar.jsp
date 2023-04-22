@@ -124,7 +124,6 @@ ul ul {
 				<li><a href="admin_mbr_info.do">고객 정보 관리</a></li>
 				<li><a href="admin_mbr_admin.do">관리자 계정 관리</a></li>
 				<li><a href="admin_mbr_point.do">포인트 관리</a></li>
-				<li><a href="admin_mbr_message.do">메시지 관리</a></li>
 			</ul>
 			<br>
 			<li class="large"><img
@@ -150,13 +149,6 @@ ul ul {
 				<li><a href="admin_mkt_review.do">리뷰 관리</a></li>
 			</ul>
 			<br>
-			<li class="large"><img
-				src="resources/img/home/my_community_img.png"><a href="#">커뮤니티
-					관리</a></li>
-			<ul>
-				<li><a href="admin_comm_post.do">게시글 관리</a></li>
-				<li><a href="admin_comm_comment.do">댓글 관리</a></li>
-			</ul>
 		</ul>
 	</nav>
 </body>

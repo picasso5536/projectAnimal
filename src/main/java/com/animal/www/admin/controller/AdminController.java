@@ -1,21 +1,16 @@
 package com.animal.www.admin.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,16 +21,17 @@ import org.springframework.web.servlet.ModelAndView;
 import com.animal.www.admin.model.service.AdminService;
 import com.animal.www.admin.model.vo.AdminVO;
 import com.animal.www.admin.model.vo.TermsVO;
-import com.animal.www.commons.vo.KategorieVO;
-import com.animal.www.commons.vo.ParcelVO;
-import com.animal.www.commons.vo.PointVO;
-import com.animal.www.market.model.vo.ProductVO;
 import com.animal.www.commons.FileReName;
 import com.animal.www.commons.Paging;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.CorporationVO;
+import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.commons.vo.MemberVO;
 import com.animal.www.commons.vo.NotificationVO;
+import com.animal.www.commons.vo.ParcelVO;
+import com.animal.www.commons.vo.PointVO;
+import com.animal.www.commons.vo.RequestPointVO;
+import com.animal.www.market.model.vo.ProductVO;
 
 @Controller
 public class AdminController {
@@ -336,29 +332,6 @@ public class AdminController {
 		return mv;
 	}
 
-	// 관리자 내정보 수정페이지
-	@RequestMapping("ad_acc_update.do")
-	public ModelAndView admAdmAccountUpdate() {
-		return new ModelAndView("admin/member/adm_account_update");
-	}
-
-	// 관리자 메시지 확인
-	@RequestMapping("admin_mbr_message.do")
-	public ModelAndView admAdminMessage() {
-		return new ModelAndView("admin/member/adm_mbr_message");
-	}
-
-	@RequestMapping("adm_send_msg.do")
-	public ModelAndView admAdminSendMessage() {
-		return new ModelAndView("admin/member/adm_mbr_sendmsg");
-	}
-
-	// 관리자 메시지 상세보기
-	@RequestMapping("mbr_msg_onelist.do")
-	public ModelAndView admAdminMessageOneList() {
-		return new ModelAndView("admin/member/adm_mbr_msgonelist");
-	}
-
 	// 관리자 포인트 관리
 	@RequestMapping("admin_mbr_point.do")
 	public ModelAndView admMemberPoint() {
@@ -425,7 +398,7 @@ public class AdminController {
 			}
 			String str = sb.toString().substring(0, sb.toString().length() - 1);
 			str = str + "]";
-			System.out.println(str);
+
 			return str;
 		} catch (Exception e) {
 			System.out.println(e + " josn 파싱에서의 오류");
@@ -433,10 +406,29 @@ public class AdminController {
 		return null;
 	}
 
-	// 관리자 포인트 지급/차감
+	// 강제 포인트 지급/차감 페이지 호출
 	@RequestMapping("point_chk.do")
 	public ModelAndView pointChk(@ModelAttribute("mbr_nickname") String mbr_nickname) {
 		return new ModelAndView("admin/member/point_chk_p");
+	}
+
+	// 신청된 포인트 지급/차감
+	@RequestMapping("requestPoint.do")
+	public ModelAndView pointChk(@RequestParam("rpnt_idx") String rpnt_idx,@RequestParam("mbr_nickname") String mbr_nickname,
+			@RequestParam("rpnt_amount") String rpnt_amount, @ModelAttribute("cPage") String cPage) {
+		ModelAndView mv = new ModelAndView("redirect:adm_p_add_req.do");
+		
+		int result = adminService.updateRequestTable(rpnt_idx);
+		
+		PointVO pvo = new PointVO();
+		pvo.setPnt_in(rpnt_amount);
+		pvo.setPnt_record("충전 신청");
+		pvo.setMbr_nickname(mbr_nickname);
+		int result2 = adminService.pointUpdate(pvo);
+		
+		mv.addObject(result2);
+		
+		return mv;
 	}
 
 	// 관리자 포인트 지급/차감
@@ -516,7 +508,7 @@ public class AdminController {
 
 		String.valueOf(begin);
 		String.valueOf(end);
-		
+
 		StringBuffer sb = new StringBuffer();
 		List<PointVO> plist = null;
 		try {
@@ -530,8 +522,10 @@ public class AdminController {
 			sb.append("[");
 			for (int i = 0; i < plist.size(); i++) {
 				sb.append("{\"nickname\":\"" + plist.get(i).getMbr_nickname() + "\", \"cnt\":\"" + (i + 1)
-						+ "\", \"amount\":\"" + (Integer.parseInt(plist.get(i).getPnt_in())-Integer.parseInt(plist.get(i).getPnt_out())) + "\",\"content\":\"" + plist.get(i).getPnt_record()
-						+ "\", \"point\":\"" + plist.get(i).getPnt_now() + "\", \"date\":\""+ plist.get(i).getPnt_date()+"\"},");
+						+ "\", \"amount\":\""
+						+ (Integer.parseInt(plist.get(i).getPnt_in()) - Integer.parseInt(plist.get(i).getPnt_out()))
+						+ "\",\"content\":\"" + plist.get(i).getPnt_record() + "\", \"point\":\""
+						+ plist.get(i).getPnt_now() + "\", \"date\":\"" + plist.get(i).getPnt_date() + "\"},");
 			}
 			String str = sb.toString().substring(0, sb.toString().length() - 1);
 			str = str + "]";
@@ -545,8 +539,46 @@ public class AdminController {
 
 	// 관리자 회원 포인트 충전 신청
 	@RequestMapping("adm_p_add_req.do")
-	public ModelAndView adminPointAddReq() {
-		return new ModelAndView("admin/member/adm_point_add_reqest");
+	public ModelAndView adminPointAddReq(@RequestParam("cPage") String cPage) {
+		ModelAndView mv = new ModelAndView("admin/member/adm_point_add_reqest");
+
+		int count = adminService.getRpntCount();
+		paging.setTotalRecord(count);
+
+		if (paging.getTotalRecord() <= paging.getNumPerPage()) {
+			paging.setTotalpage(1);
+		} else {
+			paging.setTotalpage(paging.getTotalRecord() / paging.getNumPerPage());
+			if (paging.getTotalRecord() % paging.getNumPerPage() != 0) {
+				paging.setTotalpage(paging.getTotalpage() + 1);
+			}
+		}
+		if (cPage == null) {
+			paging.setNowPage(1);
+		} else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerPage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerPage());
+
+		paging.setBeginBlock(
+				(int) ((paging.getNowPage() - 1) / paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+
+		if (paging.getEndBlock() > paging.getTotalpage()) {
+			paging.setEndBlock(paging.getTotalpage());
+		}
+
+		int begin = paging.getBegin();
+		int end = paging.getEnd();
+
+		List<RequestPointVO> rpntlist = adminService.rpntList(begin, end);
+
+		mv.addObject("rpntlist", rpntlist);
+		mv.addObject("cPage", cPage);
+
+		return mv;
 	}
 
 	// 공지 조건 검색
@@ -1056,19 +1088,8 @@ public class AdminController {
 			String info_str = Arrays.toString(pdt_info);
 			pdtvo.setPdt_img(pdt_img);
 			pdtvo.setPdt_info(info_str.substring(1, info_str.length() - 1));
-			System.out.println(info_str.substring(1, info_str.length() - 1));
 
-			/*
-			 * System.out.println("pdt_price : "+ pdtvo.getPdt_price()+ ", pdt_name :"+
-			 * pdtvo.getPdt_name() +", pdt_info : "+pdtvo.getPdt_info() +
-			 * ", pdt_img : "+pdtvo.getPdt_img() +", pdt_saleprice : "+
-			 * pdtvo.getPdt_saleprice() + ", kate_idx : " + pdtvo.getKate_idx() +
-			 * ", pcl_idx : " + pdtvo.getPcl_idx() + ", corp_idx : " + pdtvo.getCorp_idx() +
-			 * ", pdt_state : " + pdtvo.getPdt_state() + ", pdt_inven : " +
-			 * pdtvo.getPdt_inven());
-			 */
 			int result = adminService.ProductInsert(pdtvo);
-			System.out.println(result);
 			if (result > 0) {
 				pdt_img_param.transferTo(new File(path + "/" + pdt_img));
 
@@ -1129,15 +1150,5 @@ public class AdminController {
 	@RequestMapping("admin_mkt_sup.do")
 	public ModelAndView admMktSup() {
 		return new ModelAndView("admin/market/adm_mkt_sup");
-	}
-
-	@RequestMapping("admin_comm_post.do")
-	public ModelAndView admCommPost() {
-		return new ModelAndView("admin/community/adm_comm_post");
-	}
-
-	@RequestMapping("admin_comm_comment.do")
-	public ModelAndView admCommComment() {
-		return new ModelAndView("admin/community/adm_comm_comment");
 	}
 }

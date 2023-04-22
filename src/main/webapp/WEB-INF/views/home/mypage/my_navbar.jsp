@@ -117,7 +117,6 @@ ul ul {
 			<li><a href="my_info.do">내 정보</a></li>
 			<li><a href="my_point.do">포인트관리</a></li>
 			<li><a href="my_pet.do">펫 정보</a></li>
-			<li><a href="my_message.do">받은 메시지</a></li>
 			<li><a href="my_inquire.do">1:1문의내역</a></li>
 			<li><a href="my_banned.do">제재 내역</a></li>
 		</ul>
@@ -131,19 +130,6 @@ ul ul {
 			<li><a href="my_dibs.do">찜</a></li>
 			<li><a href="my_coupon.do">쿠폰함</a></li>
 			<li><a href="my_review.do">리뷰내역</a></li>
-		</ul>
-		<br>
-		<li class="large"><img
-			src="resources/img/home/my_community_img.png"><a href="#">커뮤니티(예정)</a></li>
-		<ul>
-			<li><a href="#">게시글</a></li>
-			<li><a href="#">댓글/답글</a></li>
-		</ul>
-		<br>
-		<li class="large"><img
-			src="resources/img/home/my_memorial_img.png"><a href="#">추모(예정)</a></li>
-		<ul>
-			<li><a href="#">게시글 관리</a></li>
 		</ul>
 	</ul>
 </nav>

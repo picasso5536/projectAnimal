@@ -5,14 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.animal.www.commons.service.AllService;
 import com.animal.www.commons.vo.CorporationVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.market.model.dao.MarketDAO;
 import com.animal.www.market.model.vo.ProductVO;
 
 @Service
-public class MarketServiceImpl implements MarketService, AllService {
+public class MarketServiceImpl implements MarketService {
 	@Autowired
 	private MarketDAO marketDAO;
 
@@ -20,47 +19,47 @@ public class MarketServiceImpl implements MarketService, AllService {
 		this.marketDAO = marketDAO;
 	}
 	
-	// 상위 카테고리 리스트만
+	// �긽�쐞 移댄뀒怨좊━ 由ъ뒪�듃留�
 	@Override
 	public List<KategorieVO> getTopKategoryList() {
 		return marketDAO.getTopKategoryList();
 	}
 	
-	// 마켓메인 추천상품 top5
+	// 留덉폆硫붿씤 異붿쿇�긽�뭹 top5
 	@Override
 	public List<ProductVO> getBestPdtList() {
 		return marketDAO.getBestPdtList();
 	}
 	
-	//상품상세정보 select
+	//�긽�뭹�긽�꽭�젙蹂� select
 	@Override
 	public ProductVO getProductOneInfo(String pdt_idx) {
 		return marketDAO.getProductOneInfo(pdt_idx);
 	}
-	// 소분류 카테고리idx를 이용해 중분류, 대분류의 정보 select
+	// �냼遺꾨쪟 移댄뀒怨좊━idx瑜� �씠�슜�빐 以묐텇瑜�, ��遺꾨쪟�쓽 �젙蹂� select
 	@Override
 	public List<KategorieVO> getKategories(String kate_idx) {
 		return marketDAO.getKategories(kate_idx);
 	}
-	// 회사정보 idx로 select
+	// �쉶�궗�젙蹂� idx濡� select
 	@Override
 	public CorporationVO getCorpVO(String corp_idx) {
 		return marketDAO.getCorpVO(corp_idx);
 	}
 	
-	// 중,하위 카테고리 리스트 idx로 검색
+	// 以�,�븯�쐞 移댄뀒怨좊━ 由ъ뒪�듃 idx濡� 寃��깋
 	@Override
 	public List<KategorieVO> getKategoryList(String kate_idx) {
 		return marketDAO.getKategoryList(kate_idx);
 	}
 	
 	
-	// 카테고리 idx검색
+	// 移댄뀒怨좊━ idx寃��깋
 	@Override
 	public KategorieVO getKateInfo(String kate_idx) {
 		return marketDAO.getKateInfo(kate_idx);
 	}
-	// 최하위 카테고리 selectAll
+	// 理쒗븯�쐞 移댄뀒怨좊━ selectAll
 	@Override
 	public List<KategorieVO> getbottKategoryList() {
 		return marketDAO.getbottKategoryList();

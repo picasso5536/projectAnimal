@@ -11,6 +11,7 @@ import com.animal.www.admin.model.vo.TermsVO;
 import com.animal.www.commons.vo.KategorieVO;
 import com.animal.www.commons.vo.ParcelVO;
 import com.animal.www.commons.vo.PointVO;
+import com.animal.www.commons.vo.RequestPointVO;
 import com.animal.www.market.model.vo.ProductVO;
 import com.animal.www.commons.vo.BannerVO;
 import com.animal.www.commons.vo.CorporationVO;
@@ -279,5 +280,23 @@ public class AdminServiceImpl implements AdminService {
 	public List<PointVO> pointDetail(String mbr_nickname, String bott, String s_date, String e_date, int begin,
 			int end) {
 		return adminDAO.pointDetail(mbr_nickname, bott, s_date, e_date, begin, end);
+	}
+	
+	// 충전 신청 개수
+	@Override
+	public int getRpntCount() {
+		return adminDAO.getRpntCount();
+	}
+
+	// 충전 신청 리스트
+	@Override
+	public List<RequestPointVO> rpntList(int begin, int end) {
+		return adminDAO.rpntList(begin, end);
+	}
+	
+	// 충전 신청 테이블 처리상태 변경
+	@Override
+	public int updateRequestTable(String rpnt_idx) {
+		return adminDAO.updateRequestTable(rpnt_idx);
 	}
 }

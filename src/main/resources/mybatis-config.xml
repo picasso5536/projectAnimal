@@ -25,6 +25,7 @@
         	<typeAlias alias="nvo" type="com.animal.www.commons.vo.NotificationVO"/>
         	<typeAlias alias="mvo" type="com.animal.www.commons.vo.MemberVO"/>
         	<typeAlias alias="pvo" type="com.animal.www.commons.vo.PointVO"/>
+        	<typeAlias alias="rvo" type="com.animal.www.commons.vo.RequestPointVO"/>
         	<typeAlias alias="avo" type="com.animal.www.admin.model.vo.AdminVO"/>
     </typeAliases>
 	<mappers>

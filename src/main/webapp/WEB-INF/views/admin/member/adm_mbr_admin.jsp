@@ -35,9 +35,6 @@ function adm_more_info() {
 				<li class="mli"><a class="ad-link" href="#">관리자 정보관리</a></li>
 				<li class="mli"><a class="ad-link" href="ad_acc_create.do">관리자
 						계정 만들기</a></li>
-				<li class="mli"><a class="ad-link" href="ad_acc_update.do">(임시)
-						계정 수정</a></li>
-
 			</ul>
 			<div class="search_mbr">
 				<form id="search_form">

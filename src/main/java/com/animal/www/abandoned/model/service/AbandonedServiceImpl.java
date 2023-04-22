@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.animal.www.abandoned.model.dao.AbandonedDAO;
-import com.animal.www.commons.service.AllService;
 
 @Service
-public class AbandonedServiceImpl implements AbandonedService, AllService {
+public class AbandonedServiceImpl implements AbandonedService {
 	@Autowired
 	private AbandonedDAO abandonedDAO;
 

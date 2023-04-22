@@ -17,6 +17,7 @@ import com.animal.www.commons.vo.MemberVO;
 import com.animal.www.commons.vo.NotificationVO;
 import com.animal.www.commons.vo.ParcelVO;
 import com.animal.www.commons.vo.PointVO;
+import com.animal.www.commons.vo.RequestPointVO;
 import com.animal.www.market.model.vo.ProductVO;
 
 @Repository
@@ -323,5 +324,20 @@ public class AdminDAO {
 		map.put("end", String.valueOf(end));
 		
 		return sqlSessionTemplate.selectList("admin.pointDetail", map);
+	}
+	
+	public int getRpntCount() {
+		return sqlSessionTemplate.selectOne("admin.getRpntCount");
+	}
+	
+	public List<RequestPointVO> rpntList(int begin, int end) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", begin);
+		map.put("end", end);
+		return sqlSessionTemplate.selectList("admin.rpntList", map);
+	}
+
+	public int updateRequestTable(String rpnt_idx) {
+		return sqlSessionTemplate.update("admin.updateReqTable", rpnt_idx);
 	}
 }

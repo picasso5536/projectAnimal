@@ -42,7 +42,7 @@
 		<section id="mem_sec">
 			<ul id="crm_sub">
 				<li class="mli"><a class="ad-link" href="#">고객 포인트 조회</a></li>
-				<li class="mli"><a class="ad-link" href="adm_p_add_req.do">포인트
+				<li class="mli"><a class="ad-link" href="adm_p_add_req.do?cPage=1">포인트
 						충전 신청</a></li>
 			</ul>
 			<div class="search_mbr">
